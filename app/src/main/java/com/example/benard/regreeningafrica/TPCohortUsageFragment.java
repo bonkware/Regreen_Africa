@@ -23,7 +23,6 @@ public class TPCohortUsageFragment extends Fragment {
     public TPCohortUsageFragment() {
         // Required empty public constructor
     }
-
     RegreeningGlobal g = RegreeningGlobal.getInstance();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -90,7 +89,6 @@ public class TPCohortUsageFragment extends Fragment {
         //managements
         CheckBox mg1 = (CheckBox) getActivity().findViewById(R.id.mg1) ;
         if(mg1.isChecked()) {
-            //g.setmg1(mg1.getText().toString());
             g.setmg1("yes");
         }else {
             g.setmg1("no");
