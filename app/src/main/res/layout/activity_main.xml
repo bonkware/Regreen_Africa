@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:orientation="vertical"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:gravity="center"
+    android:background="@mipmap/ic_home"
+    android:weightSum="1">
+
+    <TextView
+        android:text="Start Menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/header_bottom_margin"
+        android:visibility="invisible"
+        android:textSize="@dimen/text_size"
+        android:fontFamily="sans-serif"
+
+        android:textStyle="bold"
+        android:gravity="top"
+        android:layout_weight="0.86" />
+    <TableLayout
+        android:id="@+id/tableLayout_start"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="0,1">
+        <TableRow
+            android:id="@+id/tableRowadd"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/button_add"
+                android:background="@drawable/index_buttons"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:textSize="20sp"
+                android:textColor="#fff"
+                android:layout_margin="10dp"
+                android:text="Start" />
+        </TableRow>
+    </TableLayout>
+    <TableLayout
+        android:id="@+id/tableLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="0,1">
+
+        <!--<TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/send"
+                android:background="@drawable/index_buttons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:textSize="16sp"
+                android:textColor="#fff"
+                android:layout_margin="10dp"
+                android:text="upload data" />
+
+            <Button
+                android:id="@+id/button_view"
+                android:background="@drawable/index_buttons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:textSize="16sp"
+                android:textColor="#fff"
+                android:layout_margin="10dp"
+                android:text="View data" />
+
+        </TableRow>-->
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/about"
+                android:background="@drawable/index_buttons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:textColor="#fff"
+                android:textSize="16sp"
+                android:layout_margin="10dp"
+                android:text="About Us" />
+            <Button
+                android:id="@+id/fqs"
+                android:background="@drawable/index_buttons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:textSize="16sp"
+                android:textColor="#fff"
+                android:layout_margin="10dp"
+                android:text="FAQs" />
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRowcount"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/count"
+                android:background="@drawable/index_buttons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:textColor="#fff"
+                android:textSize="16sp"
+                android:layout_margin="10dp"
+                android:text="TPCount" />
+            <Button
+                android:id="@+id/c"
+                android:background="@drawable/index_buttons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:textSize="16sp"
+                android:textColor="#fff"
+                android:visibility="invisible"
+                android:layout_margin="10dp"
+                android:text="C" />
+        </TableRow>
+    </TableLayout>
+    <TableLayout
+        android:id="@+id/tableLayout_help"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="0,1">
+        <TableRow
+            android:id="@+id/tableRowhelp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/help"
+                android:background="@drawable/index_buttons"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:textSize="20sp"
+                android:textColor="#fff"
+                android:layout_margin="10dp"
+                android:text="Help" />
+        </TableRow>
+    </TableLayout>
+</LinearLayout>

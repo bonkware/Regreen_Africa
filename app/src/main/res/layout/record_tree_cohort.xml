@@ -1,0 +1,142 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical" android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:layout_margin="6dp"
+            android:paddingRight="@dimen/activity_horizontal_margin">
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add tree cohort"
+                android:layout_gravity="center"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Farmer ID:"
+                android:textSize="@dimen/textsize"
+                android:padding="10dp"
+                android:textStyle="italic"/>
+            <TextView
+                android:id="@+id/fid"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:padding="@dimen/view_padding"
+                android:textSize="@dimen/add_edit_textsize"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:text="Scientific/Local Name"
+                android:textSize="@dimen/textsize"
+                android:textStyle="italic"/>
+            <EditText
+                android:id="@+id/speciesname"
+                android:backgroundTint="#008000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/view_padding"
+                android:textSize="@dimen/add_edit_textsize">
+            </EditText>
+            <RelativeLayout
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="25dp">
+                <EditText
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Planted date"
+                    android:id="@+id/p_date"
+                    android:backgroundTint="#008000"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="date"
+                    android:id="@+id/btn_date"
+                    android:background="@drawable/edittext_radius"
+                    android:backgroundTint="#008000"
+                    android:layout_alignBottom="@+id/p_date"
+                    android:layout_toRightOf="@+id/p_date"
+                    android:layout_toEndOf="@+id/p_date" />
+            </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Number of trees planted"
+                android:paddingTop="20dp"
+                android:textSize="@dimen/textsize"
+                android:textStyle="italic"/>
+            <EditText
+                android:id="@+id/number_planted"
+                android:backgroundTint="#008000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:padding="@dimen/view_padding"
+                android:textSize="@dimen/add_edit_textsize">
+            </EditText>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Number of trees surviving"
+                android:paddingTop="10dp"
+                android:textSize="@dimen/textsize"
+                android:textStyle="italic"/>
+            <EditText
+                android:id="@+id/number_survived"
+                android:backgroundTint="#008000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:padding="@dimen/view_padding"
+                android:textSize="@dimen/add_edit_textsize">
+            </EditText>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/prev"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:visibility="invisible"
+            android:text="PREV"/>
+
+        <Button
+            android:id="@+id/next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="jumpToMgt"
+            android:layout_weight="1"
+            android:text="NEXT"/>
+
+    </LinearLayout>
+</RelativeLayout>

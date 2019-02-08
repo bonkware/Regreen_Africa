@@ -1,0 +1,165 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/management"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Management practices"
+                android:gravity="center"
+                android:textSize="@dimen/textsize">
+            </TextView>
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="*" >
+                <TableRow
+                    android:id="@+id/pru"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" >
+                    <CheckBox
+                        android:id="@+id/mg1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:button="@drawable/custom_checkbox_pruning"/>
+                    <CheckBox
+                        android:id="@+id/mg2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:button="@drawable/custom_checkbox_thinning"/>
+                </TableRow>
+                <TableRow
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/add_edit_textsize"
+                        android:layout_gravity="center"
+                        android:text="Pruning" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/add_edit_textsize"
+                        android:layout_gravity="center"
+                        android:text="Fencing" />
+                </TableRow>
+                <TableRow
+                    android:id="@+id/mf"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" >
+                    <CheckBox
+                        android:id="@+id/mg4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:button="@drawable/custom_checkbox_weeding"/>
+                    <CheckBox
+                        android:id="@+id/mg3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:button="@drawable/custom_checkbox_fertilizer"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/we"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="@dimen/add_edit_textsize"
+                        android:text="Weeding" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="@dimen/add_edit_textsize"
+                        android:text="Watering" />
+                </TableRow>
+                <TableRow
+                    android:id="@+id/oth"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" >
+                    <CheckBox
+                        android:id="@+id/mg5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:button="@drawable/custom_checkbox_manure"/>
+                    <CheckBox
+                        android:id="@+id/mg_others"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:button="@drawable/custom_checkbox_more"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/pn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="@dimen/add_edit_textsize"
+                        android:text="Organic \n fertilizer" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="@dimen/add_edit_textsize"
+                        android:text="Other(s)" />
+                </TableRow>
+            </TableLayout>
+            <EditText
+                android:id="@+id/mg_other"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/view_padding"
+                android:hint="list others separated by (;)"
+                android:textSize="@dimen/add_edit_textsize"
+                android:visibility="gone">
+            </EditText>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/prev"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="jumpBackCohort"
+            android:text="PREV"/>
+
+        <Button
+            android:id="@+id/next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="jumpToUsage"
+            android:text="NEXT"/>
+
+    </LinearLayout>
+</RelativeLayout>

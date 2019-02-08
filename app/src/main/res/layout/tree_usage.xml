@@ -1,0 +1,174 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/usage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tree usage"
+                android:gravity="center"
+                android:textSize="@dimen/textsize"
+                >
+            </TextView>
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="*" >
+                <TableRow
+                    android:id="@+id/hc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" >
+                    <CheckBox
+                        android:id="@+id/usage1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:button="@drawable/custom_checkbox_firewood"/>
+
+                    <CheckBox
+                        android:id="@+id/usage2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:button="@drawable/custom_checkbox_construction"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/firewood"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="@dimen/add_edit_textsize"
+                        android:text="Firewood" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="@dimen/add_edit_textsize"
+                        android:text="Construction" />
+                </TableRow>
+                <TableRow
+                    android:id="@+id/food"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" >
+                    <CheckBox
+                        android:id="@+id/usage3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:button="@drawable/custom_checkbox_feed"/>
+
+                    <CheckBox
+                        android:id="@+id/usage4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:button="@drawable/custom_checkbox_food"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/feed"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="@dimen/add_edit_textsize"
+                        android:text="Animal feed" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="@dimen/add_edit_textsize"
+                        android:text="Food" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/uother"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" >
+                    <CheckBox
+                        android:id="@+id/usage5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:button="@drawable/custom_checkbox_mulching"/>
+
+                    <CheckBox
+                        android:id="@+id/usg_other"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:button="@drawable/custom_checkbox_more"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/mulch"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="@dimen/add_edit_textsize"
+                        android:text="Mulching" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="@dimen/add_edit_textsize"
+                        android:text="Other(s)" />
+                </TableRow>
+            </TableLayout>
+            <EditText
+                android:id="@+id/us_other"
+                app:backgroundTint="#008000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/view_padding"
+                android:hint="list other uses separated by(;)"
+                android:textSize="@dimen/add_edit_textsize"
+                android:visibility="gone">
+            </EditText>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/prev"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="jumpBackMgt"
+            android:text="PREV"/>
+
+        <Button
+            android:id="@+id/tomeasurement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="NEXT"/>
+
+    </LinearLayout>
+</RelativeLayout>

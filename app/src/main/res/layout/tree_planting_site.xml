@@ -1,0 +1,118 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="6dp"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin">
+
+        <TextView
+            android:id="@+id/select"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select tree planting site"
+            android:textSize="@dimen/textsize"
+            android:textStyle="italic"/>
+
+        <RadioGroup
+            android:id="@+id/planting_site"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="20dp">
+
+            <RadioButton
+                android:id="@+id/woodlot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Woodlot"
+                android:textSize="@dimen/add_edit_textsize" />
+
+            <RadioButton
+                android:id="@+id/iboundary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Internal Boundary"
+                android:textSize="@dimen/add_edit_textsize" />
+            <RadioButton
+                android:id="@+id/eboundary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="External Boundary"
+                android:textSize="@dimen/add_edit_textsize" />
+
+            <RadioButton
+                android:id="@+id/garden"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home garden"
+                android:textSize="@dimen/add_edit_textsize" />
+
+            <RadioButton
+                android:id="@+id/crop_field"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Crop field"
+                android:textSize="@dimen/add_edit_textsize" />
+
+            <RadioButton
+                android:id="@+id/pasture_grassland"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pasture/grassland"
+                android:textSize="@dimen/add_edit_textsize" />
+            <RadioButton
+                android:id="@+id/fallow_pushland"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fallow/bushland"
+                android:textSize="@dimen/add_edit_textsize" />
+            <RadioButton
+                android:id="@+id/others"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Other"
+                android:textSize="@dimen/add_edit_textsize" />
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/other_sites"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#008000"
+            android:hint="other planting site"
+            android:padding="@dimen/view_padding"
+            android:textSize="@dimen/add_edit_textsize"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/prev"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="jumpBackLocation"
+            android:text="PREV"/>
+
+        <Button
+            android:id="@+id/next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="jumpToEst"
+            android:text="NEXT"/>
+
+    </LinearLayout>
+</RelativeLayout>
