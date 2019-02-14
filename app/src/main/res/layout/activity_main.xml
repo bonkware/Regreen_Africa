@@ -116,19 +116,19 @@
                 android:layout_column="0"
                 android:textColor="#fff"
                 android:textSize="16sp"
+                android:visibility="invisible"
                 android:layout_margin="10dp"
                 android:text="TPCount" />
             <Button
-                android:id="@+id/c"
+                android:id="@+id/data"
                 android:background="@drawable/index_buttons"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
                 android:textSize="16sp"
                 android:textColor="#fff"
-                android:visibility="invisible"
                 android:layout_margin="10dp"
-                android:text="C" />
+                android:text="Data" />
         </TableRow>
     </TableLayout>
     <TableLayout

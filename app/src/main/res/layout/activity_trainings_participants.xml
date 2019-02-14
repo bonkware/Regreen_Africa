@@ -43,7 +43,7 @@
                 android:paddingTop="20dp"
                 android:textStyle="italic"/>
             <EditText
-                android:id="@+id/m_partners"
+                android:id="@+id/m_participants"
                 android:backgroundTint="#008000"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -61,7 +61,7 @@
                 android:paddingTop="20dp"
                 android:textStyle="italic"/>
             <EditText
-                android:id="@+id/f_partners"
+                android:id="@+id/f_participants"
                 android:backgroundTint="#008000"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -79,7 +79,7 @@
                 android:paddingTop="20dp"
                 android:textStyle="italic"/>
             <EditText
-                android:id="@+id/y_partners"
+                android:id="@+id/y_participants"
                 android:backgroundTint="#008000"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

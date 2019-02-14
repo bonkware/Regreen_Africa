@@ -52,8 +52,8 @@ public class TPFarmInstEnumFragment extends Fragment {
                             public void onDateSet(DatePicker view, int year,
                                                   int monthOfYear, int dayOfMonth) {
 
-                                //txtDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
-                                txtDate.setText((monthOfYear + 1) + "/" + year);
+                                txtDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                                //txtDate.setText((monthOfYear + 1) + "/" + year);
 
                             }
                         }, mYear, mMonth, mDay);

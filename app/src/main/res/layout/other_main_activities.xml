@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="6dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/send_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Send completed data"
+            android:textStyle="bold|italic"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:padding="10dp">
+        </TextView>
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:stretchColumns="*" >
+            <TableRow
+                android:id="@+id/treeplanting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal">
+                <Button
+                    android:id="@+id/tree_planting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:textColor="#fff"
+                    android:background="@drawable/ic_icon_treeplanting"
+                    />
+            </TableRow>
+            <TableRow
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" >
+                <TextView
+                    android:layout_width="0dp" android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Send tree planting"
+                    android:gravity="center"
+                    android:textStyle="bold|italic"
+                    android:textSize="15sp">
+                </TextView>
+            </TableRow>
+            <TableRow
+                android:id="@+id/fmnr_nursery"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp">
+                <Button
+                    android:id="@+id/button_fmnr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_icon_fmnr_checked"
+                    />
+                <Button
+                    android:id="@+id/button_nursery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_icon_nursery"
+                    />
+            </TableRow>
+            <TableRow
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:layout_width="0dp" android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="send FMNR"
+                    android:gravity="center"
+                    android:textStyle="bold|italic"
+                    android:textSize="15sp">
+                </TextView>
+                <TextView
+                    android:layout_width="0dp" android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="send nursery"
+                    android:gravity="center"
+                    android:textStyle="bold|italic"
+                    android:textSize="15sp"/>
+            </TableRow>
+            <TableRow
+                android:id="@+id/Trainings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:paddingTop="10dp">
+                <Button
+                    android:id="@+id/trainings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textColor="#fff"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_icon_seeddealer_checked"
+                    />
+            </TableRow>
+            <TableRow
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" >
+                <TextView
+                    android:layout_width="0dp" android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="send trainings"
+                    android:gravity="center"
+                    android:textStyle="bold|italic"
+                    android:textSize="15sp">
+                </TextView>
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+</ScrollView>

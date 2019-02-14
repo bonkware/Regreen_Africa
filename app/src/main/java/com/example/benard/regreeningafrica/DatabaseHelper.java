@@ -11,9 +11,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Tables for tree planting
-    public static final String TABLE_FARMER_INST = "farmer_inst";
+    public static final String TABLE_FARMER_INST = "farmer_institution";
     public static final String TABLE_COHORT = "cohort";
-    public static final String TABLE_Measurement = "tree_measurement";
+    public static final String TABLE_Measurement = "tree_measurements";
+    public static final String TABLE_Trainings = "trainings";//trainings table
 
     // Farmer institution columns
     public static final String _ID = "_id";
@@ -30,6 +31,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     //Cohort columns
     public static final String farmerID = "farmerID";
+    public static final String cohort_id = "cohortID";
     public static final String species_name = "species";
     public static final String date_planted = "date_planted";
     public static final String number_planted = "number_planted";
@@ -58,9 +60,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String tree_accuracy = "accuracy";
     public static final String tree_image_path = "path";
 
+    //table for trainings
+    public static final String _id = "_id";
+    public  static  final String training_country = "training_country";
+    public  static  final String training_region = "training_region";
+    public  static  final String training_district = "training_district";
+    public  static  final String training_topic = "training_topic";
+    public  static  final String training_date = "training_date";
+    public  static  final String training_venue = "training_venue";
+    public  static  final String training_partners = "training_partners";
+    public  static  final String training_participants = "total_participants";
+    public  static  final String male_participants = "male_participants";
+    public  static  final String female_participants = "female_participants";
+    public  static  final String youth_participants = "youth_participants";
+
 
     // Database name
-    static final String DB_NAME = "regreen_agrica.sqlite";
+    static final String DB_NAME = "regreen_africa.sqlite";
 
     // database version
     static final int DB_VERSION = 1;
@@ -79,13 +95,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     TABLE_COHORT + "(" +
                     _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + " TEXT,"+ species_name + " TEXT,"+date_planted + " TEXT,"+number_planted + " TEXT,"+number_survived + " TEXT,"+management_pruning+" TEXT,"+management_fencing + " TEXT,"+
                     management_weeding + " TEXT,"+management_watering + " TEXT,"+ management_organic_fertilizer + " TEXT,"+management_other + " TEXT,"+use_firewood+" TEXT,"+use_housing_construction +
-                    " TEXT,"+use_animal_feed +  " TEXT,"+use_food + " TEXT,"+use_mulching + " TEXT,"+use_other+" TEXT,"+farmerID+" TEXT);";
+                    " TEXT,"+use_animal_feed +  " TEXT,"+use_food + " TEXT,"+use_mulching + " TEXT,"+use_other+" TEXT,"+farmerID+" TEXT,"+cohort_id+" TEXT);";
     //creating tree measurement table
     private static final String CREATE_TABLE_TREE =
             "create table " +
                     TABLE_Measurement + "(" +
                     _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + " TEXT,"+ tree_height + " TEXT,"+tree_rcd + " TEXT,"+tree_dbh + " TEXT,"+tree_latitude + " TEXT,"+tree_longitude+" TEXT,"+tree_altitude + " TEXT,"+
                     tree_accuracy +" TEXT,"+tree_image_path + " TEXT,"+cohortID+" TEXT);";
+    //creating training table
+    private static final String CREATE_TABLE_TRAININGS =
+            "create table " +
+                    TABLE_Trainings + "(" +
+                    _id + " INTEGER PRIMARY KEY AUTOINCREMENT, " + " TEXT,"+ training_country + " TEXT,"+training_region + " TEXT,"+training_district + " TEXT,"+training_topic + " TEXT,"+training_date+" TEXT,"+training_venue + " TEXT,"+
+                    training_partners +" TEXT,"+training_participants + " TEXT,"+male_participants+" TEXT,"+female_participants+" TEXT,"+youth_participants+" TEXT);";
 
     public DatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -97,6 +119,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_FARMER_INST);
         db.execSQL(CREATE_TABLE_COHORT);
         db.execSQL(CREATE_TABLE_TREE);
+        db.execSQL(CREATE_TABLE_TRAININGS);
     }
 
     @Override
@@ -105,6 +128,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_FARMER_INST);
         db.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_COHORT);
         db.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_TREE);
+        db.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_TRAININGS);
         //create new tables
         onCreate(db);
     }

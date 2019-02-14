@@ -29,6 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Farmer ID:"
+                android:visibility="gone"
                 android:textSize="@dimen/textsize"
                 android:padding="10dp"
                 android:textStyle="italic"/>
@@ -38,6 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textStyle="bold"
+                android:visibility="gone"
                 android:padding="@dimen/view_padding"
                 android:textSize="@dimen/add_edit_textsize"/>
 

@@ -36,14 +36,6 @@ public class TPTreeMeasureMainAcivity extends AppCompatActivity {
         viewPager.setOffscreenPageLimit(4);//number of fragments
         final ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         //All fragments
-       /* adapter.addFragment(new TPFarmInstEnumFragment(), "enumurator");
-        adapter.addFragment(new TPFarmInstFragment(), "farmer/institution details");
-        adapter.addFragment(new TPFarmInstLocFragment(), "tree planting location");
-        adapter.addFragment(new TPFarmInstSiteFragment(), "tree planting site");
-        adapter.addFragment(new TPFarmInstLandsizeFragment(), "land size green");
-        adapter.addFragment(new TPCohortRecordFragment(), "record tree cohort");
-        adapter.addFragment(new TPCohortManagementsFragment(), "managements");
-        adapter.addFragment(new TPCohortUsageFragment(), "usage");*/
         adapter.addFragment(new TPTreeMeasurementsFragment(), "tree measurements");
         adapter.addFragment(new TPTreeGpsFragment(), "tree gps");
         adapter.addFragment(new TPTreePhotoFragment(), "tree photo");
@@ -70,107 +62,6 @@ public class TPTreeMeasureMainAcivity extends AppCompatActivity {
             viewPager.setCurrentItem(1);
         }
     }
-    //navigate back to enumerator name
-    /*public void jumpToEnum(View view){
-        viewPager.setCurrentItem(0);
-    }
-    public void jumpToLocation(View view){
-        EditText fi = (EditText) findViewById(R.id.fnames);
-        boolean fail = false;
-        if (fi.getText().toString().trim().length() == 0) {
-            fail = true;
-            fi.requestFocus();
-            fi.setError("Enter farmer/institution");
-        }
-        if (!fail) {
-            viewPager.setCurrentItem(2);
-        }
-    }
-    public void jumpBackFI(View view){
-        viewPager.setCurrentItem(1);
-    }
-    public void jumpToSite(View view){
-        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.planting_location);
-        if (radioGroup.getCheckedRadioButtonId() == -1)
-        {
-            Toast.makeText(TPTreeMeasureMainAcivity.this,"Select one",Toast.LENGTH_SHORT).show();
-        }
-        else
-        {
-            viewPager.setCurrentItem(3);
-        }
-
-
-    }
-    public void jumpBackLocation(View view){
-        viewPager.setCurrentItem(2);
-    }
-    public void jumpToEst(View view){
-        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.planting_site);
-        if (radioGroup.getCheckedRadioButtonId() == -1)
-        {
-            Toast.makeText(TPTreeMeasureMainAcivity.this,"Select one",Toast.LENGTH_SHORT).show();
-        }
-        else
-        {
-            viewPager.setCurrentItem(4);
-        }
-    }
-    public void jumpBackSite(View view){
-        viewPager.setCurrentItem(3);
-    }
-    public void jumpToCohort(View view){
-        EditText le = (EditText) findViewById(R.id.landestimate);
-        boolean fail = false;
-        if (le.getText().toString().trim().length() == 0) {
-            fail = true;
-            le.requestFocus();
-            le.setError("Enter land estimate");
-        }
-        if (!fail) {
-            viewPager.setCurrentItem(5);
-        }
-    }
-    public void jumpBackEst(View view){
-        viewPager.setCurrentItem(4);
-    }
-    public void jumpToMgt(View view){
-        EditText ed = (EditText) findViewById(R.id.sl_name);
-        EditText date = (EditText) findViewById(R.id.p_date);
-        boolean fail = false;
-        if (ed.getText().toString().trim().length() == 0) {
-            fail = true;
-            ed.requestFocus();
-            ed.setError("Enter Tree name");
-        }
-        if (date.getText().toString().trim().length() == 0) {
-            fail = true;
-            date.requestFocus();
-            date.setError("Select planted date");
-        }
-        if (!fail) {
-            viewPager.setCurrentItem(6);
-        }
-
-        //viewPager.setCurrentItem(6);
-    }
-    public void jumpBackCohort(View view){
-        viewPager.setCurrentItem(5);
-    }
-
-    public void jumpToUsage(View view){
-
-        viewPager.setCurrentItem(7);
-    }
-    public void jumpBackMgt(View view){
-        viewPager.setCurrentItem(6);
-    }
-    public void jumpToMeasurement(View view){
-        viewPager.setCurrentItem(8);
-    }
-    public void jumpBackUsage(View view){
-        viewPager.setCurrentItem(7);
-    }*/
     public void jumpToGPS(View view){
         EditText h = (EditText) findViewById(R.id.height);
         boolean fail = false;

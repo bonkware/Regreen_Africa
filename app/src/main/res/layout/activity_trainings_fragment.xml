@@ -67,7 +67,7 @@
                 android:paddingTop="20dp"
                 android:textStyle="italic"/>
             <EditText
-                android:id="@+id/dcwename"
+                android:id="@+id/dcwname"
                 android:backgroundTint="#008000"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

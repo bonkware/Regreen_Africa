@@ -14,6 +14,7 @@ import android.database.sqlite.SQLiteDatabase;
 import static com.example.benard.regreeningafrica.DatabaseHelper.TABLE_COHORT;
 import static com.example.benard.regreeningafrica.DatabaseHelper.TABLE_FARMER_INST;
 import static com.example.benard.regreeningafrica.DatabaseHelper.TABLE_Measurement;
+import static com.example.benard.regreeningafrica.DatabaseHelper.TABLE_Trainings;
 
 public class DbAccess {
     RegreeningGlobal g = RegreeningGlobal.getInstance();
@@ -93,6 +94,24 @@ public class DbAccess {
         //insert
         database.insert(TABLE_Measurement, null, contentValue);
     }
+
+    //insert trainings
+    public void insertTraining() {
+        ContentValues contentValue = new ContentValues();
+        contentValue.put(DatabaseHelper.training_country, g.getc_name());
+        contentValue.put(DatabaseHelper.training_region, g.getcr_name());
+        contentValue.put(DatabaseHelper.training_district, g.getdcw_name());
+        contentValue.put(DatabaseHelper.training_topic, g.gettraining_topic());
+        contentValue.put(DatabaseHelper.training_date, g.gettraining_date());
+        contentValue.put(DatabaseHelper.training_venue, g.gettraining_venue());
+        contentValue.put(DatabaseHelper.training_partners, g.gettraining_partners());
+        contentValue.put(DatabaseHelper.training_participants, g.getnumber_participants());
+        contentValue.put(DatabaseHelper.male_participants, g.getmale_participants());
+        contentValue.put(DatabaseHelper.female_participants, g.getfemale_participants());
+        contentValue.put(DatabaseHelper.youth_participants, g.getyouth_participants());
+        //insert
+        database.insert(TABLE_Trainings, null, contentValue);
+    }
     //get records in view
     public Cursor fetch() {
         String selectQuery = "Select * from farmer_data,tree_data WHERE farmer_data.farmerID = tree_data.farmerID";
@@ -104,32 +123,32 @@ public class DbAccess {
         Cursor cursor = database.rawQuery(selectQuery, null);
         return cursor;
     }
-    public void deleteAllFarmer(){
+    public void deleteFarmer_Inst(){
         database.execSQL("delete from "+ TABLE_FARMER_INST);
     }
-    public void deleteAllTree(){
+    public void deleteCohort(){
         database.execSQL("delete from "+ TABLE_COHORT);
     }
-    public void deletenurseryprofile(){
+    public void deleteMeasurements(){
         database.execSQL("delete from "+ TABLE_Measurement);
     }
     //get all records from db for sending
     //fetch from all tables where farmer ID match
-    public Cursor getAllTreePlantning() {
-        String selectQuery = "SELECT * FROM farmer_inst,cohort,tree_measurement WHERE farmer_data.farmerID = tree_data.farmerID";
+    public Cursor getTP() {
+        //String selectQuery = "SELECT * FROM farmer_institution,cohort,tree_measurements";
+        String selectQuery = "SELECT * FROM farmer_institution,cohort,tree_measurements WHERE farmer_institution.farmerID = cohort.farmerID and cohort.cohortID = tree_measurements.cohortID ";
         Cursor c = database.rawQuery(selectQuery, null);
         return c;
     }
-   /* public Cursor getNurseryData() {
-        String selectQuery = "SELECT * FROM nursery_profile,nursery_trees WHERE nursery_profile.nurseryID = nursery_trees.nurseryID";
+    public Cursor getTrainings() {
+        String selectQuery = "SELECT * FROM trainings";
         Cursor c = database.rawQuery(selectQuery, null);
         return c;
-    }*/
-    //count no. of records
+    }
+    //count no. of records tree planting
     public int getcount(){
         //Cursor cur = database.rawQuery(" SELECT Count(*) FROM " + TABLE_FARMER_INST, null);
-        Cursor cur = database.rawQuery(" SELECT (select Count(*) FROM farmer_inst) as count1," +
-                "(select Count(*) FROM cohort) as count2,(select Count(*) FROM tree_measurement) as count3  ", null);
+        Cursor cur = database.rawQuery("SELECT count(*) from farmer_institution,cohort,tree_measurements WHERE farmer_institution.farmerID = cohort.farmerID and cohort.cohortID = tree_measurements.cohortID ", null);
         int x = 0;
         if (cur.moveToFirst())
         {
@@ -138,10 +157,9 @@ public class DbAccess {
         cur.close();
         return x;
     }
-    //get nursery count
-    //count no. of records
-   /* public int getNurserycount(){
-        Cursor cur = database.rawQuery(" SELECT Count(*) FROM nursery_profile,nursery_trees WHERE nursery_profile.nurseryID = nursery_trees.nurseryID ", null);
+    //count no. of records trainings
+    public int getcount_trainings(){
+        Cursor cur = database.rawQuery(" SELECT Count(*) FROM " + TABLE_Trainings, null);
         int x = 0;
         if (cur.moveToFirst())
         {
@@ -150,30 +168,4 @@ public class DbAccess {
         cur.close();
         return x;
     }
-    //get the list of fnames in editttext farmer data
-    public List<String> getFnames() {
-        List<String> list = new ArrayList<>();
-        String selectQuery = "SELECT name FROM " + TABLE_FARMER;
-        Cursor cursor = database.rawQuery(selectQuery, null);
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            list.add(cursor.getString(0));
-            cursor.moveToNext();
-        }
-        cursor.close();
-        return list;
-    }
-    //get the list of project names in editttext farmer data
-    public List<String> getPnames() {
-        List<String> list = new ArrayList<>();
-        String selectQuery = "SELECT project FROM " + TABLE_FARMER;
-        Cursor cursor = database.rawQuery(selectQuery, null);
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            list.add(cursor.getString(0));
-            cursor.moveToNext();
-        }
-        cursor.close();
-        return list;
-    }*/
 }

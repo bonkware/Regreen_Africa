@@ -12,8 +12,8 @@ public class RegreeningGlobal {
     private Boolean GPS_fix;
     private String districts,fname,county_region,country,select_location,select_site,enrich_planting,in_date,landsize,number_planted,number_survived,species_name,date_planted,select_measurement,less_than;
     private String mg1,mg2,mg3,mg4,mg5,mg_other,mg_others,usage1,usage2,usage3,usage4,usage5,us_other,usg_other;
-    private String livestock1,livestock2,livestock3,livestock4,livestock5,livestock_other,fodder1,fodder2,
-            fodder3,f_other,s_other,farm,market,date,ename;
+    private String livestock1,livestock2,livestock3,livestock4,livestock5,livestock_other,c_name,cr_name,
+            dcw_name,training_topic,training_partners,training_date,training_venue,number_participants,ename,male_participants,female_participants,youth_participants;
     private String dbh,height,rcd,path,fid,cid;
     //for nursery module
     private String nursery_country, nursery_county, nursery_village, nursery_operator, nursery_contact,
@@ -339,70 +339,6 @@ public class RegreeningGlobal {
     public void setlivestock_other(String livestock_other) {
         this.livestock_other = livestock_other;
     }
-    //Getting
-    public String getfodder1() {
-        return fodder1;
-    }
-    //Setting
-    public void setfodder1(String fodder1) {
-        this.fodder1 = fodder1;
-    }
-    //Getting
-    public String getfodder2() {
-        return fodder2;
-    }
-    //Setting
-    public void setfodder2(String fodder2) {
-        this.fodder2 = fodder2;
-    }
-    //Getting
-    public String getfodder3() {
-        return fodder3;
-    }
-    //Setting
-    public void setfodder3(String fodder3) {
-        this.fodder3 = fodder3;
-    }
-    //Getting
-    public String getf_other() {
-        return f_other;
-    }
-    //Setting
-    public void setf_other(String f_other) {
-        this.f_other = f_other;
-    }
-    //Getting
-    public String getfarm() {
-        return farm;
-    }
-    //Setting
-    public void setfarm(String farm) {
-        this.farm = farm;
-    }
-    //Getting
-    public String getmarket() {
-        return market;
-    }
-    //Setting
-    public void setmarket(String market) {
-        this.market = market;
-    }
-    //Getting
-    public String gets_other() {
-        return s_other;
-    }
-    //Setting
-    public void sets_other(String s_other) {
-        this.s_other = s_other;
-    }
-    //Getting
-    public String getdate() {
-        return date;
-    }
-    //Setting
-    public void setdate(String date) {
-        this.date = date;
-    }
 
     //Getting
     public String getename() {
@@ -431,6 +367,97 @@ public class RegreeningGlobal {
     //Setting
     public void setfid(String fid) {
         this.fid = fid;
+    }
+
+    //setter and getter for training module***************
+    //Getting
+    public String getc_name() {
+        return c_name;
+    }
+    //Setting
+    public void setc_name(String c_name) {
+        this.c_name = c_name;
+    }
+    //Getting
+    public String getcr_name() {
+        return cr_name;
+    }
+    //Setting
+    public void setcr_name(String cr_name) {
+        this.cr_name = cr_name;
+    }
+    //Getting
+    public String getdcw_name() {
+        return dcw_name;
+    }
+    //Setting
+    public void setdcw_name(String dcw_name) {
+        this.dcw_name = dcw_name;
+    }
+    //Getting
+    public String gettraining_topic() {
+        return training_topic;
+    }
+    //Setting
+    public void settraining_topic(String training_topic) {
+        this.training_topic = training_topic;
+    }
+    //Getting
+    public String gettraining_date() {
+        return training_date;
+    }
+    //Setting
+    public void settraining_date(String training_date) {
+        this.training_date = training_date;
+    }
+    //Getting
+    public String gettraining_venue() {
+        return training_venue;
+    }
+    //Setting
+    public void settraining_venue(String training_venue) {
+        this.training_venue = training_venue;
+    }
+    //Getting
+    public String gettraining_partners() {
+        return training_partners;
+    }
+    //Setting
+    public void settraining_partners(String training_partners) {
+        this.training_partners = training_partners;
+    }
+    //Getting
+    public String getnumber_participants() {
+        return number_participants;
+    }
+    //Setting
+    public void setnumber_participants(String number_participants) {
+        this.number_participants = number_participants;
+    }
+    //Getting
+    public String getmale_participants() {
+        return male_participants;
+    }
+    //Setting
+    public void setmale_participants(String male_participants) {
+        this.male_participants = male_participants;
+    }
+
+    //Getting
+    public String getfemale_participants() {
+        return female_participants;
+    }
+    //Setting
+    public void setfemale_participants(String female_participants) {
+        this.female_participants = female_participants;
+    }
+    //Getting
+    public String getyouth_participants() {
+        return youth_participants;
+    }
+    //Setting
+    public void setyouth_participants(String youth_participants) {
+        this.youth_participants = youth_participants;
     }
 
     //********************************* for nursery module *****************************//

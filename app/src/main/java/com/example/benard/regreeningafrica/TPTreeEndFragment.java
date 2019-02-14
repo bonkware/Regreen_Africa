@@ -83,6 +83,7 @@ public class TPTreeEndFragment extends Fragment {
                 switch (v.getId()) {
                     case R.id.finish:
                         saveMeasurement();
+                        dbAccess.insertMeasurent();
                         Intent intent = new Intent(getActivity(), MainActivity.class);
                         startActivity(intent);
                         break;

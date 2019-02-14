@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    Button addButton, sendButton, countButton, helpButton, aboutButton, fqsButton, sendDataButton, sendNursery;
+    Button addButton, sendButton, dataButton, helpButton, aboutButton, fqsButton, sendDataButton, sendNursery;
       DbAccess dbAccess;
 
       RegreeningGlobal g = RegreeningGlobal.getInstance();
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         actionbar.hide();
 
         addButton = (Button) findViewById(R.id.button_add);
-        //  viewAllButton = (Button) findViewById(R.id.button_view);
+        dataButton = (Button) findViewById(R.id.data);
         helpButton = (Button) findViewById(R.id.help);
         // sendButton = (Button) findViewById(R.id.send);
         aboutButton = (Button) findViewById(R.id.about);
@@ -41,11 +41,17 @@ public class MainActivity extends AppCompatActivity {
         dbAccess = new DbAccess(this);
         dbAccess.open();
         //get row count and display number of records in send button
-        int count = dbAccess.getcount();
+       /* int count = dbAccess.getcount();
         //also show number of records in view button
         String v = "Total Records " +"("+ count +")";
         countButton = (Button) findViewById(R.id.count);
         countButton.setText(String.valueOf(v));
+
+        int count_training = dbAccess.getcount_trainings();
+        //also show number of records in view button
+        String t = "Total Records " +"("+ count_training +")";
+        countButton = (Button) findViewById(R.id.c);
+        countButton.setText(String.valueOf(t));*/
 
         //add data
         addButton.setOnClickListener(new View.OnClickListener() {
@@ -53,6 +59,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //Intent i = new Intent(Index.this, FarmerMainActivity.class);
                 Intent i = new Intent(MainActivity.this, SelectSurvey.class);
+                startActivity(i);
+            }
+        });
+        dataButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, OtherMainActivities.class);
                 startActivity(i);
             }
         });
