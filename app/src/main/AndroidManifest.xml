@@ -33,9 +33,10 @@
         <activity android:name=".SelectSurvey" />
         <activity android:name=".NurseryMainActivity" />
         <activity android:name=".TrainingsMainActivity" />
-        <activity android:name=".TPCohortMainAcivity"/>
-        <activity android:name=".TPTreeMeasureMainAcivity"/>
-        <activity android:name=".OtherMainActivities"/>
+        <activity android:name=".TPCohortMainAcivity" />
+        <activity android:name=".TPTreeMeasureMainAcivity" />
+        <activity android:name=".OtherMainActivities" />
+        <activity android:name=".NurseryInfoFragment"></activity>
     </application>
 
 </manifest>
