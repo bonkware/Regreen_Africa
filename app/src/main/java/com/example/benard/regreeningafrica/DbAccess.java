@@ -132,6 +132,9 @@ public class DbAccess {
     public void deleteMeasurements(){
         database.execSQL("delete from "+ TABLE_Measurement);
     }
+    public void deleteTrainings(){
+        database.execSQL("delete from "+ TABLE_Trainings);
+    }
     //get all records from db for sending
     //fetch from all tables where farmer ID match
     public Cursor getTP() {

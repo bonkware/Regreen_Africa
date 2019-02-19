@@ -5,8 +5,9 @@
     android:paddingTop="@dimen/activity_vertical_margin">
 
     <ScrollView
+        android:layout_above="@+id/nav"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
         <LinearLayout
             android:orientation="vertical" android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -127,7 +128,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:id="@+id/nav">
 
         <Button
             android:id="@+id/prev"

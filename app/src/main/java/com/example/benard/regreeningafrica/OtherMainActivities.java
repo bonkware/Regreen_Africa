@@ -89,7 +89,7 @@ public class OtherMainActivities extends AppCompatActivity {
                 if(countTrainings==0) {
                     Toast.makeText(OtherMainActivities.this, "No data to send", Toast.LENGTH_SHORT).show();
                 }else {//otherwise send
-                    //uploadTrainings();
+                    uploadTrainings();
                 }
                 //Toast.makeText(Index.this, "Data Send", Toast.LENGTH_SHORT).show();
             }
@@ -120,7 +120,7 @@ public class OtherMainActivities extends AppCompatActivity {
     //sending tree planting data from sqlite tables to mysql server
     public void uploadTP() {
         progressDialog = new ProgressDialog(OtherMainActivities.this);
-        progressDialog.setMessage("Sending data...");
+        progressDialog.setMessage("Sending Tree plantning data...");
         progressDialog.setCancelable(true);
         progressDialog.setIndeterminate(true);
         progressDialog.show();
@@ -396,7 +396,7 @@ public class OtherMainActivities extends AppCompatActivity {
     //upload trainings data
     public void uploadTrainings() {
         progressDialog = new ProgressDialog(OtherMainActivities.this);
-        progressDialog.setMessage("Sending data...");
+        progressDialog.setMessage("Sending Trainings data...");
         progressDialog.setCancelable(true);
         progressDialog.setIndeterminate(true);
         progressDialog.show();
@@ -440,8 +440,7 @@ public class OtherMainActivities extends AppCompatActivity {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
                                                 //delete records after send
-                                                //dbAccess.deletenurseryprofile();
-                                                //dbAccess.deletenurserytrees();
+                                                dbAccess.deleteTrainings();
                                                 //dismiss dialog by intent
                                                 Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
                                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

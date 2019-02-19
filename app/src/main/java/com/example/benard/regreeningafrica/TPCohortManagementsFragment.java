@@ -35,7 +35,7 @@ public class TPCohortManagementsFragment extends Fragment {
                 if(check.isChecked()){
                     text.setVisibility(View.VISIBLE);
                 }else{
-                    text.setVisibility(View.INVISIBLE);
+                    text.setVisibility(View.GONE);
                 }
             }
         });

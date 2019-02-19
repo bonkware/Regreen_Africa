@@ -44,7 +44,7 @@ public class TPCohortUsageFragment extends Fragment {
                 if(check1.isChecked()){
                     text1.setVisibility(View.VISIBLE);
                 }else{
-                    text1.setVisibility(View.INVISIBLE);
+                    text1.setVisibility(View.GONE);
                 }
             }
         });

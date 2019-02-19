@@ -35,8 +35,8 @@ public class TrainingsNoParticipantsFragment extends Fragment {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.finish:
-                        dbAccess.insertTraining();
                         saveTrainings();//save
+                        dbAccess.insertTraining();
                         Intent intent = new Intent(getActivity(), MainActivity.class);
                         startActivity(intent);
                         //Toast.makeText(SelectSurvey.this.getActivity(),"Saved! Add new tree",Toast.LENGTH_SHORT).show();
@@ -47,7 +47,6 @@ public class TrainingsNoParticipantsFragment extends Fragment {
 
         return view;
     }
-
     public void saveTrainings(){
         EditText c_name = (EditText) getActivity().findViewById(R.id.cname);
         g.setc_name(c_name.getText().toString());

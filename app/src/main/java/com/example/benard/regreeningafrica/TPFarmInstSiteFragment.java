@@ -34,7 +34,7 @@ public class TPFarmInstSiteFragment extends Fragment {
                 if(radio_other.isChecked()){
                     text.setVisibility(View.VISIBLE);
                 }else{
-                    text.setVisibility(View.INVISIBLE);
+                    text.setVisibility(View.GONE);
                 }
             }
         });
