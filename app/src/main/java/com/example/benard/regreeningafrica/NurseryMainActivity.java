@@ -36,20 +36,14 @@ public class NurseryMainActivity extends AppCompatActivity {
         final ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         //All fragments
         adapter.addFragment(new NurseryInfoFragment(), "nursery info");
-        /*adapter.addFragment(new TPFarmInstEnumFragment(), "enumurator");
-        adapter.addFragment(new TPFarmInstFragment(), "farmer/institution details");
-        adapter.addFragment(new TPFarmInstLocFragment(), "tree planting location");
-        adapter.addFragment(new TPFarmInstSiteFragment(), "tree planting site");
-        adapter.addFragment(new TPFarmInstLandsizeFragment(), "land size green");
-        adapter.addFragment(new TPCohortRecordFragment(), "record tree cohort");
-        adapter.addFragment(new TPTreeMeasurementsFragment(), "tree measurements");
-        adapter.addFragment(new TPTreeGpsFragment(), "tree gps");
-        adapter.addFragment(new TPTreePhotoFragment(), "tree photo");
-        adapter.addFragment(new TPCohortManagementsFragment(), "managements");
-        adapter.addFragment(new TPCohortUsageFragment(), "usage");
-        adapter.addFragment(new TPTreeEndFragment(), "end tree planting");
-        viewPager.setAdapter(adapter);*/
+        adapter.addFragment(new NurseryTypeFragment(), "nursery type");
 
+    }
+    public void jumpTotype(View view){
+        viewPager.setCurrentItem(1);
+    }
+    public void jumpBackInfo(View view){
+        viewPager.setCurrentItem(0);
     }
     //end of nav buttons
     class ViewPagerAdapter extends FragmentPagerAdapter {
