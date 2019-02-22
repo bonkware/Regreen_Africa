@@ -10,41 +10,59 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.AutoCompleteTextView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.benard.regreeningafrica.R.id.pager;
 
-public class NurseryMainActivity extends AppCompatActivity {
+public class NurseryOtherInfoMain extends AppCompatActivity {
     ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tree_planting);
+        setContentView(R.layout.activity_nursery);
 
         viewPager = (ViewPager) findViewById(pager);
-        viewPager.setOffscreenPageLimit(12);//number of fragments
+        //viewPager.setOffscreenPageLimit(2);//number of fragments
         final ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         //All fragments
-        adapter.addFragment(new NurseryInfoFragment(), "nursery info");
-        adapter.addFragment(new NurseryTypeFragment(), "nursery type");
+        adapter.addFragment(new NurserySpeciesFragment(), "nursery species");
+        adapter.addFragment(new NurseryMethodsFragment(), "nursery production");
+        adapter.addFragment(new NurseryPropagationFragment(), "nursery propagation");
+        adapter.addFragment(new NurseryOtherFragment(), "other nursery info");
+        adapter.addFragment(new NurseryEndFragment(), "end");
+        viewPager.setAdapter(adapter);
 
     }
-    public void jumpTotype(View view){
+    public void jumpToMethod(View view){
         viewPager.setCurrentItem(1);
     }
-    public void jumpBackInfo(View view){
+    public void jumpBackSpecies(View view){
         viewPager.setCurrentItem(0);
     }
+    public void jumpToPropagation(View view){
+        viewPager.setCurrentItem(2);
+    }
+    public void jumpBackMethod(View view){
+        viewPager.setCurrentItem(1);
+    }
+    public void jumpToOther(View view){
+        viewPager.setCurrentItem(3);
+    }
+    public void jumpBackPropagation(View view){
+        viewPager.setCurrentItem(2);
+    }
+    public void jumpToEnd(View view){
+        viewPager.setCurrentItem(4);
+    }
+    public void jumpBackOther(View view){
+        viewPager.setCurrentItem(3);
+    }
+
+
     //end of nav buttons
     class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
@@ -103,7 +121,7 @@ public class NurseryMainActivity extends AppCompatActivity {
                 .setNegativeButton(android.R.string.no, null)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface arg0, int arg1) {
-                        NurseryMainActivity.super.onBackPressed();
+                        NurseryOtherInfoMain.super.onBackPressed();
                     }
                 }).create().show();
     }

@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         addButton = (Button) findViewById(R.id.button_add);
         dataButton = (Button) findViewById(R.id.data);
-        helpButton = (Button) findViewById(R.id.help);
+        //helpButton = (Button) findViewById(R.id.help);
         // sendButton = (Button) findViewById(R.id.send);
         aboutButton = (Button) findViewById(R.id.about);
         fqsButton = (Button) findViewById(R.id.fqs);
@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 //Intent i = new Intent(Index.this, FarmerMainActivity.class);
                 Intent i = new Intent(MainActivity.this, SelectSurvey.class);
                 startActivity(i);
+                overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
             }
         });
         dataButton.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, OtherMainActivities.class);
                 startActivity(i);
+                overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
             }
         });
         //view all

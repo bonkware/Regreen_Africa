@@ -103,33 +103,21 @@
                 android:layout_margin="10dp"
                 android:text="FAQs" />
         </TableRow>
-        <TableRow
+        <!--<TableRow
             android:id="@+id/tableRowcount"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
-
-            <Button
-                android:id="@+id/count"
-                android:background="@drawable/index_buttons"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="0"
-                android:textColor="#fff"
-                android:textSize="16sp"
-                android:visibility="invisible"
-                android:layout_margin="10dp"
-                android:text="TPCount" />
             <Button
                 android:id="@+id/data"
                 android:background="@drawable/index_buttons"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
                 android:layout_column="1"
                 android:textSize="16sp"
                 android:textColor="#fff"
                 android:layout_margin="10dp"
                 android:text="Data" />
-        </TableRow>
+        </TableRow>-->
     </TableLayout>
     <TableLayout
         android:id="@+id/tableLayout_help"
@@ -141,14 +129,14 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
             <Button
-                android:id="@+id/help"
+                android:id="@+id/data"
                 android:background="@drawable/index_buttons"
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
                 android:textSize="20sp"
                 android:textColor="#fff"
                 android:layout_margin="10dp"
-                android:text="Help" />
+                android:text="Upload Data" />
         </TableRow>
     </TableLayout>
 </LinearLayout>

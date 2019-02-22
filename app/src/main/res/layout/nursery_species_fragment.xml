@@ -1,0 +1,76 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+    <ScrollView
+        android:layout_above="@+id/nav"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical" android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:layout_margin="6dp"
+            android:paddingRight="@dimen/activity_horizontal_margin">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Species name"
+                android:textSize="@dimen/textsize"
+                android:paddingTop="20dp"
+                android:textStyle="italic"/>
+            <EditText
+                android:id="@+id/nursery_species"
+                android:backgroundTint="#008000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text1"
+                android:padding="@dimen/view_padding"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/add_edit_textsize"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Species local name"
+                android:textSize="@dimen/textsize"
+                android:paddingTop="20dp"
+                android:textStyle="italic"/>
+            <EditText
+                android:id="@+id/nursery_local"
+                android:backgroundTint="#008000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/view_padding"
+                android:textSize="@dimen/add_edit_textsize">
+            </EditText>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:id="@id/nav">
+
+        <Button
+            android:id="@+id/prev"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick=""
+            android:visibility="invisible"
+            android:layout_weight="1"
+            android:text="PREV"/>
+
+        <Button
+            android:id="@+id/next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="jumpToMethod"
+            android:layout_weight="1"
+            android:text="NEXT"/>
+
+    </LinearLayout>
+</RelativeLayout>

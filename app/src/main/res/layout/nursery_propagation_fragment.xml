@@ -1,0 +1,232 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+    <ScrollView
+        android:layout_above="@+id/nav"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="6dp"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin">
+
+            <TextView
+                android:id="@+id/select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select propagation method technique used/intented"
+                android:textSize="@dimen/textsize"
+                android:textStyle="italic"/>
+
+                <CheckBox
+                    android:id="@+id/seed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Seed"
+                    android:textSize="@dimen/add_edit_textsize" />
+
+                <CheckBox
+                    android:id="@+id/graft"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Graft"
+                    android:textSize="@dimen/add_edit_textsize" />
+                <CheckBox
+                    android:id="@+id/cutting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cutting"
+                    android:textSize="@dimen/add_edit_textsize" />
+
+                <CheckBox
+                    android:id="@+id/marcotting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Marcotting"
+                    android:textSize="@dimen/add_edit_textsize" />
+
+            <TableLayout
+                android:id="@+id/sources"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:stretchColumns="*" >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="If propagation method is seed, select sources of seeds"
+                    android:textSize="@dimen/textsize"
+                    android:textStyle="italic"/>
+                <TableRow
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" >
+                <CheckBox
+                    android:id="@+id/on_farm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="On farm"
+                    android:textSize="@dimen/add_edit_textsize" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" >
+
+                <CheckBox
+                    android:id="@+id/local_seeds"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Local seed dealers"
+                    android:textSize="@dimen/add_edit_textsize" />
+                    </TableRow>
+                <TableRow
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" >
+                <CheckBox
+                    android:id="@+id/dealers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="National seed dealers"
+                    android:textSize="@dimen/add_edit_textsize" />
+                    </TableRow>
+                <TableRow
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" >
+                <CheckBox
+                    android:id="@+id/NGOs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NGOs"
+                    android:textSize="@dimen/add_edit_textsize" />
+                    </TableRow>
+                <TableRow
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" >
+                <CheckBox
+                    android:id="@+id/other_sources"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Other Sources"
+                    android:textSize="@dimen/add_edit_textsize" />
+            </TableRow>
+            </TableLayout>
+
+            <EditText
+                android:id="@+id/other_seed_sources"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#008000"
+                android:hint="other sources"
+                android:padding="@dimen/view_padding"
+                android:textSize="@dimen/add_edit_textsize"
+                android:visibility="gone"/>
+
+            <TableLayout
+                android:id="@+id/grafted"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:stretchColumns="*" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="If grafting done, select source of graft/scions"
+                    android:textSize="@dimen/textsize"
+                    android:textStyle="italic"/>
+
+            <TableRow
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" >
+                <CheckBox
+                    android:id="@+id/farmland"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Farm land"
+                    android:textSize="@dimen/add_edit_textsize" />
+                </TableRow>
+            <TableRow
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" >
+
+                <CheckBox
+                    android:id="@+id/plantation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Plantation"
+                    android:textSize="@dimen/add_edit_textsize" />
+                </TableRow>
+            <TableRow
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" >
+                <CheckBox
+                    android:id="@+id/mother_blocks"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="mother blocks"
+                    android:textSize="@dimen/add_edit_textsize" />
+                </TableRow>
+            <TableRow
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" >
+                <CheckBox
+                    android:id="@+id/prisons"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Prisons"
+                    android:textSize="@dimen/add_edit_textsize" />
+                </TableRow>
+            <TableRow
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" >
+                <CheckBox
+                    android:id="@+id/other_graft"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Other graft sources"
+                    android:textSize="@dimen/add_edit_textsize" />
+            </TableRow>
+            </TableLayout>
+
+            <EditText
+                android:id="@+id/other_graft_sources"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#008000"
+                android:hint="other graft source"
+                android:padding="@dimen/view_padding"
+                android:textSize="@dimen/add_edit_textsize"
+                android:visibility="gone"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:id="@+id/nav">
+
+        <Button
+            android:id="@+id/prev"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="jumpBackMethod"
+            android:text="PREV"/>
+
+        <Button
+            android:id="@+id/next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="jumpToOther"
+            android:text="NEXT"/>
+
+    </LinearLayout>
+</RelativeLayout>

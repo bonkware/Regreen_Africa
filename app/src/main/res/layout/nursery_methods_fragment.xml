@@ -1,0 +1,128 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+    <ScrollView
+        android:layout_above="@+id/nav"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent">
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/management"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Select the method(s) of seedlings production"
+                android:gravity="center"
+                android:textSize="@dimen/textsize">
+            </TextView>
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="*" >
+                <TableRow
+                    android:id="@+id/containerised"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" >
+
+                    <CheckBox
+                        android:id="@+id/bare_root"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:button="@drawable/custom_checkbox_bareroot"/>
+
+                    <CheckBox
+                        android:id="@+id/container"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:button="@drawable/custom_checkbox_container"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/bareroot"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/add_edit_textsize"
+                        android:layout_gravity="center"
+                        android:text="Bare root" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/add_edit_textsize"
+                        android:layout_gravity="center"
+                        android:text="Containerised" />
+                </TableRow>
+            </TableLayout>
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="*" >
+                <TableRow
+                    android:id="@+id/other_methods"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" >
+                    <CheckBox
+                        android:id="@+id/other_method"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:button="@drawable/custom_checkbox_moren"/>
+                </TableRow>
+                <TableRow
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/add_edit_textsize"
+                        android:layout_gravity="center"
+                        android:text="Other(s)" />
+                </TableRow>
+            </TableLayout>
+            <EditText
+                android:id="@+id/method_other"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/view_padding"
+                android:hint="list others separated by (;)"
+                android:textSize="@dimen/add_edit_textsize"
+                android:visibility="gone">
+            </EditText>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:id="@+id/nav">
+
+        <Button
+            android:id="@+id/prev"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="jumpBackSpecies"
+            android:text="PREV"/>
+
+        <Button
+            android:id="@+id/next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="jumpToPropagation"
+            android:text="NEXT"/>
+
+    </LinearLayout>
+</RelativeLayout>

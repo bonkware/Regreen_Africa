@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
@@ -23,14 +24,12 @@ public class NurseryTypeFragment extends Fragment {
                 false);
 
         //check if other is checked
-        final RadioButton radio_other = (RadioButton) view.findViewById(R.id.others) ;
-        final EditText text=(EditText) view.findViewById(R.id.other_sites);
-
-        radio_other.setOnClickListener(new View.OnClickListener() {
-
+        final CheckBox check_other = (CheckBox) view.findViewById(R.id.others) ;
+        final EditText text=(EditText) view.findViewById(R.id.other_types);
+        check_other.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(radio_other.isChecked()){
+                if(check_other.isChecked()){
                     text.setVisibility(View.VISIBLE);
                 }else{
                     text.setVisibility(View.GONE);

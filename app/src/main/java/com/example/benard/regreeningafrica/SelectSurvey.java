@@ -55,7 +55,7 @@ public class SelectSurvey extends AppCompatActivity {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.button_nursery:
-                         Intent intent = new Intent(SelectSurvey.this, NurseryMainActivity.class);
+                         Intent intent = new Intent(SelectSurvey.this, NurseryInfoMain.class);
                          startActivity(intent);
                         overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
                         //Toast.makeText(SelectSurvey.this.getActivity(),"Saved! Add new tree",Toast.LENGTH_SHORT).show();
