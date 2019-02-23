@@ -43,7 +43,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 public class OtherMainActivities extends AppCompatActivity {
-    Button TPButton,TrainingButton;
+    Button TPButton,TrainingButton,NurseryButton;
     DbAccess dbAccess;
     ProgressDialog progressDialog;
     //urls for data submission
@@ -66,6 +66,7 @@ public class OtherMainActivities extends AppCompatActivity {
 
         TPButton = (Button) findViewById(R.id.tree_planting);
         TrainingButton = (Button) findViewById(R.id.trainings);
+        NurseryButton = (Button) findViewById(R.id.nursery);
         //for sending tree planting
         TPButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,6 +95,20 @@ public class OtherMainActivities extends AppCompatActivity {
                 //Toast.makeText(Index.this, "Data Send", Toast.LENGTH_SHORT).show();
             }
         });
+        //for sending nursery data
+        NurseryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //if the database is empty don't send
+                int countNursery = dbAccess.getnurserycount();
+                if(countNursery==0) {
+                    Toast.makeText(OtherMainActivities.this, "No data to send", Toast.LENGTH_SHORT).show();
+                }else {//otherwise send
+                   // uploadNursery();
+                }
+                //Toast.makeText(Index.this, "Data Send", Toast.LENGTH_SHORT).show();
+            }
+        });
         dbAccess = new DbAccess(this);
         dbAccess.open();
         //get row count and display number of records in send button
@@ -101,12 +116,17 @@ public class OtherMainActivities extends AppCompatActivity {
         String s = "Send" +"("+ count +")";
         int tcount = dbAccess.getcount_trainings();
         String sn = "Send" +"("+ tcount +")";
+        int ncount = dbAccess.getnurserycount();
+        String nursery = "Send" +"("+ ncount +")";
         //Toast.makeText(Index.this, String.valueOf(count), Toast.LENGTH_SHORT).show();
         TPButton = (Button) findViewById(R.id.tree_planting);
         TPButton.setText(String.valueOf(s));
-        //for nursery
+        //for trainings
         TrainingButton = (Button) findViewById(R.id.trainings);
         TrainingButton.setText(String.valueOf(sn));
+        //for nursery
+        NurseryButton = (Button) findViewById(R.id.nursery);
+        NurseryButton.setText(String.valueOf(nursery));
     }
     // check external write permision in android 6+
     int MY_PERMISSIONS_STORAGE;

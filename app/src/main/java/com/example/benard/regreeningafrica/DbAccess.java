@@ -14,6 +14,8 @@ import android.database.sqlite.SQLiteDatabase;
 import static com.example.benard.regreeningafrica.DatabaseHelper.TABLE_COHORT;
 import static com.example.benard.regreeningafrica.DatabaseHelper.TABLE_FARMER_INST;
 import static com.example.benard.regreeningafrica.DatabaseHelper.TABLE_Measurement;
+import static com.example.benard.regreeningafrica.DatabaseHelper.TABLE_NURSERY;
+import static com.example.benard.regreeningafrica.DatabaseHelper.TABLE_NURSERY_SPECIES;
 import static com.example.benard.regreeningafrica.DatabaseHelper.TABLE_Trainings;
 
 public class DbAccess {
@@ -112,6 +114,63 @@ public class DbAccess {
         //insert
         database.insert(TABLE_Trainings, null, contentValue);
     }
+    //insert nursery info
+    public void insertNurseryInfo() {
+        ContentValues contentValue = new ContentValues();
+        contentValue.put(DatabaseHelper.nursery_country, g.getnursery_country());
+        contentValue.put(DatabaseHelper.nursery_county, g.getnursery_county());
+        contentValue.put(DatabaseHelper.nursery_district, g.getnursery_district());
+        contentValue.put(DatabaseHelper.nursery_operator, g.getnursery_operator());
+        contentValue.put(DatabaseHelper.nursery_contact, g.getnursery_contact());
+        contentValue.put(DatabaseHelper.type_government, g.getgovt());
+        contentValue.put(DatabaseHelper.type_church_mosque, g.getchurch_mosque());
+        contentValue.put(DatabaseHelper.type_schools, g.getschools());
+        contentValue.put(DatabaseHelper.type_women_groups, g.getwomen());
+        contentValue.put(DatabaseHelper.type_youth_groups, g.getyouth());
+        contentValue.put(DatabaseHelper.type_private_individual, g.getprivate_individual());
+        contentValue.put(DatabaseHelper.type_communal_village, g.getcommunal_village());
+        contentValue.put(DatabaseHelper.other_nursery_types, g.getother_type());
+        contentValue.put(DatabaseHelper.nursery_latitude, g.getLatitude());
+        contentValue.put(DatabaseHelper.nursery_longitude, g.getLongitude());
+        contentValue.put(DatabaseHelper.nursery_altitude, g.getAltitude());
+        contentValue.put(DatabaseHelper.nursery_accuracy, g.getAccuracy());
+        contentValue.put(DatabaseHelper.nursery_image_path, g.getimage());
+        contentValue.put(DatabaseHelper.nursery_id, g.getnid());
+        //insert
+        database.insert(TABLE_NURSERY, null, contentValue);
+    }
+    public void insertNurserySpecies() {
+        ContentValues contentValue = new ContentValues();
+        contentValue.put(DatabaseHelper.nurseryID, g.getnid());
+        contentValue.put(DatabaseHelper.nursery_species, g.getnursery_species());
+        contentValue.put(DatabaseHelper.nursery_local, g.getnursery_local());
+        contentValue.put(DatabaseHelper.method_bare_root, g.getbare_root());
+        contentValue.put(DatabaseHelper.method_containerised, g.getcontainer());
+        contentValue.put(DatabaseHelper.other_methods, g.getother_method());
+        contentValue.put(DatabaseHelper.propagation_seed, g.getseed());
+        contentValue.put(DatabaseHelper.propagation_graft, g.getgraft());
+        contentValue.put(DatabaseHelper.propagation_cutting, g.getcutting());
+        contentValue.put(DatabaseHelper.propagation_marcotting, g.getMarcotting());
+        contentValue.put(DatabaseHelper.seed_source_onfarm, g.getown_farm_seeds());
+        contentValue.put(DatabaseHelper.seed_source_local_dealer, g.getlocal_dealer_seeds());
+        contentValue.put(DatabaseHelper.seed_source_national_dealer, g.getnational_seed());
+        contentValue.put(DatabaseHelper.seed_source_NGOs, g.getngos_seed());
+        contentValue.put(DatabaseHelper.other_seed_sources, g.getother_seed_source());
+        contentValue.put(DatabaseHelper.graft_source_farmland, g.getfarmland());
+        contentValue.put(DatabaseHelper.graft_source_plantation, g.getplantation());
+        contentValue.put(DatabaseHelper.graft_source_mother_blocks, g.getmother_blocks());
+        contentValue.put(DatabaseHelper.graft_source_prisons, g.getprisons());
+        contentValue.put(DatabaseHelper.graft_source_others, g.getother_graft_sources());
+        contentValue.put(DatabaseHelper.seeds_quantity_purchased, g.getqpurchased());
+        contentValue.put(DatabaseHelper.date_seeds_sown, g.getdate_sown());
+        contentValue.put(DatabaseHelper.seedlings_germinated, g.getgerminated());
+        contentValue.put(DatabaseHelper.seedlings_servived, g.getsurvived());
+        contentValue.put(DatabaseHelper.seedlings_age, g.getseedlings_age());
+        contentValue.put(DatabaseHelper.seedlings_price, g.getprice());
+        //insert
+        database.insert(TABLE_NURSERY_SPECIES, null, contentValue);
+    }
+
     //get records in view
     public Cursor fetch() {
         String selectQuery = "Select * from farmer_data,tree_data WHERE farmer_data.farmerID = tree_data.farmerID";
@@ -163,6 +222,19 @@ public class DbAccess {
     //count no. of records trainings
     public int getcount_trainings(){
         Cursor cur = database.rawQuery(" SELECT Count(*) FROM " + TABLE_Trainings, null);
+        int x = 0;
+        if (cur.moveToFirst())
+        {
+            x = cur.getInt(0);
+        }
+        cur.close();
+        return x;
+    }
+
+    //count no. of records tree planting
+    public int getnurserycount(){
+        //Cursor cur = database.rawQuery(" SELECT Count(*) FROM " + TABLE_FARMER_INST, null);
+        Cursor cur = database.rawQuery("SELECT count(*) from nursery_info,nursery_species WHERE nursery_info.nurseryID = nursery_species.nurseryID ", null);
         int x = 0;
         if (cur.moveToFirst())
         {

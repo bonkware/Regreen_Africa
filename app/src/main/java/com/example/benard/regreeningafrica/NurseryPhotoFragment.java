@@ -17,6 +17,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
@@ -30,6 +32,7 @@ import java.util.Random;
  */
 
 public class NurseryPhotoFragment extends Fragment {
+    private DbAccess dbAccess;
     public NurseryPhotoFragment() {
 
     }
@@ -48,6 +51,8 @@ public class NurseryPhotoFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.nursery_photo_fragment, container,
                 false);
+        dbAccess = new DbAccess(this.getActivity());
+        dbAccess.open();
         //allow camera permission and storage
         getCamerapermission();
 
@@ -68,6 +73,8 @@ public class NurseryPhotoFragment extends Fragment {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.tospecies:
+                        savenurseryInfo();
+                        dbAccess.insertNurseryInfo();//insert to db on click next
                         Intent intent = new Intent(getActivity(), NurseryOtherInfoMain.class);
                         startActivity(intent);
                         break;
@@ -143,6 +150,73 @@ public class NurseryPhotoFragment extends Fragment {
         //imgv1.setImageDrawable(Drawable.createFromPath(s));
         imgv1.setImageDrawable(d);
         g.setpath(s);
+    }
+
+    //save data as you move next
+    public void savenurseryInfo(){
+        //nursery Random id
+        Random generator = new Random();
+        int n = 10000;
+        n = generator.nextInt(n);//random number generator
+        String nid = "nursery_" + n;
+        g.setnid(nid);
+
+        EditText country = (EditText) getActivity().findViewById(R.id.nursery_country);
+        g.setnursery_country(country.getText().toString());
+        EditText county_region = (EditText) getActivity().findViewById(R.id.nursery_county);
+        g.setnursery_county(county_region.getText().toString());
+        EditText district = (EditText) getActivity().findViewById(R.id.nursery_district);
+        g.setnursery_district(district.getText().toString());
+        EditText operator = (EditText) getActivity().findViewById(R.id.nursery_operator);
+        g.setnursery_operator(operator.getText().toString());
+        EditText contact = (EditText) getActivity().findViewById(R.id.nursery_contact);
+        g.setnursery_contact(contact.getText().toString());
+        CheckBox govt = (CheckBox) getActivity().findViewById(R.id.govt);
+        if(govt.isChecked()) {
+            g.setgovt("yes");
+        }else {
+            g.setgovt("no");
+        }
+        CheckBox church_mosque = (CheckBox) getActivity().findViewById(R.id.cm);
+        if(church_mosque.isChecked()) {
+            g.setchurch_mosque("yes");
+        }else {
+            g.setchurch_mosque("no");
+        }
+        CheckBox school = (CheckBox) getActivity().findViewById(R.id.school);
+        if(school.isChecked()) {
+            g.setschools("yes");
+        }else {
+            g.setschools("no");
+        }
+        CheckBox w_groups = (CheckBox) getActivity().findViewById(R.id.w_groups);
+        if(w_groups.isChecked()) {
+            g.setwomen("yes");
+        }else {
+            g.setwomen("no");
+        }
+        CheckBox y_groups = (CheckBox) getActivity().findViewById(R.id.y_groups);
+        if(y_groups.isChecked()) {
+            g.setyouth("yes");
+        }else {
+            g.setyouth("no");
+        }
+        CheckBox private_individual = (CheckBox) getActivity().findViewById(R.id.private_individual);
+        if(private_individual.isChecked()) {
+            g.setprivate_individual("yes");
+        }else {
+            g.setprivate_individual("no");
+        }
+        CheckBox c_village = (CheckBox) getActivity().findViewById(R.id.c_village);
+        if(c_village.isChecked()) {
+            g.setcommunal_village("yes");
+        }else {
+            g.setcommunal_village("no");
+        }
+        EditText n_type=(EditText) getActivity().findViewById(R.id.other_types);
+        g.setother_type(n_type.getText().toString());
+        //get locations from global
+        //get photo
     }
 
 }

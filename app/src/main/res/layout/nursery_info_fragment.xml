@@ -21,7 +21,7 @@
                 android:paddingTop="20dp"
                 android:textStyle="italic"/>
             <EditText
-                android:id="@+id/cname"
+                android:id="@+id/nursery_country"
                 android:backgroundTint="#008000"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -38,7 +38,7 @@
                 android:paddingTop="20dp"
                 android:textStyle="italic"/>
             <EditText
-                android:id="@+id/crname"
+                android:id="@+id/nursery_county"
                 android:backgroundTint="#008000"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -55,7 +55,7 @@
                 android:paddingTop="20dp"
                 android:textStyle="italic"/>
             <EditText
-                android:id="@+id/dcwname"
+                android:id="@+id/nursery_district"
                 android:backgroundTint="#008000"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

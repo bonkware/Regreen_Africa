@@ -16,9 +16,11 @@ public class RegreeningGlobal {
             dcw_name,training_topic,training_partners,training_date,training_venue,number_participants,ename,male_participants,female_participants,youth_participants;
     private String dbh,height,rcd,path,fid,cid;
     //for nursery module
-    private String nursery_country, nursery_county, nursery_village, nursery_operator, nursery_contact,
-            select_radio, bare_root,container,other_method, other, own_farm, local_dealer, national_seed,
-            other_source, other_s, nursery_species, nursery_local, seedlings_number, seedlings_age, hardening,
+    private String nursery_country, nursery_county, nursery_district, nursery_operator, nursery_contact,
+            govt, church_mosque,schools,women,youth,private_individual,communal_village,other_type,
+            seed,graft,cutting,marcotting,farmland,plantation,mother_blocks,prisons,other_graft_sources,qpurchased,date_sown,germinated,survived,seedling_age,price,
+            select_radio, bare_root,container,other_method, other, own_farm_seeds, local_dealer_seeds, national_seed,ngos_seed,
+            other_seed_source, other_s, nursery_species, nursery_local, seedlings_number, seedlings_age, hardening,
             select_graft,grafted_species_name, rootstock, own_farm1,local_dealer1, govt_seed, source,other_s1,observation,image,nid;
     private Bitmap photo;
     private Boolean save_add;
@@ -474,11 +476,11 @@ public class RegreeningGlobal {
     public void setnursery_county(String nursery_county) {
         this.nursery_county = nursery_county;
     }
-    public String getnursery_village() {
-        return nursery_village;
+    public String getnursery_district() {
+        return nursery_district;
     }
-    public void setnursery_village(String nursery_village) {
-        this.nursery_village = nursery_village;
+    public void setnursery_district(String nursery_district) {
+        this.nursery_district = nursery_district;
     }
     public String getnursery_operator() {
         return nursery_operator;
@@ -492,12 +494,179 @@ public class RegreeningGlobal {
     public void setnursery_contact(String nursery_contact) {
         this.nursery_contact = nursery_contact;
     }
-    public String getselect_radio() {
-        return select_radio;
+    public String getgovt() {
+        return govt;
     }
-    public void setselect_radio(String select_radio) {
-        this.select_radio = select_radio;
+    public void setgovt(String govt) {
+        this.govt = govt;
     }
+    public String getchurch_mosque() {
+        return church_mosque;
+    }
+    public void setchurch_mosque(String church_mosque) {
+        this.church_mosque = church_mosque;
+    }
+    public String getschools() {
+        return schools;
+    }
+    public void setschools(String schools) {
+        this.schools = schools;
+    }
+    public String getwomen() {
+        return women;
+    }
+    public void setwomen(String women) {
+        this.women = women;
+    }
+    public String getyouth() {
+        return youth;
+    }
+    public void setyouth(String youth) {
+        this.youth = youth;
+    }
+    public String getprivate_individual() {
+        return private_individual;
+    }
+    public void setprivate_individual(String private_individual) {
+        this.private_individual = private_individual;
+    }
+    public String getcommunal_village() {
+        return communal_village;
+    }
+    public void setcommunal_village(String communal_village) {
+        this.communal_village = communal_village;
+    }
+    public String getother_type() {
+        return other_type;
+    }
+    public void setother_type(String other_type) {
+        this.other_type = other_type;
+    }
+
+    public String getseed() {
+        return seed;
+    }
+    public void setseed(String seed) {
+        this.seed = seed;
+    }
+    public String getgraft() {
+        return graft;
+    }
+    public void setgraft(String graft) {
+        this.graft = graft;
+    }
+    public String getcutting() {
+        return cutting;
+    }
+    public void setcutting(String cutting) {
+        this.cutting = cutting;
+    }
+    public String getMarcotting() {
+        return marcotting;
+    }
+    public void setmarcotting(String marcotting) {
+        this.marcotting = marcotting;
+    }
+
+    public String getown_farm_seeds() {
+        return own_farm_seeds;
+    }
+    public void setown_farm_seeds(String own_farm_seeds) {
+        this.own_farm_seeds = own_farm_seeds;
+    }
+    public String getlocal_dealer_seeds() {
+        return local_dealer_seeds;
+    }
+    public void setlocal_dealer_seeds(String local_dealer_seeds) {
+        this.local_dealer_seeds = local_dealer_seeds;
+    }
+    public String getngos_seed() {
+        return ngos_seed;
+    }
+    public void setngos_seed(String ngos_seed) {
+        this.ngos_seed = ngos_seed;
+    }
+
+    public String getnational_seed() {
+        return national_seed;
+    }
+    public void setnational_seed(String national_seed) {
+        this.national_seed = national_seed;
+    }
+    public String getother_seed_source() {
+        return other_seed_source;
+    }
+    public void setother_seed_source(String other_seed_source) {
+        this.other_seed_source = other_seed_source;
+    }
+
+    public String getfarmland() {
+        return farmland;
+    }
+    public void setfarmland(String farmland) {
+        this.farmland = farmland;
+    }
+    public String getplantation() {
+        return plantation;
+    }
+    public void setplantation(String plantation) {
+        this.plantation = plantation;
+    }
+    public String getmother_blocks() {
+        return mother_blocks;
+    }
+    public void setmother_blocks(String mother_blocks) {
+        this.mother_blocks = mother_blocks;
+    }
+    public String getprisons() {
+        return prisons;
+    }
+    public void setprisons(String prisons) {
+        this.prisons = prisons;
+    }
+    public String getother_graft_sources() {
+        return other_graft_sources;
+    }
+    public void setother_graft_sources(String other_graft_sources) {
+        this.other_graft_sources = other_graft_sources;
+    }
+    public String getqpurchased() {
+        return qpurchased;
+    }
+    public void setqpurchased(String date_sown) {
+        this.date_sown = date_sown;
+    }
+    public String getdate_sown() {
+        return date_sown;
+    }
+    public void setdate_sown(String date_sown) {
+        this.date_sown = date_sown;
+    }
+    public String getgerminated() {
+        return germinated;
+    }
+    public void setgerminated(String germinated) {
+        this.germinated = germinated;
+    }
+    public String getsurvived() {
+        return survived;
+    }
+    public void setsurvived(String survived) {
+        this.survived = survived;
+    }
+    public String getseedlings_age() {
+        return seedlings_age;
+    }
+    public void setseedlings_age(String seedlings_age) {
+        this.seedlings_age = seedlings_age;
+    }
+    public String getprice() {
+        return price;
+    }
+    public void setprice(String price) {
+        this.price = price;
+    }
+
     public String getbare_root() {
         return bare_root;
     }
@@ -516,127 +685,16 @@ public class RegreeningGlobal {
     public void setother_method(String other_method) {
         this.other_method = other_method;
     }
-    public String getother() {
-        return other;
-    }
-    public void setother(String other) {
-        this.other = other;
-    }
-
-    public String getown_farm() {
-        return own_farm;
-    }
-    public void setown_farm(String own_farm) {
-        this.own_farm = own_farm;
-    }
-    public String getlocal_dealer() {
-        return local_dealer;
-    }
-    public void setlocal_dealer(String local_dealer) {
-        this.local_dealer = local_dealer;
-    }
-    public String getnational_seed() {
-        return national_seed;
-    }
-    public void setnational_seed(String national_seed) {
-        this.national_seed = national_seed;
-    }
-    public String getother_source() {
-        return other_source;
-    }
-    public void setother_source(String other_source) {
-        this.other_source = other_source;
-    }
-    public String getother_s() {
-        return other_s;
-    }
-    public void setother_s(String other_s) {
-        this.other_s = other_s;
-    }
-
     public String getnursery_species() {
         return nursery_species;
     }
     public void setnursery_species(String nursery_species) {
-        this.nursery_species = nursery_species;
-    }
+        this.nursery_species = nursery_species;    }
     public String getnursery_local() {
         return nursery_local;
     }
     public void setnursery_local(String nursery_local) {
         this.nursery_local = nursery_local;
-    }
-    public String getseedlings_number() {
-        return seedlings_number;
-    }
-    public void setseedlings_number(String seedlings_number) {
-        this.seedlings_number = seedlings_number;
-    }
-    public String getseedlings_age() {
-        return seedlings_age;
-    }
-    public void setseedlings_age(String seedlings_age) {
-        this.seedlings_age = seedlings_age;
-    }
-    public String gethardening() {
-        return hardening;
-    }
-    public void sethardening(String hardening) {
-        this.hardening = hardening;
-    }
-    public String getselect_graft() {
-        return select_graft;
-    }
-    public void setselect_graft(String select_graft) {
-        this.select_graft = select_graft;
-    }
-    public String getgrafted_species_name() {
-        return grafted_species_name;
-    }
-    public void setgrafted_species_name(String grafted_species_name) {
-        this.grafted_species_name = grafted_species_name;
-    }
-    public String getrootstock() {
-        return rootstock;
-    }
-    public void setrootstock(String rootstock) {
-        this.rootstock = rootstock;
-    }
-    public String getown_farm1() {
-        return own_farm1;
-    }
-    public void setown_farm1(String own_farm1) {
-        this.own_farm1 = own_farm1;
-    }
-    public String getlocal_dealer1() {
-        return local_dealer1;
-    }
-    public void setlocal_dealer1(String local_dealer1) {
-        this.local_dealer1 = local_dealer1;
-    }
-    public String getgovt_seed() {
-        return govt_seed;
-    }
-    public void setgovt_seed(String govt_seed) {
-        this.govt_seed = govt_seed;
-    }
-    public String getsource() {
-        return source;
-    }
-    public void setsource(String source) {
-        this.source = source;
-    }
-    public String getother_s1() {
-        return other_s1;
-    }
-    public void setother_s1(String other_s1) {
-        this.other_s1 = other_s1;
-    }
-    public String getobservation() {
-        return observation;
-    }
-    public void setobservation(String observation) {
-        this.observation = observation;
     }
     public String getimage() {
         return image;

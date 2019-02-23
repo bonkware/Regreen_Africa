@@ -78,7 +78,7 @@
                     android:layout_height="wrap_content" >
 
                 <CheckBox
-                    android:id="@+id/local_seeds"
+                    android:id="@+id/local_dealer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Local seed dealers"
@@ -88,7 +88,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content" >
                 <CheckBox
-                    android:id="@+id/dealers"
+                    android:id="@+id/national_dealers"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="National seed dealers"

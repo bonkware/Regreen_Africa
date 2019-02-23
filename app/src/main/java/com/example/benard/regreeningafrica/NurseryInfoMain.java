@@ -32,7 +32,7 @@ public class NurseryInfoMain extends AppCompatActivity {
         setContentView(R.layout.activity_nursery);
 
         viewPager = (ViewPager) findViewById(pager);
-        //viewPager.setOffscreenPageLimit(2);//number of fragments
+        viewPager.setOffscreenPageLimit(4);//number of fragments
         final ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         //All fragments
         adapter.addFragment(new NurseryInfoFragment(), "nursery info");

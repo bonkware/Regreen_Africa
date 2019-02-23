@@ -74,7 +74,61 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public  static  final String female_participants = "female_participants";
     public  static  final String youth_participants = "youth_participants";
 
-
+    //tables for nursery information
+    // nursery info
+    public static final String TABLE_NURSERY = "nursery_info";
+    // nursery species
+    public static final String TABLE_NURSERY_SPECIES = "nursery_species";
+    //columns nursery profile
+    public static final String id = "id";
+    public static final String nursery_id = "nurseryID";
+    public static final String nursery_country = "country";
+    public static final String nursery_county = "county";
+    public static final String nursery_district = "district";
+    public static final String nursery_operator = "operator";
+    public static final String nursery_contact = "contact";
+    public static final String type_government = "government";
+    public static final String type_church_mosque = "church_mosque";
+    public static final String type_schools = "schools";
+    public static final String type_women_groups = "women_groups";
+    public static final String type_youth_groups = "youth_groups";
+    public static final String type_private_individual = "private_individual";
+    public static final String type_communal_village = "communal_village";
+    public static final String other_nursery_types = "other_types";
+    public static final String nursery_latitude = "latitude";
+    public static final String nursery_longitude = "longitude";
+    public static final String nursery_altitude = "altitude";
+    public static final String nursery_accuracy = "accuracy";
+    public static final String nursery_image_path = "image";
+    //nursery trees
+    public static final String _nid = "_id";
+    public static final String nurseryID = "nurseryID";
+    public static final String nursery_species = "species";
+    public static final String nursery_local = "local";
+    public static final String method_bare_root = "bare_root";
+    public static final String method_containerised = "containerised";
+    public static final String other_methods = "other_methods";
+    public static final String propagation_seed = "seed";
+    public static final String propagation_graft = "graft";
+    public static final String propagation_cutting = "cutting";
+    public static final String propagation_marcotting = "marcotting";
+    public static final String seed_source_onfarm = "onfarm";
+    public static final String seed_source_local_dealer = "local_dealer";
+    public static final String seed_source_national_dealer = "national_dealer";
+    public static final String seed_source_NGOs = "NGOs";
+    public static final String other_seed_sources = "other_sources";
+    public static final String graft_source_farmland = "farmland";
+    public static final String graft_source_plantation = "plantation";
+    public static final String graft_source_mother_blocks = "mother_blocks";
+    public static final String graft_source_prisons = "prisons";
+    public static final String graft_source_others = "other_graft_sources";
+    public static final String seeds_quantity_purchased = "quantity_purchased";
+    public static final String date_seeds_sown = "date_sown";
+    public static final String seedlings_germinated = "seedlings_germinated";
+    public static final String seedlings_servived = "seedlings_survived";
+    public static final String seedlings_age = "seedlings_age";
+    public static final String seedlings_price = "seedlings_price";
+    //end of nursery columns
     // Database name
     static final String DB_NAME = "regreen_africa.sqlite";
 
@@ -108,6 +162,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     TABLE_Trainings + "(" +
                     _id + " INTEGER PRIMARY KEY AUTOINCREMENT, " + " TEXT,"+ training_country + " TEXT,"+training_region + " TEXT,"+training_district + " TEXT,"+training_topic + " TEXT,"+training_date+" TEXT,"+training_venue + " TEXT,"+
                     training_partners +" TEXT,"+training_participants + " TEXT,"+male_participants+" TEXT,"+female_participants+" TEXT,"+youth_participants+" TEXT);";
+    //nursery info table
+    private static final String CREATE_TABLE_NURSERY =
+            "create table " +
+                    TABLE_NURSERY + "(" +
+                    id + " INTEGER PRIMARY KEY AUTOINCREMENT, " + nursery_id + " TEXT NOT NULL," + nursery_country + " TEXT NOT NULL, " + nursery_county + " TEXT NOT NULL, " + nursery_district + " TEXT,"+
+                    nursery_operator + " TEXT,"+nursery_contact + " TEXT,"+type_government + " TEXT,"+type_church_mosque + " TEXT,"+type_schools + " TEXT,"+type_women_groups + " TEXT,"+type_youth_groups + " TEXT,"+type_private_individual + " TEXT,"+type_communal_village + " TEXT,"+
+                    other_nursery_types + " TEXT,"+ nursery_latitude + " TEXT,"+nursery_longitude + " TEXT,"+nursery_altitude + " TEXT,"+nursery_accuracy+" TEXT,"+nursery_image_path + " TEXT);";
+    //create nursery species
+    private static final String CREATE_TABLE_NURSERY_SPECIES =
+            "create table " +
+                    TABLE_NURSERY_SPECIES + "(" +
+                    _nid + " INTEGER PRIMARY KEY AUTOINCREMENT, " + nurseryID + " TEXT NOT NULL," + nursery_species + " TEXT NOT NULL, " + nursery_local + " TEXT NOT NULL, " + method_bare_root + " TEXT,"+
+                    method_containerised + " TEXT,"+other_methods + " TEXT,"+propagation_seed + " TEXT,"+propagation_graft + " TEXT,"+propagation_cutting + " TEXT,"+propagation_marcotting + " TEXT,"+seed_source_onfarm + " TEXT,"+seed_source_local_dealer + " TEXT," +
+                    ""+seed_source_national_dealer + " TEXT,"+seed_source_NGOs + " TEXT,"+other_seed_sources + " TEXT,"+graft_source_farmland + " TEXT,"+graft_source_plantation + " TEXT,"+graft_source_mother_blocks + " TEXT,"+graft_source_prisons + " TEXT,"+graft_source_others + " TEXT," +
+                    ""+seeds_quantity_purchased + " TEXT,"+date_seeds_sown + " TEXT,"+seedlings_germinated + " TEXT,"+seedlings_servived + " TEXT,"+seedlings_age + " TEXT,"+seedlings_price + " TEXT);";
 
     public DatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -120,6 +189,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_COHORT);
         db.execSQL(CREATE_TABLE_TREE);
         db.execSQL(CREATE_TABLE_TRAININGS);
+        db.execSQL(CREATE_TABLE_NURSERY);
+        db.execSQL(CREATE_TABLE_NURSERY_SPECIES);
     }
 
     @Override
@@ -129,6 +200,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_COHORT);
         db.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_TREE);
         db.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_TRAININGS);
+        db.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_NURSERY);
+        db.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_NURSERY_SPECIES);
         //create new tables
         onCreate(db);
     }
