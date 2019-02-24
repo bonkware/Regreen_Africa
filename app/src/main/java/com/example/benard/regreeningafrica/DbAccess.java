@@ -230,6 +230,11 @@ public class DbAccess {
         cur.close();
         return x;
     }
+    public Cursor getNursery() {
+        String selectQuery = "SELECT * FROM nursery_info,nursery_species WHERE nursery_info.nurseryID = nursery_species.nurseryID";
+        Cursor c = database.rawQuery(selectQuery, null);
+        return c;
+    }
 
     //count no. of records tree planting
     public int getnurserycount(){

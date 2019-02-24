@@ -49,6 +49,7 @@ public class OtherMainActivities extends AppCompatActivity {
     //urls for data submission
     String treePlanting_url = "http://gsl.worldagroforestry.org/regreen_africa/insertTP.php";
     String trainings_url = "http://gsl.worldagroforestry.org/regreen_africa/insertTrainings.php";
+    String nursery_url = "http://gsl.worldagroforestry.org/regreen_africa/insertNursery.php";
     RegreeningGlobal g = RegreeningGlobal.getInstance();
 
     @Override
@@ -140,7 +141,7 @@ public class OtherMainActivities extends AppCompatActivity {
     //sending tree planting data from sqlite tables to mysql server
     public void uploadTP() {
         progressDialog = new ProgressDialog(OtherMainActivities.this);
-        progressDialog.setMessage("Sending Tree plantning data...");
+        progressDialog.setMessage("Sending Tree planting data...");
         progressDialog.setCancelable(true);
         progressDialog.setIndeterminate(true);
         progressDialog.show();
@@ -361,6 +362,280 @@ public class OtherMainActivities extends AppCompatActivity {
                             String image = getStringImage(bitmap);
                             param.put("path", image);
                             //param.put("path", path);
+                            //return param;
+                            return checkParams(param);
+                        }
+                        //check empty for null values
+                        private Map<String, String> checkParams(Map<String, String> map){
+                            Iterator<Map.Entry<String, String>> it = map.entrySet().iterator();
+                            while (it.hasNext()) {
+                                Map.Entry<String, String> pairs = (Map.Entry<String, String>)it.next();
+                                if(pairs.getValue()==null){
+                                    map.put(pairs.getKey(), "");
+                                }
+                            }
+                            return map;
+                        }
+                    };
+
+                    //add the request to the request queue
+                    //retry policy to avoid crash
+                    request.setRetryPolicy(new DefaultRetryPolicy( 0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+                    queue.add(request);
+                    //VolleySingleton.getInstance(this).addToRequestQueue(request);
+                    //add listener to the queue which is executed when the request ends
+                    queue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<String>() {
+                        @Override
+                        public void onRequestFinished(Request<String> request) {
+                            if (progressDialog !=  null && progressDialog.isShowing())
+                                progressDialog.dismiss();
+                        }
+                    });
+
+                } while (cursor.moveToNext());
+            }//end of cursor
+        }catch(Exception e){//added catch
+            Log.d("Upload failed", "Exception : "
+                    + e.getMessage(), e);
+        }
+    }
+    //sending nursery data from sqlite
+    public void sendNursery() {
+        progressDialog = new ProgressDialog(OtherMainActivities.this);
+        progressDialog.setMessage("Sending data...");
+        progressDialog.setCancelable(true);
+        progressDialog.setIndeterminate(true);
+        progressDialog.show();
+
+        //get data from sqlite in a loop
+        try{//added try catch
+            final Cursor cursor = dbAccess.getNursery();
+            if (cursor.moveToFirst()) {
+                do {
+                    //nursery info
+                    final String nurseryID = cursor.getString(cursor.getColumnIndex("nurseryID"));
+                    final String country = cursor.getString(cursor.getColumnIndex("country"));
+                    final String county = cursor.getString(cursor.getColumnIndex("county"));
+                    final String district = cursor.getString(cursor.getColumnIndex("district"));
+                    final String operator = cursor.getString(cursor.getColumnIndex("operator"));
+                    final String contact = cursor.getString(cursor.getColumnIndex("contact"));
+                    final String type_government = cursor.getString(cursor.getColumnIndex("government"));
+                    final String type_church_mosque = cursor.getString(cursor.getColumnIndex("church_mosque"));
+                    final String type_schools = cursor.getString(cursor.getColumnIndex("schools"));
+                    final String type_women_groups = cursor.getString(cursor.getColumnIndex("women_groups"));
+                    final String type_youth_groups = cursor.getString(cursor.getColumnIndex("youth_groups"));
+                    final String type_private_individual = cursor.getString(cursor.getColumnIndex("private_individual"));
+                    final String type_communal_village = cursor.getString(cursor.getColumnIndex("communal_village"));
+                    final String other_nursery_types = cursor.getString(cursor.getColumnIndex("other_types"));
+                    final String latitude = cursor.getString(cursor.getColumnIndex("latitude"));
+                    final String longitude = cursor.getString(cursor.getColumnIndex("longitude"));
+                    final String altitude = cursor.getString(cursor.getColumnIndex("altitude"));
+                    final String accuracy = cursor.getString(cursor.getColumnIndex("accuracy"));
+                    final String image = cursor.getString(cursor.getColumnIndex("image"));
+                    //nursery species
+                    final String species = cursor.getString(cursor.getColumnIndex("species"));
+                    final String local = cursor.getString(cursor.getColumnIndex("local"));
+                    final String method_bare_root = cursor.getString(cursor.getColumnIndex("bare_root"));
+                    final String method_containerised = cursor.getString(cursor.getColumnIndex("containerised"));
+                    final String other_methods = cursor.getString(cursor.getColumnIndex("other_methods"));
+                    final String propagation_seed = cursor.getString(cursor.getColumnIndex("seed"));
+                    final String propagation_graft = cursor.getString(cursor.getColumnIndex("graft"));
+                    final String propagation_cutting = cursor.getString(cursor.getColumnIndex("cutting"));
+                    final String propagation_marcotting = cursor.getString(cursor.getColumnIndex("marcotting"));
+                    final String seed_source_onfarm = cursor.getString(cursor.getColumnIndex("onfarm"));
+                    final String seed_source_local_dealer = cursor.getString(cursor.getColumnIndex("local_dealer"));
+                    final String seed_source_national_dealer = cursor.getString(cursor.getColumnIndex("national_dealer"));
+                    final String seed_source_NGOs = cursor.getString(cursor.getColumnIndex("NGOs"));
+                    final String other_seed_sources = cursor.getString(cursor.getColumnIndex("other_sources"));
+                    final String graft_source_farmland = cursor.getString(cursor.getColumnIndex("farmland"));
+                    final String graft_source_plantation = cursor.getString(cursor.getColumnIndex("plantation"));
+                    final String graft_source_mother_blocks = cursor.getString(cursor.getColumnIndex("mother_blocks"));
+                    final String graft_source_prisons = cursor.getString(cursor.getColumnIndex("prisons"));
+                    final String graft_source_others = cursor.getString(cursor.getColumnIndex("other_graft_sources"));
+                    final String seeds_quantity_purchased = cursor.getString(cursor.getColumnIndex("quantity_purchased"));
+                    final String date_seeds_sown = cursor.getString(cursor.getColumnIndex("date_sown"));
+                    final String seedlings_germinated = cursor.getString(cursor.getColumnIndex("seedlings_germinated"));
+                    final String seedlings_servived = cursor.getString(cursor.getColumnIndex("seedlings_survived"));
+                    final String seedlings_age = cursor.getString(cursor.getColumnIndex("seedlings_age"));
+                    final String seedlings_price = cursor.getString(cursor.getColumnIndex("seedlings_price"));
+
+                    // create an object of volley request queue
+                    RequestQueue queue = Volley.newRequestQueue(OtherMainActivities.this);
+                    // Request a string response from the provided url above to server.
+                    StringRequest request = new StringRequest(Request.Method.POST, nursery_url, new Response.Listener<String>() {
+                        @Override
+                        //successful response
+                        public void onResponse(String response) {
+                            //get the response if success get response that data has been received
+                            Log.i("My success", "" + response);
+                            //progressDialog.dismiss();
+                            //notification
+                            try{
+                                //count records sent
+                                final int count = dbAccess.getnurserycount();
+                                //Toast.makeText(Index.this, count + " record(s) " + response, Toast.LENGTH_LONG).show();
+                                //refresh activity after dialog
+                                final AlertDialog.Builder builder = new AlertDialog.Builder(OtherMainActivities.this).setTitle("Data sent!").setMessage(count + " record(s) " + response)
+                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                //delete records after send
+                                                //dbAccess.deletenurseryprofile();
+                                                //dbAccess.deletenurserytrees();
+                                                //dismiss dialog by intent
+                                                Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
+                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                                startActivity(intent);
+                                            }
+                                        });
+                                builder.create().show();
+                                //progressDialog.dismiss();
+                            }catch(Exception e){//added catch
+                                Log.d("Upload failed", "Exception : "
+                                        + e.getMessage(), e);
+                            }
+
+                        }
+                        //get error response
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            //error responses if failed to connect
+                            if (error instanceof NetworkError) {
+                                //Toast.makeText(Index.this,"Cannot connect to Internet...Please check your connection!",Toast.LENGTH_SHORT).show();
+                                AlertDialog.Builder builder = new AlertDialog.Builder(OtherMainActivities.this).setTitle("No Internet!").setMessage("Cannot connect to Internet...Please check your connection!").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                        startActivity(intent);
+                                    }
+                                });
+                                builder.create().show();
+                            } else if (error instanceof ServerError) {
+                                //Toast.makeText(Index.this,"The server could not be found. Please try again after some time!!",Toast.LENGTH_SHORT).show();
+                                AlertDialog.Builder builder = new AlertDialog.Builder(OtherMainActivities.this).setTitle("Server not found!").setMessage("The server could not be found. Please try again after some time!!").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        //dialog.dismiss();
+                                        Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                        startActivity(intent);
+                                    }
+                                });
+                                builder.create().show();
+
+                            } else if (error instanceof AuthFailureError) {
+                                //Toast.makeText(Index.this,"Cannot connect to Internet...Please check your connection!",Toast.LENGTH_SHORT).show();
+                                AlertDialog.Builder builder = new AlertDialog.Builder(OtherMainActivities.this).setTitle("No Internet!").setMessage("Cannot connect to Internet...Please check your connection!").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        //dialog.dismiss();
+                                        Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                        startActivity(intent);
+                                    }
+                                });
+                                builder.create().show();
+
+                            } else if (error instanceof ParseError) {
+                                //Toast.makeText(Index.this,"Parsing error! Please try again after some time!!",Toast.LENGTH_SHORT).show();
+                                AlertDialog.Builder builder = new AlertDialog.Builder(OtherMainActivities.this).setTitle("Parsing Error!").setMessage("Parsing error! Please try again after some time!!").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        //dialog.dismiss();
+                                        Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                        startActivity(intent);
+                                    }
+                                });
+                                builder.create().show();
+
+                            } else if (error instanceof TimeoutError) {
+                                //Toast.makeText(Index.this,"Connection TimeOut! Please check your internet connection",Toast.LENGTH_SHORT).show();
+                                AlertDialog.Builder builder = new AlertDialog.Builder(OtherMainActivities.this).setTitle("Time Out!").setMessage("Connection TimeOut! Please check your internet connection").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        //dialog.dismiss();
+                                        Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                        startActivity(intent);
+                                    }
+                                });
+                                builder.create().show();
+
+                            }
+                            Log.i("My error", "" + error);
+                            //dismiss dialog
+                            progressDialog.dismiss();
+
+                        }
+                    }) {
+                        @Override
+                        //hashmap
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            Map<String, String> param = new HashMap<String, String>();
+                            //farmer data
+                            param.put("nurseryID", nurseryID);
+                            param.put("country", country);
+                            param.put("county", county);
+                            param.put("district", district);
+                            param.put("operator", operator);
+                            param.put("contact", contact);
+                            param.put("government", type_government);
+                            param.put("church_mosque", type_church_mosque);
+                            param.put("schools", type_schools);
+                            param.put("women_groups", type_women_groups);
+                            param.put("youth_groups", type_youth_groups);
+                            param.put("private_individual", type_private_individual);
+                            param.put("communal_village", type_communal_village);
+                            param.put("other_types", other_nursery_types);
+                            //param.put("youth_groups", type_youth_groups);
+                            param.put("latitude", latitude);
+                            param.put("longitude", longitude);
+                            param.put("altitude", altitude);
+                            param.put("accuracy", accuracy);
+                            //converting file path to bitmap
+                            BitmapFactory.Options options = new BitmapFactory.Options();
+                            options.inSampleSize = 8;//compress file further to avoid out of memory error
+                            Bitmap bitmap = BitmapFactory.decodeFile(image,options);
+                            String image = getStringImage(bitmap);
+                            param.put("image", image);
+                            //species data
+                            param.put("nurseryID", nurseryID);
+                            param.put("species", species);
+                            param.put("local", local);
+                            param.put("bare_root", method_bare_root);
+                            param.put("container", method_containerised);
+                            param.put("other_methods", other_methods);
+                            param.put("seed", propagation_seed);
+                            param.put("graft", propagation_graft);
+                            param.put("cutting", propagation_cutting);
+                            param.put("marcotting", propagation_marcotting);
+                            param.put("onfarm", seed_source_onfarm);
+                            param.put("local_dealer", seed_source_local_dealer);
+                            param.put("national_dealer", seed_source_national_dealer);
+                            param.put("NGOs", seed_source_NGOs);
+                            param.put("other_sources", other_seed_sources);
+                            param.put("farmland", graft_source_farmland);
+                            param.put("plantation", graft_source_plantation);
+                            param.put("mother_blocks", graft_source_mother_blocks);
+                            param.put("prisons", graft_source_prisons);
+                            param.put("other_graft_sources", graft_source_others);
+                            param.put("quantity_purchased", seeds_quantity_purchased);
+                            param.put("date_sown", date_seeds_sown);
+                            param.put("seedlings_germinated", seedlings_germinated);
+                            param.put("seedlings_survived", seedlings_servived);
+                            param.put("seedlings_age", seedlings_age);
+                            param.put("seedlings_price", seedlings_price);
+
                             //return param;
                             return checkParams(param);
                         }
