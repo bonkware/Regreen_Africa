@@ -105,7 +105,7 @@ public class OtherMainActivities extends AppCompatActivity {
                 if(countNursery==0) {
                     Toast.makeText(OtherMainActivities.this, "No data to send", Toast.LENGTH_SHORT).show();
                 }else {//otherwise send
-                   // uploadNursery();
+                    uploadNursery();
                 }
                 //Toast.makeText(Index.this, "Data Send", Toast.LENGTH_SHORT).show();
             }
@@ -401,7 +401,7 @@ public class OtherMainActivities extends AppCompatActivity {
         }
     }
     //sending nursery data from sqlite
-    public void sendNursery() {
+    public void uploadNursery() {
         progressDialog = new ProgressDialog(OtherMainActivities.this);
         progressDialog.setMessage("Sending data...");
         progressDialog.setCancelable(true);
@@ -481,8 +481,8 @@ public class OtherMainActivities extends AppCompatActivity {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
                                                 //delete records after send
-                                                //dbAccess.deletenurseryprofile();
-                                                //dbAccess.deletenurserytrees();
+                                                dbAccess.deletenurseryinfo();
+                                                dbAccess.deletenurseryspecies();
                                                 //dismiss dialog by intent
                                                 Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
                                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

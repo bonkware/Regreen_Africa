@@ -194,6 +194,12 @@ public class DbAccess {
     public void deleteTrainings(){
         database.execSQL("delete from "+ TABLE_Trainings);
     }
+    public void deletenurseryinfo(){
+        database.execSQL("delete from "+ TABLE_NURSERY);
+    }
+    public void deletenurseryspecies(){
+        database.execSQL("delete from "+ TABLE_NURSERY_SPECIES);
+    }
     //get all records from db for sending
     //fetch from all tables where farmer ID match
     public Cursor getTP() {
