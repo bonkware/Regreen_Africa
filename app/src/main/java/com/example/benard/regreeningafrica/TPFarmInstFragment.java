@@ -30,7 +30,7 @@ public class TPFarmInstFragment extends Fragment {
                 false);
         //populating the spinner based on the selection of the first spinner
         s1 = (Spinner)view.findViewById(R.id.spinner1);
-        s2 = (Spinner)view.findViewById(R.id.spinner2);
+    /*    s2 = (Spinner)view.findViewById(R.id.spinner2);
         s3 = (Spinner)view.findViewById(R.id.spinner3);
         s1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view,
@@ -119,7 +119,7 @@ public class TPFarmInstFragment extends Fragment {
 
             }
         });//end of spinner selection2
-
+*/
 
         return view;
     }

@@ -72,14 +72,24 @@
                 android:text="County/Region Name" />
 
             <!-- Spinner Dropdown -->
-            <Spinner
+           <!-- <Spinner
                 android:id="@+id/spinner2"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dip"
                 android:layout_marginLeft="8dip"
                 android:layout_marginRight="8dip"
-                />
+                />-->
+            <EditText
+                android:id="@+id/county"
+                android:backgroundTint="#008000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text1"
+                android:padding="@dimen/view_padding"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/add_edit_textsize"/>
             <!-- Select Label -->
 
             <TextView
@@ -89,14 +99,24 @@
                 android:paddingTop="20dp"
                 android:text="District/Communne/Woreda" />
             <!-- Spinner Dropdown -->
-            <Spinner
+            <!--<Spinner
                 android:id="@+id/spinner3"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dip"
                 android:layout_marginLeft="8dip"
                 android:layout_marginRight="8dip"
-                />
+                />-->
+            <EditText
+                android:id="@+id/district"
+                android:backgroundTint="#008000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text1"
+                android:padding="@dimen/view_padding"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/add_edit_textsize"/>
         </LinearLayout>
     </ScrollView>
 

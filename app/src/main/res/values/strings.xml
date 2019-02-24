@@ -6,7 +6,7 @@
     <string name="title_activity_splash">Splash</string>
     <string name="settings">Settings</string>
     <string-array name="countries">
-        <item>Select Country first</item>
+        <item>Select Country</item>
         <item>Kenya</item>
         <item>Uganda</item>
         <item>Tanzania</item>

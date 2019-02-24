@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    Button addButton, sendButton, dataButton, helpButton, aboutButton, fqsButton, sendDataButton, sendNursery;
+    Button addButton, dataButton, helpButton, aboutButton;
       DbAccess dbAccess;
 
       RegreeningGlobal g = RegreeningGlobal.getInstance();
@@ -31,33 +31,16 @@ public class MainActivity extends AppCompatActivity {
 
         addButton = (Button) findViewById(R.id.button_add);
         dataButton = (Button) findViewById(R.id.data);
-        //helpButton = (Button) findViewById(R.id.help);
-        // sendButton = (Button) findViewById(R.id.send);
         aboutButton = (Button) findViewById(R.id.about);
-        fqsButton = (Button) findViewById(R.id.fqs);
-        //sendNursery = (Button) findViewById(R.id.send_n);
-        //  sendDataButton = (Button) findViewById(R.id.send);
+        helpButton = (Button) findViewById(R.id.help);
 
         dbAccess = new DbAccess(this);
         dbAccess.open();
-        //get row count and display number of records in send button
-       /* int count = dbAccess.getcount();
-        //also show number of records in view button
-        String v = "Total Records " +"("+ count +")";
-        countButton = (Button) findViewById(R.id.count);
-        countButton.setText(String.valueOf(v));
-
-        int count_training = dbAccess.getcount_trainings();
-        //also show number of records in view button
-        String t = "Total Records " +"("+ count_training +")";
-        countButton = (Button) findViewById(R.id.c);
-        countButton.setText(String.valueOf(t));*/
 
         //add data
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent i = new Intent(Index.this, FarmerMainActivity.class);
                 Intent i = new Intent(MainActivity.this, SelectSurvey.class);
                 startActivity(i);
                 overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
@@ -71,46 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
             }
         });
-        //view all
-     /*   viewAllButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(Index.this, ViewDataActivity.class);
-                startActivity(i);
-            }
-        });
-        //help
-        helpButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(Index.this, HelpActivity.class);
-                startActivity(i);
-            }
-        });
-        //about us
-        aboutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(Index.this, AboutActivity.class);
-                startActivity(i);
-            }
-        });
-        sendDataButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(Index.this, SendDataActivity.class);
-                startActivity(i);
-            }
-        });
-        //fqs
-        fqsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Intent i = new Intent(Index.this, FqsActivity.class);
-                Intent i = new Intent(Index.this, FqsActivity.class);
-                startActivity(i);
-            }
-        });*/
+
     }
 
     // check external write permision in android 6+

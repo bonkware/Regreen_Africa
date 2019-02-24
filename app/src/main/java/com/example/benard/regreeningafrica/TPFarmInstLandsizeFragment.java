@@ -75,14 +75,14 @@ public class TPFarmInstLandsizeFragment extends Fragment {
         if(country != null && country.getSelectedItem() !=null ) {
             g.setcountry(country.getSelectedItem().toString());
         }
-        Spinner county_region = (Spinner) getActivity().findViewById(R.id.spinner2);
-        if(county_region != null && county_region.getSelectedItem() !=null ) {
-            g.setcounty_region(county_region.getSelectedItem().toString());
-        }
-        Spinner district = (Spinner) getActivity().findViewById(R.id.spinner3);
-        if(district != null && district.getSelectedItem() !=null ) {
-            g.setdistricts(district.getSelectedItem().toString());
-        }
+        EditText county_region = (EditText) getActivity().findViewById(R.id.county);
+        //if(county_region != null && county_region.getSelectedItem() !=null ) {
+            g.setcounty_region(county_region.getText().toString());
+       // }
+        EditText district = (EditText) getActivity().findViewById(R.id.district);
+        //if(district != null && district.getSelectedItem() !=null ) {
+            g.setdistricts(district.getText().toString());
+        //}
         RadioGroup radioGroup = (RadioGroup) getActivity().findViewById(R.id.planting_location);
         //check whether it is checked
         if(radioGroup.getCheckedRadioButtonId()==-1){

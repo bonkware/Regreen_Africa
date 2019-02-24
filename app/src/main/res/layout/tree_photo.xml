@@ -39,14 +39,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="jumpBackLocation"
+            android:onClick="jumpBackGPS"
             android:text="PREV"/>
 
         <Button
-            android:id="@+id/tospecies"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="jumpToEnd"
             android:text="NEXT"/>
 
     </LinearLayout>

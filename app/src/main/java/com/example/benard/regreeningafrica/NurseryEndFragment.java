@@ -35,8 +35,8 @@ public class NurseryEndFragment extends Fragment {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.add_tree:
-                        //saveMeasurement();
-                        //dbAccess.insertMeasurent();
+                        saveSpecies();
+                        dbAccess.insertNurserySpecies();
                         Intent intent = new Intent(getActivity(), NurseryOtherInfoMain.class);
                         startActivity(intent);
                         //Toast.makeText(SelectSurvey.this.getActivity(),"Saved! Add new tree",Toast.LENGTH_SHORT).show();
@@ -52,8 +52,8 @@ public class NurseryEndFragment extends Fragment {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.add_nursery:
-                        //saveMeasurement();
-                        //dbAccess.insertMeasurent();
+                        saveSpecies();
+                        dbAccess.insertNurserySpecies();
                         Intent intent = new Intent(getActivity(), NurseryInfoMain.class);
                         startActivity(intent);
                         //Toast.makeText(SelectSurvey.this.getActivity(),"Saved! Add new tree",Toast.LENGTH_SHORT).show();

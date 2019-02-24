@@ -75,7 +75,6 @@
                 android:textColor="#fff"
                 android:layout_margin="10dp"
                 android:text="View data" />
-
         </TableRow>-->
         <TableRow
             android:id="@+id/tableRow3"
@@ -93,7 +92,7 @@
                 android:layout_margin="10dp"
                 android:text="About Us" />
             <Button
-                android:id="@+id/fqs"
+                android:id="@+id/help"
                 android:background="@drawable/index_buttons"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -101,7 +100,7 @@
                 android:textSize="16sp"
                 android:textColor="#fff"
                 android:layout_margin="10dp"
-                android:text="FAQs" />
+                android:text="Help" />
         </TableRow>
         <!--<TableRow
             android:id="@+id/tableRowcount"

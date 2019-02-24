@@ -55,6 +55,7 @@ public class TPTreeEndFragment extends Fragment {
                 switch (v.getId()) {
                     case R.id.add_cohort:
                         saveMeasurement();
+                        dbAccess.insertMeasurent();
                         Intent intent = new Intent(getActivity(), TPCohortMainAcivity.class);
                         startActivity(intent);
                         break;
@@ -68,6 +69,7 @@ public class TPTreeEndFragment extends Fragment {
                 switch (v.getId()) {
                     case R.id.add_new_farmerinst:
                         saveMeasurement();
+                        dbAccess.insertMeasurent();
                         Intent intent = new Intent(getActivity(), TPFarmInstiMainAcivity.class);
                         startActivity(intent);
                         //Toast.makeText(SelectSurvey.this.getActivity(),"Saved! Add new tree",Toast.LENGTH_SHORT).show();
