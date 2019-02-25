@@ -27,4 +27,23 @@
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="regreening_info">
+    <b>Regreening africa app</b>\n\n
+    Regreening Africa App is a mobile-based android application that helps users to collect information(Tree planting, nurseries and FMNR) on how farmers are managing and protecting trees on their farms.\n\n
+    This application was developed under the Regreening Africa project, a project that targets to reverse land degradation in Africa by scaling up evergreen agriculture.\n
+    </string>
+    <string name="developers">
+        <b>Developers</b>\n
+        Benard Onkware, Muhammad Ahmad &amp; Tor Vagen.\n
+    </string>
+    <string name="contributors">
+        <b>Contributors</b>\n
+        The Regreening Africa Team.\n
+    </string>
+    <string name="url">
+        <b>http://www.worldagroforestry.org/</b>
+    </string>
+    <string name="guide">
+        <b>Regreening africa user Guide</b>
+    </string>
 </resources>

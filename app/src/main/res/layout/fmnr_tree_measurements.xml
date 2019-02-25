@@ -1,0 +1,151 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+    <ScrollView
+        android:layout_above="@+id/nav"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical" android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:layout_margin="6dp"
+            android:paddingRight="@dimen/activity_horizontal_margin">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tree measurement"
+                android:layout_gravity="start"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Cohort ID:"
+                android:visibility="gone"
+                android:textSize="@dimen/textsize"
+                android:padding="10dp"
+                android:textStyle="italic"/>
+            <TextView
+                android:id="@+id/cid"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:visibility="gone"
+                android:padding="@dimen/view_padding"
+                android:textSize="@dimen/add_edit_textsize"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select one tree from the cohort and take the measurements"
+                android:textSize="@dimen/textsize"
+                android:padding="10dp"
+                android:textStyle="italic"/>
+            <LinearLayout
+                android:id="@+id/height_"
+                android:visibility="visible"
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Height(m)"
+                    android:textSize="@dimen/textsize"
+                    android:padding="10dp"
+                    android:textStyle="italic"/>
+                <EditText
+                    android:id="@+id/height"
+                    android:backgroundTint="#008000"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/view_padding"
+                    android:inputType="numberDecimal"
+                    android:textSize="@dimen/add_edit_textsize">
+                </EditText>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/rcd_"
+                android:visibility="gone"
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Root collar diameter"
+                    android:textSize="@dimen/textsize"
+                    android:padding="10dp"
+                    android:textStyle="italic"/>
+                <EditText
+                    android:id="@+id/RCD"
+                    android:backgroundTint="#008000"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/view_padding"
+                    android:hint="height less than 3m"
+                    android:inputType="numberDecimal"
+                    android:textSize="@dimen/add_edit_textsize">
+                </EditText>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/dbh_"
+                android:visibility="gone"
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Diameter at breast height(DBH)"
+                    android:textSize="@dimen/textsize"
+                    android:padding="10dp"
+                    android:textStyle="italic"/>
+                <EditText
+                    android:id="@+id/dbh"
+                    android:backgroundTint="#008000"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/view_padding"
+                    android:hint="height more than 3m"
+                    android:inputType="numberDecimal"
+                    android:textSize="@dimen/add_edit_textsize">
+                </EditText>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:id="@+id/nav">
+
+        <Button
+            android:id="@+id/prev"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:visibility="invisible"
+            android:text="PREV"/>
+
+        <Button
+            android:id="@+id/next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="jumpToGPS"
+            android:text="NEXT"/>
+
+    </LinearLayout>
+</RelativeLayout>

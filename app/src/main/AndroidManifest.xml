@@ -38,6 +38,10 @@
         <activity android:name=".OtherMainActivities" />
         <activity android:name=".NurseryOtherInfoMain"> </activity>
         <activity android:name=".NurseryInfoMain"> </activity>
+        <activity android:name=".About"> </activity>
+        <activity android:name=".AppGuide"> </activity>
+        <activity android:name=".FmnrFarmInstMainActivity"> </activity>
+        <activity android:name=".FmnrTreeMeasureMainActivity"> </activity>
     </application>
 
 </manifest>

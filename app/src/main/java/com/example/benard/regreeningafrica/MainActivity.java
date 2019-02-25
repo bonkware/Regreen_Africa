@@ -46,10 +46,30 @@ public class MainActivity extends AppCompatActivity {
                 overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
             }
         });
+        //send data
         dataButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, OtherMainActivities.class);
+                startActivity(i);
+                overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
+            }
+        });
+        //about regreening
+        aboutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, About.class);
+                startActivity(i);
+                overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
+            }
+        });
+        //Regreening guide
+        //about regreening
+        helpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, AppGuide.class);
                 startActivity(i);
                 overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
             }

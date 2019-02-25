@@ -43,7 +43,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 public class OtherMainActivities extends AppCompatActivity {
-    Button TPButton,TrainingButton,NurseryButton;
+    Button TPButton,TrainingButton,NurseryButton,FMNRButton;
     DbAccess dbAccess;
     ProgressDialog progressDialog;
     //urls for data submission
@@ -68,6 +68,7 @@ public class OtherMainActivities extends AppCompatActivity {
         TPButton = (Button) findViewById(R.id.tree_planting);
         TrainingButton = (Button) findViewById(R.id.trainings);
         NurseryButton = (Button) findViewById(R.id.nursery);
+        FMNRButton = (Button) findViewById(R.id.fmnr);
         //for sending tree planting
         TPButton.setOnClickListener(new View.OnClickListener() {
             @Override
