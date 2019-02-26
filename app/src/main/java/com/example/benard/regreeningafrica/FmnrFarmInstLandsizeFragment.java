@@ -42,8 +42,8 @@ public class FmnrFarmInstLandsizeFragment extends Fragment {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.tocohort:
-                        //saveFarmerInst();//save
-                       // dbAccess.insertFarmerInst();//insert details to db
+                        saveFmnrFarmerInst();//save
+                        dbAccess.insertFmnrFarmerInst();//insert details to db
                         Intent intent = new Intent(getActivity(), FmnrTreeMeasureMainActivity.class);
                         startActivity(intent);
                         //Toast.makeText(SelectSurvey.this.getActivity(),"Saved",Toast.LENGTH_SHORT).show();
@@ -51,12 +51,11 @@ public class FmnrFarmInstLandsizeFragment extends Fragment {
                 }
             }
         });
-
-
+        
         return view;
     }
     // save farmer/institution data when you go next
-    public void  saveFarmerInst(){
+    public void  saveFmnrFarmerInst(){
         //generate unique id for farmer/institution
         Random generator = new Random();
         int n = 10000;

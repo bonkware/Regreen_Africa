@@ -129,10 +129,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String seedlings_age = "seedlings_age";
     public static final String seedlings_price = "seedlings_price";
     //end of nursery columns
-    //start here tomoorooww
-    // nursery info
+
+    // fmnr farmer/institution info table
     public static final String TABLE_FMNR_FARMER_INST = "fmnr_farmer_inst";
-    // nursery species
+    // fmnr species table
     public static final String TABLE_FMNR_SPECIES = "fmnr_species";
     //columns for farmer/institution info
     public static final String _ID_fmnr = "_id";
@@ -225,14 +225,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     _ID_fmnr + " INTEGER PRIMARY KEY AUTOINCREMENT, " + fmnr_enum_name + " TEXT NOT NULL, " + fmnr_date + " TEXT NOT NULL, " + fmnr_farmer_inst_name + " TEXT,"+
                     fmnr_country + " TEXT,"+fmnr_county_region +  " TEXT,"+fmnr_district + " TEXT,"+fmnr_planting_location + " TEXT,"+fmnr_landsize_regreen + " TEXT,"+
                     fmnr_farmer_id+" TEXT);";
-    //creating tsble for measurement fmnr
+    //creating table for measurement fmnr
     private static final String CREATE_TABLE_FMNR_SPECIES =
             "create table " +
                     TABLE_FMNR_SPECIES + "(" +
                     _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + " TEXT,"+ fmnr_species_name + " TEXT,"+fmnr_local_name + " TEXT,"+fmnr_management_pruning + " TEXT,"+fmnr_management_fencing + " TEXT,"+fmnr_management_weeding+" TEXT,"+fmnr_management_watering + " TEXT,"+
                     fmnr_management_organic_fertilizer + " TEXT,"+fmnr_management_other + " TEXT,"+ fmnr_use_firewood + " TEXT,"+fmnr_use_housing_construction + " TEXT,"+fmnr_use_animal_feed+" TEXT,"+fmnr_use_food +
-                    " TEXT,"+fmnr_use_mulching +  " TEXT,"+fmnr_use_other + " TEXT,"+fmnr_tree_stems + " TEXT,"+fmnr_tree_height+" TEXT,"+" TEXT,"+fmnr_tree_rcd +  " TEXT,"+fmnr_tree_dbh + " TEXT,"+fmnr_tree_latitude + " TEXT,"+fmnr_tree_longitude+" TEXT,"+
-                    " TEXT,"+fmnr_tree_altitude +  " TEXT,"+fmnr_tree_accuracy + " TEXT,"+fmnr_tree_image_path + " TEXT,"+fmnrfarmer_id+" TEXT);";
+                    " TEXT,"+fmnr_use_mulching +  " TEXT,"+fmnr_use_other + " TEXT,"+fmnr_tree_stems + " TEXT,"+fmnr_tree_height+" TEXT,"+fmnr_tree_rcd +  " TEXT,"+fmnr_tree_dbh + " TEXT,"+fmnr_tree_latitude + " TEXT,"+fmnr_tree_longitude+" TEXT,"+
+                    fmnr_tree_altitude +  " TEXT,"+fmnr_tree_accuracy + " TEXT,"+fmnr_tree_image_path + " TEXT,"+fmnrfarmer_id+" TEXT);";
 
     public DatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);

@@ -40,8 +40,8 @@ public class FmnrTreeEndFragment extends Fragment {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.add_tree:
-                        //saveMeasurement();
-                        //dbAccess.insertMeasurent();
+                        saveMeasurements();
+                        dbAccess.insertFmnrSpecies();//insert into db
                         Intent intent = new Intent(getActivity(), FmnrTreeMeasureMainActivity.class);
                         startActivity(intent);
                         //Toast.makeText(SelectSurvey.this.getActivity(),"Saved! Add new tree",Toast.LENGTH_SHORT).show();
@@ -56,8 +56,8 @@ public class FmnrTreeEndFragment extends Fragment {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.add_new_farmerinst:
-                        //saveMeasurement();
-                        //dbAccess.insertMeasurent();
+                        saveMeasurements();
+                        dbAccess.insertFmnrSpecies();//insert into db
                         Intent intent = new Intent(getActivity(), TPFarmInstiMainAcivity.class);
                         startActivity(intent);
                         //Toast.makeText(SelectSurvey.this.getActivity(),"Saved! Add new tree",Toast.LENGTH_SHORT).show();
@@ -72,8 +72,8 @@ public class FmnrTreeEndFragment extends Fragment {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.finish:
-                        //saveMeasurement();
-                        //dbAccess.insertMeasurent();
+                        saveMeasurements();
+                        dbAccess.insertFmnrSpecies();
                         Intent intent = new Intent(getActivity(), MainActivity.class);
                         startActivity(intent);
                         break;
@@ -84,7 +84,7 @@ public class FmnrTreeEndFragment extends Fragment {
         return view;
     }
 
-    public  void saveMeasurement(){
+    public  void saveMeasurements(){
         TextView fid = (TextView) getActivity().findViewById(R.id.fid);
         g.setfid(fid.getText().toString());
         EditText species = (EditText) getActivity().findViewById(R.id.speciesname);

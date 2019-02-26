@@ -13,6 +13,8 @@ import android.database.sqlite.SQLiteDatabase;
 
 import static com.example.benard.regreeningafrica.DatabaseHelper.TABLE_COHORT;
 import static com.example.benard.regreeningafrica.DatabaseHelper.TABLE_FARMER_INST;
+import static com.example.benard.regreeningafrica.DatabaseHelper.TABLE_FMNR_FARMER_INST;
+import static com.example.benard.regreeningafrica.DatabaseHelper.TABLE_FMNR_SPECIES;
 import static com.example.benard.regreeningafrica.DatabaseHelper.TABLE_Measurement;
 import static com.example.benard.regreeningafrica.DatabaseHelper.TABLE_NURSERY;
 import static com.example.benard.regreeningafrica.DatabaseHelper.TABLE_NURSERY_SPECIES;
@@ -170,7 +172,51 @@ public class DbAccess {
         //insert
         database.insert(TABLE_NURSERY_SPECIES, null, contentValue);
     }
-
+    //insert farmer details
+    public void insertFmnrFarmerInst() {
+        ContentValues contentValue = new ContentValues();
+        contentValue.put(DatabaseHelper.farmerID, g.getfid());
+        contentValue.put(DatabaseHelper.fmnr_enum_name, g.getename());
+        contentValue.put(DatabaseHelper.fmnr_date, g.getin_date());
+        contentValue.put(DatabaseHelper.farmer_inst_name, g.getfname());
+        contentValue.put(DatabaseHelper.fmnr_country, g.getcountry());
+        contentValue.put(DatabaseHelper.fmnr_county_region, g.getcounty_region());
+        contentValue.put(DatabaseHelper.fmnr_district, g.getdistricts());
+        contentValue.put(DatabaseHelper.fmnr_planting_location, g.getselect_location());
+        contentValue.put(DatabaseHelper.fmnr_landsize_regreen, g.getlandsize());
+        //insert
+        database.insert(TABLE_FMNR_FARMER_INST, null, contentValue);
+    }
+    //insert fmnr species
+    public void insertFmnrSpecies() {
+        ContentValues contentValue = new ContentValues();
+        contentValue.put(DatabaseHelper.farmerID, g.getfid());
+        contentValue.put(DatabaseHelper.fmnr_species_name, g.getspecies_name());
+        contentValue.put(DatabaseHelper.fmnr_local_name, g.getlocal_name());
+        contentValue.put(DatabaseHelper.fmnr_management_pruning, g.getmg1());
+        contentValue.put(DatabaseHelper.fmnr_management_fencing, g.getmg2());
+        contentValue.put(DatabaseHelper.fmnr_management_weeding, g.getmg3());
+        contentValue.put(DatabaseHelper.fmnr_management_watering, g.getmg4());
+        contentValue.put(DatabaseHelper.management_organic_fertilizer, g.getmg5());
+        contentValue.put(DatabaseHelper.fmnr_management_other, g.getmg_other());
+        contentValue.put(DatabaseHelper.fmnr_use_firewood, g.getusage1());
+        contentValue.put(DatabaseHelper.fmnr_use_housing_construction, g.getusage2());
+        contentValue.put(DatabaseHelper.fmnr_use_animal_feed, g.getusage3());
+        contentValue.put(DatabaseHelper.fmnr_use_food, g.getusage4());
+        contentValue.put(DatabaseHelper.fmnr_use_mulching, g.getusage5());
+        contentValue.put(DatabaseHelper.fmnr_use_other, g.getus_other());
+        contentValue.put(DatabaseHelper.fmnr_tree_stems, g.getstems());
+        contentValue.put(DatabaseHelper.fmnr_tree_height, g.getheight());
+        contentValue.put(DatabaseHelper.fmnr_tree_rcd, g.getrcd());
+        contentValue.put(DatabaseHelper.fmnr_tree_dbh, g.getdbh());
+        contentValue.put(DatabaseHelper.fmnr_tree_latitude, g.getLatitude());
+        contentValue.put(DatabaseHelper.fmnr_tree_longitude, g.getLongitude());
+        contentValue.put(DatabaseHelper.fmnr_tree_altitude, g.getAltitude());
+        contentValue.put(DatabaseHelper.fmnr_tree_accuracy, g.getAccuracy());
+        contentValue.put(DatabaseHelper.fmnr_tree_image_path, g.getpath());
+        //insert
+        database.insert(TABLE_FMNR_SPECIES, null, contentValue);
+    }
     //get records in view
     public Cursor fetch() {
         String selectQuery = "Select * from farmer_data,tree_data WHERE farmer_data.farmerID = tree_data.farmerID";
@@ -199,6 +245,13 @@ public class DbAccess {
     }
     public void deletenurseryspecies(){
         database.execSQL("delete from "+ TABLE_NURSERY_SPECIES);
+    }
+
+    public void deleteFmnrFarmer_Inst(){
+        database.execSQL("delete from "+ TABLE_FMNR_FARMER_INST);
+    }
+    public void deleteFmnrSpecies(){
+        database.execSQL("delete from "+ TABLE_FMNR_SPECIES);
     }
     //get all records from db for sending
     //fetch from all tables where farmer ID match
@@ -244,7 +297,6 @@ public class DbAccess {
 
     //count no. of records tree planting
     public int getnurserycount(){
-        //Cursor cur = database.rawQuery(" SELECT Count(*) FROM " + TABLE_FARMER_INST, null);
         Cursor cur = database.rawQuery("SELECT count(*) from nursery_info,nursery_species WHERE nursery_info.nurseryID = nursery_species.nurseryID ", null);
         int x = 0;
         if (cur.moveToFirst())
@@ -254,4 +306,22 @@ public class DbAccess {
         cur.close();
         return x;
     }
+    //get fmnr data
+    public Cursor getFMNR() {
+        String selectQuery = "SELECT * FROM fmnr_farmer_inst,fmnr_species WHERE fmnr_farmer_inst.farmerID = fmnr_species.farmerID";
+        Cursor c = database.rawQuery(selectQuery, null);
+        return c;
+    }
+    //count number of records in fmnr
+    public int getfmnrcount(){
+        Cursor cur = database.rawQuery("SELECT count(*) from fmnr_farmer_inst,fmnr_species WHERE fmnr_farmer_inst.farmerID = fmnr_species.farmerID ", null);
+        int x = 0;
+        if (cur.moveToFirst())
+        {
+            x = cur.getInt(0);
+        }
+        cur.close();
+        return x;
+    }
+
 }

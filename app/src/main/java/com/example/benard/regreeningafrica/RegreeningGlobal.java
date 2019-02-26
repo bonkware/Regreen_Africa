@@ -131,7 +131,7 @@ public class RegreeningGlobal {
     }
     //Setting
     public void setlocal_name(String local_name) {
-        this.select_measurement = local_name;
+        this.local_name = local_name;
     }
     //Getter
     public String getstems() {
