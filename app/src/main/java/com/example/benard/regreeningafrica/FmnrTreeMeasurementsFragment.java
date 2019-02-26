@@ -72,9 +72,9 @@ public class FmnrTreeMeasurementsFragment extends Fragment {
         });//end of text watcher
 
         //get fid
-        String cohort_id = g.getcid();
+        /*String cohort_id = g.getcid();
         TextView cid = (TextView) view.findViewById(R.id.cid);
-        cid.setText(cohort_id);
+        cid.setText(cohort_id);*/
 
         return view;
     }

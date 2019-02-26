@@ -129,13 +129,54 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String seedlings_age = "seedlings_age";
     public static final String seedlings_price = "seedlings_price";
     //end of nursery columns
+    //start here tomoorooww
+    // nursery info
+    public static final String TABLE_FMNR_FARMER_INST = "fmnr_farmer_inst";
+    // nursery species
+    public static final String TABLE_FMNR_SPECIES = "fmnr_species";
+    //columns for farmer/institution info
+    public static final String _ID_fmnr = "_id";
+    public static final String fmnr_farmer_id = "farmerID";
+    public static final String fmnr_enum_name = "ename";
+    public static final String fmnr_date = "in_date";
+    public static final String fmnr_farmer_inst_name = "name";
+    public static final String fmnr_country = "country";
+    public static final String fmnr_county_region = "county_region";
+    public static final String fmnr_district = "district";
+    public static final String fmnr_planting_location = "planting_location";
+    public static final String fmnr_landsize_regreen = "landsize_regreen";
+    //columns for fmnr species
+    public static final String fmnrfarmer_id = "farmerID";
+    public static final String fmnr_species_name = "species";
+    public static final String fmnr_local_name = "local_name";
+    public static final String fmnr_management_pruning = "mg1";
+    public static final String fmnr_management_fencing = "mg2";
+    public static final String fmnr_management_weeding = "mg3";
+    public static final String fmnr_management_watering = "mg4";
+    public static final String fmnr_management_organic_fertilizer = "mg5";
+    public static final String fmnr_management_other = "mg_other";
+    public static final String fmnr_use_firewood = "usage1";
+    public static final String fmnr_use_housing_construction = "usage2";
+    public static final String fmnr_use_animal_feed = "usage3";
+    public static final String fmnr_use_food = "usage4";
+    public static final String fmnr_use_mulching = "usage5";
+    public static final String fmnr_use_other = "us_other";
+    public static final String fmnr_tree_stems = "stems";
+    public static final String fmnr_tree_height = "height";
+    public static final String fmnr_tree_rcd = "rcd";
+    public static final String fmnr_tree_dbh = "dbh";
+    public static final String fmnr_tree_latitude = "latitude";
+    public static final String fmnr_tree_longitude = "longitude";
+    public static final String fmnr_tree_altitude = "altitude";
+    public static final String fmnr_tree_accuracy = "accuracy";
+    public static final String fmnr_tree_image_path = "path";
     // Database name
     static final String DB_NAME = "regreen_africa.sqlite";
 
     // database version
     static final int DB_VERSION = 1;
 
-    // Creating farmer/institution table
+    // Creating farmer/institution table for tree planting
     private static final String CREATE_TABLE_FARMER_INST =
             "create table " +
                     TABLE_FARMER_INST + "(" +
@@ -177,6 +218,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     method_containerised + " TEXT,"+other_methods + " TEXT,"+propagation_seed + " TEXT,"+propagation_graft + " TEXT,"+propagation_cutting + " TEXT,"+propagation_marcotting + " TEXT,"+seed_source_onfarm + " TEXT,"+seed_source_local_dealer + " TEXT," +
                     ""+seed_source_national_dealer + " TEXT,"+seed_source_NGOs + " TEXT,"+other_seed_sources + " TEXT,"+graft_source_farmland + " TEXT,"+graft_source_plantation + " TEXT,"+graft_source_mother_blocks + " TEXT,"+graft_source_prisons + " TEXT,"+graft_source_others + " TEXT," +
                     ""+seeds_quantity_purchased + " TEXT,"+date_seeds_sown + " TEXT,"+seedlings_germinated + " TEXT,"+seedlings_servived + " TEXT,"+seedlings_age + " TEXT,"+seedlings_price + " TEXT);";
+    // Creating farmer/institution table for fmnr
+    private static final String CREATE_TABLE_FMNR_FARMER_INST =
+            "create table " +
+                    TABLE_FMNR_FARMER_INST + "(" +
+                    _ID_fmnr + " INTEGER PRIMARY KEY AUTOINCREMENT, " + fmnr_enum_name + " TEXT NOT NULL, " + fmnr_date + " TEXT NOT NULL, " + fmnr_farmer_inst_name + " TEXT,"+
+                    fmnr_country + " TEXT,"+fmnr_county_region +  " TEXT,"+fmnr_district + " TEXT,"+fmnr_planting_location + " TEXT,"+fmnr_landsize_regreen + " TEXT,"+
+                    fmnr_farmer_id+" TEXT);";
+    //creating tsble for measurement fmnr
+    private static final String CREATE_TABLE_FMNR_SPECIES =
+            "create table " +
+                    TABLE_FMNR_SPECIES + "(" +
+                    _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + " TEXT,"+ fmnr_species_name + " TEXT,"+fmnr_local_name + " TEXT,"+fmnr_management_pruning + " TEXT,"+fmnr_management_fencing + " TEXT,"+fmnr_management_weeding+" TEXT,"+fmnr_management_watering + " TEXT,"+
+                    fmnr_management_organic_fertilizer + " TEXT,"+fmnr_management_other + " TEXT,"+ fmnr_use_firewood + " TEXT,"+fmnr_use_housing_construction + " TEXT,"+fmnr_use_animal_feed+" TEXT,"+fmnr_use_food +
+                    " TEXT,"+fmnr_use_mulching +  " TEXT,"+fmnr_use_other + " TEXT,"+fmnr_tree_stems + " TEXT,"+fmnr_tree_height+" TEXT,"+" TEXT,"+fmnr_tree_rcd +  " TEXT,"+fmnr_tree_dbh + " TEXT,"+fmnr_tree_latitude + " TEXT,"+fmnr_tree_longitude+" TEXT,"+
+                    " TEXT,"+fmnr_tree_altitude +  " TEXT,"+fmnr_tree_accuracy + " TEXT,"+fmnr_tree_image_path + " TEXT,"+fmnrfarmer_id+" TEXT);";
 
     public DatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -191,6 +247,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_TRAININGS);
         db.execSQL(CREATE_TABLE_NURSERY);
         db.execSQL(CREATE_TABLE_NURSERY_SPECIES);
+        db.execSQL(CREATE_TABLE_FMNR_FARMER_INST);
+        db.execSQL(CREATE_TABLE_FMNR_SPECIES);
+
     }
 
     @Override
@@ -202,6 +261,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_TRAININGS);
         db.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_NURSERY);
         db.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_NURSERY_SPECIES);
+        db.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_FMNR_FARMER_INST);
+        db.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_FMNR_SPECIES);
         //create new tables
         onCreate(db);
     }

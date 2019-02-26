@@ -10,7 +10,7 @@ public class RegreeningGlobal {
     private static RegreeningGlobal instance;
     private double latitude=0.0, longitude=0.0, accuracy=0.0, altitude=0.0;
     private Boolean GPS_fix;
-    private String districts,fname,county_region,country,select_location,select_site,enrich_planting,in_date,landsize,number_planted,number_survived,species_name,date_planted,select_measurement,less_than;
+    private String districts,fname,county_region,country,select_location,select_site,enrich_planting,in_date,landsize,number_planted,number_survived,species_name,local_name,date_planted,select_measurement,stems;
     private String mg1,mg2,mg3,mg4,mg5,mg_other,mg_others,usage1,usage2,usage3,usage4,usage5,us_other,usg_other;
     private String livestock1,livestock2,livestock3,livestock4,livestock5,livestock_other,c_name,cr_name,
             dcw_name,training_topic,training_partners,training_date,training_venue,number_participants,ename,male_participants,female_participants,youth_participants;
@@ -126,20 +126,20 @@ public class RegreeningGlobal {
         this.date_planted = date_planted;
     }
     //Getter
-    public String getselect_measurement() {
-        return select_measurement;
+    public String getlocal_name() {
+        return local_name;
     }
     //Setting
-    public void setselect_measurement(String select_measurement) {
-        this.select_measurement = select_measurement;
+    public void setlocal_name(String local_name) {
+        this.select_measurement = local_name;
     }
     //Getter
-    public String getless_than() {
-        return less_than;
+    public String getstems() {
+        return stems;
     }
     //Setting
-    public void setless_than(String less_than) {
-        this.less_than = less_than;
+    public void setstems(String stems) {
+        this.stems = stems;
     }
     //Getting
     public String getdbh() {

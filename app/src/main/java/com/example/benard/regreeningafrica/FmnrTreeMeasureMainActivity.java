@@ -33,9 +33,12 @@ public class FmnrTreeMeasureMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tree_planting);
 
         viewPager = (ViewPager) findViewById(pager);
-        viewPager.setOffscreenPageLimit(4);//number of fragments
+        viewPager.setOffscreenPageLimit(7);//number of fragments
         final ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         //All fragments
+        adapter.addFragment(new FmnrSpeciesFragment(), "species");
+        adapter.addFragment(new FmnrManagementsFragment(), "managements");
+        adapter.addFragment(new FmnrUsageFragment(), "usage");
         adapter.addFragment(new FmnrTreeMeasurementsFragment(), "tree measurements");
         adapter.addFragment(new FmnrTreeGpsFragment(), "tree gps");
         adapter.addFragment(new FmnrTreePhotoFragment(), "tree photo");
@@ -43,9 +46,43 @@ public class FmnrTreeMeasureMainActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
 
     }
+    public void jumpToMgt(View view){
+      /*  EditText ed = (EditText) findViewById(R.id.speciesname);
+        EditText date = (EditText) findViewById(R.id.p_date);
+        boolean fail = false;
+        if (ed.getText().toString().trim().length() == 0) {
+            fail = true;
+            ed.requestFocus();
+            ed.setError("Enter Tree name");
+        }
+        if (date.getText().toString().trim().length() == 0) {
+            fail = true;
+            date.requestFocus();
+            date.setError("Select planted date");
+        }
+        if (!fail) {
+            viewPager.setCurrentItem(1);
+        }*/
+
+        viewPager.setCurrentItem(1);
+    }
+    public void jumpBackCohort(View view){
+        viewPager.setCurrentItem(0);
+    }
+
+    public void jumpToUsage(View view){
+
+        viewPager.setCurrentItem(2);
+    }
+    public void jumpBackMgt(View view){
+        viewPager.setCurrentItem(1);
+    }
+    public void jumpBackUsage(View view){
+        viewPager.setCurrentItem(2);
+    }
     //for navigation buttons i.e move next if all fields are filled
     public void jumpToFI(View view){
-        EditText ed = (EditText) findViewById(R.id.ename);
+      /*  EditText ed = (EditText) findViewById(R.id.ename);
         EditText date = (EditText) findViewById(R.id.in_date);
         boolean fail = false;
         if (ed.getText().toString().trim().length() == 0) {
@@ -59,8 +96,9 @@ public class FmnrTreeMeasureMainActivity extends AppCompatActivity {
             date.setError("Select date");
         }
         if (!fail) {
-            viewPager.setCurrentItem(1);
-        }
+            viewPager.setCurrentItem(3);
+        }*/
+        viewPager.setCurrentItem(3);
     }
     public void jumpToGPS(View view){
         EditText h = (EditText) findViewById(R.id.height);
@@ -71,25 +109,25 @@ public class FmnrTreeMeasureMainActivity extends AppCompatActivity {
             h.setError("Enter height");
         }
         if (!fail) {
-            viewPager.setCurrentItem(1);
+            viewPager.setCurrentItem(4);
         }
     }
     public void jumpBackMeasurement(View view){
-        viewPager.setCurrentItem(0);
+        viewPager.setCurrentItem(3);
     }
     public void jumpToPhoto(View view){
 
-        viewPager.setCurrentItem(2);
+        viewPager.setCurrentItem(5);
     }
     public void jumpBackGPS(View view){
-        viewPager.setCurrentItem(1);
+        viewPager.setCurrentItem(4);
     }
     public void jumpToEnd(View view){
 
-        viewPager.setCurrentItem(3);
+        viewPager.setCurrentItem(6);
     }
     public void jumpBackPhoto(View view){
-        viewPager.setCurrentItem(2);
+        viewPager.setCurrentItem(5);
     }
 
 

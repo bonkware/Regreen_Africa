@@ -11,86 +11,80 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.Random;
+
 /**
  * Created by benard on 1/18/19.
- *
  */
 
-public class FmnrTreeEndFragment extends Fragment {
+public class FmnrUsageFragment extends Fragment {
+
     private DbAccess dbAccess;
-    public FmnrTreeEndFragment() {
+    public FmnrUsageFragment() {
         // Required empty public constructor
     }
-
     RegreeningGlobal g = RegreeningGlobal.getInstance();
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fmnr_tree_end, container,
+        View view = inflater.inflate(R.layout.fmnr_tree_usage, container,
                 false);
 
         dbAccess = new DbAccess(this.getActivity());
         dbAccess.open();
 
-        //add another tree from the cohort
-        Button button_addtree = (Button) view.findViewById(R.id.add_tree);
-        button_addtree.setOnClickListener(new View.OnClickListener() {
+        //check for usage
+        final CheckBox check1 = (CheckBox) view.findViewById(R.id.usg_other) ;
+        final EditText text1=(EditText) view.findViewById(R.id.us_other);
+
+        check1.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-                switch (v.getId()) {
-                    case R.id.add_tree:
-                        //saveMeasurement();
-                        //dbAccess.insertMeasurent();
-                        Intent intent = new Intent(getActivity(), FmnrTreeMeasureMainActivity.class);
-                        startActivity(intent);
-                        //Toast.makeText(SelectSurvey.this.getActivity(),"Saved! Add new tree",Toast.LENGTH_SHORT).show();
-                        break;
+                if(check1.isChecked()){
+                    text1.setVisibility(View.VISIBLE);
+                }else{
+                    text1.setVisibility(View.GONE);
                 }
             }
         });
 
-        Button button_addnewfarmerinst = (Button) view.findViewById(R.id.add_new_farmerinst);
-        button_addnewfarmerinst.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switch (v.getId()) {
-                    case R.id.add_new_farmerinst:
-                        //saveMeasurement();
-                        //dbAccess.insertMeasurent();
-                        Intent intent = new Intent(getActivity(), TPFarmInstiMainAcivity.class);
-                        startActivity(intent);
-                        //Toast.makeText(SelectSurvey.this.getActivity(),"Saved! Add new tree",Toast.LENGTH_SHORT).show();
-                        break;
-                }
-            }
-        });
-        //finish survey
-        Button button_next = (Button) view.findViewById(R.id.finish);
+        //proceed to tree measurement
+       /* Button button_next = (Button) view.findViewById(R.id.tomeasurement);
         button_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
-                    case R.id.finish:
-                        //saveMeasurement();
-                        //dbAccess.insertMeasurent();
-                        Intent intent = new Intent(getActivity(), MainActivity.class);
+                    case R.id.tomeasurement:
+                        saveCohort();
+                        dbAccess.insertCohort();
+                        Intent intent = new Intent(getActivity(), TPTreeMeasureMainAcivity.class);
                         startActivity(intent);
                         break;
                 }
             }
-        });
+        });*/
 
         return view;
     }
 
-    public  void saveMeasurement(){
+    public  void saveCohort(){
+        //generate unique id for the cohort
+        Random generator = new Random();
+        int n = 10000;
+        n = generator.nextInt(n);//random number generator
+        String cid = "cohort_" + n;
+        g.setcid(cid);
         TextView fid = (TextView) getActivity().findViewById(R.id.fid);
         g.setfid(fid.getText().toString());
         EditText species = (EditText) getActivity().findViewById(R.id.speciesname);
         g.setspecies_name(species.getText().toString());
-        EditText local = (EditText) getActivity().findViewById(R.id.localname);
-        g.setlocal_name(local.getText().toString());
+        EditText date_planted = (EditText) getActivity().findViewById(R.id.p_date);
+        g.setdate_planted(date_planted.getText().toString());
+        EditText planted = (EditText) getActivity().findViewById(R.id.number_planted);
+        g.setnumber_planted(date_planted.getText().toString());
+        EditText survived = (EditText) getActivity().findViewById(R.id.number_survived);
+        g.setnumber_survived(date_planted.getText().toString());
 
         //managements
         CheckBox mg1 = (CheckBox) getActivity().findViewById(R.id.mg1) ;
@@ -99,6 +93,7 @@ public class FmnrTreeEndFragment extends Fragment {
         }else {
             g.setmg1("no");
         }
+
         CheckBox mg2 = (CheckBox) getActivity().findViewById(R.id.mg2) ;
         if(mg2.isChecked()) {
             //g.setmg2(mg2.getText().toString());
@@ -106,6 +101,7 @@ public class FmnrTreeEndFragment extends Fragment {
         }else {
             g.setmg2("no");
         }
+
         CheckBox mg3 = (CheckBox) getActivity().findViewById(R.id.mg3) ;
         if(mg3.isChecked()) {
             //g.setmg3(mg3.getText().toString());
@@ -113,6 +109,7 @@ public class FmnrTreeEndFragment extends Fragment {
         }else {
             g.setmg3("no");
         }
+
         CheckBox mg4 = (CheckBox) getActivity().findViewById(R.id.mg4) ;
         if(mg4.isChecked()) {
             //g.setmg4(mg4.getText().toString());
@@ -120,6 +117,7 @@ public class FmnrTreeEndFragment extends Fragment {
         }else {
             g.setmg4("no");
         }
+
         CheckBox mg5 = (CheckBox) getActivity().findViewById(R.id.mg5) ;
         if(mg5.isChecked()) {
             //g.setmg5(mg5.getText().toString());
@@ -135,6 +133,7 @@ public class FmnrTreeEndFragment extends Fragment {
         }else {
             g.setmg_others("no");
         }
+
         //get the edit text value for other
         EditText text=(EditText) getActivity().findViewById(R.id.mg_other);
         g.setmg_other(text.getText().toString());
@@ -172,6 +171,7 @@ public class FmnrTreeEndFragment extends Fragment {
         }else {
             g.setusage4("no");
         }
+
         CheckBox usage5 = (CheckBox) getActivity().findViewById(R.id.usage5) ;
         if(usage5.isChecked()) {
             //g.setusage5(usage5.getText().toString());
@@ -185,19 +185,12 @@ public class FmnrTreeEndFragment extends Fragment {
         }else {
             g.setusg_other("no");
         }
+
         //get the edit text value for other
         EditText text1=(EditText) getActivity().findViewById(R.id.us_other);
         g.setus_other(text1.getText().toString());
 
-        EditText stems=(EditText) getActivity().findViewById(R.id.stems);
-        g.setstems(stems.getText().toString());
-        EditText height=(EditText) getActivity().findViewById(R.id.height);
-        g.setheight(height.getText().toString());
-        EditText rcd = (EditText) getActivity().findViewById(R.id.RCD);
-        g.setrcd(rcd.getText().toString());
-        EditText dbh = (EditText) getActivity().findViewById(R.id.dbh);
-        g.setdbh(dbh.getText().toString());
-        //get Gps get it from global
-        //get Photo get it from global
+
+
     }
 }

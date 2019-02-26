@@ -113,6 +113,5 @@ public class FmnrFarmInstLandsizeFragment extends Fragment {
 
         EditText regreen_size = (EditText) getActivity().findViewById(R.id.landestimate);
         g.setlandsize(regreen_size.getText().toString());
-
     }
 }
