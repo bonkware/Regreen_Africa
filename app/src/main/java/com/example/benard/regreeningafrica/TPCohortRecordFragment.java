@@ -59,7 +59,7 @@ public class TPCohortRecordFragment extends Fragment {
                     int p = Integer.valueOf(planted.getText().toString());
                     int s = Integer.valueOf(survived.getText().toString());
 
-                    if (s >= p) {
+                    if (s > p) {
                         // myEditText2.setText("");  //this automatically sets the editText2 field back to empty
                         survived.setText("");
                         survived.setError("Cannot be more than the planted " + p);

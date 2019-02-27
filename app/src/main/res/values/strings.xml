@@ -46,4 +46,18 @@
     <string name="guide">
         <b>Regreening africa user Guide</b>
     </string>
+    <string name="data_collection">
+        <b>For data Collection</b>\n
+        Follow the following steps;\n
+        <b>1)</b> To start collecting data, Click on the <b>Start button</b>\n
+        <b>2)</b> Select the type of survey you want to collect data on from one of the buttons\n
+        <b>3)</b> Fill in the data, use <b>NEXT</b> or <b>PREV</b> for navigation through the screens.\n
+    </string>
+    <string name="Send_data">
+        <b>For sending completed data</b>\n
+        Follow this steps;\n
+        <b>1)</b> Connect your device to the internet\n
+        <b>2)</b> Click on <b>Send completed data</b> and select the completed filled data from one of the buttons\n
+        <b>3)</b> Completed data will always show the number of records to be sent\n
+    </string>
 </resources>

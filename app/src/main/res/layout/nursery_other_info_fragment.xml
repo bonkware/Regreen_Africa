@@ -114,7 +114,6 @@
             <EditText
                 android:id="@+id/price"
                 android:backgroundTint="#008000"
-                android:inputType="numberDecimal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/view_padding"

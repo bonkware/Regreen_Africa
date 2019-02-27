@@ -21,6 +21,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Spinner;
 
 import java.io.File;
 import java.util.Random;
@@ -161,8 +162,11 @@ public class NurseryPhotoFragment extends Fragment {
         String nid = "nursery_" + n;
         g.setnid(nid);
 
-        EditText country = (EditText) getActivity().findViewById(R.id.nursery_country);
-        g.setnursery_country(country.getText().toString());
+        Spinner country = (Spinner) getActivity().findViewById(R.id.nursery_country);
+        //g.setnursery_country(country.getText().toString());
+        if(country != null && country.getSelectedItem() !=null ) {
+            g.setnursery_country(country.getSelectedItem().toString());
+        }
         EditText county_region = (EditText) getActivity().findViewById(R.id.nursery_county);
         g.setnursery_county(county_region.getText().toString());
         EditText district = (EditText) getActivity().findViewById(R.id.nursery_district);

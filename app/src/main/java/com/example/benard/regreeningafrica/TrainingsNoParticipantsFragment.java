@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 public class TrainingsNoParticipantsFragment extends Fragment {
     private DbAccess dbAccess;
@@ -48,8 +49,11 @@ public class TrainingsNoParticipantsFragment extends Fragment {
         return view;
     }
     public void saveTrainings(){
-        EditText c_name = (EditText) getActivity().findViewById(R.id.cname);
-        g.setc_name(c_name.getText().toString());
+        Spinner c_name = (Spinner) getActivity().findViewById(R.id.cname);
+        //g.setc_name(c_name.getText().toString());
+        if(c_name != null && c_name.getSelectedItem() !=null ) {
+            g.setc_name(c_name.getSelectedItem().toString());
+        }
         EditText cr_name = (EditText) getActivity().findViewById(R.id.crname);
         g.setcr_name(cr_name.getText().toString());
         EditText dcw_name = (EditText) getActivity().findViewById(R.id.dcwname);

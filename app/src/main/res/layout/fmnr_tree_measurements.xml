@@ -112,8 +112,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/view_padding"
-                    android:hint="height more than 3m"
-                    android:inputType="numberDecimal"
+                    android:hint="Measure multiple stems. Use (;)"
                     android:textSize="@dimen/add_edit_textsize">
                 </EditText>
             </LinearLayout>

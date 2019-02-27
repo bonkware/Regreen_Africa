@@ -20,7 +20,7 @@
                 android:textSize="@dimen/textsize"
                 android:paddingTop="20dp"
                 android:textStyle="italic"/>
-            <EditText
+            <!--<EditText
                 android:id="@+id/nursery_country"
                 android:backgroundTint="#008000"
                 android:layout_width="match_parent"
@@ -29,7 +29,15 @@
                 android:padding="@dimen/view_padding"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:textSize="@dimen/add_edit_textsize"/>
+                android:textSize="@dimen/add_edit_textsize"/>-->
+            <Spinner
+                android:id="@+id/nursery_country"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dip"
+                android:layout_marginRight="8dip"
+                android:layout_marginTop="10dip"
+                android:entries="@array/countries" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

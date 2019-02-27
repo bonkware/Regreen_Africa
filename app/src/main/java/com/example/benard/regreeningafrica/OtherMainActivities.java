@@ -765,8 +765,8 @@ public class OtherMainActivities extends AppCompatActivity {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
                                                 //delete all records after send
-                                                //dbAccess.deleteFmnrFarmer_Inst();
-                                                //dbAccess.deleteFmnrSpecies();
+                                                dbAccess.deleteFmnrFarmer_Inst();
+                                                dbAccess.deleteFmnrSpecies();
                                                 //dismiss dialog by intent
                                                 Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
                                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
