@@ -41,7 +41,7 @@
                 <TextView
                     android:layout_width="0dp" android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="Record trees"
+                    android:text="Add tree planting"
                     android:gravity="center"
                     android:textStyle="bold|italic"
                     android:textSize="15sp">
@@ -74,7 +74,7 @@
                 <TextView
                     android:layout_width="0dp" android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="FMNR"
+                    android:text="Add FMNR"
                     android:gravity="center"
                     android:textStyle="bold|italic"
                     android:textSize="15sp">
@@ -107,7 +107,7 @@
                 <TextView
                     android:layout_width="0dp" android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="Add Trainings"
+                    android:text="Add Training"
                     android:gravity="center"
                     android:textStyle="bold|italic"
                     android:textSize="15sp">
