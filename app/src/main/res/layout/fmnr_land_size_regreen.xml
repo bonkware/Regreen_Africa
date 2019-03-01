@@ -20,7 +20,7 @@
                 android:id="@+id/text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="FMNR practice land size estimation"
+                android:text="FMNR practice land size estimation "
                 android:layout_gravity="center"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
@@ -28,7 +28,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Estimate the area size of the plot"
+                android:text="Estimate the area size of the plot(s) [hectares]"
                 android:textSize="@dimen/textsize"
                 android:paddingTop="20dp"
                 android:textStyle="italic"/>

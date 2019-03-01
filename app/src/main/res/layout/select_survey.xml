@@ -12,7 +12,7 @@
             android:id="@+id/livs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Select the type of Survey"
+            android:text="Select Survey and fill the forms"
             android:textStyle="bold|italic"
             android:gravity="center"
             android:textSize="18sp"

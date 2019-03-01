@@ -78,7 +78,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Root collar diameter"
+                    android:text="Root collar diameter [cm]"
                     android:textSize="@dimen/textsize"
                     android:padding="10dp"
                     android:textStyle="italic"/>
@@ -88,7 +88,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/view_padding"
-                    android:hint="height less than 3m"
                     android:inputType="numberDecimal"
                     android:textSize="@dimen/add_edit_textsize">
                 </EditText>
@@ -102,7 +101,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Diameter at breast height(DBH)"
+                    android:text="Diameter at breast height(DBH) [cm]"
                     android:textSize="@dimen/textsize"
                     android:padding="10dp"
                     android:textStyle="italic"/>
