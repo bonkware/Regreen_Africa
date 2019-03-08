@@ -54,7 +54,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="County/Region Name"
+                android:text="Region/County Name"
                 android:textSize="@dimen/textsize"
                 android:paddingTop="20dp"
                 android:textStyle="italic"/>
@@ -71,7 +71,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="District/Communne/Woreda Name"
+                android:text="District/Communne/Woreda/Circle/Sub-county Name"
                 android:textSize="@dimen/textsize"
                 android:paddingTop="20dp"
                 android:textStyle="italic"/>

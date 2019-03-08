@@ -27,13 +27,14 @@ public class FmnrFarmInstMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_fmnr);
 
         viewPager = (ViewPager) findViewById(pager);
-        viewPager.setOffscreenPageLimit(4);//number of fragments
+        viewPager.setOffscreenPageLimit(6);//number of fragments
         final ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         //All fragments
         adapter.addFragment(new FmnrFarmInstEnumFragment(), "enumurator");
         adapter.addFragment(new FmnrFarmInstFragment(), "farmer/institution details");
         adapter.addFragment(new FmnrFarmInstLocFragment(), "tree planting location");
-        //adapter.addFragment(new TPFarmInstSiteFragment(), "tree planting site");
+        adapter.addFragment(new FmnrFarmInstSpeciesNumberFragment(), "species number");
+        adapter.addFragment(new FmnrRestorationPhotoFragment(), "restoration land photo");
         adapter.addFragment(new FmnrFarmInstLandsizeFragment(), "land size green");
         viewPager.setAdapter(adapter);
 
@@ -76,25 +77,24 @@ public class FmnrFarmInstMainActivity extends AppCompatActivity {
     public void jumpBackFI(View view){
         viewPager.setCurrentItem(1);
     }
-  /*  public void jumpToSite(View view){
-        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.planting_location);
-        if (radioGroup.getCheckedRadioButtonId() == -1)
-        {
-            Toast.makeText(FmnrFarmInstMainActivity.this,"Select one",Toast.LENGTH_SHORT).show();
-        }
-        else
-        {
-            viewPager.setCurrentItem(3);
-        }
-    }*/
+    public void jumpTosnumber(View view){
+        viewPager.setCurrentItem(3);
+    }
+    public void jumpBackLoc(View view){
+        viewPager.setCurrentItem(2);
+    }
+  public void jumpTophoto(View view){
+      viewPager.setCurrentItem(4);
+  }
     public void jumpBackLocation(View view){
-        viewPager.setCurrentItem(2);
+        viewPager.setCurrentItem(3);
     }
+
     public void jumpToEst(View view){
-            viewPager.setCurrentItem(3);
+            viewPager.setCurrentItem(5);
     }
-    public void jumpBackSite(View view){
-        viewPager.setCurrentItem(2);
+    public void jumpBackphoto(View view){
+        viewPager.setCurrentItem(4);
     }
     //end of nav buttons
     class ViewPagerAdapter extends FragmentPagerAdapter {

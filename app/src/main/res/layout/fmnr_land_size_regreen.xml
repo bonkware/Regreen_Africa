@@ -20,11 +20,73 @@
                 android:id="@+id/text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="FMNR practice land size estimation "
+                android:text="FMNR practice land size"
                 android:layout_gravity="center"
+                android:visibility="invisible"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
             <!-- auto complete -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select month/year the FMNR was started"
+                android:textSize="@dimen/textsize"
+                android:paddingTop="20dp"
+                android:textStyle="italic"/>
+            <RelativeLayout
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="25dp">
+                <EditText
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Select month/year"
+                    android:id="@+id/fmnr_date"
+                    android:focusable="false"
+                    android:backgroundTint="#008000"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Select"
+                    android:id="@+id/btn_date"
+                    android:background="@drawable/edittext_radius"
+                    android:backgroundTint="#008000"
+                    android:layout_alignBottom="@+id/fmnr_date"
+                    android:layout_toRightOf="@+id/fmnr_date"
+                    android:layout_toEndOf="@+id/fmnr_date" />
+            </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Is the land being restored fenced?"
+                android:textSize="@dimen/textsize"
+                android:paddingTop="20dp"
+                android:textStyle="italic"/>
+
+            <RadioGroup
+                android:id="@+id/fenced"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="20dp">
+                <RadioButton
+                    android:id="@+id/yes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Yes"
+                    android:textSize="@dimen/add_edit_textsize" />
+
+                <RadioButton
+                    android:id="@+id/no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No"
+                    android:textSize="@dimen/add_edit_textsize" />
+            </RadioGroup>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -43,7 +105,6 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:textSize="@dimen/add_edit_textsize">
-
             </EditText>
         </LinearLayout>
     </ScrollView>
@@ -60,7 +121,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="jumpBackSite"
+            android:onClick="jumpBackphoto"
             android:text="PREV"/>
         <!--<Button
             android:id="@+id/next"
@@ -70,11 +131,10 @@
             android:onClick="jumpToCohort"
             android:text="NEXT"/>-->
         <Button
-            android:id="@+id/tocohort"
+            android:id="@+id/topolygon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="jumpToCohort"
             android:text="NEXT"/>
 
     </LinearLayout>

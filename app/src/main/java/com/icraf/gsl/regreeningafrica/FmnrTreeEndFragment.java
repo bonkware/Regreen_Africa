@@ -49,22 +49,6 @@ public class FmnrTreeEndFragment extends Fragment {
                 }
             }
         });
-
-        Button button_addnewfarmerinst = (Button) view.findViewById(R.id.add_new_farmerinst);
-        button_addnewfarmerinst.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switch (v.getId()) {
-                    case R.id.add_new_farmerinst:
-                        saveMeasurements();
-                        dbAccess.insertFmnrSpecies();//insert into db
-                        Intent intent = new Intent(getActivity(), TPFarmInstiMainAcivity.class);
-                        startActivity(intent);
-                        //Toast.makeText(SelectSurvey.this.getActivity(),"Saved! Add new tree",Toast.LENGTH_SHORT).show();
-                        break;
-                }
-            }
-        });
         //finish survey
         Button button_next = (Button) view.findViewById(R.id.finish);
         button_next.setOnClickListener(new View.OnClickListener() {
@@ -128,6 +112,14 @@ public class FmnrTreeEndFragment extends Fragment {
             g.setmg5("no");
         }
 
+        CheckBox mg6 = (CheckBox) getActivity().findViewById(R.id.mg6) ;
+        if(mg6.isChecked()) {
+            //g.setusage5(usage5.getText().toString());
+            g.setmg6("yes");
+        }else {
+            g.setmg6("no");
+        }
+
         //CheckBox mg_other = (CheckBox) view.findViewById(R.id.mg_others) ;
         CheckBox  check = (CheckBox) getActivity().findViewById(R.id.mg_others) ;
         if(check.isChecked()) {
@@ -178,6 +170,18 @@ public class FmnrTreeEndFragment extends Fragment {
             g.setusage5("yes");
         }else {
             g.setusage5("no");
+        }
+        CheckBox usage6 = (CheckBox) getActivity().findViewById(R.id.usage6) ;
+        if(usage6.isChecked()) {
+            g.setusage6("yes");
+        }else {
+            g.setusage6("no");
+        }
+        CheckBox usage7 = (CheckBox) getActivity().findViewById(R.id.usage7) ;
+        if(usage7.isChecked()) {
+            g.setusage7("yes");
+        }else {
+            g.setusage7("no");
         }
         CheckBox check1 = (CheckBox) getActivity().findViewById(R.id.usg_other) ;
         if(check1.isChecked()) {

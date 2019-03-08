@@ -20,11 +20,23 @@
             android:layout_height="wrap_content" >
 
             <TextView
-                android:layout_width="0dp" android:layout_weight="1"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Do you want to measure another tree?"
                 android:gravity="left"
                 android:textStyle="bold|italic"
+                android:textSize="15sp">
+            </TextView>
+        </TableRow>
+        <TableRow
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" >
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="(Measure maximum 5 most dominant species)"
+                android:gravity="left"
+                android:textStyle="italic"
                 android:textSize="15sp">
             </TextView>
         </TableRow>
@@ -38,30 +50,6 @@
                 android:layout_height="match_parent"
                 android:drawableRight="@drawable/ic_add"
                 android:layout_gravity="center"
-                />
-        </TableRow>
-        <TableRow
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:paddingTop="15dp">
-            <TextView
-                android:layout_width="0dp" android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="Add new farmer/Institution"
-                android:gravity="left"
-                android:textStyle="bold|italic"
-                android:textSize="15sp"/>
-        </TableRow>
-        <TableRow
-            android:id="@+id/addfarmerinst"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content">
-            <Button
-                android:id="@+id/add_new_farmerinst"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:drawableRight="@drawable/ic_add"
                 />
         </TableRow>
     </TableLayout>

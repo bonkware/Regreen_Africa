@@ -16,13 +16,13 @@
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:layout_margin="6dp"
             android:paddingRight="@dimen/activity_horizontal_margin">
-            <!--<TextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tree measurement"
-                android:layout_gravity="start"
-                android:textSize="20sp"
-                android:textStyle="bold" />-->
+                android:text="This section is optional"
+                android:textSize="@dimen/textsize"
+                android:padding="10dp"
+                android:textStyle="italic|bold"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -30,6 +30,15 @@
                 android:textSize="@dimen/textsize"
                 android:padding="10dp"
                 android:textStyle="italic|bold"/>
+            <TextView
+                android:id="@+id/fid"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:visibility="gone"
+                android:padding="@dimen/view_padding"
+                android:textSize="@dimen/add_edit_textsize"/>
             <LinearLayout
                 android:id="@+id/height_"
                 android:visibility="visible"
@@ -71,7 +80,7 @@
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/rcd_"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent">
@@ -94,7 +103,7 @@
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/dbh_"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent">

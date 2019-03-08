@@ -1,5 +1,6 @@
 package com.icraf.gsl.regreeningafrica;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,19 +8,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 
+import java.util.Calendar;
 import java.util.Random;
 
 /**
  * Created by benard on 1/18/19.
+ *
  */
 
 public class FmnrFarmInstLandsizeFragment extends Fragment {
     private DbAccess dbAccess;
+    Button btnDatePicker,btnDatePicker1;
+    EditText txtDate,txtDate1;
+    private int mYear, mMonth, mDay;
     public FmnrFarmInstLandsizeFragment() {
         // Required empty public constructor
     }
@@ -34,23 +41,53 @@ public class FmnrFarmInstLandsizeFragment extends Fragment {
         dbAccess = new DbAccess(this.getActivity());
         dbAccess.open();
 
-        //proceed to cohort recording
-        Button button_next = (Button) view.findViewById(R.id.tocohort);
+        //proceed to land size polygon
+        Button button_next = (Button) view.findViewById(R.id.topolygon);
         button_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
-                    case R.id.tocohort:
+                    case R.id.topolygon:
                         saveFmnrFarmerInst();//save
                         dbAccess.insertFmnrFarmerInst();//insert details to db
-                        Intent intent = new Intent(getActivity(), FmnrTreeMeasureMainActivity.class);
+                        Intent intent = new Intent(getActivity(), FmnrLandSizeMainActivity.class);
                         startActivity(intent);
                         //Toast.makeText(SelectSurvey.this.getActivity(),"Saved",Toast.LENGTH_SHORT).show();
                         break;
                 }
             }
         });
-        
+        //
+        //set date the farmer started the FMNR
+        btnDatePicker=(Button)view.findViewById(R.id.btn_date);
+        txtDate=(EditText)view.findViewById(R.id.fmnr_date);
+
+        //btnDatePicker.setOnClickListener(this);
+        btnDatePicker.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //call photo on button click
+                // Get Current Date
+                final Calendar c = Calendar.getInstance();
+                mYear = c.get(Calendar.YEAR);
+                mMonth = c.get(Calendar.MONTH);
+                mDay = c.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(),
+                        new DatePickerDialog.OnDateSetListener() {
+
+                            @Override
+                            public void onDateSet(DatePicker view, int year,
+                                                  int monthOfYear, int dayOfMonth) {
+                                //txtDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                                txtDate.setText((monthOfYear + 1) + "/" + year);
+
+                            }
+                        }, mYear, mMonth, mDay);
+                datePickerDialog.show();
+
+            }
+        });
+
         return view;
     }
     // save farmer/institution data when you go next
@@ -95,10 +132,27 @@ public class FmnrFarmInstLandsizeFragment extends Fragment {
             g.setselect_location(select.getText().toString());
         }
 
-       /* RadioGroup group = (RadioGroup) getActivity().findViewById(R.id.planting_site);
+        RadioGroup sn = (RadioGroup) getActivity().findViewById(R.id.species_number);
+        //check whether it is checked
+        if(sn.getCheckedRadioButtonId()==-1){
+            //Toast.makeText(FarmerDetails.this.getActivity(),"Please select Radio Button!",Toast.LENGTH_SHORT).show();
+        }
+        else {
+            // get selected radioButton from radioGroup
+            int selectedId = sn.getCheckedRadioButtonId();
+            // find the radioButton by returned id
+            RadioButton species_number = (RadioButton) getActivity().findViewById(selectedId);
+            // radioButton text
+            g.setspecies_number(species_number.getText().toString());
+        }
+        //get photo from global
+        EditText fmnr_date = (EditText) getActivity().findViewById(R.id.fmnr_date);
+        g.setfmnr_date(fmnr_date.getText().toString());
+
+        RadioGroup group = (RadioGroup) getActivity().findViewById(R.id.fenced);
         //check whether it is checked
         if(group.getCheckedRadioButtonId()==-1){
-            //Toast.makeText(FarmerDetails.this.getActivity(),"Please select Radio Button!",Toast.LENGTH_SHORT).show();
+            //Toast.makeText(FmnrFarmInstLandsizeFragment.this.getActivity(),"Please select Radio Button!",Toast.LENGTH_SHORT).show();
         }
         else {
             // get selected radioButton from radioGroup
@@ -106,9 +160,8 @@ public class FmnrFarmInstLandsizeFragment extends Fragment {
             // find the radioButton by returned id
             RadioButton select = (RadioButton) getActivity().findViewById(selectedId);
             // radioButton text
-            g.setselect_site(select.getText().toString());
-        }*/
-
+            g.setfmnr_fenced(select.getText().toString());
+        }
         EditText regreen_size = (EditText) getActivity().findViewById(R.id.landestimate);
         g.setlandsize(regreen_size.getText().toString());
     }

@@ -34,7 +34,7 @@ public class TPFarmInstLandsizeFragment extends Fragment {
         dbAccess = new DbAccess(this.getActivity());
         dbAccess.open();
 
-        //proceed to cohort recording
+        //proceed to polygon land size recording
         Button button_next = (Button) view.findViewById(R.id.tocohort);
         button_next.setOnClickListener(new View.OnClickListener() {
             @Override

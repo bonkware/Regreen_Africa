@@ -10,9 +10,9 @@ public class RegreeningGlobal {
     private static RegreeningGlobal instance;
     private double latitude=0.0, longitude=0.0, accuracy=0.0, altitude=0.0;
     private Boolean GPS_fix;
-    private String districts,fname,county_region,country,select_location,select_site,enrich_planting,in_date,landsize,number_planted,number_survived,species_name,local_name,date_planted,select_measurement,stems;
-    private String mg1,mg2,mg3,mg4,mg5,mg_other,mg_others,usage1,usage2,usage3,usage4,usage5,us_other,usg_other;
-    private String livestock1,livestock2,livestock3,livestock4,livestock5,livestock_other,c_name,cr_name,
+    private String districts,fname,county_region,country,select_location,select_site,fmnr_date,in_date,landsize,number_planted,number_survived,species_name,local_name,date_planted,select_measurement,stems;
+    private String mg1,mg2,mg3,mg4,mg5,mg6,mg_other,mg_others,usage1,usage2,usage3,usage4,usage5,usage6,usage7,us_other,usg_other;
+    private String fmnr_fenced,livestock2,livestock3,livestock4,livestock5,livestock_other,c_name,cr_name,
             dcw_name,training_topic,training_partners,training_date,training_venue,number_participants,ename,male_participants,female_participants,youth_participants;
     private String dbh,height,rcd,path,fid,cid;
     //for nursery module
@@ -21,7 +21,7 @@ public class RegreeningGlobal {
             seed,graft,cutting,marcotting,farmland,plantation,mother_blocks,prisons,other_graft_sources,qpurchased,date_sown,germinated,survived,seedling_age,price,
             select_radio, bare_root,container,other_method, other, own_farm_seeds, local_dealer_seeds, national_seed,ngos_seed,
             other_seed_source, other_s, nursery_species, nursery_local, seedlings_number, seedlings_age, hardening,
-            select_graft,grafted_species_name, rootstock, own_farm1,local_dealer1, govt_seed, source,other_s1,observation,image,nid;
+            species_number,grafted_species_name, rootstock, own_farm1,local_dealer1, govt_seed, source,other_s1,observation,image,nid;
     private Bitmap photo;
     private Boolean save_add;
 
@@ -101,6 +101,14 @@ public class RegreeningGlobal {
     public void setnumber_survived(String number_survived) {
         this.number_survived = number_survived;
     }
+    //Getting
+    public String getfmnr_date() {
+        return fmnr_date;
+    }
+    //Setting
+    public void setfmnr_date(String fmnr_date) {
+        this.fmnr_date = fmnr_date;
+    }
     //Getter area size estimate
     public String getlandsize() {
         return landsize;
@@ -174,12 +182,12 @@ public class RegreeningGlobal {
         this.path = path;
     }
     //Getting
-    public Bitmap getphoto() {
-        return photo;
+    public String getfmnr_fenced() {
+        return fmnr_fenced;
     }
     //Setting
-    public void setphoto(Bitmap photo) {
-        this.photo = photo;
+    public void setfmnr_fenced(String fmnr_fenced) {
+        this.fmnr_fenced = fmnr_fenced;
     }
     //Getting
     public String getmg1() {
@@ -293,45 +301,38 @@ public class RegreeningGlobal {
         this.usg_other = usg_other;
     }
 
+
     //Getting
-    public String getlivestock1() {
-        return livestock1;
+    public String getspecies_number() {
+        return species_number;
     }
     //Setting
-    public void setlivestock1(String livestock1) {
-        this.livestock1 = livestock1;
+    public void setspecies_number(String species_number) {
+        this.species_number = species_number;
     }
     //Getting
-    public String getlivestock2() {
-        return livestock2;
+    public String getmg6() {
+        return mg6;
     }
     //Setting
-    public void setlivestock2(String livestock2) {
-        this.livestock2 = livestock2;
+    public void setmg6(String mg6) {
+        this.mg6 = mg6;
     }
     //Getting
-    public String getlivestock3() {
-        return livestock3;
+    public String getusage6() {
+        return usage6;
     }
     //Setting
-    public void setlivestock3(String livestock3) {
-        this.livestock3 = livestock3;
+    public void setusage6(String usage6) {
+        this.usage6 = usage6;
     }
     //Getting
-    public String getlivestock4() {
-        return livestock4;
+    public String getusage7() {
+        return usage7;
     }
     //Setting
-    public void setlivestock4(String livestock4) {
-        this.livestock4 = livestock4;
-    }
-    //Getting
-    public String getlivestock5() {
-        return livestock5;
-    }
-    //Setting
-    public void setlivestock5(String livestock5) {
-        this.livestock5 = livestock5;
+    public void setusage7(String usage7) {
+        this.usage7 = usage7;
     }
     //Getting
     public String getlivestock_other() {
@@ -711,6 +712,7 @@ public class RegreeningGlobal {
 
 
     //********************************* end nursery module *****************************//
+    //for the polygon points
 
     //Getting Lat/Long
     public double getLatitude(){
@@ -725,33 +727,13 @@ public class RegreeningGlobal {
     public  double getAltitude(){
         return altitude;
     }
-    //Setting lat/lon
-   /* public void setLatitude(Double lat) {
-        this.latitude = lat;
-    }
-    public void setLongitude(Double lon) {
-        this.longitude = lon;
-    }
-    public void setAltitude(Double altitude) {
-        this.altitude = altitude;
-    }
-    public void setAccuracy(Double accuracy) {
-        this.accuracy = accuracy;
-    }*/
+
     public  void setcurrentlat_long(Double latitude, Double longitude,Double altitude, float accuracy) {
         this.latitude = latitude;
         this.longitude = longitude;
         this.altitude = altitude;
         this.accuracy = accuracy;
     }
-    //Getting/setting key for GPS_button status
-    public Boolean getGPS_fix(){
-        return GPS_fix;
-    }
-    public  void setGPS_fix(Boolean gps_status){
-        this.GPS_fix = gps_status;
-    }
-
 
     public static synchronized RegreeningGlobal getInstance(){
         if(instance==null){

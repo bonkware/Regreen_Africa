@@ -716,31 +716,44 @@ public class OtherMainActivities extends AppCompatActivity {
                     final String fmnr_county_region = cursor.getString(cursor.getColumnIndex("county_region"));
                     final String fmnr_district = cursor.getString(cursor.getColumnIndex("district"));
                     final String fmnr_planting_location = cursor.getString(cursor.getColumnIndex("planting_location"));
+                    final String fmnr_species_number_start = cursor.getString(cursor.getColumnIndex("fmnr_species_number_start"));
+                    final String fmnr_restoration_photo = cursor.getString(cursor.getColumnIndex("fmnr_restoration_photo"));
+                    final String fmnr_started_date = cursor.getString(cursor.getColumnIndex("fmnr_started_date"));
+                    final String fmnr_fenced = cursor.getString(cursor.getColumnIndex("fmnr_fenced"));
                     final String fmnr_landsize_regreen = cursor.getString(cursor.getColumnIndex("landsize_regreen"));
-                    //
+                    //for fmnr plot polygon
+                    final String fid = cursor.getString(cursor.getColumnIndex("farmerID"));
+                    final String fmnr_polygon_latitude = cursor.getString(cursor.getColumnIndex("latitude"));
+                    final String fmnr_polygon_longitude = cursor.getString(cursor.getColumnIndex("longitude"));
+                    final String fmnr_polygon_altitude = cursor.getString(cursor.getColumnIndex("altitude"));
+                    final String fmnr_polygon_accuracy = cursor.getString(cursor.getColumnIndex("accuracy"));
+                    //fmnr species
                     final String fmnrfarmer_id = cursor.getString(cursor.getColumnIndex("farmerID"));
                     final String fmnr_species_name = cursor.getString(cursor.getColumnIndex("species"));
                     final String fmnr_local_name = cursor.getString(cursor.getColumnIndex("local_name"));
                     final String fmnr_management_pruning = cursor.getString(cursor.getColumnIndex("mg1"));
                     final String fmnr_management_fencing = cursor.getString(cursor.getColumnIndex("mg2"));
                     final String fmnr_management_weeding = cursor.getString(cursor.getColumnIndex("mg3"));
-                    final String fmnr_management_watering = cursor.getString(cursor.getColumnIndex("mg4"));
+                    final String fmnr_management_thinning = cursor.getString(cursor.getColumnIndex("mg4"));
                     final String fmnr_management_organic_fertilizer = cursor.getString(cursor.getColumnIndex("mg5"));
+                    final String fmnr_management_pollarding_lopping = cursor.getString(cursor.getColumnIndex("mg6"));
                     final String fmnr_management_other = cursor.getString(cursor.getColumnIndex("mg_other"));
                     final String fmnr_use_firewood = cursor.getString(cursor.getColumnIndex("usage1"));
                     final String fmnr_use_housing_construction = cursor.getString(cursor.getColumnIndex("usage2"));
-                    final String fmnr_use_animal_feed = cursor.getString(cursor.getColumnIndex("usage3"));
-                    final String fmnr_use_food = cursor.getString(cursor.getColumnIndex("usage4"));
-                    final String fmnr_use_mulching = cursor.getString(cursor.getColumnIndex("usage5"));
+                    final String fmnr_use_fodder = cursor.getString(cursor.getColumnIndex("usage3"));
+                    final String fmnr_use_fruits = cursor.getString(cursor.getColumnIndex("usage4"));
+                    final String fmnr_use_soil_fertility = cursor.getString(cursor.getColumnIndex("usage5"));
+                    final String fmnr_use_leafy_vegetables = cursor.getString(cursor.getColumnIndex("usage6"));
+                    final String fmnr_use_nuts = cursor.getString(cursor.getColumnIndex("usage7"));
                     final String fmnr_use_other = cursor.getString(cursor.getColumnIndex("us_other"));
                     final String fmnr_tree_stems = cursor.getString(cursor.getColumnIndex("stems"));
                     final String fmnr_tree_height = cursor.getString(cursor.getColumnIndex("height"));
                     final String fmnr_tree_rcd = cursor.getString(cursor.getColumnIndex("rcd"));
                     final String fmnr_tree_dbh = cursor.getString(cursor.getColumnIndex("dbh"));
-                    final String fmnr_tree_latitude = cursor.getString(cursor.getColumnIndex("latitude"));
-                    final String fmnr_tree_longitude = cursor.getString(cursor.getColumnIndex("longitude"));
-                    final String fmnr_tree_altitude = cursor.getString(cursor.getColumnIndex("altitude"));
-                    final String fmnr_tree_accuracy = cursor.getString(cursor.getColumnIndex("accuracy"));
+                    final String fmnr_tree_latitude = cursor.getString(cursor.getColumnIndex("tree_latitude"));
+                    final String fmnr_tree_longitude = cursor.getString(cursor.getColumnIndex("tree_longitude"));
+                    final String fmnr_tree_altitude = cursor.getString(cursor.getColumnIndex("tree_altitude"));
+                    final String fmnr_tree_accuracy = cursor.getString(cursor.getColumnIndex("tree_accuracy"));
                     final String fmnr_tree_image_path = cursor.getString(cursor.getColumnIndex("path"));
 
                     // create an object of volley request queue
@@ -756,7 +769,7 @@ public class OtherMainActivities extends AppCompatActivity {
                             //notification
                             try{
                                 //count records sent
-                                final int count = dbAccess.getcount();
+                                final int count = dbAccess.getfmnrcount();
                                 //Toast.makeText(Index.this, count + " record(s) " + response, Toast.LENGTH_LONG).show();
                                 //refresh activity after dialog
                                 final AlertDialog.Builder builder = new AlertDialog.Builder(OtherMainActivities.this).setTitle("Data sent!").setMessage(count + " record(s) " + response)
@@ -766,6 +779,7 @@ public class OtherMainActivities extends AppCompatActivity {
                                                 //delete all records after send
                                                 dbAccess.deleteFmnrFarmer_Inst();
                                                 dbAccess.deleteFmnrSpecies();
+                                                dbAccess.deleteFmnrPolygon();
                                                 //dismiss dialog by intent
                                                 Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
                                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -875,21 +889,35 @@ public class OtherMainActivities extends AppCompatActivity {
                             param.put("county_region", fmnr_county_region);
                             param.put("district", fmnr_district);
                             param.put("planting_location", fmnr_planting_location);
+                            param.put("fmnr_species_number_start", fmnr_species_number_start);
+                            param.put("fmnr_restoration_photo", fmnr_restoration_photo);
+                            param.put("fmnr_started_date", fmnr_started_date);
+                            param.put("fmnr_fenced", fmnr_fenced);
                             param.put("landsize_regreen", fmnr_landsize_regreen);
+                            //polygon
+                            param.put("farmerID", fid);
+                            param.put("latitude", fmnr_polygon_latitude);
+                            param.put("longitude", fmnr_polygon_longitude);
+                            param.put("altitude", fmnr_polygon_altitude);
+                            param.put("accuracy", fmnr_polygon_accuracy);
+                            //species
                             param.put("farmerID", fmnrfarmer_id);
                             param.put("species", fmnr_species_name);
                             param.put("local", fmnr_local_name);
                             param.put("management_pruning", fmnr_management_pruning);
                             param.put("management_fencing", fmnr_management_fencing);
                             param.put("management_weeding", fmnr_management_weeding);
-                            param.put("management_watering", fmnr_management_watering);
+                            param.put("management_thinning", fmnr_management_thinning);
                             param.put("management_organic_fertilizer", fmnr_management_organic_fertilizer);
+                            param.put("management_pollarding_lopping", fmnr_management_pollarding_lopping);
                             param.put("management_other", fmnr_management_other);
                             param.put("use_firewood", fmnr_use_firewood);
                             param.put("use_housing_construction", fmnr_use_housing_construction);
-                            param.put("use_animal_feed", fmnr_use_animal_feed);
-                            param.put("use_food", fmnr_use_food);
-                            param.put("use_mulching", fmnr_use_mulching);
+                            param.put("use_fodder", fmnr_use_fodder);
+                            param.put("use_fruits", fmnr_use_fruits);
+                            param.put("use_soil_fertility", fmnr_use_soil_fertility);
+                            param.put("use_leafy_vegetables", fmnr_use_leafy_vegetables);
+                            param.put("use_nuts", fmnr_use_nuts);
                             param.put("use_other", fmnr_use_other);
                             param.put("stems", fmnr_tree_stems);
                             param.put("tree_height", fmnr_tree_height);

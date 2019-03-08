@@ -1,0 +1,90 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+    <ScrollView
+        android:layout_above="@+id/nav"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="6dp"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin">
+            <TextView
+                android:id="@+id/select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="How many tree species did the farmer/group/institution start with at the onset of FMNR?"
+                android:textSize="@dimen/textsize"
+                android:textStyle="italic">
+            </TextView>
+
+            <RadioGroup
+                android:id="@+id/species_number"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="20dp">
+                <RadioButton
+                    android:id="@+id/less_five"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="&lt; 5"
+                    android:textSize="@dimen/add_edit_textsize" />
+                <RadioButton
+                    android:id="@+id/btwfive_ten"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5 - 10"
+                    android:textSize="@dimen/add_edit_textsize" />
+                <RadioButton
+                    android:id="@+id/btwten_fifteen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10 - 15"
+                    android:textSize="@dimen/add_edit_textsize" />
+                <RadioButton
+                    android:id="@+id/btwfifteen_twenty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="15 - 20"
+                    android:textSize="@dimen/add_edit_textsize" />
+                <RadioButton
+                    android:id="@+id/more_twenty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="&gt; 20"
+                    android:textSize="@dimen/add_edit_textsize" />
+            </RadioGroup>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:id="@+id/nav">
+
+        <Button
+            android:id="@+id/prev"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="jumpBackLoc"
+            android:layout_weight="1"
+            android:text="PREV"/>
+
+        <Button
+            android:id="@+id/next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="jumpTophoto"
+            android:layout_weight="1"
+            android:text="NEXT"/>
+
+    </LinearLayout>
+</RelativeLayout>

@@ -132,6 +132,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // fmnr farmer/institution info table
     public static final String TABLE_FMNR_FARMER_INST = "fmnr_farmer_inst";
+    //fmnr polygon
+    public static final String TABLE_LANDSIZEPOLYGON = "landsizepolygon";
     // fmnr species table
     public static final String TABLE_FMNR_SPECIES = "fmnr_species";
     //columns for farmer/institution info
@@ -144,7 +146,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String fmnr_county_region = "county_region";
     public static final String fmnr_district = "district";
     public static final String fmnr_planting_location = "planting_location";
+    public static final String fmnr_species_number_start = "fmnr_species_number_start";
+    public static final String fmnr_restoration_photo = "fmnr_restoration_photo";
+    public static final String fmnr_started_date = "fmnr_started_date";
+    public static final String fmnr_fenced = "fmnr_fenced";
     public static final String fmnr_landsize_regreen = "landsize_regreen";
+    //columns for fmnr polygon
+    public static final String fid = "farmerID";
+    public static final String fmnr_polygon_latitude = "latitude";
+    public static final String fmnr_polygon_longitude = "longitude";
+    public static final String fmnr_polygon_altitude = "altitude";
+    public static final String fmnr_polygon_accuracy = "accuracy";
     //columns for fmnr species
     public static final String fmnrfarmer_id = "farmerID";
     public static final String fmnr_species_name = "species";
@@ -152,23 +164,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String fmnr_management_pruning = "mg1";
     public static final String fmnr_management_fencing = "mg2";
     public static final String fmnr_management_weeding = "mg3";
-    public static final String fmnr_management_watering = "mg4";
+    public static final String fmnr_management_thinning = "mg4";
     public static final String fmnr_management_organic_fertilizer = "mg5";
+    public static final String fmnr_management_pollarding_lopping = "mg6";
     public static final String fmnr_management_other = "mg_other";
     public static final String fmnr_use_firewood = "usage1";
     public static final String fmnr_use_housing_construction = "usage2";
-    public static final String fmnr_use_animal_feed = "usage3";
-    public static final String fmnr_use_food = "usage4";
-    public static final String fmnr_use_mulching = "usage5";
+    public static final String fmnr_use_fodder = "usage3";
+    public static final String fmnr_use_fruits = "usage4";
+    public static final String fmnr_use_soil_fertility = "usage5";
+    public static final String fmnr_use_leafy_vegetables = "usage6";
+    public static final String fmnr_use_nuts = "usage7";
     public static final String fmnr_use_other = "us_other";
     public static final String fmnr_tree_stems = "stems";
     public static final String fmnr_tree_height = "height";
     public static final String fmnr_tree_rcd = "rcd";
     public static final String fmnr_tree_dbh = "dbh";
-    public static final String fmnr_tree_latitude = "latitude";
-    public static final String fmnr_tree_longitude = "longitude";
-    public static final String fmnr_tree_altitude = "altitude";
-    public static final String fmnr_tree_accuracy = "accuracy";
+    public static final String fmnr_tree_latitude = "tree_latitude";
+    public static final String fmnr_tree_longitude = "tree_longitude";
+    public static final String fmnr_tree_altitude = "tree_altitude";
+    public static final String fmnr_tree_accuracy = "tree_accuracy";
     public static final String fmnr_tree_image_path = "path";
     // Database name
     static final String DB_NAME = "regreen_africa.sqlite";
@@ -223,16 +238,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "create table " +
                     TABLE_FMNR_FARMER_INST + "(" +
                     _ID_fmnr + " INTEGER PRIMARY KEY AUTOINCREMENT, " + fmnr_enum_name + " TEXT NOT NULL, " + fmnr_date + " TEXT NOT NULL, " + fmnr_farmer_inst_name + " TEXT,"+
-                    fmnr_country + " TEXT,"+fmnr_county_region +  " TEXT,"+fmnr_district + " TEXT,"+fmnr_planting_location + " TEXT,"+fmnr_landsize_regreen + " TEXT,"+
+                    fmnr_country + " TEXT,"+fmnr_county_region +  " TEXT,"+fmnr_district + " TEXT,"+fmnr_planting_location + " TEXT,"+fmnr_species_number_start + " TEXT,"+fmnr_restoration_photo + " TEXT,"+fmnr_started_date + " TEXT,"+fmnr_fenced + " TEXT,"+fmnr_landsize_regreen + " TEXT,"+
                     fmnr_farmer_id+" TEXT);";
     //creating table for measurement fmnr
     private static final String CREATE_TABLE_FMNR_SPECIES =
             "create table " +
                     TABLE_FMNR_SPECIES + "(" +
-                    _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + " TEXT,"+ fmnr_species_name + " TEXT,"+fmnr_local_name + " TEXT,"+fmnr_management_pruning + " TEXT,"+fmnr_management_fencing + " TEXT,"+fmnr_management_weeding+" TEXT,"+fmnr_management_watering + " TEXT,"+
-                    fmnr_management_organic_fertilizer + " TEXT,"+fmnr_management_other + " TEXT,"+ fmnr_use_firewood + " TEXT,"+fmnr_use_housing_construction + " TEXT,"+fmnr_use_animal_feed+" TEXT,"+fmnr_use_food +
-                    " TEXT,"+fmnr_use_mulching +  " TEXT,"+fmnr_use_other + " TEXT,"+fmnr_tree_stems + " TEXT,"+fmnr_tree_height+" TEXT,"+fmnr_tree_rcd +  " TEXT,"+fmnr_tree_dbh + " TEXT,"+fmnr_tree_latitude + " TEXT,"+fmnr_tree_longitude+" TEXT,"+
+                    _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + " TEXT,"+ fmnr_species_name + " TEXT,"+fmnr_local_name + " TEXT,"+fmnr_management_pruning + " TEXT,"+fmnr_management_fencing + " TEXT,"+fmnr_management_weeding+" TEXT,"+fmnr_management_thinning + " TEXT,"+
+                    fmnr_management_organic_fertilizer + " TEXT,"+fmnr_management_pollarding_lopping + " TEXT,"+fmnr_management_other + " TEXT,"+ fmnr_use_firewood + " TEXT,"+fmnr_use_housing_construction + " TEXT,"+fmnr_use_fodder+" TEXT,"+fmnr_use_fruits +
+                    " TEXT,"+fmnr_use_soil_fertility +  " TEXT,"+fmnr_use_leafy_vegetables +  " TEXT,"+fmnr_use_nuts +  " TEXT,"+fmnr_use_other + " TEXT,"+fmnr_tree_stems + " TEXT,"+fmnr_tree_height+" TEXT,"+fmnr_tree_rcd +  " TEXT,"+fmnr_tree_dbh + " TEXT,"+fmnr_tree_latitude + " TEXT,"+fmnr_tree_longitude+" TEXT,"+
                     fmnr_tree_altitude +  " TEXT,"+fmnr_tree_accuracy + " TEXT,"+fmnr_tree_image_path + " TEXT,"+fmnrfarmer_id+" TEXT);";
+    //creating columns for polygon
+    private static final String CREATE_TABLE_LANDSIZEPOLYGON =
+            "create table " +
+                    TABLE_LANDSIZEPOLYGON + "(" +
+                    id + " INTEGER PRIMARY KEY AUTOINCREMENT, " + fid + " TEXT NOT NULL,"+ fmnr_polygon_latitude + " TEXT,"+fmnr_polygon_longitude + " TEXT,"+fmnr_polygon_altitude + " TEXT,"+fmnr_polygon_accuracy+" TEXT);";
 
     public DatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -248,6 +268,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_NURSERY);
         db.execSQL(CREATE_TABLE_NURSERY_SPECIES);
         db.execSQL(CREATE_TABLE_FMNR_FARMER_INST);
+        db.execSQL(CREATE_TABLE_LANDSIZEPOLYGON);
         db.execSQL(CREATE_TABLE_FMNR_SPECIES);
 
     }

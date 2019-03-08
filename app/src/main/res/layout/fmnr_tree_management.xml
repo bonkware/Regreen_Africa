@@ -90,7 +90,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:textSize="@dimen/add_edit_textsize"
-                        android:text="Watering" />
+                        android:text="Thinning" />
                 </TableRow>
                 <TableRow
                     android:id="@+id/oth"
@@ -103,14 +103,13 @@
                         android:layout_gravity="center"
                         android:button="@drawable/custom_checkbox_manure"/>
                     <CheckBox
-                        android:id="@+id/mg_others"
+                        android:id="@+id/mg6"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:button="@drawable/custom_checkbox_more"/>
                 </TableRow>
                 <TableRow
-                    android:id="@+id/pn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content" >
                     <TextView
@@ -119,6 +118,28 @@
                         android:layout_gravity="center"
                         android:textSize="@dimen/add_edit_textsize"
                         android:text="Organic \n fertilizer" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="@dimen/add_edit_textsize"
+                        android:text="Pollarding/ \n lopping" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" >
+
+                    <CheckBox
+                        android:id="@+id/mg_others"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:button="@drawable/custom_checkbox_more"/>
+                </TableRow>
+                <TableRow
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" >
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

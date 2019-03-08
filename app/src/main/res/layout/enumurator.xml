@@ -22,12 +22,13 @@
                 android:text="Enumurator"
                 android:layout_gravity="center"
                 android:textSize="18sp"
+                android:visibility="invisible"
                 android:textStyle="bold"/>
             <!-- auto complete -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Enumerator Name"
+                android:text="Name of data collector"
                 android:textSize="@dimen/textsize"
                 android:paddingTop="20dp"
                 android:textStyle="italic"/>

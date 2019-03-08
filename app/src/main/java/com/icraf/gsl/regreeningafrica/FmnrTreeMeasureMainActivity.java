@@ -34,6 +34,7 @@ public class FmnrTreeMeasureMainActivity extends AppCompatActivity {
         viewPager.setOffscreenPageLimit(7);//number of fragments
         final ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         //All fragments
+        //adapter.addFragment(new FmnrLandSizePolygonFragment(), "land size");
         adapter.addFragment(new FmnrSpeciesFragment(), "species");
         adapter.addFragment(new FmnrManagementsFragment(), "managements");
         adapter.addFragment(new FmnrUsageFragment(), "usage");
@@ -44,30 +45,20 @@ public class FmnrTreeMeasureMainActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
 
     }
+  /*  public void jumpToSpecies(View view){
+
+        viewPager.setCurrentItem(1);
+    }
+    public void jumpBackLandsize(View view){
+        viewPager.setCurrentItem(0);
+    }*/
     public void jumpToMgt(View view){
-      /*  EditText ed = (EditText) findViewById(R.id.speciesname);
-        EditText date = (EditText) findViewById(R.id.p_date);
-        boolean fail = false;
-        if (ed.getText().toString().trim().length() == 0) {
-            fail = true;
-            ed.requestFocus();
-            ed.setError("Enter Tree name");
-        }
-        if (date.getText().toString().trim().length() == 0) {
-            fail = true;
-            date.requestFocus();
-            date.setError("Select planted date");
-        }
-        if (!fail) {
-            viewPager.setCurrentItem(1);
-        }*/
 
         viewPager.setCurrentItem(1);
     }
     public void jumpBackCohort(View view){
         viewPager.setCurrentItem(0);
     }
-
     public void jumpToUsage(View view){
 
         viewPager.setCurrentItem(2);
@@ -80,26 +71,11 @@ public class FmnrTreeMeasureMainActivity extends AppCompatActivity {
     }
     //for navigation buttons i.e move next if all fields are filled
     public void jumpToFI(View view){
-      /*  EditText ed = (EditText) findViewById(R.id.ename);
-        EditText date = (EditText) findViewById(R.id.in_date);
-        boolean fail = false;
-        if (ed.getText().toString().trim().length() == 0) {
-            fail = true;
-            ed.requestFocus();
-            ed.setError("Enter Enumulator name");
-        }
-        if (date.getText().toString().trim().length() == 0) {
-            fail = true;
-            date.requestFocus();
-            date.setError("Select date");
-        }
-        if (!fail) {
-            viewPager.setCurrentItem(3);
-        }*/
+
         viewPager.setCurrentItem(3);
     }
     public void jumpToGPS(View view){
-        EditText h = (EditText) findViewById(R.id.height);
+       /* EditText h = (EditText) findViewById(R.id.height);
         boolean fail = false;
         if (h.getText().toString().trim().length() == 0) {
             fail = true;
@@ -108,7 +84,8 @@ public class FmnrTreeMeasureMainActivity extends AppCompatActivity {
         }
         if (!fail) {
             viewPager.setCurrentItem(4);
-        }
+        }*/
+        viewPager.setCurrentItem(4);
     }
     public void jumpBackMeasurement(View view){
         viewPager.setCurrentItem(3);

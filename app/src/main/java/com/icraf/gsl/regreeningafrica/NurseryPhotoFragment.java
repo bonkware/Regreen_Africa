@@ -113,7 +113,7 @@ public class NurseryPhotoFragment extends Fragment {
     }
 
     private File getFile() {
-        File folder = new File("sdcard/FMNR");
+        File folder = new File("sdcard/RegreenAfrica");
         if (!folder.exists()) {
             folder.mkdir();
         }

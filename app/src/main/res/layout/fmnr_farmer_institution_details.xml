@@ -27,7 +27,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Farmer/Institution Name"
+                android:text="Farmer/Group/Institution Name"
                 android:textSize="@dimen/textsize"
                 android:paddingTop="20dp"
                 android:textStyle="italic"/>
@@ -41,7 +41,6 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:textSize="@dimen/add_edit_textsize">
-
             </EditText>
 
             <TextView
@@ -69,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/textsize"
                 android:paddingTop="20dp"
-                android:text="County/Region Name" />
+                android:text="Region/County Name" />
 
             <!-- Spinner Dropdown -->
             <!-- <Spinner
@@ -97,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/textsize"
                 android:paddingTop="20dp"
-                android:text="District/Communne/Woreda" />
+                android:text="District/Communne/Woreda/Circle/Sub-county" />
             <!-- Spinner Dropdown -->
             <!--<Spinner
                 android:id="@+id/spinner3"

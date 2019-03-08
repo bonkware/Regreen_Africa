@@ -42,6 +42,7 @@
         <activity android:name="com.icraf.gsl.regreeningafrica.AppGuide"> </activity>
         <activity android:name="com.icraf.gsl.regreeningafrica.FmnrFarmInstMainActivity"> </activity>
         <activity android:name="com.icraf.gsl.regreeningafrica.FmnrTreeMeasureMainActivity"> </activity>
+        <activity android:name="com.icraf.gsl.regreeningafrica.FmnrLandSizeMainActivity"> </activity>
     </application>
 
 </manifest>
