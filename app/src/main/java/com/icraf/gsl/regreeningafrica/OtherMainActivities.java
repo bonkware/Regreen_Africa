@@ -211,6 +211,12 @@ public class OtherMainActivities extends AppCompatActivity {
                     final String tree_altitude = cursor.getString(cursor.getColumnIndex("altitude"));
                     final String tree_accuracy = cursor.getString(cursor.getColumnIndex("accuracy"));
                     final String path = cursor.getString(cursor.getColumnIndex("path"));
+                    //for tree planting plot polygon
+                    final String fid = cursor.getString(cursor.getColumnIndex("farmerID"));
+                    final String landsize_polygon_latitude = cursor.getString(cursor.getColumnIndex("latitude"));
+                    final String landsize_polygon_longitude = cursor.getString(cursor.getColumnIndex("longitude"));
+                    final String landsize_polygon_altitude = cursor.getString(cursor.getColumnIndex("altitude"));
+                    final String landsize_polygon_accuracy = cursor.getString(cursor.getColumnIndex("accuracy"));
 
                     // create an object of volley request queue
                     RequestQueue queue = Volley.newRequestQueue(OtherMainActivities.this);
@@ -381,7 +387,12 @@ public class OtherMainActivities extends AppCompatActivity {
                             Bitmap bitmap = BitmapFactory.decodeFile(path,options);
                             String image = getStringImage(bitmap);
                             param.put("path", image);
-                            //param.put("path", path);
+                            //landsize polygon
+                            param.put("farmerID", fid);
+                            param.put("latitude", landsize_polygon_latitude);
+                            param.put("longitude", landsize_polygon_longitude);
+                            param.put("altitude", landsize_polygon_altitude);
+                            param.put("accuracy", landsize_polygon_accuracy);
                             //return param;
                             return checkParams(param);
                         }
@@ -721,12 +732,7 @@ public class OtherMainActivities extends AppCompatActivity {
                     final String fmnr_started_date = cursor.getString(cursor.getColumnIndex("fmnr_started_date"));
                     final String fmnr_fenced = cursor.getString(cursor.getColumnIndex("fmnr_fenced"));
                     final String fmnr_landsize_regreen = cursor.getString(cursor.getColumnIndex("landsize_regreen"));
-                    //for fmnr plot polygon
-                    final String fid = cursor.getString(cursor.getColumnIndex("farmerID"));
-                    final String fmnr_polygon_latitude = cursor.getString(cursor.getColumnIndex("latitude"));
-                    final String fmnr_polygon_longitude = cursor.getString(cursor.getColumnIndex("longitude"));
-                    final String fmnr_polygon_altitude = cursor.getString(cursor.getColumnIndex("altitude"));
-                    final String fmnr_polygon_accuracy = cursor.getString(cursor.getColumnIndex("accuracy"));
+
                     //fmnr species
                     final String fmnrfarmer_id = cursor.getString(cursor.getColumnIndex("farmerID"));
                     final String fmnr_species_name = cursor.getString(cursor.getColumnIndex("species"));
@@ -755,6 +761,13 @@ public class OtherMainActivities extends AppCompatActivity {
                     final String fmnr_tree_altitude = cursor.getString(cursor.getColumnIndex("tree_altitude"));
                     final String fmnr_tree_accuracy = cursor.getString(cursor.getColumnIndex("tree_accuracy"));
                     final String fmnr_tree_image_path = cursor.getString(cursor.getColumnIndex("path"));
+
+                    //for fmnr plot polygon
+                    final String fid = cursor.getString(cursor.getColumnIndex("farmerID"));
+                    final String landsize_polygon_latitude = cursor.getString(cursor.getColumnIndex("latitude"));
+                    final String landsize_polygon_longitude = cursor.getString(cursor.getColumnIndex("longitude"));
+                    final String landsize_polygon_altitude = cursor.getString(cursor.getColumnIndex("altitude"));
+                    final String landsize_polygon_accuracy = cursor.getString(cursor.getColumnIndex("accuracy"));
 
                     // create an object of volley request queue
                     RequestQueue queue = Volley.newRequestQueue(OtherMainActivities.this);
@@ -894,12 +907,6 @@ public class OtherMainActivities extends AppCompatActivity {
                             param.put("fmnr_started_date", fmnr_started_date);
                             param.put("fmnr_fenced", fmnr_fenced);
                             param.put("landsize_regreen", fmnr_landsize_regreen);
-                            //polygon
-                            param.put("farmerID", fid);
-                            param.put("latitude", fmnr_polygon_latitude);
-                            param.put("longitude", fmnr_polygon_longitude);
-                            param.put("altitude", fmnr_polygon_altitude);
-                            param.put("accuracy", fmnr_polygon_accuracy);
                             //species
                             param.put("farmerID", fmnrfarmer_id);
                             param.put("species", fmnr_species_name);
@@ -934,6 +941,12 @@ public class OtherMainActivities extends AppCompatActivity {
                             String image = getStringImage(bitmap);
                             param.put("path", image);
                             //param.put("path", path);
+                            //landsize polygon
+                            param.put("farmerID", fid);
+                            param.put("latitude", landsize_polygon_latitude);
+                            param.put("longitude", landsize_polygon_longitude);
+                            param.put("altitude", landsize_polygon_altitude);
+                            param.put("accuracy", landsize_polygon_accuracy);
                             //return param;
                             return checkParams(param);
                         }

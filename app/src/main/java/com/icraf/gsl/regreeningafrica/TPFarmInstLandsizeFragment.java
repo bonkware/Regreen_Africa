@@ -43,7 +43,8 @@ public class TPFarmInstLandsizeFragment extends Fragment {
                     case R.id.tocohort:
                         saveFarmerInst();//save
                         dbAccess.insertFarmerInst();//insert details to db
-                        Intent intent = new Intent(getActivity(), TPCohortMainAcivity.class);
+                        //Intent intent = new Intent(getActivity(), TPCohortMainAcivity.class);
+                        Intent intent = new Intent(getActivity(), TPLandSizeMainActivity.class);
                         startActivity(intent);
                         //Toast.makeText(SelectSurvey.this.getActivity(),"Saved",Toast.LENGTH_SHORT).show();
                         break;

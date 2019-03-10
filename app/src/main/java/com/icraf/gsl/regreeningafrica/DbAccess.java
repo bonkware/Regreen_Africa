@@ -194,10 +194,10 @@ public class DbAccess {
     public void insertLandsizepolygon() {
         ContentValues contentValue = new ContentValues();
         contentValue.put(DatabaseHelper.fid, g.getfid());
-        contentValue.put(DatabaseHelper.fmnr_polygon_latitude, g.getLatitude());
-        contentValue.put(DatabaseHelper.fmnr_polygon_longitude, g.getLongitude());
-        contentValue.put(DatabaseHelper.fmnr_polygon_altitude, g.getAltitude());
-        contentValue.put(DatabaseHelper.fmnr_polygon_accuracy, g.getAccuracy());
+        contentValue.put(DatabaseHelper.landsize_polygon_latitude, g.getLatitude());
+        contentValue.put(DatabaseHelper.landsize_polygon_longitude, g.getLongitude());
+        contentValue.put(DatabaseHelper.landsize_polygon_altitude, g.getAltitude());
+        contentValue.put(DatabaseHelper.landsize_polygon_accuracy, g.getAccuracy());
         //insert
         database.insert(TABLE_LANDSIZEPOLYGON, null, contentValue);
     }

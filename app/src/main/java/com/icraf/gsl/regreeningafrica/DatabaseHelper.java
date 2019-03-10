@@ -132,8 +132,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // fmnr farmer/institution info table
     public static final String TABLE_FMNR_FARMER_INST = "fmnr_farmer_inst";
-    //fmnr polygon
-    public static final String TABLE_LANDSIZEPOLYGON = "landsizepolygon";
     // fmnr species table
     public static final String TABLE_FMNR_SPECIES = "fmnr_species";
     //columns for farmer/institution info
@@ -151,12 +149,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String fmnr_started_date = "fmnr_started_date";
     public static final String fmnr_fenced = "fmnr_fenced";
     public static final String fmnr_landsize_regreen = "landsize_regreen";
-    //columns for fmnr polygon
-    public static final String fid = "farmerID";
-    public static final String fmnr_polygon_latitude = "latitude";
-    public static final String fmnr_polygon_longitude = "longitude";
-    public static final String fmnr_polygon_altitude = "altitude";
-    public static final String fmnr_polygon_accuracy = "accuracy";
+
     //columns for fmnr species
     public static final String fmnrfarmer_id = "farmerID";
     public static final String fmnr_species_name = "species";
@@ -185,6 +178,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String fmnr_tree_altitude = "tree_altitude";
     public static final String fmnr_tree_accuracy = "tree_accuracy";
     public static final String fmnr_tree_image_path = "path";
+
+    //table for fmnr and tree planting landsize polygon
+    public static final String TABLE_LANDSIZEPOLYGON = "landsizepolygon";
+    //columns for both fmnr and tree planting landsize polygons
+    public static final String fid = "farmerID";
+    public static final String landsize_polygon_latitude = "latitude";
+    public static final String landsize_polygon_longitude = "longitude";
+    public static final String landsize_polygon_altitude = "altitude";
+    public static final String landsize_polygon_accuracy = "accuracy";
     // Database name
     static final String DB_NAME = "regreen_africa.sqlite";
 
@@ -252,7 +254,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_LANDSIZEPOLYGON =
             "create table " +
                     TABLE_LANDSIZEPOLYGON + "(" +
-                    id + " INTEGER PRIMARY KEY AUTOINCREMENT, " + fid + " TEXT NOT NULL,"+ fmnr_polygon_latitude + " TEXT,"+fmnr_polygon_longitude + " TEXT,"+fmnr_polygon_altitude + " TEXT,"+fmnr_polygon_accuracy+" TEXT);";
+                    id + " INTEGER PRIMARY KEY AUTOINCREMENT, " + fid + " TEXT NOT NULL,"+ landsize_polygon_latitude + " TEXT,"+landsize_polygon_longitude + " TEXT,"+landsize_polygon_altitude + " TEXT,"+landsize_polygon_accuracy+" TEXT);";
 
     public DatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
