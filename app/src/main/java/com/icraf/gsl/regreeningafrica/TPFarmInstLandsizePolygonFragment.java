@@ -247,8 +247,8 @@ public class TPFarmInstLandsizePolygonFragment extends Fragment implements Locat
         alert.show();
     }
     public  void savePolygon() {
-        TextView fid = (TextView) getActivity().findViewById(R.id.fid);
-        g.setfid(fid.getText().toString());
+        TextView farmerid = (TextView) getActivity().findViewById(R.id.fid);
+        g.setfid(farmerid.getText().toString());
         //get points from global
     }
 }

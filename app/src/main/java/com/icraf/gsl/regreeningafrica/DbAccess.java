@@ -270,14 +270,14 @@ public class DbAccess {
     public void deleteFmnrSpecies(){
         database.execSQL("delete from "+ TABLE_FMNR_SPECIES);
     }
-    public void deleteFmnrPolygon(){
+    public void deleteLandsizePolygon(){
         database.execSQL("delete from "+ TABLE_LANDSIZEPOLYGON);
     }
     //get all records from db for sending
     //fetch from all tables where farmer ID match
     public Cursor getTP() {
         //String selectQuery = "SELECT * FROM farmer_institution,cohort,tree_measurements";
-        String selectQuery = "SELECT * FROM farmer_institution,cohort,tree_measurements WHERE farmer_institution.farmerID = cohort.farmerID and cohort.cohortID = tree_measurements.cohortID ";
+        String selectQuery = "SELECT * FROM farmer_institution,cohort,tree_measurements,landsizepolygon WHERE farmer_institution.farmerID = cohort.farmerID and cohort.cohortID = tree_measurements.cohortID ";
         Cursor c = database.rawQuery(selectQuery, null);
         return c;
     }
@@ -329,6 +329,21 @@ public class DbAccess {
     //get fmnr data
     public Cursor getFMNR() {
         String selectQuery = "SELECT * FROM fmnr_farmer_inst,fmnr_species,landsizepolygon WHERE fmnr_farmer_inst.farmerID = fmnr_species.farmerID";
+        Cursor c = database.rawQuery(selectQuery, null);
+        return c;
+    }
+    public Cursor getfmnr_farmer_institution() {
+        String selectQuery = "SELECT * FROM fmnr_farmer_inst";
+        Cursor c = database.rawQuery(selectQuery, null);
+        return c;
+    }
+    public Cursor getfmnr_species_measurements() {
+        String selectQuery = "SELECT * FROM fmnr_species";
+        Cursor c = database.rawQuery(selectQuery, null);
+        return c;
+    }
+    public Cursor getlandsize_polygon() {
+        String selectQuery = "SELECT * FROM landsizepolygon";
         Cursor c = database.rawQuery(selectQuery, null);
         return c;
     }
