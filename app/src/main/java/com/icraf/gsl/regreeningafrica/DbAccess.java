@@ -298,7 +298,11 @@ public class DbAccess {
     //fetch from all tables where farmer ID match
     public Cursor getTP() {
         //String selectQuery = "SELECT * FROM farmer_institution,cohort,tree_measurements";
+<<<<<<< HEAD
         String selectQuery = "SELECT * FROM farmer_institution,cohort,tree_measurements,landsizepolygon WHERE farmer_institution.farmerID = cohort.farmerID and cohort.cohortID = tree_measurements.cohortID and farmer_institution.farmerID=landsizepolygon.farmerID";
+=======
+        String selectQuery = "SELECT * FROM farmer_institution,cohort,tree_measurements,landsizepolygon WHERE farmer_institution.farmerID = cohort.farmerID and cohort.cohortID = tree_measurements.cohortID ";
+>>>>>>> 6cf645d831d56bba8b84ab092af5767503958117
         Cursor c = database.rawQuery(selectQuery, null);
         return c;
     }
@@ -352,6 +356,21 @@ public class DbAccess {
        String selectQuery = "SELECT * FROM fmnr_farmer_inst,fmnr_species,landsizepolygon WHERE fmnr_farmer_inst.farmerID = fmnr_species.farmerID and fmnr_farmer_inst.farmerID=landsizepolygon.farmerID ";
         //String selectQuery = "SELECT * FROM fmnr_farmer_inst,fmnr_species WHERE fmnr_farmer_inst.farmerID = fmnr_species.farmerID";
         //String selectQuery = "SELECT * FROM fmnr_farmer_inst a INNER JOIN fmnr_species b ON a.farmerID = b.farmerID INNER JOIN landsizepolygon";
+        Cursor c = database.rawQuery(selectQuery, null);
+        return c;
+    }
+    public Cursor getfmnr_farmer_institution() {
+        String selectQuery = "SELECT * FROM fmnr_farmer_inst";
+        Cursor c = database.rawQuery(selectQuery, null);
+        return c;
+    }
+    public Cursor getfmnr_species_measurements() {
+        String selectQuery = "SELECT * FROM fmnr_species";
+        Cursor c = database.rawQuery(selectQuery, null);
+        return c;
+    }
+    public Cursor getlandsize_polygon() {
+        String selectQuery = "SELECT * FROM landsizepolygon";
         Cursor c = database.rawQuery(selectQuery, null);
         return c;
     }

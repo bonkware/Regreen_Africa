@@ -50,6 +50,9 @@ public class OtherMainActivities extends AppCompatActivity {
     String trainings_url = "http://gsl.worldagroforestry.org/regreen_africa/insertTrainings.php";
     String nursery_url = "http://gsl.worldagroforestry.org/regreen_africa/insertNursery.php";
     String fmnr_url = "http://gsl.worldagroforestry.org/regreen_africa/insertFMNR.php";
+    String fmnr_farmer_institution = "http://gsl.worldagroforestry.org/regreen_africa/insertfmnr_farmer_institution.php";
+    String fmnr_species_measurements = "http://gsl.worldagroforestry.org/regreen_africa/fmnr_species_measurements.php";
+    String landsize_polygon = "http://gsl.worldagroforestry.org/regreen_africa/landsize_polygon.php";
     RegreeningGlobal g = RegreeningGlobal.getInstance();
 
     @Override
@@ -120,7 +123,10 @@ public class OtherMainActivities extends AppCompatActivity {
                 if(countNursery==0) {
                     Toast.makeText(OtherMainActivities.this, "No data to send", Toast.LENGTH_SHORT).show();
                 }else {//otherwise send
-                    uploadFMNR();
+                    //uploadFMNR();
+                    uploadfmnr_farmer_institution();
+                    uploadfmnr_species_measurements();
+                    uploadlandsize_polygon();
                 }
 
             }
@@ -258,7 +264,11 @@ public class OtherMainActivities extends AppCompatActivity {
                                                 dbAccess.deleteFarmer_Inst();
                                                 dbAccess.deleteCohort();
                                                 dbAccess.deleteMeasurements();
+<<<<<<< HEAD
                                                 //dbAccess.deleteLandsizePolygon();
+=======
+                                                dbAccess.deleteLandsizePolygon();
+>>>>>>> 6cf645d831d56bba8b84ab092af5767503958117
                                                 //dismiss dialog by intent
                                                 Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
                                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -737,16 +747,16 @@ public class OtherMainActivities extends AppCompatActivity {
         }
     }
     //sending fmnr data from db
-    public void uploadFMNR() {
-        progressDialog = new ProgressDialog(OtherMainActivities.this);
+    public void uploadfmnr_farmer_institution() {
+        /*progressDialog = new ProgressDialog(OtherMainActivities.this);
         progressDialog.setMessage("Sending FMNR data...");
         progressDialog.setCancelable(true);
         progressDialog.setIndeterminate(true);
-        progressDialog.show();
+        progressDialog.show();*/
 
         //get data from sqlite in a loop
         try{//added try catch
-            final Cursor cursor = dbAccess.getFMNR();//fetch all fmnr data
+            final Cursor cursor = dbAccess.getfmnr_farmer_institution();//fetch all fmnr data
             if (cursor.moveToFirst()) {
                 do {
                     //farmer/institution
@@ -771,46 +781,10 @@ public class OtherMainActivities extends AppCompatActivity {
                     final String fmnr_fenced = cursor.getString(cursor.getColumnIndex("fmnr_fenced"));
                     final String fmnr_landsize_regreen = cursor.getString(cursor.getColumnIndex("landsize_regreen"));
 
-                    //fmnr species
-                    final String fmnrfarmer_id = cursor.getString(cursor.getColumnIndex("farmerID"));
-                    final String fmnr_species_name = cursor.getString(cursor.getColumnIndex("species"));
-                    final String fmnr_local_name = cursor.getString(cursor.getColumnIndex("local_name"));
-                    final String fmnr_management_pruning = cursor.getString(cursor.getColumnIndex("mg1"));
-                    final String fmnr_management_fencing = cursor.getString(cursor.getColumnIndex("mg2"));
-                    final String fmnr_management_weeding = cursor.getString(cursor.getColumnIndex("mg3"));
-                    final String fmnr_management_thinning = cursor.getString(cursor.getColumnIndex("mg4"));
-                    final String fmnr_management_organic_fertilizer = cursor.getString(cursor.getColumnIndex("mg5"));
-                    final String fmnr_management_pollarding_lopping = cursor.getString(cursor.getColumnIndex("mg6"));
-                    final String fmnr_management_other = cursor.getString(cursor.getColumnIndex("mg_other"));
-                    final String fmnr_use_firewood = cursor.getString(cursor.getColumnIndex("usage1"));
-                    final String fmnr_use_housing_construction = cursor.getString(cursor.getColumnIndex("usage2"));
-                    final String fmnr_use_fodder = cursor.getString(cursor.getColumnIndex("usage3"));
-                    final String fmnr_use_fruits = cursor.getString(cursor.getColumnIndex("usage4"));
-                    final String fmnr_use_soil_fertility = cursor.getString(cursor.getColumnIndex("usage5"));
-                    final String fmnr_use_leafy_vegetables = cursor.getString(cursor.getColumnIndex("usage6"));
-                    final String fmnr_use_nuts = cursor.getString(cursor.getColumnIndex("usage7"));
-                    final String fmnr_use_other = cursor.getString(cursor.getColumnIndex("us_other"));
-                    final String fmnr_tree_stems = cursor.getString(cursor.getColumnIndex("stems"));
-                    final String fmnr_tree_height = cursor.getString(cursor.getColumnIndex("height"));
-                    final String fmnr_tree_rcd = cursor.getString(cursor.getColumnIndex("rcd"));
-                    final String fmnr_tree_dbh = cursor.getString(cursor.getColumnIndex("dbh"));
-                    final String fmnr_tree_latitude = cursor.getString(cursor.getColumnIndex("tree_latitude"));
-                    final String fmnr_tree_longitude = cursor.getString(cursor.getColumnIndex("tree_longitude"));
-                    final String fmnr_tree_altitude = cursor.getString(cursor.getColumnIndex("tree_altitude"));
-                    final String fmnr_tree_accuracy = cursor.getString(cursor.getColumnIndex("tree_accuracy"));
-                    final String fmnr_tree_image_path = cursor.getString(cursor.getColumnIndex("path"));
-
-                    //for fmnr plot polygon
-                    final String fid = cursor.getString(cursor.getColumnIndex("farmerID"));
-                    final String landsize_polygon_latitude = cursor.getString(cursor.getColumnIndex("latitude"));
-                    final String landsize_polygon_longitude = cursor.getString(cursor.getColumnIndex("longitude"));
-                    final String landsize_polygon_altitude = cursor.getString(cursor.getColumnIndex("altitude"));
-                    final String landsize_polygon_accuracy = cursor.getString(cursor.getColumnIndex("accuracy"));
-
                     // create an object of volley request queue
                     RequestQueue queue = Volley.newRequestQueue(OtherMainActivities.this);
                     // Request a string response from the provided url above to server.
-                    StringRequest request = new StringRequest(Request.Method.POST, fmnr_url, new Response.Listener<String>() {
+                    StringRequest request = new StringRequest(Request.Method.POST, fmnr_farmer_institution, new Response.Listener<String>() {
                         @Override
                         //successful response
                         public void onResponse(String response) {
@@ -830,7 +804,7 @@ public class OtherMainActivities extends AppCompatActivity {
                                                 //delete all records after send
                                                 dbAccess.deleteFmnrFarmer_Inst();
                                                 dbAccess.deleteFmnrSpecies();
-                                                //dbAccess.deleteLandsizePolygon();
+                                                dbAccess.deleteLandsizePolygon();
                                                 //dismiss dialog by intent
                                                 Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
                                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -939,6 +913,235 @@ public class OtherMainActivities extends AppCompatActivity {
                             param.put("country", fmnr_country);
                             param.put("county_region", fmnr_county_region);
                             param.put("district", fmnr_district);
+                            param.put("planting_location", fmnr_planting_location);
+                            param.put("fmnr_species_number_start", fmnr_species_number_start);
+                           // param.put("fmnr_restoration_photo", fmnr_restoration_photo);
+                            param.put("fmnr_started_date", fmnr_started_date);
+                            param.put("fmnr_fenced", fmnr_fenced);
+                            param.put("landsize_regreen", fmnr_landsize_regreen);
+                            BitmapFactory.Options options = new BitmapFactory.Options();
+                            options.inSampleSize = 8;//compress file further to avoid out of memory error
+                            Bitmap bitmap = BitmapFactory.decodeFile(fmnr_restoration_photo,options);
+                            String image = getStringImage(bitmap);
+                            param.put("path", image);
+                            //param.put("path", path);
+                            //return param;
+                            return checkParams(param);
+                        }
+                        //check empty for null values
+                        private Map<String, String> checkParams(Map<String, String> map){
+                            Iterator<Map.Entry<String, String>> it = map.entrySet().iterator();
+                            while (it.hasNext()) {
+                                Map.Entry<String, String> pairs = (Map.Entry<String, String>)it.next();
+                                if(pairs.getValue()==null){
+                                    map.put(pairs.getKey(), "");
+                                }
+                            }
+                            return map;
+                        }
+                    };
+                    //add the request to the request queue
+                    //retry policy to avoid crash
+                    request.setRetryPolicy(new DefaultRetryPolicy( 0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+                    queue.add(request);
+                    //VolleySingleton.getInstance(this).addToRequestQueue(request);
+                    //add listener to the queue which is executed when the request ends
+                    queue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<String>() {
+                        @Override
+                        public void onRequestFinished(Request<String> request) {
+                            //if (progressDialog !=  null && progressDialog.isShowing())
+                            //    progressDialog.dismiss();
+                        }
+                    });
+
+                } while (cursor.moveToNext());
+            }//end of cursor
+        }catch(Exception e){//added catch
+            Log.d("Upload failed", "Exception : "
+                    + e.getMessage(), e);
+        }
+    }
+    public void uploadfmnr_species_measurements() {
+       /* progressDialog = new ProgressDialog(OtherMainActivities.this);
+        progressDialog.setMessage("Sending FMNR data...");
+        progressDialog.setCancelable(true);
+        progressDialog.setIndeterminate(true);
+        progressDialog.show();*/
+
+        //get data from sqlite in a loop
+        try{//added try catch
+            final Cursor cursor = dbAccess.getfmnr_species_measurements();//fetch all fmnr data
+            if (cursor.moveToFirst()) {
+                do {
+
+
+                    //fmnr species
+                    final String fmnrfarmer_id = cursor.getString(cursor.getColumnIndex("farmerID"));
+                    final String fmnr_species_name = cursor.getString(cursor.getColumnIndex("species"));
+                    final String fmnr_local_name = cursor.getString(cursor.getColumnIndex("local_name"));
+                    final String fmnr_management_pruning = cursor.getString(cursor.getColumnIndex("mg1"));
+                    final String fmnr_management_fencing = cursor.getString(cursor.getColumnIndex("mg2"));
+                    final String fmnr_management_weeding = cursor.getString(cursor.getColumnIndex("mg3"));
+                    final String fmnr_management_thinning = cursor.getString(cursor.getColumnIndex("mg4"));
+                    final String fmnr_management_organic_fertilizer = cursor.getString(cursor.getColumnIndex("mg5"));
+                    final String fmnr_management_pollarding_lopping = cursor.getString(cursor.getColumnIndex("mg6"));
+                    final String fmnr_management_other = cursor.getString(cursor.getColumnIndex("mg_other"));
+                    final String fmnr_use_firewood = cursor.getString(cursor.getColumnIndex("usage1"));
+                    final String fmnr_use_housing_construction = cursor.getString(cursor.getColumnIndex("usage2"));
+                    final String fmnr_use_fodder = cursor.getString(cursor.getColumnIndex("usage3"));
+                    final String fmnr_use_fruits = cursor.getString(cursor.getColumnIndex("usage4"));
+                    final String fmnr_use_soil_fertility = cursor.getString(cursor.getColumnIndex("usage5"));
+                    final String fmnr_use_leafy_vegetables = cursor.getString(cursor.getColumnIndex("usage6"));
+                    final String fmnr_use_nuts = cursor.getString(cursor.getColumnIndex("usage7"));
+                    final String fmnr_use_other = cursor.getString(cursor.getColumnIndex("us_other"));
+                    final String fmnr_tree_stems = cursor.getString(cursor.getColumnIndex("stems"));
+                    final String fmnr_tree_height = cursor.getString(cursor.getColumnIndex("height"));
+                    final String fmnr_tree_rcd = cursor.getString(cursor.getColumnIndex("rcd"));
+                    final String fmnr_tree_dbh = cursor.getString(cursor.getColumnIndex("dbh"));
+                    final String fmnr_tree_latitude = cursor.getString(cursor.getColumnIndex("tree_latitude"));
+                    final String fmnr_tree_longitude = cursor.getString(cursor.getColumnIndex("tree_longitude"));
+                    final String fmnr_tree_altitude = cursor.getString(cursor.getColumnIndex("tree_altitude"));
+                    final String fmnr_tree_accuracy = cursor.getString(cursor.getColumnIndex("tree_accuracy"));
+                    final String fmnr_tree_image_path = cursor.getString(cursor.getColumnIndex("path"));
+
+                    // create an object of volley request queue
+                    RequestQueue queue = Volley.newRequestQueue(OtherMainActivities.this);
+                    // Request a string response from the provided url above to server.
+                    StringRequest request = new StringRequest(Request.Method.POST, fmnr_species_measurements, new Response.Listener<String>() {
+                        @Override
+                        //successful response
+                        public void onResponse(String response) {
+                            //get the response if success get response that data has been received
+                            Log.i("My success", "" + response);
+                            //progressDialog.dismiss();
+                            //notification
+                            try{
+                                //count records sent
+                                final int count = dbAccess.getfmnrcount();
+                                //Toast.makeText(Index.this, count + " record(s) " + response, Toast.LENGTH_LONG).show();
+                                //refresh activity after dialog
+                                final AlertDialog.Builder builder = new AlertDialog.Builder(OtherMainActivities.this).setTitle("Data sent!").setMessage(count + " record(s) " + response)
+                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                //delete all records after send
+                                                dbAccess.deleteFmnrFarmer_Inst();
+                                                dbAccess.deleteFmnrSpecies();
+<<<<<<< HEAD
+                                                //dbAccess.deleteLandsizePolygon();
+=======
+                                                dbAccess.deleteLandsizePolygon();
+>>>>>>> 6cf645d831d56bba8b84ab092af5767503958117
+                                                //dismiss dialog by intent
+                                                Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
+                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                                startActivity(intent);
+                                            }
+                                        });
+                                builder.create().show();
+                                //progressDialog.dismiss();
+                            }catch(Exception e){//added catch
+                                Log.d("Upload failed", "Exception : "
+                                        + e.getMessage(), e);
+                            }
+
+                        }
+                        //get error response
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            //error responses if failed to connect
+                            if (error instanceof NetworkError) {
+                                //Toast.makeText(Index.this,"Cannot connect to Internet...Please check your connection!",Toast.LENGTH_SHORT).show();
+                                AlertDialog.Builder builder = new AlertDialog.Builder(OtherMainActivities.this).setTitle("No Internet!").setMessage("Cannot connect to Internet...Please check your connection!").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                        startActivity(intent);
+                                    }
+                                });
+                                builder.create().show();
+                            } else if (error instanceof ServerError) {
+                                //Toast.makeText(Index.this,"The server could not be found. Please try again after some time!!",Toast.LENGTH_SHORT).show();
+                                AlertDialog.Builder builder = new AlertDialog.Builder(OtherMainActivities.this).setTitle("Server not found!").setMessage("The server could not be found. Please try again after some time!!").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        //dialog.dismiss();
+                                        Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                        startActivity(intent);
+                                    }
+                                });
+                                builder.create().show();
+
+                            } else if (error instanceof AuthFailureError) {
+                                //Toast.makeText(Index.this,"Cannot connect to Internet...Please check your connection!",Toast.LENGTH_SHORT).show();
+                                AlertDialog.Builder builder = new AlertDialog.Builder(OtherMainActivities.this).setTitle("No Internet!").setMessage("Cannot connect to Internet...Please check your connection!").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        //dialog.dismiss();
+                                        Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                        startActivity(intent);
+                                    }
+                                });
+                                builder.create().show();
+
+                            } else if (error instanceof ParseError) {
+                                //Toast.makeText(Index.this,"Parsing error! Please try again after some time!!",Toast.LENGTH_SHORT).show();
+                                AlertDialog.Builder builder = new AlertDialog.Builder(OtherMainActivities.this).setTitle("Parsing Error!").setMessage("Parsing error! Please try again after some time!!").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        //dialog.dismiss();
+                                        Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                        startActivity(intent);
+                                    }
+                                });
+                                builder.create().show();
+
+                            } else if (error instanceof TimeoutError) {
+                                //Toast.makeText(Index.this,"Connection TimeOut! Please check your internet connection",Toast.LENGTH_SHORT).show();
+                                AlertDialog.Builder builder = new AlertDialog.Builder(OtherMainActivities.this).setTitle("Time Out!").setMessage("Connection TimeOut! Please check your internet connection").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        //dialog.dismiss();
+                                        Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                        startActivity(intent);
+                                    }
+                                });
+                                builder.create().show();
+
+                            }
+                            Log.i("My error", "" + error);
+                            //dismiss dialog
+                            progressDialog.dismiss();
+
+                        }
+                    }) {
+                        @Override
+                        //hashmap class in volley
+                        //HashMap is a type of Collection that stores  data in a pair such that each element has a key associated with it.
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            Map<String, String> param = new HashMap<String, String>();
+<<<<<<< HEAD
+                            //farmer/institution
+                            param.put("farmerID", fmnr_farmer_id);
+                            param.put("enum_name", fmnr_enum_name);
+                            param.put("date", fmnr_date);
+                            param.put("farmer_inst_name", fmnr_farmer_inst_name);
+                            param.put("country", fmnr_country);
+                            param.put("county_region", fmnr_county_region);
+                            param.put("district", fmnr_district);
                             //param.put("planting_location", fmnr_planting_location);
                             param.put("fmnr_land_individual", fmnr_land_individual);
                             param.put("fmnr_land_community", fmnr_land_community);
@@ -956,6 +1159,8 @@ public class OtherMainActivities extends AppCompatActivity {
                             Bitmap bitmap_rest = BitmapFactory.decodeFile(fmnr_restoration_photo,option);
                             String image_rest = getStringImage(bitmap_rest);
                             param.put("fmnr_restoration_photo", image_rest);
+=======
+>>>>>>> 6cf645d831d56bba8b84ab092af5767503958117
                             //species
                             param.put("farmerID", fmnrfarmer_id);
                             param.put("species", fmnr_species_name);
@@ -991,6 +1196,187 @@ public class OtherMainActivities extends AppCompatActivity {
                             String image = getStringImage(bitmap);
                             param.put("path", image);
                             //param.put("path", path);
+                            //return param;
+                            return checkParams(param);
+                        }
+                        //check empty for null values
+                        private Map<String, String> checkParams(Map<String, String> map){
+                            Iterator<Map.Entry<String, String>> it = map.entrySet().iterator();
+                            while (it.hasNext()) {
+                                Map.Entry<String, String> pairs = (Map.Entry<String, String>)it.next();
+                                if(pairs.getValue()==null){
+                                    map.put(pairs.getKey(), "");
+                                }
+                            }
+                            return map;
+                        }
+                    };
+                    //add the request to the request queue
+                    //retry policy to avoid crash
+                    request.setRetryPolicy(new DefaultRetryPolicy( 0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+                    queue.add(request);
+                    //VolleySingleton.getInstance(this).addToRequestQueue(request);
+                    //add listener to the queue which is executed when the request ends
+                    queue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<String>() {
+                        @Override
+                        public void onRequestFinished(Request<String> request) {
+                           // if (progressDialog !=  null && progressDialog.isShowing())
+                            //    progressDialog.dismiss();
+                        }
+                    });
+
+                } while (cursor.moveToNext());
+            }//end of cursor
+        }catch(Exception e){//added catch
+            Log.d("Upload failed", "Exception : "
+                    + e.getMessage(), e);
+        }
+    }
+    public void uploadlandsize_polygon() {
+       /* progressDialog = new ProgressDialog(OtherMainActivities.this);
+        progressDialog.setMessage("Sending FMNR data...");
+        progressDialog.setCancelable(true);
+        progressDialog.setIndeterminate(true);
+        progressDialog.show();*/
+
+        //get data from sqlite in a loop
+        try{//added try catch
+            final Cursor cursor = dbAccess.getlandsize_polygon();//fetch all fmnr data
+            if (cursor.moveToFirst()) {
+                do {
+                    //for fmnr plot polygon
+                    final String fid = cursor.getString(cursor.getColumnIndex("farmerID"));
+                    final String landsize_polygon_latitude = cursor.getString(cursor.getColumnIndex("latitude"));
+                    final String landsize_polygon_longitude = cursor.getString(cursor.getColumnIndex("longitude"));
+                    final String landsize_polygon_altitude = cursor.getString(cursor.getColumnIndex("altitude"));
+                    final String landsize_polygon_accuracy = cursor.getString(cursor.getColumnIndex("accuracy"));
+
+                    // create an object of volley request queue
+                    RequestQueue queue = Volley.newRequestQueue(OtherMainActivities.this);
+                    // Request a string response from the provided url above to server.
+                    StringRequest request = new StringRequest(Request.Method.POST, landsize_polygon, new Response.Listener<String>() {
+                        @Override
+                        //successful response
+                        public void onResponse(String response) {
+                            //get the response if success get response that data has been received
+                            Log.i("My success", "" + response);
+                            //progressDialog.dismiss();
+                            //notification
+                            try{
+                                //count records sent
+                                final int count = dbAccess.getfmnrcount();
+                                //Toast.makeText(Index.this, count + " record(s) " + response, Toast.LENGTH_LONG).show();
+                                //refresh activity after dialog
+                                final AlertDialog.Builder builder = new AlertDialog.Builder(OtherMainActivities.this).setTitle("Data sent!").setMessage(count + " record(s) " + response)
+                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                //delete all records after send
+                                                dbAccess.deleteFmnrFarmer_Inst();
+                                                dbAccess.deleteFmnrSpecies();
+                                                dbAccess.deleteLandsizePolygon();
+                                                //dismiss dialog by intent
+                                                Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
+                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                                startActivity(intent);
+                                            }
+                                        });
+                                builder.create().show();
+                                //progressDialog.dismiss();
+                            }catch(Exception e){//added catch
+                                Log.d("Upload failed", "Exception : "
+                                        + e.getMessage(), e);
+                            }
+
+                        }
+                        //get error response
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            //error responses if failed to connect
+                            if (error instanceof NetworkError) {
+                                //Toast.makeText(Index.this,"Cannot connect to Internet...Please check your connection!",Toast.LENGTH_SHORT).show();
+                                AlertDialog.Builder builder = new AlertDialog.Builder(OtherMainActivities.this).setTitle("No Internet!").setMessage("Cannot connect to Internet...Please check your connection!").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                        startActivity(intent);
+                                    }
+                                });
+                                builder.create().show();
+                            } else if (error instanceof ServerError) {
+                                //Toast.makeText(Index.this,"The server could not be found. Please try again after some time!!",Toast.LENGTH_SHORT).show();
+                                AlertDialog.Builder builder = new AlertDialog.Builder(OtherMainActivities.this).setTitle("Server not found!").setMessage("The server could not be found. Please try again after some time!!").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        //dialog.dismiss();
+                                        Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                        startActivity(intent);
+                                    }
+                                });
+                                builder.create().show();
+
+                            } else if (error instanceof AuthFailureError) {
+                                //Toast.makeText(Index.this,"Cannot connect to Internet...Please check your connection!",Toast.LENGTH_SHORT).show();
+                                AlertDialog.Builder builder = new AlertDialog.Builder(OtherMainActivities.this).setTitle("No Internet!").setMessage("Cannot connect to Internet...Please check your connection!").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        //dialog.dismiss();
+                                        Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                        startActivity(intent);
+                                    }
+                                });
+                                builder.create().show();
+
+                            } else if (error instanceof ParseError) {
+                                //Toast.makeText(Index.this,"Parsing error! Please try again after some time!!",Toast.LENGTH_SHORT).show();
+                                AlertDialog.Builder builder = new AlertDialog.Builder(OtherMainActivities.this).setTitle("Parsing Error!").setMessage("Parsing error! Please try again after some time!!").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        //dialog.dismiss();
+                                        Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                        startActivity(intent);
+                                    }
+                                });
+                                builder.create().show();
+
+                            } else if (error instanceof TimeoutError) {
+                                //Toast.makeText(Index.this,"Connection TimeOut! Please check your internet connection",Toast.LENGTH_SHORT).show();
+                                AlertDialog.Builder builder = new AlertDialog.Builder(OtherMainActivities.this).setTitle("Time Out!").setMessage("Connection TimeOut! Please check your internet connection").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        //dialog.dismiss();
+                                        Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                        startActivity(intent);
+                                    }
+                                });
+                                builder.create().show();
+
+                            }
+                            Log.i("My error", "" + error);
+                            //dismiss dialog
+                            progressDialog.dismiss();
+
+                        }
+                    }) {
+                        @Override
+                        //hashmap class in volley
+                        //HashMap is a type of Collection that stores  data in a pair such that each element has a key associated with it.
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            Map<String, String> param = new HashMap<String, String>();
+
                             //landsize polygon
                             param.put("farmerID", fid);
                             param.put("latitude", landsize_polygon_latitude);
@@ -1022,8 +1408,8 @@ public class OtherMainActivities extends AppCompatActivity {
                     queue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<String>() {
                         @Override
                         public void onRequestFinished(Request<String> request) {
-                            if (progressDialog !=  null && progressDialog.isShowing())
-                                progressDialog.dismiss();
+                            //if (progressDialog !=  null && progressDialog.isShowing())
+                             //   progressDialog.dismiss();
                         }
                     });
 
