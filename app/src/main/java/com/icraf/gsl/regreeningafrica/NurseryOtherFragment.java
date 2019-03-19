@@ -54,6 +54,8 @@ public class NurseryOtherFragment extends Fragment {
 
                             }
                         }, mYear, mMonth, mDay);
+                // hide future dates
+                datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
                 datePickerDialog.show();
 
             }

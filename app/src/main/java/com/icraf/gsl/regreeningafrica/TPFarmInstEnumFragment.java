@@ -57,6 +57,8 @@ public class TPFarmInstEnumFragment extends Fragment {
 
                             }
                         }, mYear, mMonth, mDay);
+                // hide previous dates
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
                 datePickerDialog.show();
 
             }
