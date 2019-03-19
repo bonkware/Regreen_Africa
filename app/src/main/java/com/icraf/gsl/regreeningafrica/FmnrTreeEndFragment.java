@@ -64,7 +64,6 @@ public class FmnrTreeEndFragment extends Fragment {
                 }
             }
         });
-
         return view;
     }
 

@@ -60,7 +60,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Number of seedlings germinated"
+                android:text="Number of seeds germinated"
                 android:textSize="@dimen/textsize"
                 android:paddingTop="20dp"
                 android:textStyle="italic"/>
@@ -78,7 +78,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Number of seeds survived"
+                android:text="Number of seedlings survived"
                 android:textSize="@dimen/textsize"
                 android:paddingTop="20dp"
                 android:textStyle="italic"/>
@@ -107,7 +107,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="The price per seedlings(unit depends on count currency)"
+                android:text="The price per seedling(unit depends on count currency)"
                 android:textSize="@dimen/textsize"
                 android:paddingTop="20dp"
                 android:textStyle="italic|bold"/>

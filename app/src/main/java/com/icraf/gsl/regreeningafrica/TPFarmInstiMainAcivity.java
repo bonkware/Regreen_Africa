@@ -79,7 +79,7 @@ public class TPFarmInstiMainAcivity extends AppCompatActivity {
         viewPager.setCurrentItem(1);
     }
     public void jumpToSite(View view){
-        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.planting_location);
+      /*  RadioGroup radioGroup = (RadioGroup) findViewById(R.id.planting_location);
         if (radioGroup.getCheckedRadioButtonId() == -1)
         {
             Toast.makeText(TPFarmInstiMainAcivity.this,"Select one",Toast.LENGTH_SHORT).show();
@@ -87,7 +87,8 @@ public class TPFarmInstiMainAcivity extends AppCompatActivity {
         else
         {
             viewPager.setCurrentItem(3);
-        }
+        }*/
+        viewPager.setCurrentItem(3);
 
 
     }
@@ -95,7 +96,7 @@ public class TPFarmInstiMainAcivity extends AppCompatActivity {
         viewPager.setCurrentItem(2);
     }
     public void jumpToEst(View view){
-        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.planting_site);
+       /* RadioGroup radioGroup = (RadioGroup) findViewById(R.id.planting_site);
         if (radioGroup.getCheckedRadioButtonId() == -1)
         {
             Toast.makeText(TPFarmInstiMainAcivity.this,"Select one",Toast.LENGTH_SHORT).show();
@@ -103,7 +104,8 @@ public class TPFarmInstiMainAcivity extends AppCompatActivity {
         else
         {
             viewPager.setCurrentItem(4);
-        }
+        }*/
+        viewPager.setCurrentItem(4);
     }
     public void jumpBackSite(View view){
         viewPager.setCurrentItem(3);

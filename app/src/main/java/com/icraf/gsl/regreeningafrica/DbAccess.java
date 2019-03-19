@@ -52,8 +52,22 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.country, g.getcountry());
         contentValue.put(DatabaseHelper.county_region, g.getcounty_region());
         contentValue.put(DatabaseHelper.district, g.getdistricts());
-        contentValue.put(DatabaseHelper.planting_location, g.getselect_location());
-        contentValue.put(DatabaseHelper.planting_site, g.getselect_site());
+        //contentValue.put(DatabaseHelper.planting_location, g.getselect_location());
+        contentValue.put(DatabaseHelper.land_individual, g.getindividual_ownership());
+        contentValue.put(DatabaseHelper.land_community, g.getcommunity_ownership());
+        contentValue.put(DatabaseHelper.land_government, g.getgovt_land_ownership());
+        contentValue.put(DatabaseHelper.land_mosque_church, g.getmosque_church_ownership());
+        contentValue.put(DatabaseHelper.land_schools, g.getschools_ownership());
+        contentValue.put(DatabaseHelper.land_other, g.getother_ownership());
+        //contentValue.put(DatabaseHelper.planting_site, g.getselect_site());
+        contentValue.put(DatabaseHelper.woodlot, g.getwoodlot());
+        contentValue.put(DatabaseHelper.iboundary, g.getiboundary());
+        contentValue.put(DatabaseHelper.eboundary, g.geteboundary());
+        contentValue.put(DatabaseHelper.garden, g.getgarden());
+        contentValue.put(DatabaseHelper.crop_field, g.getcrop_field());
+        contentValue.put(DatabaseHelper.pasture_grassland, g.getpasture_grassland());
+        contentValue.put(DatabaseHelper.fallow_bushland, g.getfallow_pushland());
+        contentValue.put(DatabaseHelper.other_sites, g.getother_sites());
         contentValue.put(DatabaseHelper.landsize_regreen, g.getlandsize());
         contentValue.put(DatabaseHelper.farmerID, g.getfid());
         //insert
@@ -181,7 +195,14 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.fmnr_country, g.getcountry());
         contentValue.put(DatabaseHelper.fmnr_county_region, g.getcounty_region());
         contentValue.put(DatabaseHelper.fmnr_district, g.getdistricts());
-        contentValue.put(DatabaseHelper.fmnr_planting_location, g.getselect_location());
+        //contentValue.put(DatabaseHelper.fmnr_planting_location, g.getselect_location());
+        contentValue.put(DatabaseHelper.fmnr_land_individual, g.getindividual_ownership());
+        contentValue.put(DatabaseHelper.fmnr_land_community, g.getcommunity_ownership());
+        contentValue.put(DatabaseHelper.fmnr_land_government, g.getgovt_land_ownership());
+        contentValue.put(DatabaseHelper.fmnr_land_mosque_church, g.getmosque_church_ownership());
+        contentValue.put(DatabaseHelper.fmnr_land_schools, g.getschools_ownership());
+        contentValue.put(DatabaseHelper.fmnr_land_other, g.getother_ownership());
+
         contentValue.put(DatabaseHelper.fmnr_species_number_start, g.getspecies_number());
         contentValue.put(DatabaseHelper.fmnr_restoration_photo, g.getpath());
         contentValue.put(DatabaseHelper.fmnr_started_date, g.getfmnr_date());
@@ -270,14 +291,14 @@ public class DbAccess {
     public void deleteFmnrSpecies(){
         database.execSQL("delete from "+ TABLE_FMNR_SPECIES);
     }
-    public void deleteFmnrPolygon(){
+    public void deleteLandsizePolygon(){
         database.execSQL("delete from "+ TABLE_LANDSIZEPOLYGON);
     }
     //get all records from db for sending
     //fetch from all tables where farmer ID match
     public Cursor getTP() {
         //String selectQuery = "SELECT * FROM farmer_institution,cohort,tree_measurements";
-        String selectQuery = "SELECT * FROM farmer_institution,cohort,tree_measurements WHERE farmer_institution.farmerID = cohort.farmerID and cohort.cohortID = tree_measurements.cohortID ";
+        String selectQuery = "SELECT * FROM farmer_institution,cohort,tree_measurements,landsizepolygon WHERE farmer_institution.farmerID = cohort.farmerID and cohort.cohortID = tree_measurements.cohortID and farmer_institution.farmerID=landsizepolygon.farmerID";
         Cursor c = database.rawQuery(selectQuery, null);
         return c;
     }
@@ -328,7 +349,9 @@ public class DbAccess {
     }
     //get fmnr data
     public Cursor getFMNR() {
-        String selectQuery = "SELECT * FROM fmnr_farmer_inst,fmnr_species,landsizepolygon WHERE fmnr_farmer_inst.farmerID = fmnr_species.farmerID";
+       String selectQuery = "SELECT * FROM fmnr_farmer_inst,fmnr_species,landsizepolygon WHERE fmnr_farmer_inst.farmerID = fmnr_species.farmerID and fmnr_farmer_inst.farmerID=landsizepolygon.farmerID ";
+        //String selectQuery = "SELECT * FROM fmnr_farmer_inst,fmnr_species WHERE fmnr_farmer_inst.farmerID = fmnr_species.farmerID";
+        //String selectQuery = "SELECT * FROM fmnr_farmer_inst a INNER JOIN fmnr_species b ON a.farmerID = b.farmerID INNER JOIN landsizepolygon";
         Cursor c = database.rawQuery(selectQuery, null);
         return c;
     }

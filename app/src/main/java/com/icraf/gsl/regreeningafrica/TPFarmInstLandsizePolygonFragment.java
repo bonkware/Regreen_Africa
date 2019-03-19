@@ -131,7 +131,7 @@ public class TPFarmInstLandsizePolygonFragment extends Fragment implements Locat
                 else
                 {
                     //check how many times clicked and so on
-                    if (clickcount >= 4){
+                    if (clickcount >= 5){
                         button_next.setEnabled(true);//enable this button after 4 polygon point are saved
                     }
                     Toast.makeText(TPFarmInstLandsizePolygonFragment.this.getActivity(),"Point "+clickcount+" saved", Toast.LENGTH_LONG).show();
@@ -247,8 +247,8 @@ public class TPFarmInstLandsizePolygonFragment extends Fragment implements Locat
         alert.show();
     }
     public  void savePolygon() {
-        TextView fid = (TextView) getActivity().findViewById(R.id.fid);
-        g.setfid(fid.getText().toString());
+        TextView farmerid = (TextView) getActivity().findViewById(R.id.fid);
+        g.setfid(farmerid.getText().toString());
         //get points from global
     }
 }

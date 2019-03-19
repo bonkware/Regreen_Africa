@@ -20,70 +20,69 @@
             android:id="@+id/select"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Select tree planting site"
+            android:text="Tree planting area/part of the land"
+            android:textSize="@dimen/textsize"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(Select the area or part of the land where tree planting is being practiced)"
             android:textSize="@dimen/textsize"
             android:textStyle="italic"/>
 
-        <RadioGroup
-            android:id="@+id/planting_site"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingTop="20dp">
 
-            <RadioButton
+            <CheckBox
                 android:id="@+id/woodlot"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Woodlot"
                 android:textSize="@dimen/add_edit_textsize" />
 
-            <RadioButton
+            <CheckBox
                 android:id="@+id/iboundary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Internal Boundary"
                 android:textSize="@dimen/add_edit_textsize" />
-            <RadioButton
+            <CheckBox
                 android:id="@+id/eboundary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="External Boundary"
                 android:textSize="@dimen/add_edit_textsize" />
 
-            <RadioButton
+            <CheckBox
                 android:id="@+id/garden"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Home garden"
                 android:textSize="@dimen/add_edit_textsize" />
 
-            <RadioButton
+            <CheckBox
                 android:id="@+id/crop_field"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Crop field"
                 android:textSize="@dimen/add_edit_textsize" />
 
-            <RadioButton
+            <CheckBox
                 android:id="@+id/pasture_grassland"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Pasture/grassland"
                 android:textSize="@dimen/add_edit_textsize" />
-            <RadioButton
+            <CheckBox
                 android:id="@+id/fallow_pushland"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Fallow/bushland"
                 android:textSize="@dimen/add_edit_textsize" />
-            <RadioButton
+            <CheckBox
                 android:id="@+id/others"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Other"
                 android:textSize="@dimen/add_edit_textsize" />
-        </RadioGroup>
 
         <EditText
             android:id="@+id/other_sites"

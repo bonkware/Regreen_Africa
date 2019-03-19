@@ -131,7 +131,7 @@ public class FmnrLandSizePolygonFragment extends Fragment implements LocationLis
                 else
                 {
                     //check how many times clicked and so on
-                    if (clickcount >= 4){
+                    if (clickcount >= 5){
                         button_next.setEnabled(true);//enable this button after 4 polygon point are saved
                     }
                     Toast.makeText(FmnrLandSizePolygonFragment.this.getActivity(),"Point "+clickcount+" saved", Toast.LENGTH_LONG).show();

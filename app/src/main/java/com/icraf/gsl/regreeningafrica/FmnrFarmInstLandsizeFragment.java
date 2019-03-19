@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -118,7 +119,7 @@ public class FmnrFarmInstLandsizeFragment extends Fragment {
         //if(district != null && district.getSelectedItem() !=null ) {
         g.setdistricts(district.getText().toString());
         //}
-        RadioGroup radioGroup = (RadioGroup) getActivity().findViewById(R.id.planting_location);
+       /* RadioGroup radioGroup = (RadioGroup) getActivity().findViewById(R.id.planting_location);
         //check whether it is checked
         if(radioGroup.getCheckedRadioButtonId()==-1){
             //Toast.makeText(FarmerDetails.this.getActivity(),"Please select Radio Button!",Toast.LENGTH_SHORT).show();
@@ -130,7 +131,41 @@ public class FmnrFarmInstLandsizeFragment extends Fragment {
             RadioButton select = (RadioButton) getActivity().findViewById(selectedId);
             // radioButton text
             g.setselect_location(select.getText().toString());
+        }*/
+        CheckBox owner = (CheckBox) getActivity().findViewById(R.id.own);
+        if(owner.isChecked()) {
+            g.setindividual_ownership("yes");
+        }else {
+            g.setindividual_ownership("no");
         }
+        CheckBox community = (CheckBox) getActivity().findViewById(R.id.comm_land);
+        if(community.isChecked()) {
+            g.setcommunity_ownership("yes");
+        }else {
+            g.setcommunity_ownership("no");
+        }
+        CheckBox govt = (CheckBox) getActivity().findViewById(R.id.govt_land);
+        if(govt.isChecked()) {
+            g.setgovt_land_ownership("yes");
+        }else {
+            g.setgovt_land_ownership("no");
+        }
+
+        CheckBox mchurch_mosque = (CheckBox) getActivity().findViewById(R.id.mosque_church);
+        if(mchurch_mosque.isChecked()) {
+            g.setmosque_church_ownership("yes");
+        }else {
+            g.setmosque_church_ownership("no");
+        }
+
+        CheckBox schools = (CheckBox) getActivity().findViewById(R.id.schools);
+        if(schools.isChecked()) {
+            g.setschools_ownership("yes");
+        }else {
+            g.setschools_ownership("no");
+        }
+        EditText n_type=(EditText) getActivity().findViewById(R.id.other_locations);
+        g.setother_ownership(n_type.getText().toString());
 
         RadioGroup sn = (RadioGroup) getActivity().findViewById(R.id.species_number);
         //check whether it is checked

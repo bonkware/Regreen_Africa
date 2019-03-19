@@ -125,7 +125,7 @@
             android:id="@+id/gps_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Record 4 points or more to proceed"
+            android:text="Record 5 points or more to proceed"
             android:layout_gravity="left"
             android:paddingTop="5dp"
             android:textStyle="italic"

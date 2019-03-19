@@ -25,8 +25,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String country = "country";
     public static final String county_region = "county_region";
     public static final String district = "district";
-    public static final String planting_location = "planting_location";
-    public static final String planting_site = "planting_site";
+    //public static final String planting_location = "planting_location";
+    public static final String land_individual = "land_individual";
+    public static final String land_community = "land_community";
+    public static final String land_government = "land_government";
+    public static final String land_mosque_church = "land_mosque_church";
+    public static final String land_schools = "land_schools";
+    public static final String land_other = "land_other";
+    //public static final String planting_site = "planting_site";
+    public static final String woodlot = "woodlot";
+    public static final String iboundary = "iboundary";
+    public static final String eboundary = "eboundary";
+    public static final String garden = "garden";
+    public static final String crop_field = "crop_field";
+    public static final String pasture_grassland = "pasture_grassland";
+    public static final String fallow_bushland = "fallow_bushland";
+    public static final String other_sites = "other_sites";
+
     public static final String landsize_regreen = "landsize_regreen";
 
     //Cohort columns
@@ -54,10 +69,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String tree_height = "height";
     public static final String tree_rcd = "rcd";
     public static final String tree_dbh = "dbh";
-    public static final String tree_latitude = "latitude";
-    public static final String tree_longitude = "longitude";
-    public static final String tree_altitude = "altitude";
-    public static final String tree_accuracy = "accuracy";
+    public static final String tree_latitude = "tree_latitude";
+    public static final String tree_longitude = "tree_longitude";
+    public static final String tree_altitude = "tree_altitude";
+    public static final String tree_accuracy = "tree_accuracy";
     public static final String tree_image_path = "path";
 
     //table for trainings
@@ -143,7 +158,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String fmnr_country = "country";
     public static final String fmnr_county_region = "county_region";
     public static final String fmnr_district = "district";
-    public static final String fmnr_planting_location = "planting_location";
+    //public static final String fmnr_planting_location = "planting_location";
+    public static final String fmnr_land_individual = "fmnr_land_individual";
+    public static final String fmnr_land_community = "fmnr_land_community";
+    public static final String fmnr_land_government = "fmnr_land_government";
+    public static final String fmnr_land_mosque_church = "fmnr_land_mosque_church";
+    public static final String fmnr_land_schools = "fmnr_land_schools";
+    public static final String fmnr_land_other = "fmnr_land_other";
     public static final String fmnr_species_number_start = "fmnr_species_number_start";
     public static final String fmnr_restoration_photo = "fmnr_restoration_photo";
     public static final String fmnr_started_date = "fmnr_started_date";
@@ -198,7 +219,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "create table " +
                     TABLE_FARMER_INST + "(" +
                     _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + enum_name + " TEXT NOT NULL, " + date + " TEXT NOT NULL, " + farmer_inst_name + " TEXT,"+
-                    country + " TEXT,"+county_region +  " TEXT,"+district + " TEXT,"+planting_location + " TEXT,"+planting_site + " TEXT,"+landsize_regreen + " TEXT,"+
+                    country + " TEXT,"+county_region +  " TEXT,"+district + " TEXT,"+land_individual + " TEXT,"+land_community + " TEXT,"+land_government + " TEXT,"+land_mosque_church + " TEXT,"+land_schools + " TEXT,"+land_other + " TEXT,"+woodlot + " TEXT,"+iboundary + " TEXT,"+eboundary + " TEXT," +
+                    ""+garden + " TEXT,"+crop_field + " TEXT,"+pasture_grassland + " TEXT,"+fallow_bushland + " TEXT,"+other_sites + " TEXT,"+landsize_regreen + " TEXT,"+
                     farmer_id+" TEXT);";
 
     //creating cohort table
@@ -240,7 +262,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "create table " +
                     TABLE_FMNR_FARMER_INST + "(" +
                     _ID_fmnr + " INTEGER PRIMARY KEY AUTOINCREMENT, " + fmnr_enum_name + " TEXT NOT NULL, " + fmnr_date + " TEXT NOT NULL, " + fmnr_farmer_inst_name + " TEXT,"+
-                    fmnr_country + " TEXT,"+fmnr_county_region +  " TEXT,"+fmnr_district + " TEXT,"+fmnr_planting_location + " TEXT,"+fmnr_species_number_start + " TEXT,"+fmnr_restoration_photo + " TEXT,"+fmnr_started_date + " TEXT,"+fmnr_fenced + " TEXT,"+fmnr_landsize_regreen + " TEXT,"+
+                    fmnr_country + " TEXT,"+fmnr_county_region +  " TEXT,"+fmnr_district + " TEXT,"+fmnr_land_individual + " TEXT,"+fmnr_land_community + " TEXT,"+fmnr_land_government + " TEXT,"+fmnr_land_mosque_church + " TEXT,"+fmnr_land_schools + " TEXT,"+fmnr_land_other + " TEXT,"+fmnr_species_number_start + " TEXT,"+fmnr_restoration_photo + " TEXT,"+fmnr_started_date + " TEXT,"+fmnr_fenced + " TEXT,"+fmnr_landsize_regreen + " TEXT,"+
                     fmnr_farmer_id+" TEXT);";
     //creating table for measurement fmnr
     private static final String CREATE_TABLE_FMNR_SPECIES =

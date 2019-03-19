@@ -20,9 +20,8 @@
                 android:id="@+id/text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="FMNR practice land size"
+                android:text="FMNR practice plot information"
                 android:layout_gravity="center"
-                android:visibility="invisible"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
             <!-- auto complete -->
@@ -62,7 +61,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Is the land being restored fenced?"
+                android:text="Is the land fenced?"
                 android:textSize="@dimen/textsize"
                 android:paddingTop="20dp"
                 android:textStyle="italic"/>

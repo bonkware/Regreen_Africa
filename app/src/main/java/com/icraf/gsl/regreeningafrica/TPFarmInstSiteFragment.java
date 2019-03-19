@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
@@ -24,7 +25,7 @@ public class TPFarmInstSiteFragment extends Fragment {
                 false);
 
         //check if other is checked
-        final RadioButton radio_other = (RadioButton) view.findViewById(R.id.others) ;
+        final CheckBox radio_other = (CheckBox) view.findViewById(R.id.others) ;
         final EditText text=(EditText) view.findViewById(R.id.other_sites);
 
         radio_other.setOnClickListener(new View.OnClickListener() {

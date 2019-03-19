@@ -179,8 +179,24 @@ public class OtherMainActivities extends AppCompatActivity {
                     final String country = cursor.getString(cursor.getColumnIndex("country"));
                     final String county_region = cursor.getString(cursor.getColumnIndex("county_region"));
                     final String district = cursor.getString(cursor.getColumnIndex("district"));
-                    final String planting_location = cursor.getString(cursor.getColumnIndex("planting_location"));
-                    final String planting_site = cursor.getString(cursor.getColumnIndex("planting_site"));
+                    //final String planting_location = cursor.getString(cursor.getColumnIndex("planting_location"));
+                    final String land_individual = cursor.getString(cursor.getColumnIndex("land_individual"));
+                    final String land_community = cursor.getString(cursor.getColumnIndex("land_community"));
+                    final String land_government = cursor.getString(cursor.getColumnIndex("land_government"));
+                    final String land_mosque_church = cursor.getString(cursor.getColumnIndex("land_mosque_church"));
+                    final String land_schools = cursor.getString(cursor.getColumnIndex("land_schools"));
+                    final String land_other = cursor.getString(cursor.getColumnIndex("land_other"));
+
+                    //final String planting_site = cursor.getString(cursor.getColumnIndex("planting_site"));
+                    final String woodlot = cursor.getString(cursor.getColumnIndex("woodlot"));
+                    final String iboundary = cursor.getString(cursor.getColumnIndex("iboundary"));
+                    final String eboundary = cursor.getString(cursor.getColumnIndex("eboundary"));
+                    final String garden = cursor.getString(cursor.getColumnIndex("garden"));
+                    final String crop_field = cursor.getString(cursor.getColumnIndex("crop_field"));
+                    final String pasture_grassland = cursor.getString(cursor.getColumnIndex("pasture_grassland"));
+                    final String fallow_pushland = cursor.getString(cursor.getColumnIndex("fallow_bushland"));
+                    final String other_sites = cursor.getString(cursor.getColumnIndex("other_sites"));
+
                     final String landsize_regreen = cursor.getString(cursor.getColumnIndex("landsize_regreen"));
                     //for cohort
                     final String cohort_id = cursor.getString(cursor.getColumnIndex("cohortID"));
@@ -206,13 +222,13 @@ public class OtherMainActivities extends AppCompatActivity {
                     final String tree_height = cursor.getString(cursor.getColumnIndex("height"));
                     final String tree_rcd = cursor.getString(cursor.getColumnIndex("rcd"));
                     final String tree_dbh = cursor.getString(cursor.getColumnIndex("dbh"));
-                    final String tree_latitude = cursor.getString(cursor.getColumnIndex("latitude"));
-                    final String tree_longitude = cursor.getString(cursor.getColumnIndex("longitude"));
-                    final String tree_altitude = cursor.getString(cursor.getColumnIndex("altitude"));
-                    final String tree_accuracy = cursor.getString(cursor.getColumnIndex("accuracy"));
+                    final String tree_latitude = cursor.getString(cursor.getColumnIndex("tree_latitude"));
+                    final String tree_longitude = cursor.getString(cursor.getColumnIndex("tree_longitude"));
+                    final String tree_altitude = cursor.getString(cursor.getColumnIndex("tree_altitude"));
+                    final String tree_accuracy = cursor.getString(cursor.getColumnIndex("tree_accuracy"));
                     final String path = cursor.getString(cursor.getColumnIndex("path"));
                     //for tree planting plot polygon
-                    final String fid = cursor.getString(cursor.getColumnIndex("farmerID"));
+                    final String farmerid = cursor.getString(cursor.getColumnIndex("farmerID"));
                     final String landsize_polygon_latitude = cursor.getString(cursor.getColumnIndex("latitude"));
                     final String landsize_polygon_longitude = cursor.getString(cursor.getColumnIndex("longitude"));
                     final String landsize_polygon_altitude = cursor.getString(cursor.getColumnIndex("altitude"));
@@ -242,6 +258,7 @@ public class OtherMainActivities extends AppCompatActivity {
                                                 dbAccess.deleteFarmer_Inst();
                                                 dbAccess.deleteCohort();
                                                 dbAccess.deleteMeasurements();
+                                                //dbAccess.deleteLandsizePolygon();
                                                 //dismiss dialog by intent
                                                 Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
                                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -350,8 +367,22 @@ public class OtherMainActivities extends AppCompatActivity {
                             param.put("country", country);
                             param.put("county_region", county_region);
                             param.put("district", district);
-                            param.put("planting_location", planting_location);
-                            param.put("planting_site", planting_site);
+                            //param.put("planting_location", planting_location);
+                            param.put("land_individual", land_individual);
+                            param.put("land_community", land_community);
+                            param.put("land_government", land_government);
+                            param.put("land_mosque_church", land_mosque_church);
+                            param.put("land_schools", land_schools);
+                            param.put("land_other", land_other);
+                            //param.put("planting_site", planting_site);
+                            param.put("woodlot", woodlot);
+                            param.put("iboundary", iboundary);
+                            param.put("eboundary", eboundary);
+                            param.put("garden", garden);
+                            param.put("crop_field", crop_field);
+                            param.put("pasture_grassland", pasture_grassland);
+                            param.put("fallow_bushland", fallow_pushland);
+                            param.put("other_sites", other_sites);
                             param.put("landsize_regreen", landsize_regreen);
                             //cohort
                             param.put("cohortID", cohort_id);
@@ -388,7 +419,7 @@ public class OtherMainActivities extends AppCompatActivity {
                             String image = getStringImage(bitmap);
                             param.put("path", image);
                             //landsize polygon
-                            param.put("farmerID", fid);
+                            param.put("farmerID", farmerid);
                             param.put("latitude", landsize_polygon_latitude);
                             param.put("longitude", landsize_polygon_longitude);
                             param.put("altitude", landsize_polygon_altitude);
@@ -463,7 +494,7 @@ public class OtherMainActivities extends AppCompatActivity {
                     final String longitude = cursor.getString(cursor.getColumnIndex("longitude"));
                     final String altitude = cursor.getString(cursor.getColumnIndex("altitude"));
                     final String accuracy = cursor.getString(cursor.getColumnIndex("accuracy"));
-                    final String image = cursor.getString(cursor.getColumnIndex("image"));
+                    final String path = cursor.getString(cursor.getColumnIndex("image"));
                     //nursery species
                     final String species = cursor.getString(cursor.getColumnIndex("species"));
                     final String local = cursor.getString(cursor.getColumnIndex("local"));
@@ -636,7 +667,7 @@ public class OtherMainActivities extends AppCompatActivity {
                             //converting file path to bitmap
                             BitmapFactory.Options options = new BitmapFactory.Options();
                             options.inSampleSize = 8;//compress file further to avoid out of memory error
-                            Bitmap bitmap = BitmapFactory.decodeFile(image,options);
+                            Bitmap bitmap = BitmapFactory.decodeFile(path,options);
                             String image = getStringImage(bitmap);
                             param.put("image", image);
                             //species data
@@ -726,7 +757,14 @@ public class OtherMainActivities extends AppCompatActivity {
                     final String fmnr_country = cursor.getString(cursor.getColumnIndex("country"));
                     final String fmnr_county_region = cursor.getString(cursor.getColumnIndex("county_region"));
                     final String fmnr_district = cursor.getString(cursor.getColumnIndex("district"));
-                    final String fmnr_planting_location = cursor.getString(cursor.getColumnIndex("planting_location"));
+                    //final String fmnr_planting_location = cursor.getString(cursor.getColumnIndex("planting_location"));
+                    final String fmnr_land_individual = cursor.getString(cursor.getColumnIndex("fmnr_land_individual"));
+                    final String fmnr_land_community = cursor.getString(cursor.getColumnIndex("fmnr_land_community"));
+                    final String fmnr_land_government = cursor.getString(cursor.getColumnIndex("fmnr_land_government"));
+                    final String fmnr_land_mosque_church = cursor.getString(cursor.getColumnIndex("fmnr_land_mosque_church"));
+                    final String fmnr_land_schools = cursor.getString(cursor.getColumnIndex("fmnr_land_schools"));
+                    final String fmnr_land_other = cursor.getString(cursor.getColumnIndex("fmnr_land_other"));
+
                     final String fmnr_species_number_start = cursor.getString(cursor.getColumnIndex("fmnr_species_number_start"));
                     final String fmnr_restoration_photo = cursor.getString(cursor.getColumnIndex("fmnr_restoration_photo"));
                     final String fmnr_started_date = cursor.getString(cursor.getColumnIndex("fmnr_started_date"));
@@ -792,7 +830,7 @@ public class OtherMainActivities extends AppCompatActivity {
                                                 //delete all records after send
                                                 dbAccess.deleteFmnrFarmer_Inst();
                                                 dbAccess.deleteFmnrSpecies();
-                                                dbAccess.deleteFmnrPolygon();
+                                                //dbAccess.deleteLandsizePolygon();
                                                 //dismiss dialog by intent
                                                 Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
                                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -901,12 +939,23 @@ public class OtherMainActivities extends AppCompatActivity {
                             param.put("country", fmnr_country);
                             param.put("county_region", fmnr_county_region);
                             param.put("district", fmnr_district);
-                            param.put("planting_location", fmnr_planting_location);
+                            //param.put("planting_location", fmnr_planting_location);
+                            param.put("fmnr_land_individual", fmnr_land_individual);
+                            param.put("fmnr_land_community", fmnr_land_community);
+                            param.put("fmnr_land_government", fmnr_land_government);
+                            param.put("fmnr_land_mosque_church", fmnr_land_mosque_church);
+                            param.put("fmnr_land_schools", fmnr_land_schools);
+                            param.put("fmnr_land_other", fmnr_land_other);
                             param.put("fmnr_species_number_start", fmnr_species_number_start);
                             param.put("fmnr_restoration_photo", fmnr_restoration_photo);
                             param.put("fmnr_started_date", fmnr_started_date);
                             param.put("fmnr_fenced", fmnr_fenced);
                             param.put("landsize_regreen", fmnr_landsize_regreen);
+                            BitmapFactory.Options option = new BitmapFactory.Options();
+                            option.inSampleSize = 8;//compress file further to avoid out of memory error
+                            Bitmap bitmap_rest = BitmapFactory.decodeFile(fmnr_restoration_photo,option);
+                            String image_rest = getStringImage(bitmap_rest);
+                            param.put("fmnr_restoration_photo", image_rest);
                             //species
                             param.put("farmerID", fmnrfarmer_id);
                             param.put("species", fmnr_species_name);
@@ -935,6 +984,7 @@ public class OtherMainActivities extends AppCompatActivity {
                             param.put("tree_altitude", fmnr_tree_altitude);
                             param.put("tree_accuracy", fmnr_tree_accuracy);
                             //converting file path to bitmap
+
                             BitmapFactory.Options options = new BitmapFactory.Options();
                             options.inSampleSize = 8;//compress file further to avoid out of memory error
                             Bitmap bitmap = BitmapFactory.decodeFile(fmnr_tree_image_path,options);

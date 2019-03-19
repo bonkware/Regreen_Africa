@@ -6,12 +6,15 @@ package com.icraf.gsl.regreeningafrica;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class TrainingsNoParticipantsFragment extends Fragment {
     private DbAccess dbAccess;
@@ -27,6 +30,115 @@ public class TrainingsNoParticipantsFragment extends Fragment {
                 false);
         dbAccess = new DbAccess(this.getActivity());
         dbAccess.open();
+
+        //compare if total number of male,female or youth is higher than the total participants
+        final EditText total  = (EditText)view.findViewById(R.id.participants);
+        final EditText male  = (EditText)view.findViewById(R.id.m_participants);
+        final EditText female  = (EditText)view.findViewById(R.id.f_participants);
+        final EditText youth  = (EditText)view.findViewById(R.id.y_participants);
+
+        male.addTextChangedListener(new TextWatcher() {
+
+            // the user's changes are saved here
+            public void onTextChanged(CharSequence c, int start, int before, int count) {
+                //
+
+            }
+
+            public void beforeTextChanged(CharSequence c, int start, int count, int after) {
+                // this space intentionally left blank
+            }
+
+            public void afterTextChanged(Editable c) {
+                //check if the number of trees survived is more than the planted
+                // Toast.makeText(getActivity(),"Message" + new String(c.toString()), Toast.LENGTH_SHORT).show();
+                try {
+                    int t = Integer.valueOf(total.getText().toString());
+                    int m = Integer.valueOf(male.getText().toString());
+
+                    if (m > t) {
+                        // myEditText2.setText("");  //this automatically sets the editText2 field back to empty
+                        male.setText("");
+                        male.setError("Cannot be more than the total " + t);
+                        //Toast.makeText(getActivity(), "Cannot be more than " + t, Toast.LENGTH_SHORT).show();
+                    }
+                } catch (NumberFormatException e){
+                    //handle
+                    //Toast.makeText(getActivity(),"Empty", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });//end of text watcher1
+        female.addTextChangedListener(new TextWatcher() {
+
+            // the user's changes are saved here
+            public void onTextChanged(CharSequence c, int start, int before, int count) {
+                //
+
+            }
+
+            public void beforeTextChanged(CharSequence c, int start, int count, int after) {
+                // this space intentionally left blank
+            }
+
+            public void afterTextChanged(Editable c) {
+                //check if the number of trees survived is more than the planted
+                // Toast.makeText(getActivity(),"Message" + new String(c.toString()), Toast.LENGTH_SHORT).show();
+                try {
+                    int t = Integer.valueOf(total.getText().toString());
+                    int m = Integer.valueOf(male.getText().toString());
+                    int f = Integer.valueOf(female.getText().toString());
+                    //int y = Integer.valueOf(youth.getText().toString());
+
+                    if (f + m > t) {
+                        // myEditText2.setText("");  //this automatically sets the editText2 field back to empty
+                        female.setText("");
+                        female.setError("Cannot be more than the total number ");
+                        //Toast.makeText(getActivity(), "Cannot be more than " + t, Toast.LENGTH_SHORT).show();
+                    }
+
+                } catch (NumberFormatException e){
+                    //handle
+                    //Toast.makeText(getActivity(),"Empty", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });//end of text watcher2
+        youth.addTextChangedListener(new TextWatcher() {
+
+            // the user's changes are saved here
+            public void onTextChanged(CharSequence c, int start, int before, int count) {
+                //
+
+            }
+
+            public void beforeTextChanged(CharSequence c, int start, int count, int after) {
+                // this space intentionally left blank
+            }
+
+            public void afterTextChanged(Editable c) {
+                //check if the number of trees survived is more than the planted
+                // Toast.makeText(getActivity(),"Message" + new String(c.toString()), Toast.LENGTH_SHORT).show();
+                try {
+                    int t = Integer.valueOf(total.getText().toString());
+                    int m = Integer.valueOf(male.getText().toString());
+                    int f = Integer.valueOf(female.getText().toString());
+                    int y = Integer.valueOf(youth.getText().toString());
+
+
+                    if (y + m + f > t) {
+                        // myEditText2.setText("");  //this automatically sets the editText2 field back to empty
+                        youth.setText("");
+                        youth.setError("Cannot be more than the total participant ");
+                        //Toast.makeText(getActivity(), "Cannot be more than " + t, Toast.LENGTH_SHORT).show();
+                    }
+                } catch (NumberFormatException e){
+                    //handle
+                    //Toast.makeText(getActivity(),"Empty", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });//end of text watcher3
 
         //finish adding trainings
         Button button_next = (Button) view.findViewById(R.id.finish);

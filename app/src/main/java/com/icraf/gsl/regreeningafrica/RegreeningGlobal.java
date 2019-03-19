@@ -21,7 +21,8 @@ public class RegreeningGlobal {
             seed,graft,cutting,marcotting,farmland,plantation,mother_blocks,prisons,other_graft_sources,qpurchased,date_sown,germinated,survived,seedling_age,price,
             select_radio, bare_root,container,other_method, other, own_farm_seeds, local_dealer_seeds, national_seed,ngos_seed,
             other_seed_source, other_s, nursery_species, nursery_local, seedlings_number, seedlings_age, hardening,
-            species_number,grafted_species_name, rootstock, own_farm1,local_dealer1, govt_seed, source,other_s1,observation,image,nid;
+            species_number,individual_ownership, community_ownership, govt_land_ownership,mosque_church_ownership, schools_ownership, other_ownership,other_s1,observation,image,nid,
+            woodlot,iboundary,eboundary,garden,crop_field,pasture_grassland,fallow_pushland,other_sites;
     private Bitmap photo;
     private Boolean save_add;
 
@@ -335,13 +336,113 @@ public class RegreeningGlobal {
         this.usage7 = usage7;
     }
     //Getting
-    public String getlivestock_other() {
-        return livestock_other;
+    public String getindividual_ownership() {
+        return individual_ownership;
     }
     //Setting
-    public void setlivestock_other(String livestock_other) {
-        this.livestock_other = livestock_other;
+    public void setindividual_ownership(String individual_ownership) {
+        this.individual_ownership = individual_ownership;
     }
+    public String getcommunity_ownership() {
+        return community_ownership;
+    }
+    //Setting
+    public void setcommunity_ownership(String community_ownership) {
+        this.community_ownership = community_ownership;
+    }
+    public String getgovt_land_ownership() {
+        return govt_land_ownership;
+    }
+    //Setting
+    public void setgovt_land_ownership(String govt_land_ownership) {
+        this.govt_land_ownership = individual_ownership;
+    }
+    public String getmosque_church_ownership() {
+        return mosque_church_ownership;
+    }
+    //Setting
+    public void setmosque_church_ownership(String mosque_church_ownership) {
+        this.mosque_church_ownership = mosque_church_ownership;
+    }
+    public String getschools_ownership() {
+        return schools_ownership;
+    }
+    //Setting
+    public void setschools_ownership(String schools_ownership) {
+        this.schools_ownership = schools_ownership;
+    }
+    public String getother_ownership() {
+        return other_ownership;
+    }
+    //Setting
+    public void setother_ownership(String other_ownership) {
+        this.other_ownership = other_ownership;
+    }
+
+    public String getwoodlot() {
+        return woodlot;
+    }
+    //Setting
+    public void setwoodlot(String woodlot) {
+        this.woodlot = woodlot;
+    }
+    public String getiboundary() {
+        return iboundary;
+    }
+    //Setting
+    public void setiboundary(String iboundary) {
+        this.iboundary = iboundary;
+    }
+
+    public String geteboundary() {
+        return eboundary;
+    }
+    //Setting
+    public void seteboundary(String eboundary) {
+        this.eboundary = eboundary;
+    }
+
+    public String getgarden() {
+        return garden;
+    }
+    //Setting
+    public void setgarden(String garden) {
+        this.garden = garden;
+    }
+
+    public String getcrop_field() {
+        return crop_field;
+    }
+    //Setting
+    public void setcrop_field(String crop_field) {
+        this.crop_field = crop_field;
+    }
+
+    public String getpasture_grassland() {
+        return pasture_grassland;
+    }
+    //Setting
+    public void setpasture_grassland(String pasture_grassland) {
+        this.pasture_grassland = pasture_grassland;
+    }
+    public String getfallow_pushland() {
+        return fallow_pushland;
+    }
+    //Setting
+    public void setfallow_pushland(String fallow_pushland) {
+        this.fallow_pushland = fallow_pushland;
+    }
+    public String getother_sites() {
+        return other_sites;
+    }
+    //Setting
+    public void setother_sites(String other_sites) {
+        this.other_sites = other_sites;
+    }
+
+
+
+
 
     //Getting
     public String getename() {

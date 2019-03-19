@@ -3,6 +3,8 @@ package com.icraf.gsl.regreeningafrica;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,8 +49,8 @@ public class NurseryOtherFragment extends Fragment {
                             public void onDateSet(DatePicker view, int year,
                                                   int monthOfYear, int dayOfMonth) {
 
-                                //txtDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
-                                txtDate.setText((monthOfYear + 1) + "/" + year);
+                                txtDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                                //txtDate.setText((monthOfYear + 1) + "/" + year);
 
                             }
                         }, mYear, mMonth, mDay);
@@ -56,6 +58,42 @@ public class NurseryOtherFragment extends Fragment {
 
             }
         });
+        //compare if total number of servived not to be more than the survived
+        final EditText germ  = (EditText)view.findViewById(R.id.germinated);
+        final EditText surv  = (EditText)view.findViewById(R.id.survived);
+
+        surv.addTextChangedListener(new TextWatcher() {
+
+            // the user's changes are saved here
+            public void onTextChanged(CharSequence c, int start, int before, int count) {
+                //
+
+            }
+
+            public void beforeTextChanged(CharSequence c, int start, int count, int after) {
+                // this space intentionally left blank
+            }
+
+            public void afterTextChanged(Editable c) {
+                //check if the number of trees survived is more than the planted
+                // Toast.makeText(getActivity(),"Message" + new String(c.toString()), Toast.LENGTH_SHORT).show();
+                try {
+                    int t = Integer.valueOf(germ.getText().toString());
+                    int m = Integer.valueOf(surv.getText().toString());
+
+                    if (m > t) {
+                        // myEditText2.setText("");  //this automatically sets the editText2 field back to empty
+                        surv.setText("");
+                        surv.setError("Cannot be more than the germinated number " + t);
+                        //Toast.makeText(getActivity(), "Cannot be more than " + t, Toast.LENGTH_SHORT).show();
+                    }
+                } catch (NumberFormatException e){
+                    //handle
+                    //Toast.makeText(getActivity(),"Empty", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });//end of text watcher1
         return view;
     }
 }
