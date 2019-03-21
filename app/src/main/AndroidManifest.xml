@@ -29,21 +29,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.icraf.gsl.regreeningafrica.MainActivity" />
-        <activity android:name="com.icraf.gsl.regreeningafrica.TPFarmInstiMainAcivity" />
-        <activity android:name="com.icraf.gsl.regreeningafrica.SelectSurvey" />
-        <activity android:name="com.icraf.gsl.regreeningafrica.TrainingsMainActivity" />
-        <activity android:name="com.icraf.gsl.regreeningafrica.TPCohortMainAcivity" />
-        <activity android:name="com.icraf.gsl.regreeningafrica.TPTreeMeasureMainAcivity" />
-        <activity android:name="com.icraf.gsl.regreeningafrica.OtherMainActivities" />
-        <activity android:name="com.icraf.gsl.regreeningafrica.NurseryOtherInfoMain"> </activity>
-        <activity android:name="com.icraf.gsl.regreeningafrica.NurseryInfoMain"> </activity>
-        <activity android:name="com.icraf.gsl.regreeningafrica.About"> </activity>
-        <activity android:name="com.icraf.gsl.regreeningafrica.AppGuide"> </activity>
-        <activity android:name="com.icraf.gsl.regreeningafrica.FmnrFarmInstMainActivity"> </activity>
-        <activity android:name="com.icraf.gsl.regreeningafrica.FmnrTreeMeasureMainActivity"> </activity>
-        <activity android:name="com.icraf.gsl.regreeningafrica.FmnrLandSizeMainActivity"> </activity>
-        <activity android:name="com.icraf.gsl.regreeningafrica.TPLandSizeMainActivity"> </activity>
+        <activity android:name="com.icraf.gsl.regreeningafrica.MainActivity" android:configChanges="orientation|screenSize|keyboardHidden"/>
+        <activity android:name="com.icraf.gsl.regreeningafrica.TPFarmInstiMainAcivity" android:configChanges="orientation|screenSize|keyboardHidden"/>
+        <activity android:name="com.icraf.gsl.regreeningafrica.SelectSurvey" android:configChanges="orientation|screenSize|keyboardHidden"/>
+        <activity android:name="com.icraf.gsl.regreeningafrica.TrainingsMainActivity" android:configChanges="orientation|screenSize|keyboardHidden"/>
+        <activity android:name="com.icraf.gsl.regreeningafrica.TPCohortMainAcivity" android:configChanges="orientation|screenSize|keyboardHidden"/>
+        <activity android:name="com.icraf.gsl.regreeningafrica.TPTreeMeasureMainAcivity" android:configChanges="orientation|screenSize|keyboardHidden"/>
+        <activity android:name="com.icraf.gsl.regreeningafrica.OtherMainActivities" android:configChanges="orientation|screenSize|keyboardHidden"/>
+        <activity android:name="com.icraf.gsl.regreeningafrica.NurseryOtherInfoMain" android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity android:name="com.icraf.gsl.regreeningafrica.NurseryInfoMain" android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity android:name="com.icraf.gsl.regreeningafrica.About" />
+        <activity android:name="com.icraf.gsl.regreeningafrica.AppGuide" />
+        <activity android:name="com.icraf.gsl.regreeningafrica.FmnrFarmInstMainActivity" android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity android:name="com.icraf.gsl.regreeningafrica.FmnrTreeMeasureMainActivity" android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity android:name="com.icraf.gsl.regreeningafrica.FmnrLandSizeMainActivity" android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity android:name="com.icraf.gsl.regreeningafrica.TPLandSizeMainActivity" android:configChanges="orientation|screenSize|keyboardHidden" />
     </application>
 
 </manifest>
