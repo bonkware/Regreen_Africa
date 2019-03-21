@@ -75,18 +75,20 @@
         <Button
             android:id="@+id/prev"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="49dp"
             android:onClick=""
             android:visibility="invisible"
             android:layout_weight="1"
+            android:drawableRight="@drawable/n_back"
             android:text="PREV"/>
 
         <Button
             android:id="@+id/next"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="49dp"
             android:onClick="jumpToMethod"
             android:layout_weight="1"
+            android:drawableRight="@drawable/noun_next"
             android:text="NEXT"/>
 
     </LinearLayout>

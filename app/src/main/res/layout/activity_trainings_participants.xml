@@ -103,15 +103,16 @@
         <Button
             android:id="@+id/prev"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="49dp"
             android:onClick="jumpBackDetails"
             android:layout_weight="1"
+            android:drawableLeft="@drawable/n_back"
             android:text="PREV"/>
 
         <Button
             android:id="@+id/finish"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="49dp"
             android:layout_weight="1"
             android:text="Finish"/>
     </LinearLayout>

@@ -149,17 +149,19 @@
         <Button
             android:id="@+id/prev"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="49dp"
             android:layout_weight="1"
             android:onClick="jumpBackCohort"
+            android:drawableLeft="@drawable/n_back"
             android:text="PREV"/>
 
         <Button
             android:id="@+id/next"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="49dp"
             android:layout_weight="1"
             android:onClick="jumpToUsage"
+            android:drawableRight="@drawable/noun_next"
             android:text="NEXT"/>
 
     </LinearLayout>

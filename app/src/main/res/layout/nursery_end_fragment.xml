@@ -44,6 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
+                android:drawableLeft="@drawable/noun_back"
                 android:text="Add Trees"/>
         </TableRow>
         <TableRow
@@ -88,15 +89,16 @@
         <Button
             android:id="@+id/prev"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="49dp"
             android:layout_weight="1"
             android:onClick="jumpBackOther"
+            android:drawableLeft="@drawable/n_back"
             android:text="PREV"/>
 
         <Button
             android:id="@+id/finish"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="49dp"
             android:layout_weight="1"
             android:text="Finish"/>
 
