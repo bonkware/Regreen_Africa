@@ -115,7 +115,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:button="@drawable/custom_checkbox_more"/>
+                        android:button="@drawable/custom_checkbox_leafy"/>
                 </TableRow>
                 <TableRow
                     android:id="@+id/mulch"
@@ -144,7 +144,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:button="@drawable/custom_checkbox_mulching"/>
+                        android:button="@drawable/custom_checkbox_nuts"/>
 
                     <CheckBox
                         android:id="@+id/usg_other"

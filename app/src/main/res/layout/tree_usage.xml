@@ -90,13 +90,13 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:textSize="@dimen/add_edit_textsize"
-                        android:text="Animal feed" />
+                        android:text="Fodder" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:textSize="@dimen/add_edit_textsize"
-                        android:text="Food" />
+                        android:text="Fruits" />
                 </TableRow>
 
                 <TableRow
@@ -127,7 +127,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:textSize="@dimen/add_edit_textsize"
-                        android:text="Mulching" />
+                        android:text="Soil \n fertility" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

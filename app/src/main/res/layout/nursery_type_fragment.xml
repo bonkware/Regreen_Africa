@@ -23,55 +23,139 @@
                 android:text="Select nursery type category"
                 android:textSize="@dimen/textsize"
                 android:textStyle="italic"/>
-
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="*" >
+                <TableRow
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" >
                 <CheckBox
                     android:id="@+id/govt"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Government"
-                    android:textSize="@dimen/add_edit_textsize" />
+                    android:layout_gravity="center"
+                    android:button="@drawable/custom_checkbox_government"/>
                 <CheckBox
                     android:id="@+id/cm"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Churches/Mosques"
-                    android:textSize="@dimen/add_edit_textsize" />
+                    android:layout_gravity="center"
+                    android:button="@drawable/custom_checkbox_church_mosque"/>
+                </TableRow>
+                <TableRow
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/add_edit_textsize"
+                        android:layout_gravity="center"
+                        android:text="Government" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/add_edit_textsize"
+                        android:layout_gravity="center"
+                        android:text="Churches \n Mosques" />
+                </TableRow>
+                <TableRow
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" >
                 <CheckBox
                     android:id="@+id/school"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Schools"
-                    android:textSize="@dimen/add_edit_textsize" />
+                    android:layout_gravity="center"
+                    android:button="@drawable/custom_checkbox_schools"/>
                 <CheckBox
                     android:id="@+id/w_groups"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Women groups"
-                    android:textSize="@dimen/add_edit_textsize" />
+                    android:layout_gravity="center"
+                    android:button="@drawable/custom_checkbox_women_groups"/>
+                </TableRow>
+                <TableRow
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/add_edit_textsize"
+                        android:layout_gravity="center"
+                        android:text="Schools" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/add_edit_textsize"
+                        android:layout_gravity="center"
+                        android:text="Women groups" />>
+                </TableRow>
+                <TableRow
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" >
                 <CheckBox
                     android:id="@+id/y_groups"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Youth group"
-                    android:textSize="@dimen/add_edit_textsize" />
+                    android:layout_gravity="center"
+                    android:button="@drawable/custom_checkbox_youth_groups"/>
                 <CheckBox
                     android:id="@+id/private_individual"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="private/individual"
-                    android:textSize="@dimen/add_edit_textsize" />
+                    android:layout_gravity="center"
+                    android:button="@drawable/custom_checkbox_individual"/>
+                </TableRow>
+                <TableRow
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/add_edit_textsize"
+                        android:layout_gravity="center"
+                        android:text="Youth group" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/add_edit_textsize"
+                        android:layout_gravity="center"
+                        android:text="private/individual" />>
+                </TableRow>
+            <TableRow
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" >
                 <CheckBox
                     android:id="@+id/c_village"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Communal/Village"
-                    android:textSize="@dimen/add_edit_textsize" />
+                    android:layout_gravity="center"
+                    android:button="@drawable/custom_checkbox_village"/>
                 <CheckBox
                     android:id="@+id/others"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Other"
-                    android:textSize="@dimen/add_edit_textsize" />
+                    android:layout_gravity="center"
+                    android:button="@drawable/custom_checkbox_more"/>
+                </TableRow>
+                <TableRow
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/add_edit_textsize"
+                        android:layout_gravity="center"
+                        android:text="Communal/Village" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/add_edit_textsize"
+                        android:layout_gravity="center"
+                        android:text="Other" />>
+                </TableRow>
+        </TableLayout>
 
             <EditText
                 android:id="@+id/other_types"

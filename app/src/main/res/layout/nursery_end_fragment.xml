@@ -22,9 +22,9 @@
             <TextView
                 android:layout_width="0dp" android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="Add another species in the nursery?"
-                android:gravity="left"
+                android:text="Add another tree species in the nursery"
                 android:textStyle="bold|italic"
+                android:layout_margin="10dp"
                 android:textSize="15sp">
             </TextView>
         </TableRow>
@@ -32,18 +32,24 @@
             android:id="@+id/addtree"
             android:layout_width="0dp"
             android:layout_height="wrap_content">
-            <Button
+            <!--<Button
                 android:id="@+id/add_tree"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:drawableRight="@drawable/ic_add"
                 android:layout_gravity="center"
-                />
+                />-->
+            <Button
+                android:id="@+id/add_tree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Add Trees"/>
         </TableRow>
         <TableRow
             android:layout_width="0dp"
-            android:layout_height="wrap_content" >
-
+            android:layout_height="wrap_content"
+            android:visibility="gone">
             <TextView
                 android:layout_width="0dp" android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -56,14 +62,21 @@
         <TableRow
             android:id="@+id/addnursery"
             android:layout_width="0dp"
-            android:layout_height="wrap_content">
-            <Button
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+            <!--<Button
                 android:id="@+id/add_nursery"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:drawableRight="@drawable/ic_add"
                 android:layout_gravity="center"
-                />
+                />-->
+            <Button
+                android:id="@+id/add_nursery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Add Nursery"/>
         </TableRow>
     </TableLayout>
     <LinearLayout

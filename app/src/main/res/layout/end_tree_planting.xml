@@ -23,7 +23,7 @@
                 android:layout_width="0dp" android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="Do you want to measure another tree?"
-                android:gravity="left"
+                android:layout_margin="10dp"
                 android:textStyle="bold|italic"
                 android:textSize="15sp">
             </TextView>
@@ -32,13 +32,19 @@
             android:id="@+id/addtree"
             android:layout_width="0dp"
             android:layout_height="wrap_content">
-            <Button
+            <!--<Button
                 android:id="@+id/add_tree"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:drawableRight="@drawable/ic_add"
                 android:layout_gravity="center"
-                />
+                />-->
+            <Button
+                android:id="@+id/add_tree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Measure another tree"/>
         </TableRow>
 
         <TableRow
@@ -49,7 +55,7 @@
                 android:layout_width="0dp" android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="Add another cohort from the same farmer"
-                android:gravity="left"
+                android:layout_margin="10dp"
                 android:textStyle="bold|italic"
                 android:textSize="15sp"/>
         </TableRow>
@@ -57,18 +63,25 @@
             android:id="@+id/addcohort"
             android:layout_width="0dp"
             android:layout_height="wrap_content">
-            <Button
+            <!--<Button
                 android:id="@+id/add_cohort"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:drawableRight="@drawable/ic_add"
-                />
+                />-->
+            <Button
+                android:id="@+id/add_cohort"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Add Cohort"/>
         </TableRow>
         <TableRow
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:paddingTop="15dp">
+            android:paddingTop="15dp"
+            android:visibility="gone">
             <TextView
                 android:layout_width="0dp" android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -80,7 +93,8 @@
         <TableRow
             android:id="@+id/addfarmerinst"
             android:layout_width="0dp"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:visibility="gone">
             <Button
                 android:id="@+id/add_new_farmerinst"
                 android:layout_width="wrap_content"

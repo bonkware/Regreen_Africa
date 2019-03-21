@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by benard on 1/18/19.
@@ -18,6 +19,7 @@ import android.widget.TextView;
 
 public class FmnrTreeEndFragment extends Fragment {
     private DbAccess dbAccess;
+    int clickcount=0;
     public FmnrTreeEndFragment() {
         // Required empty public constructor
     }
@@ -34,7 +36,7 @@ public class FmnrTreeEndFragment extends Fragment {
         dbAccess.open();
 
         //add another tree from the cohort
-        Button button_addtree = (Button) view.findViewById(R.id.add_tree);
+        final Button button_addtree = (Button) view.findViewById(R.id.add_tree);
         button_addtree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,6 +44,15 @@ public class FmnrTreeEndFragment extends Fragment {
                     case R.id.add_tree:
                         saveMeasurements();
                         dbAccess.insertFmnrSpecies();//insert into db
+                        //hide button if clicked more than five
+                        /*clickcount=clickcount+1;
+                            //check how many times clicked and so on
+                            if (clickcount >= 5){
+                                button_addtree.setEnabled(false);//enable this button after 4 polygon point are saved
+                            }
+                            Toast.makeText(FmnrTreeEndFragment.this.getActivity(),"Point "+clickcount+" saved", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(getActivity(), FmnrTreeMeasureMainActivity.class);
+                            startActivity(intent);*/
                         Intent intent = new Intent(getActivity(), FmnrTreeMeasureMainActivity.class);
                         startActivity(intent);
                         //Toast.makeText(SelectSurvey.this.getActivity(),"Saved! Add new tree",Toast.LENGTH_SHORT).show();

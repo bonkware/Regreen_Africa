@@ -23,8 +23,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Do you want to measure another tree?"
-                android:gravity="left"
                 android:textStyle="bold|italic"
+                android:layout_margin="10dp"
                 android:textSize="15sp">
             </TextView>
         </TableRow>
@@ -35,7 +35,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="(Measure maximum 5 most dominant species)"
-                android:gravity="left"
+                android:layout_margin="10dp"
                 android:textStyle="italic"
                 android:textSize="15sp">
             </TextView>
@@ -44,13 +44,19 @@
             android:id="@+id/addtree"
             android:layout_width="0dp"
             android:layout_height="wrap_content">
-            <Button
+            <!--<Button
                 android:id="@+id/add_tree"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:drawableRight="@drawable/ic_add"
                 android:layout_gravity="center"
-                />
+                />-->
+            <Button
+                android:id="@+id/add_tree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Measure another tree"/>
         </TableRow>
     </TableLayout>
     <LinearLayout

@@ -79,45 +79,107 @@
                     android:text="Other"
                     android:textSize="@dimen/add_edit_textsize" />
             </RadioGroup>-->
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="*" >
+                <TableRow
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" >
             <CheckBox
                 android:id="@+id/own"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Own farm"
-                android:textSize="@dimen/add_edit_textsize" />
+                android:layout_gravity="center"
+                android:button="@drawable/custom_checkbox_individual"/>
             <CheckBox
                 android:id="@+id/comm_land"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Community land"
-                android:textSize="@dimen/add_edit_textsize" />
-
+                android:layout_gravity="center"
+                android:button="@drawable/custom_checkbox_village"/>
+         </TableRow>
+                <TableRow
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/add_edit_textsize"
+                        android:layout_gravity="center"
+                        android:text="Own farm" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/add_edit_textsize"
+                        android:layout_gravity="center"
+                        android:text="Community \n land" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" >
             <CheckBox
                 android:id="@+id/govt_land"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Government land"
-                android:textSize="@dimen/add_edit_textsize" />
-
+                android:layout_gravity="center"
+                android:button="@drawable/custom_checkbox_government"/>
             <CheckBox
                 android:id="@+id/mosque_church"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Churches/Mosques"
-                android:textSize="@dimen/add_edit_textsize" />
-
+                android:layout_gravity="center"
+                android:button="@drawable/custom_checkbox_church_mosque"/>
+                </TableRow>
+                <TableRow
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/add_edit_textsize"
+                        android:layout_gravity="center"
+                        android:text="Government \nland" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/add_edit_textsize"
+                        android:layout_gravity="center"
+                        android:text="Churches \nMosques"/>
+                </TableRow>
+                <TableRow
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" >
             <CheckBox
                 android:id="@+id/schools"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Schools"
-                android:textSize="@dimen/add_edit_textsize" />
+                android:layout_gravity="center"
+                android:button="@drawable/custom_checkbox_schools"/>
             <CheckBox
                 android:id="@+id/others"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Other"
-                android:textSize="@dimen/add_edit_textsize" />
+                android:layout_gravity="center"
+                android:button="@drawable/custom_checkbox_more"/>
+                </TableRow>
+                <TableRow
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/add_edit_textsize"
+                        android:layout_gravity="center"
+                        android:text="Schools" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/add_edit_textsize"
+                        android:layout_gravity="center"
+                        android:text="Other"/>
+                </TableRow>
+            </TableLayout>
             <EditText
                 android:id="@+id/other_locations"
                 android:layout_width="match_parent"
