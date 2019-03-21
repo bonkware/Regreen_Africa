@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -24,6 +25,16 @@ public class NurseryOtherInfoMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nursery);
+
+        //set title
+        setTitle("Nursery");
+        //logo
+        ActionBar logo = getSupportActionBar();
+        logo.setDisplayUseLogoEnabled(true);
+        logo.setDisplayShowHomeEnabled(true);
+        logo.setDisplayShowHomeEnabled(false);
+        logo.setHomeAsUpIndicator(R.drawable.ic_nursery);
+        logo.setDisplayHomeAsUpEnabled(true);
 
         viewPager = (ViewPager) findViewById(pager);
         viewPager.setOffscreenPageLimit(5);//number of fragments

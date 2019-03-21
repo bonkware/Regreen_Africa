@@ -2,6 +2,7 @@ package com.icraf.gsl.regreeningafrica;
 
 /**
  * Created by benard on 2/6/19.
+ *
  */
 
 import android.content.DialogInterface;
@@ -10,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -29,6 +31,16 @@ public class TPTreeMeasureMainAcivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tree_planting);
+
+        //set title
+        setTitle("Tree planting");
+        //logo
+        ActionBar logo = getSupportActionBar();
+        logo.setDisplayUseLogoEnabled(true);
+        logo.setDisplayShowHomeEnabled(true);
+        logo.setDisplayShowHomeEnabled(false);
+        logo.setHomeAsUpIndicator(R.drawable.ic_tp);
+        logo.setDisplayHomeAsUpEnabled(true);
 
         viewPager = (ViewPager) findViewById(pager);
         viewPager.setOffscreenPageLimit(4);//number of fragments
