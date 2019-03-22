@@ -21,7 +21,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="(Click the gps button, wait for gps to get fixed and then proceed)"
+            android:text="(Turn ON phone GPS, and click the gps button, wait for gps to get fixed and proceed)"
             android:layout_gravity="center"
             android:paddingTop="5dp"
             android:textStyle="italic"
