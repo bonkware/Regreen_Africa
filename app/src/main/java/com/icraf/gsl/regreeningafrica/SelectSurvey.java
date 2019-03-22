@@ -2,6 +2,7 @@ package com.icraf.gsl.regreeningafrica;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
@@ -19,6 +20,14 @@ public class SelectSurvey extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.select_survey);
+
+        //logo
+        ActionBar logo = getSupportActionBar();
+        logo.setDisplayUseLogoEnabled(true);
+        logo.setDisplayShowHomeEnabled(true);
+        logo.setDisplayShowHomeEnabled(false);
+        logo.setHomeAsUpIndicator(R.drawable.ic_regreeningafrica_launcher);
+        logo.setDisplayHomeAsUpEnabled(true);
 
         button_add = (CheckBox) findViewById(R.id.button_add);
         button_add.setOnClickListener(new View.OnClickListener() {
