@@ -158,7 +158,7 @@
             android:layout_width="wrap_content"
             android:layout_height="49dp"
             android:layout_weight="1"
-            android:onClick="jumpBackMeasurement"
+            android:onClick="jumpBackPhoto"
             android:drawableLeft="@drawable/n_back"
             android:text="PREV"/>
 
@@ -167,7 +167,7 @@
             android:layout_width="wrap_content"
             android:layout_height="49dp"
             android:layout_weight="1"
-            android:onClick="jumpToPhoto"
+            android:onClick="jumpToEnd"
             android:drawableRight="@drawable/noun_next"
             android:text="NEXT"/>
 
