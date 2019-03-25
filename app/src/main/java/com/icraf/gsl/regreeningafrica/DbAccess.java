@@ -44,7 +44,7 @@ public class DbAccess {
         dbHelper.close();
     }
     //insert farmer details
-    public void insertFarmerInst() {
+    public void insertFarmerInst() {        
         ContentValues contentValue = new ContentValues();
         contentValue.put(DatabaseHelper.enum_name, g.getename());
         contentValue.put(DatabaseHelper.date, g.getin_date());
@@ -149,7 +149,7 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.nursery_longitude, g.getLongitude());
         contentValue.put(DatabaseHelper.nursery_altitude, g.getAltitude());
         contentValue.put(DatabaseHelper.nursery_accuracy, g.getAccuracy());
-        contentValue.put(DatabaseHelper.nursery_image_path, g.getimage());
+        contentValue.put(DatabaseHelper.nursery_image_path, g.getpath());
         contentValue.put(DatabaseHelper.nursery_id, g.getnid());
         //insert
         database.insert(TABLE_NURSERY, null, contentValue);

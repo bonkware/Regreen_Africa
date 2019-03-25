@@ -132,12 +132,12 @@ public class TrainingsNoParticipantsFragment extends Fragment {
                         youth.setError("Cannot be more than the total participant ");
                         //Toast.makeText(getActivity(), "Cannot be more than " + t, Toast.LENGTH_SHORT).show();
                     }
-                    if (y + m + f != t) {
+                   /* if (m + f + y != t) {
                         // myEditText2.setText("");  //this automatically sets the editText2 field back to empty
                         youth.setText("");
                         youth.setError("Cannot be less than the total participant ");
                         //Toast.makeText(getActivity(), "Cannot be more than " + t, Toast.LENGTH_SHORT).show();
-                    }
+                    }*/
                 } catch (NumberFormatException e){
                     //handle
                     //Toast.makeText(getActivity(),"Empty", Toast.LENGTH_SHORT).show();

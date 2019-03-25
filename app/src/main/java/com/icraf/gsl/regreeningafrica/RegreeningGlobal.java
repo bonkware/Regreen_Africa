@@ -735,8 +735,8 @@ public class RegreeningGlobal {
     public String getqpurchased() {
         return qpurchased;
     }
-    public void setqpurchased(String date_sown) {
-        this.date_sown = date_sown;
+    public void setqpurchased(String qpurchased) {
+        this.qpurchased = qpurchased;
     }
     public String getdate_sown() {
         return date_sown;
