@@ -215,22 +215,22 @@
             <Button
                 android:id="@+id/record"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_weight="1"
-                android:drawableRight="@drawable/ic_polygon"
+                android:drawableRight="@drawable/ic_location"
                 android:text="Get location"/>
             <Button
                 android:id="@+id/update"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_weight="1"
                 android:visibility="gone"
-                android:drawableRight="@drawable/ic_polygon"
+                android:drawableRight="@drawable/ic_locupdate"
                 android:text="Update location"/>
             <Button
                 android:id="@+id/save"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_weight="1"
                 android:visibility="gone"
                 android:drawableRight="@drawable/ic_save"

@@ -255,17 +255,7 @@ public class DbAccess {
         //insert
         database.insert(TABLE_FMNR_SPECIES, null, contentValue);
     }
-    //get records in view
-    public Cursor fetch() {
-        String selectQuery = "Select * from farmer_data,tree_data WHERE farmer_data.farmerID = tree_data.farmerID";
-        Cursor cursor = database.rawQuery(selectQuery, null);
-        return cursor;
-    }
-    public Cursor fetch_nursery() {
-        String selectQuery = "Select * from nursery_profile,nursery_trees WHERE nursery_profile.nurseryID = nursery_trees.nurseryID";
-        Cursor cursor = database.rawQuery(selectQuery, null);
-        return cursor;
-    }
+    //delete
     public void deleteFarmer_Inst(){
         database.execSQL("delete from "+ TABLE_FARMER_INST);
     }
@@ -294,10 +284,8 @@ public class DbAccess {
     public void deleteLandsizePolygon(){
         database.execSQL("delete from "+ TABLE_LANDSIZEPOLYGON);
     }
-    //get all records from db for sending
-    //fetch from all tables where farmer ID match
+    //get all records from db for uploading
     public Cursor getTP() {
-        //String selectQuery = "SELECT * FROM farmer_institution,cohort,tree_measurements";
         String selectQuery = "SELECT * FROM farmer_institution,cohort,tree_measurements,landsizepolygon WHERE farmer_institution.farmerID = cohort.farmerID and cohort.cohortID = tree_measurements.cohortID and farmer_institution.farmerID=landsizepolygon.farmerID";
         Cursor c = database.rawQuery(selectQuery, null);
         return c;
@@ -309,7 +297,6 @@ public class DbAccess {
     }
     //count no. of records tree planting
     public int getcount(){
-        //Cursor cur = database.rawQuery(" SELECT Count(*) FROM " + TABLE_FARMER_INST, null);
         Cursor cur = database.rawQuery("SELECT count(*) from farmer_institution,cohort,tree_measurements WHERE farmer_institution.farmerID = cohort.farmerID and cohort.cohortID = tree_measurements.cohortID ", null);
         int x = 0;
         if (cur.moveToFirst())
@@ -350,8 +337,6 @@ public class DbAccess {
     //get fmnr data
     public Cursor getFMNR() {
        String selectQuery = "SELECT * FROM fmnr_farmer_inst,fmnr_species,landsizepolygon WHERE fmnr_farmer_inst.farmerID = fmnr_species.farmerID and fmnr_farmer_inst.farmerID=landsizepolygon.farmerID ";
-        //String selectQuery = "SELECT * FROM fmnr_farmer_inst,fmnr_species WHERE fmnr_farmer_inst.farmerID = fmnr_species.farmerID";
-        //String selectQuery = "SELECT * FROM fmnr_farmer_inst a INNER JOIN fmnr_species b ON a.farmerID = b.farmerID INNER JOIN landsizepolygon";
         Cursor c = database.rawQuery(selectQuery, null);
         return c;
     }
