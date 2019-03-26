@@ -60,7 +60,7 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:textColor="#fff"
-                    android:background="@drawable/ic_icon_fmnr_checked"
+                    android:background="@drawable/ic_icon_fmnr"
                     />
                 <Button
                     android:id="@+id/nursery"
@@ -103,7 +103,7 @@
                     android:layout_height="match_parent"
                     android:textColor="#fff"
                     android:layout_gravity="center"
-                    android:background="@drawable/ic_icon_seeddealer_checked"
+                    android:background="@drawable/ic_icon_training"
                     />
             </TableRow>
             <TableRow
