@@ -55,7 +55,15 @@ public class NurseryOtherFragment extends Fragment {
                             }
                         }, mYear, mMonth, mDay);
                 // hide future dates
-                datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
+                //check if calendar is greater than current date
+                if (c.getTimeInMillis() < System.currentTimeMillis()) {
+                    // Toast.makeText(getApplicationContext(),"Current time is big",Toast.LENGTH_SHORT).show();
+                    datePickerDialog.getDatePicker().setMaxDate(c.getTimeInMillis());
+                } else {
+                    //  Toast.makeText(getApplicationContext(),"Current time is small",Toast.LENGTH_SHORT).show();
+                    datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
+                }
+                //datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
                 datePickerDialog.show();
 
             }

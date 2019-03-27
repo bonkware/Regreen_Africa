@@ -58,7 +58,15 @@ public class FmnrFarmInstEnumFragment extends Fragment {
                             }
                         }, mYear, mMonth, mDay);
                 // hide previous dates
-                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
+                //check if calendar is greater than current date
+                if (c.getTimeInMillis() < System.currentTimeMillis()) {
+                    // Toast.makeText(getApplicationContext(),"Current time is big",Toast.LENGTH_SHORT).show();
+                    datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
+                } else {
+                    //  Toast.makeText(getApplicationContext(),"Current time is small",Toast.LENGTH_SHORT).show();
+                    datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
+                }
+                //datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
                 datePickerDialog.show();
 
             }
