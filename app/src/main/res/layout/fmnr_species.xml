@@ -20,7 +20,7 @@
                 android:id="@+id/text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Record trees"
+                android:text="Add trees"
                 android:layout_gravity="center"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
@@ -90,7 +90,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="jumpBackLandsize"
-            android:visibility="invisible"
+            android:visibility="visible"
+            android:enabled="false"
             android:text="PREV"/>
 
         <Button

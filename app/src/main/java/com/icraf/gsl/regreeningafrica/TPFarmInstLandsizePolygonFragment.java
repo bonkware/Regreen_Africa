@@ -84,6 +84,7 @@ public class TPFarmInstLandsizePolygonFragment extends Fragment implements Locat
                         //dbAccess.insertPolygon();//insert details to db
                         Intent intent = new Intent(getActivity(), TPCohortMainAcivity.class);
                         startActivity(intent);
+                        getActivity().overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
                         //Toast.makeText(SelectSurvey.this.getActivity(),"Saved",Toast.LENGTH_SHORT).show();
                         break;
                 }

@@ -50,6 +50,7 @@
                 android:layout_marginLeft="8dip"
                 android:layout_marginRight="8dip"
                 android:layout_marginTop="10dip"
+                android:background="@android:drawable/btn_dropdown"
                 android:entries="@array/countries" />
             <TextView
                 android:layout_width="wrap_content"
@@ -99,8 +100,9 @@
             android:id="@+id/prev"
             android:layout_width="wrap_content"
             android:layout_height="49dp"
-            android:visibility="invisible"
+            android:visibility="visible"
             android:layout_weight="1"
+            android:onClick="jumpBackFI"
             android:drawableRight="@drawable/n_back"
             android:text="PREV"/>
 

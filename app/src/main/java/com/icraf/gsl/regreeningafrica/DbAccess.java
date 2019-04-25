@@ -48,6 +48,7 @@ public class DbAccess {
         ContentValues contentValue = new ContentValues();
         contentValue.put(DatabaseHelper.enum_name, g.getename());
         contentValue.put(DatabaseHelper.date, g.getin_date());
+        contentValue.put(DatabaseHelper.survey_name, g.getsurvey_name());
         contentValue.put(DatabaseHelper.farmer_inst_name, g.getfname());
         contentValue.put(DatabaseHelper.country, g.getcountry());
         contentValue.put(DatabaseHelper.county_region, g.getcounty_region());
@@ -60,15 +61,8 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.land_schools, g.getschools_ownership());
         contentValue.put(DatabaseHelper.land_other, g.getother_ownership());
         //contentValue.put(DatabaseHelper.planting_site, g.getselect_site());
-        contentValue.put(DatabaseHelper.woodlot, g.getwoodlot());
-        contentValue.put(DatabaseHelper.iboundary, g.getiboundary());
-        contentValue.put(DatabaseHelper.eboundary, g.geteboundary());
-        contentValue.put(DatabaseHelper.garden, g.getgarden());
-        contentValue.put(DatabaseHelper.crop_field, g.getcrop_field());
-        contentValue.put(DatabaseHelper.pasture_grassland, g.getpasture_grassland());
-        contentValue.put(DatabaseHelper.fallow_bushland, g.getfallow_pushland());
-        contentValue.put(DatabaseHelper.other_sites, g.getother_sites());
         contentValue.put(DatabaseHelper.landsize_regreen, g.getlandsize());
+        contentValue.put(DatabaseHelper.tp_units, g.getunits());
         contentValue.put(DatabaseHelper.farmerID, g.getfid());
         //insert
         database.insert(TABLE_FARMER_INST, null, contentValue);
@@ -82,6 +76,14 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.date_planted, g.getdate_planted());
         contentValue.put(DatabaseHelper.number_planted, g.getnumber_planted());
         contentValue.put(DatabaseHelper.number_survived, g.getnumber_survived());
+        contentValue.put(DatabaseHelper.woodlot, g.getwoodlot());
+        contentValue.put(DatabaseHelper.iboundary, g.getiboundary());
+        contentValue.put(DatabaseHelper.eboundary, g.geteboundary());
+        contentValue.put(DatabaseHelper.garden, g.getgarden());
+        contentValue.put(DatabaseHelper.crop_field, g.getcrop_field());
+        contentValue.put(DatabaseHelper.pasture_grassland, g.getpasture_grassland());
+        contentValue.put(DatabaseHelper.fallow_bushland, g.getfallow_pushland());
+        contentValue.put(DatabaseHelper.other_sites, g.getother_sites());
         contentValue.put(DatabaseHelper.management_pruning, g.getmg1());
         contentValue.put(DatabaseHelper.management_fencing, g.getmg2());
         contentValue.put(DatabaseHelper.management_weeding, g.getmg3());
@@ -115,6 +117,9 @@ public class DbAccess {
     //insert trainings
     public void insertTraining() {
         ContentValues contentValue = new ContentValues();
+        contentValue.put(DatabaseHelper.training_enum_name, g.getename());//added
+        contentValue.put(DatabaseHelper.training_record_date, g.getin_date());//added
+        contentValue.put(DatabaseHelper.training_survey_name, g.getsurvey_name());//added
         contentValue.put(DatabaseHelper.training_country, g.getc_name());
         contentValue.put(DatabaseHelper.training_region, g.getcr_name());
         contentValue.put(DatabaseHelper.training_district, g.getdcw_name());
@@ -132,6 +137,9 @@ public class DbAccess {
     //insert nursery info
     public void insertNurseryInfo() {
         ContentValues contentValue = new ContentValues();
+        contentValue.put(DatabaseHelper.nursery_enum_name, g.getename());//added
+        contentValue.put(DatabaseHelper.nursery_date, g.getin_date());//added
+        contentValue.put(DatabaseHelper.nursery_survey_name, g.getsurvey_name());//added
         contentValue.put(DatabaseHelper.nursery_country, g.getnursery_country());
         contentValue.put(DatabaseHelper.nursery_county, g.getnursery_county());
         contentValue.put(DatabaseHelper.nursery_district, g.getnursery_district());
@@ -177,6 +185,9 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.graft_source_prisons, g.getprisons());
         contentValue.put(DatabaseHelper.graft_source_others, g.getother_graft_sources());
         contentValue.put(DatabaseHelper.seeds_quantity_purchased, g.getqpurchased());
+        contentValue.put(DatabaseHelper.units, g.getunits());
+        contentValue.put(DatabaseHelper.seed_sown, g.getseed_sown());
+        contentValue.put(DatabaseHelper.unitsown, g.getunitsown());
         contentValue.put(DatabaseHelper.date_seeds_sown, g.getdate_sown());
         contentValue.put(DatabaseHelper.seedlings_germinated, g.getgerminated());
         contentValue.put(DatabaseHelper.seedlings_servived, g.getsurvived());
@@ -191,7 +202,8 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.farmerID, g.getfid());
         contentValue.put(DatabaseHelper.fmnr_enum_name, g.getename());
         contentValue.put(DatabaseHelper.fmnr_date, g.getin_date());
-        contentValue.put(DatabaseHelper.farmer_inst_name, g.getfname());
+        contentValue.put(DatabaseHelper.famnr_survey_name, g.getsurvey_name());
+        contentValue.put(DatabaseHelper.fmnr_farmer_inst_name, g.getfname());
         contentValue.put(DatabaseHelper.fmnr_country, g.getcountry());
         contentValue.put(DatabaseHelper.fmnr_county_region, g.getcounty_region());
         contentValue.put(DatabaseHelper.fmnr_district, g.getdistricts());
@@ -204,10 +216,11 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.fmnr_land_other, g.getother_ownership());
 
         contentValue.put(DatabaseHelper.fmnr_species_number_start, g.getspecies_number());
-        contentValue.put(DatabaseHelper.fmnr_restoration_photo, g.getpath());
+       // contentValue.put(DatabaseHelper.fmnr_restoration_photo, g.getpath());
         contentValue.put(DatabaseHelper.fmnr_started_date, g.getfmnr_date());
         contentValue.put(DatabaseHelper.fmnr_fenced, g.getfmnr_fenced());
         contentValue.put(DatabaseHelper.fmnr_landsize_regreen, g.getlandsize());
+        contentValue.put(DatabaseHelper.fmnr_units, g.getunits());
         //insert
         database.insert(TABLE_FMNR_FARMER_INST, null, contentValue);
     }

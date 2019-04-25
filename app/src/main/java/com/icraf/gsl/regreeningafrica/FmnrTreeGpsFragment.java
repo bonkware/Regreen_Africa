@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TableLayout;
@@ -52,6 +53,9 @@ public class FmnrTreeGpsFragment extends Fragment implements LocationListener {
         lontext =  view.findViewById(R.id.longitude);
         alttext =  view.findViewById(R.id.altitude);
         acctext =  view.findViewById(R.id.accuraccy);
+        //set next button disabled
+        final Button bnext = (Button) view.findViewById(R.id.next);
+        bnext.setEnabled(false);//disable button
 
         b = (ImageButton) view.findViewById(R.id.button1);
         b.setOnClickListener(new View.OnClickListener()
@@ -62,6 +66,7 @@ public class FmnrTreeGpsFragment extends Fragment implements LocationListener {
                 //show table when this button is clicked
                 t = (TableLayout) view.findViewById(R.id.gpscoord);
                 t.setVisibility(View.VISIBLE);
+                bnext.setEnabled(true);
                 //and start the gps fixing
                 gpsfix();
 

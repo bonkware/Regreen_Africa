@@ -1,14 +1,17 @@
 package com.icraf.gsl.regreeningafrica;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import java.util.Calendar;
 
@@ -71,6 +74,43 @@ public class TPFarmInstEnumFragment extends Fragment {
 
             }
         });
+        //previous/back button
+        Button button_next = (Button) view.findViewById(R.id.prev);
+        button_next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    case R.id.prev:
+                        Intent intent = new Intent(getActivity(), SelectSurvey.class);
+                        startActivity(intent);
+                        getActivity().overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
+                        //Toast.makeText(SelectSurvey.this.getActivity(),"Saved",Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+        });
+
+        //if survey other is selected
+        final Spinner s1 = (Spinner)view.findViewById(R.id.survey_name);
+        final EditText text1=(EditText) view.findViewById(R.id.survey_other);
+        s1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                String sp1= String.valueOf(s1.getSelectedItem());
+                if(sp1.contentEquals("Other")) {
+                    text1.setVisibility(View.VISIBLE);  //if other is chosen then show
+                }
+                else {
+                    text1.setVisibility(View.GONE); //otherwise hide
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });//end of spinner selection 1
 
         return view;
     }

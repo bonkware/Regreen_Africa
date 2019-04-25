@@ -84,6 +84,7 @@ public class FmnrLandSizePolygonFragment extends Fragment implements LocationLis
                         //dbAccess.insertPolygon();//insert details to db
                         Intent intent = new Intent(getActivity(), FmnrTreeMeasureMainActivity.class);
                         startActivity(intent);
+                        getActivity().overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
                         //Toast.makeText(SelectSurvey.this.getActivity(),"Saved",Toast.LENGTH_SHORT).show();
                         break;
                 }

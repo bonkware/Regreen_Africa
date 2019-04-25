@@ -41,10 +41,19 @@
                 android:layout_span="3"
                 android:padding="15dip"
                 android:textColor="#000"/>
+
+            <TextView
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="@string/tech_terms"
+                android:autoLink="all"
+                android:layout_span="3"
+                android:padding="15dip"
+                android:textColor="#000"/>
         </LinearLayout>
     </ScrollView>
 
-    <View
+    <!--<View
         android:layout_height="2dip"
         android:layout_width="wrap_content"
         android:layout_above="@+id/link"
@@ -65,5 +74,5 @@
             android:padding="15dip"
             android:gravity="center"
             android:textColor="#000"/>
-    </LinearLayout>
+    </LinearLayout>-->
 </RelativeLayout>

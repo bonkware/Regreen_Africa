@@ -53,6 +53,7 @@ public class FmnrFarmInstLandsizeFragment extends Fragment {
                         dbAccess.insertFmnrFarmerInst();//insert details to db
                         Intent intent = new Intent(getActivity(), FmnrLandSizeMainActivity.class);
                         startActivity(intent);
+                        getActivity().overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
                         //Toast.makeText(SelectSurvey.this.getActivity(),"Saved",Toast.LENGTH_SHORT).show();
                         break;
                 }
@@ -114,6 +115,15 @@ public class FmnrFarmInstLandsizeFragment extends Fragment {
         g.setename(e_name.getText().toString());
         EditText date = (EditText) getActivity().findViewById(R.id.in_date);
         g.setin_date(date.getText().toString());
+
+        Spinner survey_name = (Spinner) getActivity().findViewById(R.id.survey_name);
+        //check if spinner is selected
+        if(survey_name != null && survey_name.getSelectedItem() !=null ) {
+            g.setsurvey_name(survey_name.getSelectedItem().toString());
+        }//added for survey project selection
+        EditText other_survey = (EditText) getActivity().findViewById(R.id.survey_other);
+        g.setsurvey_name(other_survey.getText().toString());//added for other project option
+
         EditText farmer_institution_name = (EditText) getActivity().findViewById(R.id.fnames);
         g.setfname(farmer_institution_name.getText().toString());
         Spinner country = (Spinner) getActivity().findViewById(R.id.spinner1);
@@ -209,5 +219,11 @@ public class FmnrFarmInstLandsizeFragment extends Fragment {
         }
         EditText regreen_size = (EditText) getActivity().findViewById(R.id.landestimate);
         g.setlandsize(regreen_size.getText().toString());
+
+        Spinner units = (Spinner) getActivity().findViewById(R.id.units);
+        //check if spinner is selected
+        if(units != null && units.getSelectedItem() !=null ) {
+            g.setunits(units.getSelectedItem().toString());
+        }
     }
 }

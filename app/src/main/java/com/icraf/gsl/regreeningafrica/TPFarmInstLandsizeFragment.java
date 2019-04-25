@@ -47,6 +47,7 @@ public class TPFarmInstLandsizeFragment extends Fragment {
                         //Intent intent = new Intent(getActivity(), TPCohortMainAcivity.class);
                         Intent intent = new Intent(getActivity(), TPLandSizeMainActivity.class);
                         startActivity(intent);
+                        getActivity().overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
                         //Toast.makeText(SelectSurvey.this.getActivity(),"Saved",Toast.LENGTH_SHORT).show();
                         break;
                 }
@@ -69,6 +70,15 @@ public class TPFarmInstLandsizeFragment extends Fragment {
         g.setename(e_name.getText().toString());
         EditText date = (EditText) getActivity().findViewById(R.id.in_date);
         g.setin_date(date.getText().toString());
+
+        Spinner survey_name = (Spinner) getActivity().findViewById(R.id.survey_name);
+        //check if spinner is selected
+        if(survey_name != null && survey_name.getSelectedItem() !=null ) {
+            g.setsurvey_name(survey_name.getSelectedItem().toString());
+        }//added for survey project selection
+        EditText other_survey = (EditText) getActivity().findViewById(R.id.survey_other);
+        g.setsurvey_name(other_survey.getText().toString());//added for other project option
+
         EditText farmer_institution_name = (EditText) getActivity().findViewById(R.id.fnames);
         g.setfname(farmer_institution_name.getText().toString());
         Spinner country = (Spinner) getActivity().findViewById(R.id.spinner1);
@@ -146,55 +156,14 @@ public class TPFarmInstLandsizeFragment extends Fragment {
             g.setselect_site(select.getText().toString());
         }*/
 
-        CheckBox woodlot = (CheckBox) getActivity().findViewById(R.id.woodlot);
-        if(woodlot.isChecked()) {
-            g.setwoodlot("yes");
-        }else {
-            g.setwoodlot("no");
-        }
-        CheckBox iboundary = (CheckBox) getActivity().findViewById(R.id.iboundary);
-        if(iboundary.isChecked()) {
-            g.setiboundary("yes");
-        }else {
-            g.setiboundary("no");
-        }
-        CheckBox eboundary = (CheckBox) getActivity().findViewById(R.id.eboundary);
-        if(eboundary.isChecked()) {
-            g.seteboundary("yes");
-        }else {
-            g.seteboundary("no");
-        }
-
-        CheckBox garden = (CheckBox) getActivity().findViewById(R.id.garden);
-        if(garden.isChecked()) {
-            g.setgarden("yes");
-        }else {
-            g.setgarden("no");
-        }
-
-        CheckBox crop_field = (CheckBox) getActivity().findViewById(R.id.crop_field);
-        if(crop_field.isChecked()) {
-            g.setcrop_field("yes");
-        }else {
-            g.setcrop_field("no");
-        }
-        CheckBox pasture_grassland = (CheckBox) getActivity().findViewById(R.id.pasture_grassland);
-        if(pasture_grassland.isChecked()) {
-            g.setpasture_grassland("yes");
-        }else {
-            g.setpasture_grassland("no");
-        }
-        CheckBox fallow_pushland = (CheckBox) getActivity().findViewById(R.id.fallow_pushland);
-        if(fallow_pushland.isChecked()) {
-            g.setfallow_pushland("yes");
-        }else {
-            g.setfallow_pushland("no");
-        }
-        EditText others=(EditText) getActivity().findViewById(R.id.other_sites);
-        g.setother_sites(others.getText().toString());
-
         EditText regreen_size = (EditText) getActivity().findViewById(R.id.landestimate);
         g.setlandsize(regreen_size.getText().toString());
+
+        Spinner units = (Spinner) getActivity().findViewById(R.id.units);
+        //check if spinner is selected
+        if(units != null && units.getSelectedItem() !=null ) {
+            g.setunits(units.getSelectedItem().toString());
+        }
 
     }
 }

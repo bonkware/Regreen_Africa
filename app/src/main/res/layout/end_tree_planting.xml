@@ -22,7 +22,7 @@
             <TextView
                 android:layout_width="0dp" android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="Do you want to measure another tree?"
+                android:text="Do you want to measure another tree in the same cohort?"
                 android:layout_margin="10dp"
                 android:textStyle="bold|italic"
                 android:textSize="15sp">

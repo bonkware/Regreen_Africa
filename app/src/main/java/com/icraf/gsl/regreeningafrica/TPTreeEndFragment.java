@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 /**
  * Created by benard on 1/18/19.
@@ -42,6 +44,7 @@ public class TPTreeEndFragment extends Fragment {
                         dbAccess.insertMeasurent();
                         Intent intent = new Intent(getActivity(), TPTreeMeasureMainAcivity.class);
                         startActivity(intent);
+                        getActivity().overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
                         //Toast.makeText(SelectSurvey.this.getActivity(),"Saved! Add new tree",Toast.LENGTH_SHORT).show();
                         break;
                 }
@@ -58,6 +61,7 @@ public class TPTreeEndFragment extends Fragment {
                         dbAccess.insertMeasurent();
                         Intent intent = new Intent(getActivity(), TPCohortMainAcivity.class);
                         startActivity(intent);
+                        getActivity().overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
                         break;
                 }
             }
@@ -97,11 +101,24 @@ public class TPTreeEndFragment extends Fragment {
     }
 
     public  void saveMeasurement(){
-        EditText height=(EditText) getActivity().findViewById(R.id.height);
-        g.setheight(height.getText().toString());
-        EditText rcd = (EditText) getActivity().findViewById(R.id.RCD);
-        g.setrcd(rcd.getText().toString());
-        EditText dbh = (EditText) getActivity().findViewById(R.id.dbh);
+       /* EditText height=(EditText) getActivity().findViewById(R.id.height);
+        g.setheight(height.getText().toString());*/
+        RadioGroup group = (RadioGroup) getActivity().findViewById(R.id.height);
+        //check whether it is checked
+        if(group.getCheckedRadioButtonId()==-1){
+            //Toast.makeText(FarmerDetails.this.getActivity(),"Please select Radio Button!",Toast.LENGTH_SHORT).show();
+        }
+        else {
+            // get selected radioButton from radioGroup
+            int selectedId = group.getCheckedRadioButtonId();
+            // find the radioButton by returned id
+            RadioButton height = (RadioButton) getActivity().findViewById(selectedId);
+            // radioButton text
+            g.setheight(height.getText().toString());
+        }
+        /*EditText rcd = (EditText) getActivity().findViewById(R.id.RCD);
+        g.setrcd(rcd.getText().toString());*/
+        EditText dbh = (EditText) getActivity().findViewById(R.id.db_rc);
         g.setdbh(dbh.getText().toString());
         //get Gps get it from global
         //get Photo get it from global

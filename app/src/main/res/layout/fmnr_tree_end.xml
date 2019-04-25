@@ -41,6 +41,18 @@
             </TextView>
         </TableRow>
         <TableRow
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" >
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="[Dominant species ->The species with the highest number of trees in the plot]"
+                android:layout_margin="10dp"
+                android:textStyle="italic"
+                android:textSize="15sp">
+            </TextView>
+        </TableRow>
+        <TableRow
             android:id="@+id/addtree"
             android:layout_width="0dp"
             android:layout_height="wrap_content">

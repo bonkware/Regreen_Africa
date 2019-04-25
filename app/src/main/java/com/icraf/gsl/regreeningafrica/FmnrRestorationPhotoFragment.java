@@ -16,6 +16,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
@@ -50,12 +51,17 @@ public class FmnrRestorationPhotoFragment extends Fragment {
         //allow camera permission and storage
         getCamerapermission();
 
+        //set next button disabled
+        final Button bnext = (Button) view.findViewById(R.id.next);
+        bnext.setEnabled(false);//disable button
+
         imgv1 = (ImageView) view.findViewById(R.id.imageView1);
         upload = (ImageButton) view.findViewById(R.id.upload);
         upload.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //call photo on button click
                 clickImage();
+                bnext.setEnabled(true);
 
             }
         });

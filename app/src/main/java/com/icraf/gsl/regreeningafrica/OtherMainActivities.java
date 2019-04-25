@@ -2,9 +2,12 @@ package com.icraf.gsl.regreeningafrica;
 
 /**
  * Created by benard on 2/11/19.
+ *
  */
 import android.Manifest;
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -33,10 +36,15 @@ import com.android.volley.Response;
 import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.BasicNetwork;
+import com.android.volley.toolbox.ClearCacheRequest;
+import com.android.volley.toolbox.DiskBasedCache;
+import com.android.volley.toolbox.HurlStack;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -51,12 +59,19 @@ public class OtherMainActivities extends AppCompatActivity {
     String nursery_url = "http://gsl.worldagroforestry.org/regreen_africa/insertNursery.php";
     String fmnr_url = "http://gsl.worldagroforestry.org/regreen_africa/insertFMNR.php";
     RegreeningGlobal g = RegreeningGlobal.getInstance();
+    private Context mContext;
+    private Activity mActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.other_main_activities);
+
+        // Get the application context
+        mContext = getApplicationContext();
+        mActivity = OtherMainActivities.this;
+
         //read and write permission
         getStoragepermission();
 
@@ -259,6 +274,15 @@ public class OtherMainActivities extends AppCompatActivity {
                                                 dbAccess.deleteCohort();
                                                 dbAccess.deleteMeasurements();
                                                 //dbAccess.deleteLandsizePolygon();
+                                                //delete the images as well
+                                                File fdelete = new File(path);
+                                                if (fdelete.exists()) {
+                                                    if (fdelete.delete()) {
+                                                        System.out.println("file Deleted :" + path);
+                                                    } else {
+                                                        System.out.println("file not Deleted :" + path);
+                                                    }
+                                                }//end of image delete
                                                 //dismiss dialog by intent
                                                 Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
                                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -545,6 +569,15 @@ public class OtherMainActivities extends AppCompatActivity {
                                                 //delete records after send
                                                 dbAccess.deletenurseryinfo();
                                                 dbAccess.deletenurseryspecies();
+                                                //delete the images as well
+                                                File fdelete = new File(path);
+                                                if (fdelete.exists()) {
+                                                    if (fdelete.delete()) {
+                                                        System.out.println("file Deleted :" + path);
+                                                    } else {
+                                                        System.out.println("file not Deleted :" + path);
+                                                    }
+                                                }//end of image delete
                                                 //dismiss dialog by intent
                                                 Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
                                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -766,7 +799,7 @@ public class OtherMainActivities extends AppCompatActivity {
                     final String fmnr_land_other = cursor.getString(cursor.getColumnIndex("fmnr_land_other"));
 
                     final String fmnr_species_number_start = cursor.getString(cursor.getColumnIndex("fmnr_species_number_start"));
-                    final String fmnr_restoration_photo = cursor.getString(cursor.getColumnIndex("fmnr_restoration_photo"));
+                    //final String fmnr_restoration_photo = cursor.getString(cursor.getColumnIndex("fmnr_restoration_photo"));
                     final String fmnr_started_date = cursor.getString(cursor.getColumnIndex("fmnr_started_date"));
                     final String fmnr_fenced = cursor.getString(cursor.getColumnIndex("fmnr_fenced"));
                     final String fmnr_landsize_regreen = cursor.getString(cursor.getColumnIndex("landsize_regreen"));
@@ -831,6 +864,23 @@ public class OtherMainActivities extends AppCompatActivity {
                                                 dbAccess.deleteFmnrFarmer_Inst();
                                                 dbAccess.deleteFmnrSpecies();
                                                 //dbAccess.deleteLandsizePolygon();
+                                                //delete the images as well
+                                                /*File rdelete = new File(fmnr_restoration_photo);
+                                                if (rdelete.exists()) {
+                                                    if (rdelete.delete()) {
+                                                        System.out.println("file Deleted :" + fmnr_restoration_photo);
+                                                    } else {
+                                                        System.out.println("file not Deleted :" + fmnr_restoration_photo);
+                                                    }
+                                                }*///end of restoration image delete
+                                                File fdelete = new File(fmnr_tree_image_path);
+                                                if (fdelete.exists()) {
+                                                    if (fdelete.delete()) {
+                                                        System.out.println("file Deleted :" + fmnr_tree_image_path);
+                                                    } else {
+                                                        System.out.println("file not Deleted :" + fmnr_tree_image_path);
+                                                    }
+                                                }//end of tree image delete
                                                 //dismiss dialog by intent
                                                 Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
                                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -947,15 +997,15 @@ public class OtherMainActivities extends AppCompatActivity {
                             param.put("fmnr_land_schools", fmnr_land_schools);
                             param.put("fmnr_land_other", fmnr_land_other);
                             param.put("fmnr_species_number_start", fmnr_species_number_start);
-                            param.put("fmnr_restoration_photo", fmnr_restoration_photo);
+                            //param.put("fmnr_restoration_photo", fmnr_restoration_photo);
                             param.put("fmnr_started_date", fmnr_started_date);
                             param.put("fmnr_fenced", fmnr_fenced);
                             param.put("landsize_regreen", fmnr_landsize_regreen);
-                            BitmapFactory.Options option = new BitmapFactory.Options();
+                           /* BitmapFactory.Options option = new BitmapFactory.Options();
                             option.inSampleSize = 8;//compress file further to avoid out of memory error
                             Bitmap bitmap_rest = BitmapFactory.decodeFile(fmnr_restoration_photo,option);
                             String image_rest = getStringImage(bitmap_rest);
-                            param.put("fmnr_restoration_photo", image_rest);
+                            param.put("fmnr_restoration_photo", image_rest);*/
                             //species
                             param.put("farmerID", fmnrfarmer_id);
                             param.put("species", fmnr_species_name);
@@ -1016,7 +1066,15 @@ public class OtherMainActivities extends AppCompatActivity {
                     //retry policy to avoid crash
                     request.setRetryPolicy(new DefaultRetryPolicy( 0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
-                    queue.add(request);
+                    //queue.add(request);
+                    Singleton.getInstance(mContext).addToRequestQueue(request);
+                    //VolleySingleton.getInstance(this).addToRequestQueue(request);
+                    //manage out of memory issues and cache clear
+                   // RequestQueue volleyQueue = Volley.newRequestQueue(this);
+                    DiskBasedCache cache = new DiskBasedCache(getCacheDir(), 16 * 1024 * 1024);
+                    queue = new RequestQueue(cache, new BasicNetwork(new HurlStack()));
+                    queue.start();
+                    //queue.add(new ClearCacheRequest(cache, null));//end of cache clear
                     //VolleySingleton.getInstance(this).addToRequestQueue(request);
                     //add listener to the queue which is executed when the request ends
                     queue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<String>() {

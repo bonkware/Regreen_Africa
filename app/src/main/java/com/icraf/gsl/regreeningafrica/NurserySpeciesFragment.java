@@ -1,10 +1,12 @@
 package com.icraf.gsl.regreeningafrica;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 /**
@@ -22,6 +24,23 @@ public class NurserySpeciesFragment extends Fragment {
         String nid = g.getnid();
         TextView nurseryid = (TextView) view.findViewById(R.id.nid);
         nurseryid.setText(nid);
+
+        //for previous/back button
+        /*Button button_next = (Button) view.findViewById(R.id.prev);
+        button_next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    case R.id.prev:
+                        //Intent intent = new Intent(getActivity(), NurseryInfoMain.class);
+                        //startActivity(intent);
+                        getActivity().onBackPressed();
+                        getActivity().overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
+                        //Toast.makeText(SelectSurvey.this.getActivity(),"Saved",Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+        });*/
         return view;
     }
 }

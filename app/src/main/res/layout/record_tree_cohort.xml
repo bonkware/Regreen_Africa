@@ -16,14 +16,22 @@
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:layout_margin="6dp"
             android:paddingRight="@dimen/activity_horizontal_margin">
-            <TextView
+            <!--<TextView
                 android:id="@+id/text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Add tree cohort"
+                android:text="Add trees in the cohort"
                 android:layout_gravity="center"
                 android:textSize="18sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"/>-->
+            <TextView
+                android:id="@+id/hint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add trees planted during the same rainy season"
+                android:layout_gravity="center"
+                android:textSize="18sp"
+                android:textStyle="italic|bold"/>
 
             <TextView
                 android:layout_width="fill_parent"
@@ -132,14 +140,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:visibility="invisible"
+            android:visibility="visible"
+            android:enabled="false"
             android:text="PREV"/>
 
         <Button
             android:id="@+id/next"
             android:layout_width="wrap_content"
             android:layout_height="49dp"
-            android:onClick="jumpToMgt"
+            android:onClick="jumpToSite"
             android:layout_weight="1"
             android:drawableRight="@drawable/noun_next"
             android:text="NEXT"/>

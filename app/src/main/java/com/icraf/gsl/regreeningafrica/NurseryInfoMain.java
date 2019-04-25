@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,9 +38,10 @@ public class NurseryInfoMain extends AppCompatActivity {
         logo.setDisplayHomeAsUpEnabled(true);
 
         viewPager = (ViewPager) findViewById(pager);
-        viewPager.setOffscreenPageLimit(4);//number of fragments
+        viewPager.setOffscreenPageLimit(5);//number of fragments
         final ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         //All fragments
+        adapter.addFragment(new NurseryEnumFragment(), "nursery enum");
         adapter.addFragment(new NurseryInfoFragment(), "nursery info");
         adapter.addFragment(new NurseryTypeFragment(), "nursery type");
         adapter.addFragment(new NurseryGpsFragment(), "nursery gps");
@@ -47,23 +49,72 @@ public class NurseryInfoMain extends AppCompatActivity {
         viewPager.setAdapter(adapter);
 
     }
-    public void jumpTotype(View view){
-        viewPager.setCurrentItem(1);
+    public void jumpToFI(View view){
+        EditText ed = (EditText) findViewById(R.id.ename);
+        EditText date = (EditText) findViewById(R.id.in_date);
+        boolean fail = false;
+        if (ed.getText().toString().trim().length() == 0) {
+            fail = true;
+            ed.requestFocus();
+            ed.setError("Enter Enumulator name");
+        }
+        if (date.getText().toString().trim().length() == 0) {
+            fail = true;
+            date.requestFocus();
+            date.setError("Select date");
+        }
+        if (!fail) {
+            viewPager.setCurrentItem(1);
+        }
     }
-    public void jumpBackInfo(View view){
+    public void jumpBackFI(View view){
         viewPager.setCurrentItem(0);
     }
-    public void jumpToLocation(View view){
-        viewPager.setCurrentItem(2);
+    public void jumpTotype(View view){
+        EditText ed = (EditText) findViewById(R.id.nursery_county);
+        EditText district = (EditText) findViewById(R.id.nursery_district);
+        EditText operator = (EditText) findViewById(R.id.nursery_operator);
+        EditText contact = (EditText) findViewById(R.id.nursery_contact);
+        boolean fail = false;
+        if (ed.getText().toString().trim().length() == 0) {
+            fail = true;
+            ed.requestFocus();
+            ed.setError("Enter county");
+        }
+        if (district.getText().toString().trim().length() == 0) {
+            fail = true;
+            district.requestFocus();
+            district.setError("Enter district");
+        }
+        if (operator.getText().toString().trim().length() == 0) {
+            fail = true;
+            operator.requestFocus();
+            operator.setError("Enter name");
+        }
+        if (contact.getText().toString().trim().length() == 0) {
+            fail = true;
+            contact.requestFocus();
+            contact.setError("Enter contacts");
+        }
+        if (!fail) {
+            viewPager.setCurrentItem(2);
+        }
+       // viewPager.setCurrentItem(1);
     }
-    public void jumpBackType(View view){
+    public void jumpBackInfo(View view){
         viewPager.setCurrentItem(1);
     }
-    public void jumpToPhoto(View view){
+    public void jumpToLocation(View view){
         viewPager.setCurrentItem(3);
     }
-    public void jumpBackLocation(View view){
+    public void jumpBackType(View view){
         viewPager.setCurrentItem(2);
+    }
+    public void jumpToPhoto(View view){
+        viewPager.setCurrentItem(4);
+    }
+    public void jumpBackLocation(View view){
+        viewPager.setCurrentItem(3);
     }
     //end of nav buttons
     class ViewPagerAdapter extends FragmentPagerAdapter {

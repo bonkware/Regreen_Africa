@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TableLayout;
@@ -51,6 +52,10 @@ public class TPTreeGpsFragment extends Fragment implements LocationListener {
         alttext =  view.findViewById(R.id.altitude);
         acctext =  view.findViewById(R.id.accuraccy);
 
+        //set next button disabled
+        final Button bnext = (Button) view.findViewById(R.id.next);
+        bnext.setEnabled(false);//disable button
+
         b = (ImageButton) view.findViewById(R.id.button1);
         b.setOnClickListener(new View.OnClickListener()
         {
@@ -62,6 +67,8 @@ public class TPTreeGpsFragment extends Fragment implements LocationListener {
                 t.setVisibility(View.VISIBLE);
                 //and start the gps fixing
                 gpsfix();
+                bnext.setEnabled(true);
+
 
             }
         });

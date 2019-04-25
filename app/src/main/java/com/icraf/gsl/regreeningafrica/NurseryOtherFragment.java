@@ -8,9 +8,11 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import java.util.Calendar;
 
@@ -104,6 +106,49 @@ public class NurseryOtherFragment extends Fragment {
 
             }
         });//end of text watcher1
+
+        //if unit other is selected
+        final Spinner s1 = (Spinner)view.findViewById(R.id.units);
+        final EditText text1=(EditText) view.findViewById(R.id.unit_other);
+        s1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                String sp1= String.valueOf(s1.getSelectedItem());
+                if(sp1.contentEquals("Other")) {
+                    text1.setVisibility(View.VISIBLE);  //if other is chosen then show
+                }
+                else {
+                    text1.setVisibility(View.GONE); //otherwise hide
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });//end of spinner selection 1
+        //if other is selected
+        final Spinner s2 = (Spinner)view.findViewById(R.id.unit_sown);
+        final EditText text2=(EditText) view.findViewById(R.id.unitsown_other);
+        s2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                String sp2= String.valueOf(s2.getSelectedItem());
+                if(sp2.contentEquals("Other")) {
+                    text2.setVisibility(View.VISIBLE);  //if other is chosen then show
+                }
+                else {
+                    text2.setVisibility(View.GONE); //otherwise hide
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });//end of spinner selection 1
         return view;
     }
 }

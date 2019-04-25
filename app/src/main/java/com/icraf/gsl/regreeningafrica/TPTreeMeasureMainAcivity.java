@@ -73,7 +73,7 @@ public class TPTreeMeasureMainAcivity extends AppCompatActivity {
         }
     }
     public void jumpToPhoto(View view){
-        EditText h = (EditText) findViewById(R.id.height);
+        /*EditText h = (EditText) findViewById(R.id.height);
         boolean fail = false;
         if (h.getText().toString().trim().length() == 0) {
             fail = true;
@@ -82,7 +82,8 @@ public class TPTreeMeasureMainAcivity extends AppCompatActivity {
         }
         if (!fail) {
             viewPager.setCurrentItem(1);
-        }
+        }*/
+        viewPager.setCurrentItem(1);
     }
     public void jumpBackMeasurement(View view){
         viewPager.setCurrentItem(0);

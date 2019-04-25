@@ -46,13 +46,14 @@ public class TPCohortMainAcivity extends AppCompatActivity {
         final ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         //All fragments
         adapter.addFragment(new TPCohortRecordFragment(), "record tree cohort");
+        adapter.addFragment(new TPFarmInstSiteFragment(), "tree planting site");
         adapter.addFragment(new TPCohortManagementsFragment(), "managements");
         adapter.addFragment(new TPCohortUsageFragment(), "usage");
         viewPager.setAdapter(adapter);
 
     }
     //for navigation buttons i.e move next if all fields are filled
-    public void jumpToMgt(View view){
+    public void jumpToSite(View view){
         EditText ed = (EditText) findViewById(R.id.speciesname);
         EditText date = (EditText) findViewById(R.id.p_date);
         boolean fail = false;
@@ -70,15 +71,21 @@ public class TPCohortMainAcivity extends AppCompatActivity {
             viewPager.setCurrentItem(1);
         }
 
-        //viewPager.setCurrentItem(6);
     }
     public void jumpBackCohort(View view){
         viewPager.setCurrentItem(0);
     }
+    public void jumpToMgt(View view){
+        viewPager.setCurrentItem(2);
 
+        //viewPager.setCurrentItem(6);
+    }
+    public void jumpBackSite(View view){
+        viewPager.setCurrentItem(1);
+    }
     public void jumpToUsage(View view){
 
-        viewPager.setCurrentItem(2);
+        viewPager.setCurrentItem(3);
     }
     public void jumpBackMgt(View view){
         viewPager.setCurrentItem(1);

@@ -77,7 +77,7 @@
             android:layout_width="wrap_content"
             android:layout_height="49dp"
             android:onClick=""
-            android:visibility="invisible"
+            android:enabled="false"
             android:layout_weight="1"
             android:drawableRight="@drawable/n_back"
             android:text="PREV"/>

@@ -76,7 +76,7 @@
                 android:textSize="16sp"
                 android:textColor="#fff"
                 android:layout_margin="10dp"
-                android:text="User Guide" />
+                android:text="Help" />
         </TableRow>
     </TableLayout>
     <TableLayout

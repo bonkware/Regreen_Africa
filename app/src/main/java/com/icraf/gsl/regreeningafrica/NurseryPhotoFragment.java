@@ -57,12 +57,17 @@ public class NurseryPhotoFragment extends Fragment {
         //allow camera permission and storage
         getCamerapermission();
 
+        //set next button disabled
+        final Button bnext = (Button) view.findViewById(R.id.tospecies);
+        bnext.setEnabled(false);//disable button
+
         imgv1 = (ImageView) view.findViewById(R.id.imageView1);
         upload = (ImageButton) view.findViewById(R.id.upload);
         upload.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //call photo on button click
                 clickImage();
+                bnext.setEnabled(true);//enable next button
 
             }
         });
@@ -78,6 +83,7 @@ public class NurseryPhotoFragment extends Fragment {
                         dbAccess.insertNurseryInfo();//insert to db on click next
                         Intent intent = new Intent(getActivity(), NurseryOtherInfoMain.class);
                         startActivity(intent);
+                        getActivity().overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
                         break;
                 }
             }
@@ -161,6 +167,19 @@ public class NurseryPhotoFragment extends Fragment {
         n = generator.nextInt(n);//random number generator
         String nid = "nursery_" + n;
         g.setnid(nid);
+        //
+        EditText e_name = (EditText) getActivity().findViewById(R.id.ename);
+        g.setename(e_name.getText().toString());
+        EditText date = (EditText) getActivity().findViewById(R.id.in_date);
+        g.setin_date(date.getText().toString());
+
+        Spinner survey_name = (Spinner) getActivity().findViewById(R.id.survey_name);
+        //check if spinner is selected
+        if(survey_name != null && survey_name.getSelectedItem() !=null ) {
+            g.setsurvey_name(survey_name.getSelectedItem().toString());
+        }//added for survey project selection
+        EditText other_survey = (EditText) getActivity().findViewById(R.id.survey_other);
+        g.setsurvey_name(other_survey.getText().toString());//added for other project option
 
         Spinner country = (Spinner) getActivity().findViewById(R.id.nursery_country);
         //g.setnursery_country(country.getText().toString());

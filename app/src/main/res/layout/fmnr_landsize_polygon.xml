@@ -2,8 +2,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="@dimen/activity_vertical_margin">
+    android:background="#fff">
 
+    <ScrollView
+        android:layout_above="@+id/nav"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent">
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -18,7 +22,6 @@
             android:text="Farmer ID:"
             android:visibility="gone"
             android:textSize="@dimen/textsize"
-            android:padding="10dp"
             android:textStyle="italic"/>
         <TextView
             android:id="@+id/fid"
@@ -27,99 +30,14 @@
             android:layout_weight="1"
             android:textStyle="bold"
             android:visibility="gone"
-            android:padding="@dimen/view_padding"
             android:textSize="@dimen/add_edit_textsize"/>
-       <!-- <TextView
-            android:id="@+id/text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Record points around the plot"
-            android:layout_gravity="center"
-            android:textSize="18sp"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:id="@+id/gps_location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Record 4 points or more"
-            android:layout_gravity="left"
-            android:textSize="18sp" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:background="@android:color/transparent"
-            android:focusable="false"
-            android:gravity="center"
-            android:textSize="@dimen/textsize"
-            android:id="@+id/latitude"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:focusable="false"
-            android:text=""
-            android:gravity="center"
-            android:background="@android:color/transparent"
-            android:textSize="@dimen/textsize"
-            android:id="@+id/longitude"/>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:background="@android:color/transparent"
-            android:focusable="false"
-            android:gravity="center"
-            android:textSize="@dimen/textsize"
-            android:id="@+id/altitude"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:gravity="center"
-            android:background="@android:color/transparent"
-            android:focusable="false"
-            android:textSize="@dimen/textsize"
-            android:id="@+id/accuraccy"/>
-        <TableLayout
-            android:id="@+id/gpscoord"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:shrinkColumns="*"
-            android:stretchColumns="*"
-            android:paddingTop="5dp"
-            android:visibility="gone"
-            android:orientation="vertical" >
-
-            <TableRow
-                android:id="@+id/buttons"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="5dip">
-                <Button
-                    android:id="@+id/record"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Record"/>
-                <Button
-                    android:id="@+id/save"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Save"/>
-            </TableRow>
-            </TableLayout>-->
-
         <TextView
             android:id="@+id/text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Record points around the plot"
             android:layout_gravity="center"
-            android:textSize="18sp"
+            android:textSize="15sp"
             android:textStyle="bold"/>
         <TextView
             android:id="@+id/gps_location"
@@ -130,7 +48,15 @@
             android:paddingTop="5dp"
             android:textStyle="italic"
             android:textColor="#bb0d0e71"
-            android:textSize="18sp" />
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="212dp"
+            android:layout_height="99dp"
+            android:id="@+id/imageView1"
+            android:background="@drawable/polygon"
+            android:layout_below="@+id/t1"
+            android:layout_above="@+id/upload" />
 
         <TableLayout
             android:id="@+id/gpscoord"
@@ -237,6 +163,7 @@
                 android:text="save location"/>
     </LinearLayout>
     </LinearLayout>
+</ScrollView>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -249,7 +176,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:visibility="invisible"
+            android:visibility="visible"
+            android:enabled="false"
             android:onClick="jumpBackMeasurement"
             android:text="PREV"/>
 

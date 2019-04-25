@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 /**
  * Created by benard on 2/22/19.
@@ -37,6 +38,7 @@ public class NurseryEndFragment extends Fragment {
                         dbAccess.insertNurserySpecies();
                         Intent intent = new Intent(getActivity(), NurseryOtherInfoMain.class);
                         startActivity(intent);
+                        getActivity().overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
                         //Toast.makeText(SelectSurvey.this.getActivity(),"Saved! Add new tree",Toast.LENGTH_SHORT).show();
                         break;
                 }
@@ -54,6 +56,7 @@ public class NurseryEndFragment extends Fragment {
                         dbAccess.insertNurserySpecies();
                         Intent intent = new Intent(getActivity(), NurseryInfoMain.class);
                         startActivity(intent);
+                        getActivity().overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
                         //Toast.makeText(SelectSurvey.this.getActivity(),"Saved! Add new tree",Toast.LENGTH_SHORT).show();
                         break;
                 }
@@ -179,6 +182,22 @@ public class NurseryEndFragment extends Fragment {
         //
         EditText qpurchased = (EditText) getActivity().findViewById(R.id.qpurchased);
         g.setqpurchased(qpurchased.getText().toString());
+        Spinner units = (Spinner) getActivity().findViewById(R.id.units);
+        //check if spinner is selected
+        if(units != null && units.getSelectedItem() !=null ) {
+            g.setunits(units.getSelectedItem().toString());
+        }//added for survey unit selection
+        EditText other_unit = (EditText) getActivity().findViewById(R.id.unit_other);
+        g.setunits(other_unit.getText().toString());//added for other unit option
+        EditText number_sowed = (EditText) getActivity().findViewById(R.id.seeds_sown);
+        g.setseed_sown(number_sowed.getText().toString());//added
+        Spinner unit_sown = (Spinner) getActivity().findViewById(R.id.unit_sown);
+        //check if spinner is selected
+        if(units != null && units.getSelectedItem() !=null ) {
+            g.setunitsown(unit_sown.getSelectedItem().toString());
+        }//added for survey unit selection
+        EditText other_unitsown = (EditText) getActivity().findViewById(R.id.unitsown_other);
+        g.setunitsown(other_unitsown.getText().toString());//added for other unit option
         EditText date_sown = (EditText) getActivity().findViewById(R.id.date_sown);
         g.setdate_sown(date_sown.getText().toString());
         EditText germinated = (EditText) getActivity().findViewById(R.id.germinated);

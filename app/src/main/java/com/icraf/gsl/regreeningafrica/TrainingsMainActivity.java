@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,27 +38,50 @@ public class TrainingsMainActivity extends AppCompatActivity {
         logo.setDisplayHomeAsUpEnabled(true);
 
         viewPager = (ViewPager) findViewById(pager);
-        viewPager.setOffscreenPageLimit(3);//number of fragments
+        viewPager.setOffscreenPageLimit(4);//number of fragments
         final ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         //All fragments
+        adapter.addFragment(new TrainingsEnumFragment(), "trainings enum");
         adapter.addFragment(new TrainingsFragment(), "trainings");
         adapter.addFragment(new TrainingsDetailsFragment(), "trainings topics");
         adapter.addFragment(new TrainingsNoParticipantsFragment(), "Number of participants");
         viewPager.setAdapter(adapter);
     }
-    public void jumpToDetails(View view){
-        viewPager.setCurrentItem(1);
+    public void jumpToFI(View view){
+        EditText ed = (EditText) findViewById(R.id.ename);
+        EditText date = (EditText) findViewById(R.id.in_date);
+        boolean fail = false;
+        if (ed.getText().toString().trim().length() == 0) {
+            fail = true;
+            ed.requestFocus();
+            ed.setError("Enter Enumulator name");
+        }
+        if (date.getText().toString().trim().length() == 0) {
+            fail = true;
+            date.requestFocus();
+            date.setError("Select date");
+        }
+        if (!fail) {
+            viewPager.setCurrentItem(1);
+        }
+        //viewPager.setCurrentItem(1);
     }
-    //navigate back to enumerator name
-    public void jumpBackTrainings(View view){
+    public void jumpBackFI(View view){
         viewPager.setCurrentItem(0);
     }
-    public void jumpToParticipants(View view){
+    public void jumpToDetails(View view){
         viewPager.setCurrentItem(2);
     }
     //navigate back to enumerator name
-    public void jumpBackDetails(View view){
+    public void jumpBackTrainings(View view){
         viewPager.setCurrentItem(1);
+    }
+    public void jumpToParticipants(View view){
+        viewPager.setCurrentItem(3);
+    }
+    //navigate back to enumerator name
+    public void jumpBackDetails(View view){
+        viewPager.setCurrentItem(2);
     }
     //end of nav buttons
     class ViewPagerAdapter extends FragmentPagerAdapter {

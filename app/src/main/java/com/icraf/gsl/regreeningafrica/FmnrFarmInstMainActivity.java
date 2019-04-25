@@ -45,7 +45,7 @@ public class FmnrFarmInstMainActivity extends AppCompatActivity {
         adapter.addFragment(new FmnrFarmInstFragment(), "farmer/institution details");
         adapter.addFragment(new FmnrFarmInstLocFragment(), "tree planting location");
         adapter.addFragment(new FmnrFarmInstSpeciesNumberFragment(), "species number");
-        adapter.addFragment(new FmnrRestorationPhotoFragment(), "restoration land photo");
+        //adapter.addFragment(new FmnrRestorationPhotoFragment(), "restoration land photo");
         adapter.addFragment(new FmnrFarmInstLandsizeFragment(), "land size green");
         viewPager.setAdapter(adapter);
 
@@ -94,18 +94,18 @@ public class FmnrFarmInstMainActivity extends AppCompatActivity {
     public void jumpBackLoc(View view){
         viewPager.setCurrentItem(2);
     }
-  public void jumpTophoto(View view){
+  /*public void jumpTophoto(View view){
       viewPager.setCurrentItem(4);
-  }
+  }*/
     public void jumpBackLocation(View view){
         viewPager.setCurrentItem(3);
     }
 
     public void jumpToEst(View view){
-            viewPager.setCurrentItem(5);
+            viewPager.setCurrentItem(4);
     }
-    public void jumpBackphoto(View view){
-        viewPager.setCurrentItem(4);
+    public void jumpBackSnumber(View view){
+        viewPager.setCurrentItem(3);
     }
     //end of nav buttons
     class ViewPagerAdapter extends FragmentPagerAdapter {

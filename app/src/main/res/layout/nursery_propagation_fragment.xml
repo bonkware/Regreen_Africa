@@ -35,7 +35,7 @@
                     android:id="@+id/graft"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Graft"
+                    android:text="Graft/Budding"
                     android:textSize="@dimen/add_edit_textsize" />
                 <CheckBox
                     android:id="@+id/cutting"
@@ -136,7 +136,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="If grafting done, select source of graft/scions"
+                    android:text="If grafting done, select source of scions"
                     android:textSize="@dimen/textsize"
                     android:textStyle="italic"/>
 

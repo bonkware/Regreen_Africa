@@ -37,7 +37,7 @@
         <activity android:name="com.icraf.gsl.regreeningafrica.TPTreeMeasureMainAcivity" android:configChanges="orientation|screenSize|keyboardHidden"/>
         <activity android:name="com.icraf.gsl.regreeningafrica.OtherMainActivities" android:configChanges="orientation|screenSize|keyboardHidden"/>
         <activity android:name="com.icraf.gsl.regreeningafrica.NurseryOtherInfoMain" android:configChanges="orientation|screenSize|keyboardHidden" />
-        <activity android:name="com.icraf.gsl.regreeningafrica.NurseryInfoMain" android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity android:name="com.icraf.gsl.regreeningafrica.NurseryInfoMain" android:configChanges="orientation|screenSize|keyboardHidden" android:launchMode="singleTask" />
         <activity android:name="com.icraf.gsl.regreeningafrica.About" />
         <activity android:name="com.icraf.gsl.regreeningafrica.AppGuide" />
         <activity android:name="com.icraf.gsl.regreeningafrica.FmnrFarmInstMainActivity" android:configChanges="orientation|screenSize|keyboardHidden" />

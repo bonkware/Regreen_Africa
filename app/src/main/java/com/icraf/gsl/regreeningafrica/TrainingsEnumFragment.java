@@ -8,34 +8,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 /**
  * Created by benard on 1/18/19.
  *
  */
 
-public class FmnrFarmInstEnumFragment extends Fragment {
-    Spinner s1;
+public class TrainingsEnumFragment extends Fragment {
     Button btnDatePicker,btnDatePicker1;
     EditText txtDate,txtDate1;
     private int mYear, mMonth, mDay;
-    public FmnrFarmInstEnumFragment() {
+    public TrainingsEnumFragment() {
         // Required empty public constructor
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fmnr_enumurator_fragment, container,
+        View view = inflater.inflate(R.layout.trainings_enumurator, container,
                 false);
         //set date the data was collected
         btnDatePicker=(Button)view.findViewById(R.id.btn_date);
@@ -78,8 +74,7 @@ public class FmnrFarmInstEnumFragment extends Fragment {
 
             }
         });
-
-        //for previous/back button
+        //previous/back button
         Button button_next = (Button) view.findViewById(R.id.prev);
         button_next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,6 +89,7 @@ public class FmnrFarmInstEnumFragment extends Fragment {
                 }
             }
         });
+
         //if survey other is selected
         final Spinner s1 = (Spinner)view.findViewById(R.id.survey_name);
         final EditText text1=(EditText) view.findViewById(R.id.survey_other);

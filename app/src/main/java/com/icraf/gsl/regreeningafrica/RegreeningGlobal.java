@@ -12,7 +12,7 @@ public class RegreeningGlobal {
     private Boolean GPS_fix;
     private String districts,fname,county_region,country,select_location,select_site,fmnr_date,in_date,landsize,number_planted,number_survived,species_name,local_name,date_planted,select_measurement,stems;
     private String mg1,mg2,mg3,mg4,mg5,mg6,mg_other,mg_others,usage1,usage2,usage3,usage4,usage5,usage6,usage7,us_other,usg_other;
-    private String fmnr_fenced,livestock2,livestock3,livestock4,livestock5,livestock_other,c_name,cr_name,
+    private String fmnr_fenced,survey_name,seed_sown,units,unitsown,livestock_other,c_name,cr_name,
             dcw_name,training_topic,training_partners,training_date,training_venue,number_participants,ename,male_participants,female_participants,youth_participants;
     private String dbh,height,rcd,path,fid,cid;
     //for nursery module
@@ -63,12 +63,12 @@ public class RegreeningGlobal {
         this.country = country;
     }
     //Getter
-    public String getselect_location() {
-        return select_location;
+    public String getsurvey_name() {
+        return survey_name;
     }
     //Setting
-    public void setselect_location(String select_location) {
-        this.select_location = select_location;
+    public void setsurvey_name(String survey_name) {
+        this.survey_name = survey_name;
     }
     //Getter for select site
     public String getselect_site() {
@@ -809,6 +809,27 @@ public class RegreeningGlobal {
     }
     public void setnid(String nid) {
         this.nid = nid;
+    }
+
+    public String getseed_sown() {
+        return seed_sown;
+    }
+    public void setseed_sown(String seed_sown) {
+        this.seed_sown = seed_sown;
+    }
+
+    public String getunits() {
+        return units;
+    }
+    public void setunits(String units) {
+        this.units = units;
+    }
+
+    public String getunitsown() {
+        return unitsown;
+    }
+    public void setunitsown(String unitsown) {
+        this.unitsown = unitsown;
     }
 
 

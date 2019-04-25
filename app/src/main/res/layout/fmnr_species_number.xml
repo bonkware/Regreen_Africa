@@ -33,31 +33,31 @@
                     android:id="@+id/less_five"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="&lt; 5"
+                    android:text="less than 5"
                     android:textSize="@dimen/add_edit_textsize" />
                 <RadioButton
                     android:id="@+id/btwfive_ten"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="5 - 10"
+                    android:text="5 to 10"
                     android:textSize="@dimen/add_edit_textsize" />
                 <RadioButton
                     android:id="@+id/btwten_fifteen"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="10 - 15"
+                    android:text="10 to 15"
                     android:textSize="@dimen/add_edit_textsize" />
                 <RadioButton
                     android:id="@+id/btwfifteen_twenty"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="15 - 20"
+                    android:text="15 to 20"
                     android:textSize="@dimen/add_edit_textsize" />
                 <RadioButton
                     android:id="@+id/more_twenty"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="&gt; 20"
+                    android:text="more than 20"
                     android:textSize="@dimen/add_edit_textsize" />
             </RadioGroup>
         </LinearLayout>
@@ -83,7 +83,7 @@
             android:id="@+id/next"
             android:layout_width="wrap_content"
             android:layout_height="49dp"
-            android:onClick="jumpTophoto"
+            android:onClick="jumpToEst"
             android:layout_weight="1"
             android:drawableRight="@drawable/noun_next"
             android:text="NEXT"/>

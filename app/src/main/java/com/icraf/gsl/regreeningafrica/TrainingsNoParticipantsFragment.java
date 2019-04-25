@@ -50,18 +50,19 @@ public class TrainingsNoParticipantsFragment extends Fragment {
             }
 
             public void afterTextChanged(Editable c) {
-                //check if the number of trees survived is more than the planted
                 // Toast.makeText(getActivity(),"Message" + new String(c.toString()), Toast.LENGTH_SHORT).show();
                 try {
                     int t = Integer.valueOf(total.getText().toString());
                     int m = Integer.valueOf(male.getText().toString());
 
-                    if (m > t) {
+
+                    if ( m > t ) {
                         // myEditText2.setText("");  //this automatically sets the editText2 field back to empty
                         male.setText("");
                         male.setError("Cannot be more than the total " + t);
                         //Toast.makeText(getActivity(), "Cannot be more than " + t, Toast.LENGTH_SHORT).show();
                     }
+
                 } catch (NumberFormatException e){
                     //handle
                     //Toast.makeText(getActivity(),"Empty", Toast.LENGTH_SHORT).show();
@@ -93,7 +94,7 @@ public class TrainingsNoParticipantsFragment extends Fragment {
                     if (f + m > t) {
                         // myEditText2.setText("");  //this automatically sets the editText2 field back to empty
                         female.setText("");
-                        female.setError("Cannot be more than the total number ");
+                        female.setError("male and female cannot be more than the total number ");
                         //Toast.makeText(getActivity(), "Cannot be more than " + t, Toast.LENGTH_SHORT).show();
                     }
 
@@ -121,15 +122,15 @@ public class TrainingsNoParticipantsFragment extends Fragment {
                 // Toast.makeText(getActivity(),"Message" + new String(c.toString()), Toast.LENGTH_SHORT).show();
                 try {
                     int t = Integer.valueOf(total.getText().toString());
-                    int m = Integer.valueOf(male.getText().toString());
-                    int f = Integer.valueOf(female.getText().toString());
+                    //int m = Integer.valueOf(male.getText().toString());
+                    //int f = Integer.valueOf(female.getText().toString());
                     int y = Integer.valueOf(youth.getText().toString());
 
 
-                    if (y + m + f > t) {
+                    if (y > t) {
                         // myEditText2.setText("");  //this automatically sets the editText2 field back to empty
                         youth.setText("");
-                        youth.setError("Cannot be more than the total participant ");
+                        youth.setError("Cannot be more than the total of male and female participants ");
                         //Toast.makeText(getActivity(), "Cannot be more than " + t, Toast.LENGTH_SHORT).show();
                     }
                    /* if (m + f + y != t) {
@@ -166,6 +167,18 @@ public class TrainingsNoParticipantsFragment extends Fragment {
         return view;
     }
     public void saveTrainings(){
+        EditText e_name = (EditText) getActivity().findViewById(R.id.ename);
+        g.setename(e_name.getText().toString());
+        EditText date = (EditText) getActivity().findViewById(R.id.in_date);
+        g.setin_date(date.getText().toString());
+
+        Spinner survey_name = (Spinner) getActivity().findViewById(R.id.survey_name);
+        //check if spinner is selected
+        if(survey_name != null && survey_name.getSelectedItem() !=null ) {
+            g.setsurvey_name(survey_name.getSelectedItem().toString());
+        }//added for survey project selection
+        EditText other_survey = (EditText) getActivity().findViewById(R.id.survey_other);
+        g.setsurvey_name(other_survey.getText().toString());//added for other project option
         Spinner c_name = (Spinner) getActivity().findViewById(R.id.cname);
         //g.setc_name(c_name.getText().toString());
         if(c_name != null && c_name.getSelectedItem() !=null ) {

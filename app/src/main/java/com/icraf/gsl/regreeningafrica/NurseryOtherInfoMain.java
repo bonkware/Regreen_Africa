@@ -128,13 +128,15 @@ public class NurseryOtherInfoMain extends AppCompatActivity {
     public void onBackPressed() {
         new AlertDialog.Builder(this)
                 .setTitle("Really Exit?")
-                .setMessage("Exit from recording nursery module?")
+                .setMessage("Exit from adding trees?")
                 .setNegativeButton(android.R.string.no, null)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface arg0, int arg1) {
                         NurseryOtherInfoMain.super.onBackPressed();
                     }
                 }).create().show();
+        //NurseryOtherInfoMain.super.onBackPressed();
+        //overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
     }
 }
 

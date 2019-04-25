@@ -2,30 +2,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="@dimen/activity_vertical_margin">
+    android:background="#fff">
 
     <TextView
         android:id="@+id/t1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Take tree photo"
+        android:text="Take tree photo as shown below \n [The photo serves as an evidence of the regreening adoption on the land]"
         android:gravity="center"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="(Click the camera button, take photo and save)"
-        android:layout_gravity="center"
-        android:paddingTop="5dp"
-        android:textStyle="italic"
-        android:layout_below="@+id/t1"
-        android:textColor="#bb0d0e71"
-        android:textSize="18sp" />
+        android:textSize="15sp" />
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/imageView1"
+        android:background="@drawable/photo_hint"
+        android:layout_below="@+id/t1"
         android:layout_above="@+id/upload" />
 
     <ImageButton
@@ -55,6 +46,7 @@
             android:text="PREV"/>
 
         <Button
+            android:id="@+id/next"
             android:layout_width="wrap_content"
             android:layout_height="49dp"
             android:layout_weight="1"
