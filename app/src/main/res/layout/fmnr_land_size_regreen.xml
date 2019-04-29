@@ -114,6 +114,15 @@
                 android:layout_marginTop="10dip"
                 android:background="@android:drawable/btn_dropdown"
                 android:entries="@array/landsize_units" />
+            <EditText
+                android:id="@+id/other_units"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/view_padding"
+                android:textSize="@dimen/add_edit_textsize"
+                android:hint="Other unit(s)"
+                android:paddingTop="20dp"
+                android:visibility="gone"/>
         </LinearLayout>
     </ScrollView>
 

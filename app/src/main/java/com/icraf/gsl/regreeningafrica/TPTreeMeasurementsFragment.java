@@ -112,16 +112,6 @@ public class TPTreeMeasurementsFragment extends Fragment {
         });*/
         final Button less_three = (Button) view.findViewById(R.id.d_rcd) ;
         final LinearLayout   text1=(LinearLayout)view.findViewById(R.id.dbh_rcd);
-        /*less_three.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(less_three.isChecked()){
-                    text1.setVisibility(View.VISIBLE);
-                }else{
-                    text1.setVisibility(View.GONE);
-                }
-            }
-        });*/
         less_three.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

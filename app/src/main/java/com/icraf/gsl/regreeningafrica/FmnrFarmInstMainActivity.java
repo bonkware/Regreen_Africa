@@ -38,14 +38,13 @@ public class FmnrFarmInstMainActivity extends AppCompatActivity {
         logo.setDisplayHomeAsUpEnabled(true);
 
         viewPager = (ViewPager) findViewById(pager);
-        viewPager.setOffscreenPageLimit(6);//number of fragments
+        viewPager.setOffscreenPageLimit(5);//number of fragments
         final ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         //All fragments
         adapter.addFragment(new FmnrFarmInstEnumFragment(), "enumurator");
         adapter.addFragment(new FmnrFarmInstFragment(), "farmer/institution details");
         adapter.addFragment(new FmnrFarmInstLocFragment(), "tree planting location");
         adapter.addFragment(new FmnrFarmInstSpeciesNumberFragment(), "species number");
-        //adapter.addFragment(new FmnrRestorationPhotoFragment(), "restoration land photo");
         adapter.addFragment(new FmnrFarmInstLandsizeFragment(), "land size green");
         viewPager.setAdapter(adapter);
 

@@ -104,7 +104,7 @@ public class DbAccess {
         ContentValues contentValue = new ContentValues();
         contentValue.put(DatabaseHelper.cohortID, g.getcid());
         contentValue.put(DatabaseHelper.tree_height, g.getheight());
-        contentValue.put(DatabaseHelper.tree_rcd, g.getrcd());
+        //contentValue.put(DatabaseHelper.tree_rcd, g.getrcd());
         contentValue.put(DatabaseHelper.tree_dbh, g.getdbh());
         contentValue.put(DatabaseHelper.tree_latitude, g.getLatitude());
         contentValue.put(DatabaseHelper.tree_longitude, g.getLongitude());
@@ -258,7 +258,7 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.fmnr_use_other, g.getus_other());
         contentValue.put(DatabaseHelper.fmnr_tree_stems, g.getstems());
         contentValue.put(DatabaseHelper.fmnr_tree_height, g.getheight());
-        contentValue.put(DatabaseHelper.fmnr_tree_rcd, g.getrcd());
+        //contentValue.put(DatabaseHelper.fmnr_tree_rcd, g.getrcd());
         contentValue.put(DatabaseHelper.fmnr_tree_dbh, g.getdbh());
         contentValue.put(DatabaseHelper.fmnr_tree_latitude, g.getLatitude());
         contentValue.put(DatabaseHelper.fmnr_tree_longitude, g.getLongitude());

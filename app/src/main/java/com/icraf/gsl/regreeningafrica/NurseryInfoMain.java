@@ -71,12 +71,12 @@ public class NurseryInfoMain extends AppCompatActivity {
         viewPager.setCurrentItem(0);
     }
     public void jumpTotype(View view){
-        EditText ed = (EditText) findViewById(R.id.nursery_county);
-        EditText district = (EditText) findViewById(R.id.nursery_district);
+        //EditText ed = (EditText) findViewById(R.id.nursery_county);
+        //EditText district = (EditText) findViewById(R.id.nursery_district);
         EditText operator = (EditText) findViewById(R.id.nursery_operator);
         EditText contact = (EditText) findViewById(R.id.nursery_contact);
         boolean fail = false;
-        if (ed.getText().toString().trim().length() == 0) {
+       /* if (ed.getText().toString().trim().length() == 0) {
             fail = true;
             ed.requestFocus();
             ed.setError("Enter county");
@@ -85,7 +85,7 @@ public class NurseryInfoMain extends AppCompatActivity {
             fail = true;
             district.requestFocus();
             district.setError("Enter district");
-        }
+        }*/
         if (operator.getText().toString().trim().length() == 0) {
             fail = true;
             operator.requestFocus();

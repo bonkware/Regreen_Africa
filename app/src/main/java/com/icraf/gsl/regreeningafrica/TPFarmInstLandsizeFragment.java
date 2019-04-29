@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -53,6 +54,27 @@ public class TPFarmInstLandsizeFragment extends Fragment {
                 }
             }
         });
+        //if other is selected
+        final Spinner s1 = (Spinner)view.findViewById(R.id.units);
+        final EditText text1=(EditText) view.findViewById(R.id.other_units);
+        s1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                String sp1= String.valueOf(s1.getSelectedItem());
+                if(sp1.contentEquals("Other")) {
+                    text1.setVisibility(View.VISIBLE);  //if other is chosen then show
+                }
+                else {
+                    text1.setVisibility(View.GONE); //otherwise hide
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });//end of spinner selection 1
 
 
         return view;
@@ -86,14 +108,21 @@ public class TPFarmInstLandsizeFragment extends Fragment {
         if(country != null && country.getSelectedItem() !=null ) {
             g.setcountry(country.getSelectedItem().toString());
         }
-        EditText county_region = (EditText) getActivity().findViewById(R.id.county);
-        //if(county_region != null && county_region.getSelectedItem() !=null ) {
-            g.setcounty_region(county_region.getText().toString());
-       // }
-        EditText district = (EditText) getActivity().findViewById(R.id.district);
-        //if(district != null && district.getSelectedItem() !=null ) {
-            g.setdistricts(district.getText().toString());
-        //}
+         /*EditText county_region = (EditText) getActivity().findViewById(R.id.county);
+        g.setcounty_region(county_region.getText().toString());*/
+        Spinner county_region = (Spinner) getActivity().findViewById(R.id.spinner2);
+        //check if spinner is selected
+        if(county_region != null && county_region.getSelectedItem() !=null ) {
+            g.setcounty_region(county_region.getSelectedItem().toString());
+        }
+
+        /*EditText district = (EditText) getActivity().findViewById(R.id.district);
+        g.setdistricts(district.getText().toString());*/
+        Spinner district = (Spinner) getActivity().findViewById(R.id.spinner3);
+        //check if spinner is selected
+        if(district != null && district.getSelectedItem() !=null ) {
+            g.setdistricts(district.getSelectedItem().toString());
+        }
         /*RadioGroup radioGroup = (RadioGroup) getActivity().findViewById(R.id.planting_location);
         //check whether it is checked
         if(radioGroup.getCheckedRadioButtonId()==-1){
@@ -164,6 +193,8 @@ public class TPFarmInstLandsizeFragment extends Fragment {
         if(units != null && units.getSelectedItem() !=null ) {
             g.setunits(units.getSelectedItem().toString());
         }
+        EditText other_units = (EditText) getActivity().findViewById(R.id.other_units);
+        g.setunits(other_units.getText().toString());//added for other project option
 
     }
 }

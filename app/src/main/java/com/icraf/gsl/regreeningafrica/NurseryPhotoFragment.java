@@ -9,6 +9,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
@@ -119,7 +120,9 @@ public class NurseryPhotoFragment extends Fragment {
     }
 
     private File getFile() {
-        File folder = new File("sdcard/RegreenAfrica");
+        File fileName = new File(Environment.getExternalStorageDirectory().getAbsolutePath());
+        File folder = new File(fileName + "/RegreenAfrica/Nursery");
+        //File folder = new File("sdcard/RegreenAfrica/Nursery");
         if (!folder.exists()) {
             folder.mkdir();
         }
@@ -181,15 +184,28 @@ public class NurseryPhotoFragment extends Fragment {
         EditText other_survey = (EditText) getActivity().findViewById(R.id.survey_other);
         g.setsurvey_name(other_survey.getText().toString());//added for other project option
 
-        Spinner country = (Spinner) getActivity().findViewById(R.id.nursery_country);
+        Spinner country = (Spinner) getActivity().findViewById(R.id.spinner1);
         //g.setnursery_country(country.getText().toString());
         if(country != null && country.getSelectedItem() !=null ) {
             g.setnursery_country(country.getSelectedItem().toString());
         }
-        EditText county_region = (EditText) getActivity().findViewById(R.id.nursery_county);
+       /* EditText county_region = (EditText) getActivity().findViewById(R.id.nursery_county);
         g.setnursery_county(county_region.getText().toString());
         EditText district = (EditText) getActivity().findViewById(R.id.nursery_district);
-        g.setnursery_district(district.getText().toString());
+        g.setnursery_district(district.getText().toString());*/
+        Spinner county_region = (Spinner) getActivity().findViewById(R.id.spinner2);
+        //check if spinner is selected
+        if(county_region != null && county_region.getSelectedItem() !=null ) {
+            g.setnursery_county(county_region.getSelectedItem().toString());
+        }
+        /*EditText district = (EditText) getActivity().findViewById(R.id.district);
+        g.setdistricts(district.getText().toString());*/
+        Spinner district = (Spinner) getActivity().findViewById(R.id.spinner3);
+        //check if spinner is selected
+        if(district != null && district.getSelectedItem() !=null ) {
+            g.setnursery_district(district.getSelectedItem().toString());
+        }
+
         EditText operator = (EditText) getActivity().findViewById(R.id.nursery_operator);
         g.setnursery_operator(operator.getText().toString());
         EditText contact = (EditText) getActivity().findViewById(R.id.nursery_contact);

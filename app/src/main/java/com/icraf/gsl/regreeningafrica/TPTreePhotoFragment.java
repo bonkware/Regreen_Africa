@@ -9,6 +9,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
@@ -95,7 +96,9 @@ public class TPTreePhotoFragment extends Fragment {
             }
 
             private File getFile() {
-                File folder = new File("sdcard/RegreenAfrica");
+                File fileName = new File(Environment.getExternalStorageDirectory().getAbsolutePath());
+                File folder = new File(fileName + "/RegreenAfrica/TP");
+                //File folder = new File("sdcard/RegreenAfrica/TP");
                 if (!folder.exists()) {
                     folder.mkdir();
                 }

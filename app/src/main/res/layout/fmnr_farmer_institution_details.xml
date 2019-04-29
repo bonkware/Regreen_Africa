@@ -64,23 +64,24 @@
 
             <!-- Select Label -->
 
-            <TextView
+            <!--<TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/textsize"
                 android:paddingTop="20dp"
-                android:text="Region/County Name" />
+                android:text="Region/County Name" />-->
 
             <!-- Spinner Dropdown -->
-            <!-- <Spinner
+             <Spinner
                  android:id="@+id/spinner2"
                  android:layout_width="fill_parent"
                  android:layout_height="wrap_content"
-                 android:layout_marginTop="10dip"
                  android:layout_marginLeft="8dip"
                  android:layout_marginRight="8dip"
-                 />-->
-            <EditText
+                 android:layout_marginTop="10dip"
+                 android:background="@android:drawable/btn_dropdown"
+                 />
+            <!--<EditText
                 android:id="@+id/county"
                 android:backgroundTint="#008000"
                 android:layout_width="match_parent"
@@ -89,25 +90,26 @@
                 android:padding="@dimen/view_padding"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:textSize="@dimen/add_edit_textsize"/>
+                android:textSize="@dimen/add_edit_textsize"/>-->
             <!-- Select Label -->
 
-            <TextView
+            <!--<TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/textsize"
                 android:paddingTop="20dp"
-                android:text="District/Communne/Woreda/Circle/Sub-county" />
+                android:text="District/Communne/Woreda/Circle/Sub-county" />-->
             <!-- Spinner Dropdown -->
-            <!--<Spinner
+            <Spinner
                 android:id="@+id/spinner3"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dip"
                 android:layout_marginLeft="8dip"
                 android:layout_marginRight="8dip"
-                />-->
-            <EditText
+                android:layout_marginTop="10dip"
+                android:background="@android:drawable/btn_dropdown"
+                />
+            <!--<EditText
                 android:id="@+id/district"
                 android:backgroundTint="#008000"
                 android:layout_width="match_parent"
@@ -116,7 +118,7 @@
                 android:padding="@dimen/view_padding"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:textSize="@dimen/add_edit_textsize"/>
+                android:textSize="@dimen/add_edit_textsize"/>-->
         </LinearLayout>
     </ScrollView>
 

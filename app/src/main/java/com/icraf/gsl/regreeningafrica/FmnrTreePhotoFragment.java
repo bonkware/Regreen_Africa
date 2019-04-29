@@ -9,6 +9,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
@@ -95,7 +96,9 @@ public class FmnrTreePhotoFragment extends Fragment {
     }
 
     private File getFile() {
-        File folder = new File("sdcard/FMNR");
+        File fileName = new File(Environment.getExternalStorageDirectory().getAbsolutePath());
+        File folder = new File(fileName + "/RegreenAfrica/FMNR");
+        //File folder = new File("sdcard/RegreenAfrica/FMNR");
         if (!folder.exists()) {
             folder.mkdir();
         }

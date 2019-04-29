@@ -190,6 +190,7 @@ public class OtherMainActivities extends AppCompatActivity {
                     final String farmerID = cursor.getString(cursor.getColumnIndex("farmerID"));
                     final String enum_name = cursor.getString(cursor.getColumnIndex("ename"));
                     final String date = cursor.getString(cursor.getColumnIndex("in_date"));
+                    final String survey_name = cursor.getString(cursor.getColumnIndex("survey_name"));
                     final String farmer_inst_name = cursor.getString(cursor.getColumnIndex("name"));
                     final String country = cursor.getString(cursor.getColumnIndex("country"));
                     final String county_region = cursor.getString(cursor.getColumnIndex("county_region"));
@@ -213,6 +214,7 @@ public class OtherMainActivities extends AppCompatActivity {
                     final String other_sites = cursor.getString(cursor.getColumnIndex("other_sites"));
 
                     final String landsize_regreen = cursor.getString(cursor.getColumnIndex("landsize_regreen"));
+                    final String tp_units = cursor.getString(cursor.getColumnIndex("units"));
                     //for cohort
                     final String cohort_id = cursor.getString(cursor.getColumnIndex("cohortID"));
                     final String farmer_id = cursor.getString(cursor.getColumnIndex("farmerID"));
@@ -235,7 +237,7 @@ public class OtherMainActivities extends AppCompatActivity {
                     //for tree measurement
                     final String cohortID = cursor.getString(cursor.getColumnIndex("cohortID"));
                     final String tree_height = cursor.getString(cursor.getColumnIndex("height"));
-                    final String tree_rcd = cursor.getString(cursor.getColumnIndex("rcd"));
+                    //final String tree_rcd = cursor.getString(cursor.getColumnIndex("rcd"));
                     final String tree_dbh = cursor.getString(cursor.getColumnIndex("dbh"));
                     final String tree_latitude = cursor.getString(cursor.getColumnIndex("tree_latitude"));
                     final String tree_longitude = cursor.getString(cursor.getColumnIndex("tree_longitude"));
@@ -387,6 +389,7 @@ public class OtherMainActivities extends AppCompatActivity {
                             param.put("farmerID", farmerID);
                             param.put("enum_name", enum_name);
                             param.put("date", date);
+                            param.put("survey_name", survey_name);
                             param.put("farmer_inst_name", farmer_inst_name);
                             param.put("country", country);
                             param.put("county_region", county_region);
@@ -408,6 +411,7 @@ public class OtherMainActivities extends AppCompatActivity {
                             param.put("fallow_bushland", fallow_pushland);
                             param.put("other_sites", other_sites);
                             param.put("landsize_regreen", landsize_regreen);
+                            param.put("units", tp_units);
                             //cohort
                             param.put("cohortID", cohort_id);
                             param.put("farmerID", farmer_id);
@@ -430,7 +434,7 @@ public class OtherMainActivities extends AppCompatActivity {
                             //measurement
                             param.put("cohortID", cohortID);
                             param.put("tree_height", tree_height);
-                            param.put("tree_rcd", tree_rcd);
+                            //param.put("tree_rcd", tree_rcd);
                             param.put("tree_dbh", tree_dbh);
                             param.put("tree_latitude", tree_latitude);
                             param.put("tree_longitude", tree_longitude);
@@ -501,6 +505,9 @@ public class OtherMainActivities extends AppCompatActivity {
                 do {
                     //nursery info
                     final String nurseryID = cursor.getString(cursor.getColumnIndex("nurseryID"));
+                    final String enum_name = cursor.getString(cursor.getColumnIndex("ename"));
+                    final String date = cursor.getString(cursor.getColumnIndex("in_date"));
+                    final String survey_name = cursor.getString(cursor.getColumnIndex("survey_name"));
                     final String country = cursor.getString(cursor.getColumnIndex("country"));
                     final String county = cursor.getString(cursor.getColumnIndex("county"));
                     final String district = cursor.getString(cursor.getColumnIndex("district"));
@@ -540,6 +547,9 @@ public class OtherMainActivities extends AppCompatActivity {
                     final String graft_source_prisons = cursor.getString(cursor.getColumnIndex("prisons"));
                     final String graft_source_others = cursor.getString(cursor.getColumnIndex("other_graft_sources"));
                     final String seeds_quantity_purchased = cursor.getString(cursor.getColumnIndex("quantity_purchased"));
+                    final String units = cursor.getString(cursor.getColumnIndex("units"));//
+                    final String number_seed_sown = cursor.getString(cursor.getColumnIndex("seed_sown"));//
+                    final String unitsown = cursor.getString(cursor.getColumnIndex("units_sown"));//
                     final String date_seeds_sown = cursor.getString(cursor.getColumnIndex("date_sown"));
                     final String seedlings_germinated = cursor.getString(cursor.getColumnIndex("seedlings_germinated"));
                     final String seedlings_servived = cursor.getString(cursor.getColumnIndex("seedlings_survived"));
@@ -679,6 +689,9 @@ public class OtherMainActivities extends AppCompatActivity {
                             Map<String, String> param = new HashMap<String, String>();
                             //farmer data
                             param.put("nurseryID", nurseryID);
+                            param.put("enum_name", enum_name);
+                            param.put("date", date);
+                            param.put("survey_name", survey_name);
                             param.put("country", country);
                             param.put("county", county);
                             param.put("district", district);
@@ -725,6 +738,9 @@ public class OtherMainActivities extends AppCompatActivity {
                             param.put("prisons", graft_source_prisons);
                             param.put("other_graft_sources", graft_source_others);
                             param.put("quantity_purchased", seeds_quantity_purchased);
+                            param.put("units", units);
+                            param.put("seed_sown", number_seed_sown);
+                            param.put("units_sown", unitsown);
                             param.put("date_sown", date_seeds_sown);
                             param.put("seedlings_germinated", seedlings_germinated);
                             param.put("seedlings_survived", seedlings_servived);
@@ -786,6 +802,7 @@ public class OtherMainActivities extends AppCompatActivity {
                     final String fmnr_farmer_id = cursor.getString(cursor.getColumnIndex("farmerID"));
                     final String fmnr_enum_name = cursor.getString(cursor.getColumnIndex("ename"));
                     final String fmnr_date = cursor.getString(cursor.getColumnIndex("in_date"));
+                    final String fmnr_survey_name = cursor.getString(cursor.getColumnIndex("survey_name"));//
                     final String fmnr_farmer_inst_name = cursor.getString(cursor.getColumnIndex("name"));
                     final String fmnr_country = cursor.getString(cursor.getColumnIndex("country"));
                     final String fmnr_county_region = cursor.getString(cursor.getColumnIndex("county_region"));
@@ -803,6 +820,7 @@ public class OtherMainActivities extends AppCompatActivity {
                     final String fmnr_started_date = cursor.getString(cursor.getColumnIndex("fmnr_started_date"));
                     final String fmnr_fenced = cursor.getString(cursor.getColumnIndex("fmnr_fenced"));
                     final String fmnr_landsize_regreen = cursor.getString(cursor.getColumnIndex("landsize_regreen"));
+                    final String fmnr_units = cursor.getString(cursor.getColumnIndex("units"));//
 
                     //fmnr species
                     final String fmnrfarmer_id = cursor.getString(cursor.getColumnIndex("farmerID"));
@@ -825,7 +843,7 @@ public class OtherMainActivities extends AppCompatActivity {
                     final String fmnr_use_other = cursor.getString(cursor.getColumnIndex("us_other"));
                     final String fmnr_tree_stems = cursor.getString(cursor.getColumnIndex("stems"));
                     final String fmnr_tree_height = cursor.getString(cursor.getColumnIndex("height"));
-                    final String fmnr_tree_rcd = cursor.getString(cursor.getColumnIndex("rcd"));
+                    //final String fmnr_tree_rcd = cursor.getString(cursor.getColumnIndex("rcd"));
                     final String fmnr_tree_dbh = cursor.getString(cursor.getColumnIndex("dbh"));
                     final String fmnr_tree_latitude = cursor.getString(cursor.getColumnIndex("tree_latitude"));
                     final String fmnr_tree_longitude = cursor.getString(cursor.getColumnIndex("tree_longitude"));
@@ -985,6 +1003,7 @@ public class OtherMainActivities extends AppCompatActivity {
                             param.put("farmerID", fmnr_farmer_id);
                             param.put("enum_name", fmnr_enum_name);
                             param.put("date", fmnr_date);
+                            param.put("survey_name", fmnr_survey_name);
                             param.put("farmer_inst_name", fmnr_farmer_inst_name);
                             param.put("country", fmnr_country);
                             param.put("county_region", fmnr_county_region);
@@ -1001,6 +1020,7 @@ public class OtherMainActivities extends AppCompatActivity {
                             param.put("fmnr_started_date", fmnr_started_date);
                             param.put("fmnr_fenced", fmnr_fenced);
                             param.put("landsize_regreen", fmnr_landsize_regreen);
+                            param.put("units", fmnr_units);
                            /* BitmapFactory.Options option = new BitmapFactory.Options();
                             option.inSampleSize = 8;//compress file further to avoid out of memory error
                             Bitmap bitmap_rest = BitmapFactory.decodeFile(fmnr_restoration_photo,option);
@@ -1027,7 +1047,7 @@ public class OtherMainActivities extends AppCompatActivity {
                             param.put("use_other", fmnr_use_other);
                             param.put("stems", fmnr_tree_stems);
                             param.put("tree_height", fmnr_tree_height);
-                            param.put("tree_rcd", fmnr_tree_rcd);
+                            //param.put("tree_rcd", fmnr_tree_rcd);
                             param.put("tree_dbh", fmnr_tree_dbh);
                             param.put("tree_latitude", fmnr_tree_latitude);
                             param.put("tree_longitude", fmnr_tree_longitude);
@@ -1119,7 +1139,10 @@ public class OtherMainActivities extends AppCompatActivity {
             final Cursor cursor = dbAccess.getTrainings();
             if (cursor.moveToFirst()) {
                 do {
-                    //nursery profile
+                    //
+                    final String training_enum_name = cursor.getString(cursor.getColumnIndex("ename"));
+                    final String training_record_date = cursor.getString(cursor.getColumnIndex("in_date"));
+                    final String training_survey_name = cursor.getString(cursor.getColumnIndex("survey_name"));//
                     final String training_country = cursor.getString(cursor.getColumnIndex("training_country"));
                     final String training_region = cursor.getString(cursor.getColumnIndex("training_region"));
                     final String training_district = cursor.getString(cursor.getColumnIndex("training_district"));
@@ -1254,6 +1277,9 @@ public class OtherMainActivities extends AppCompatActivity {
                         protected Map<String, String> getParams() throws AuthFailureError {
                             Map<String, String> param = new HashMap<String, String>();
                             //farmer data
+                            param.put("enum_name", training_enum_name);
+                            param.put("date", training_record_date);
+                            param.put("survey_name", training_survey_name);
                             param.put("training_country", training_country);
                             param.put("training_region", training_region);
                             param.put("training_district", training_district);
