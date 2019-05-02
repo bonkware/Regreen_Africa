@@ -9,12 +9,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * Created by benard on 2/22/19.
@@ -24,6 +29,34 @@ public class NurseryOtherFragment extends Fragment {
     EditText txtDate,txtDate1;
     private int mYear, mMonth, mDay;
 
+    //add items to spinner
+    Spinner SPINNER;
+    Button ADD;
+    EditText EDITTEXT;
+    String[] spinnerItems = new String[]{
+            "Select unit",
+            "Kgs",
+            "Grams",
+            "Count"
+
+    };
+    String GETTEXT;
+    List<String> stringlist;
+    ArrayAdapter<String> arrayadapter;//end of spinner items
+    //add items to spinner2
+    Spinner SPINNER2;
+    Button ADD2;
+    EditText EDITTEXT2;
+    String[] spinnerItems2 = new String[]{
+            "Select unit",
+            "Kgs",
+            "Grams",
+            "Count"
+
+    };
+    String GETTEXT2;
+    List<String> stringlist2;
+    ArrayAdapter<String> arrayadapter2;//end of spinner2 items
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -107,48 +140,64 @@ public class NurseryOtherFragment extends Fragment {
             }
         });//end of text watcher1
 
-        //if unit other is selected
-        final Spinner s1 = (Spinner)view.findViewById(R.id.units);
-        final EditText text1=(EditText) view.findViewById(R.id.unit_other);
-        s1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> parent, View view,
-                                       int position, long id) {
-                String sp1= String.valueOf(s1.getSelectedItem());
-                if(sp1.contentEquals("Other")) {
-                    text1.setVisibility(View.VISIBLE);  //if other is chosen then show
-                }
-                else {
-                    text1.setVisibility(View.GONE); //otherwise hide
-                }
 
-            }
+        //add item to spinner from edittext
+        SPINNER = (Spinner)view.findViewById(R.id.spinner_units);
+        ADD = (Button)view.findViewById(R.id.button1);
+        EDITTEXT = (EditText)view.findViewById(R.id.editText1);
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+        stringlist = new ArrayList<>(Arrays.asList(spinnerItems));
 
-            }
-        });//end of spinner selection 1
-        //if other is selected
-        final Spinner s2 = (Spinner)view.findViewById(R.id.unit_sown);
-        final EditText text2=(EditText) view.findViewById(R.id.unitsown_other);
-        s2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> parent, View view,
-                                       int position, long id) {
-                String sp2= String.valueOf(s2.getSelectedItem());
-                if(sp2.contentEquals("Other")) {
-                    text2.setVisibility(View.VISIBLE);  //if other is chosen then show
-                }
-                else {
-                    text2.setVisibility(View.GONE); //otherwise hide
-                }
+        arrayadapter = new ArrayAdapter<String>(NurseryOtherFragment.this.getActivity(),R.layout.textview,stringlist );
 
-            }
+        arrayadapter.setDropDownViewResource(R.layout.textview);
+
+        SPINNER.setAdapter(arrayadapter);
+
+        ADD.setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
 
+                GETTEXT = EDITTEXT.getText().toString();
+
+                stringlist.add(GETTEXT);
+
+                arrayadapter.notifyDataSetChanged();
+
+                Toast.makeText(NurseryOtherFragment.this.getActivity(), "Item Added", Toast.LENGTH_LONG).show();
             }
-        });//end of spinner selection 1
+        });
+        //add item to spinner2 from edittext
+        SPINNER2 = (Spinner)view.findViewById(R.id.spinner_unitsown);
+        ADD2 = (Button)view.findViewById(R.id.button2);
+        EDITTEXT2 = (EditText)view.findViewById(R.id.editText2);
+
+        stringlist2 = new ArrayList<>(Arrays.asList(spinnerItems));
+
+        arrayadapter2 = new ArrayAdapter<String>(NurseryOtherFragment.this.getActivity(),R.layout.textview,stringlist2 );
+
+        arrayadapter2.setDropDownViewResource(R.layout.textview);
+
+        SPINNER2.setAdapter(arrayadapter2);
+
+        ADD2.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+
+                GETTEXT2 = EDITTEXT2.getText().toString();
+
+                stringlist2.add(GETTEXT2);
+
+                arrayadapter2.notifyDataSetChanged();
+
+                Toast.makeText(NurseryOtherFragment.this.getActivity(), "Item Added", Toast.LENGTH_LONG).show();
+            }
+        });
+
         return view;
     }
 }

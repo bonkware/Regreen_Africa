@@ -182,22 +182,22 @@ public class NurseryEndFragment extends Fragment {
         //
         EditText qpurchased = (EditText) getActivity().findViewById(R.id.qpurchased);
         g.setqpurchased(qpurchased.getText().toString());
-        Spinner units = (Spinner) getActivity().findViewById(R.id.units);
+        Spinner qunits = (Spinner) getActivity().findViewById(R.id.spinner_units);
         //check if spinner is selected
-        if(units != null && units.getSelectedItem() !=null ) {
-            g.setunits(units.getSelectedItem().toString());
+        if(qunits != null && qunits.getSelectedItem() !=null ) {
+            g.setqunits(qunits.getSelectedItem().toString());
         }//added for survey unit selection
-        EditText other_unit = (EditText) getActivity().findViewById(R.id.unit_other);
-        g.setunits(other_unit.getText().toString());//added for other unit option
+        //EditText other_unit = (EditText) getActivity().findViewById(R.id.unit_other);
+        //g.setqunits(other_unit.getText().toString());//added for other unit option
         EditText number_sowed = (EditText) getActivity().findViewById(R.id.seeds_sown);
         g.setseed_sown(number_sowed.getText().toString());//added
-        Spinner unit_sown = (Spinner) getActivity().findViewById(R.id.unit_sown);
+        Spinner unit_sown = (Spinner) getActivity().findViewById(R.id.spinner_unitsown);
         //check if spinner is selected
-        if(units != null && units.getSelectedItem() !=null ) {
+        if(unit_sown != null && unit_sown.getSelectedItem() !=null ) {
             g.setunitsown(unit_sown.getSelectedItem().toString());
         }//added for survey unit selection
-        EditText other_unitsown = (EditText) getActivity().findViewById(R.id.unitsown_other);
-        g.setunitsown(other_unitsown.getText().toString());//added for other unit option
+       // EditText other_unitsown = (EditText) getActivity().findViewById(R.id.unitsown_other);
+       // g.setunitsown(other_unitsown.getText().toString());//added for other unit option
         EditText date_sown = (EditText) getActivity().findViewById(R.id.date_sown);
         g.setdate_sown(date_sown.getText().toString());
         EditText germinated = (EditText) getActivity().findViewById(R.id.germinated);

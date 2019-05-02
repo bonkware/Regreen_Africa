@@ -48,7 +48,7 @@ public class DbAccess {
         ContentValues contentValue = new ContentValues();
         contentValue.put(DatabaseHelper.enum_name, g.getename());
         contentValue.put(DatabaseHelper.date, g.getin_date());
-        contentValue.put(DatabaseHelper.survey_name, g.getsurvey_name());
+        contentValue.put(DatabaseHelper.survey_name, g.gettpsurvey_name());
         contentValue.put(DatabaseHelper.farmer_inst_name, g.getfname());
         contentValue.put(DatabaseHelper.country, g.getcountry());
         contentValue.put(DatabaseHelper.county_region, g.getcounty_region());
@@ -119,7 +119,7 @@ public class DbAccess {
         ContentValues contentValue = new ContentValues();
         contentValue.put(DatabaseHelper.training_enum_name, g.getename());//added
         contentValue.put(DatabaseHelper.training_record_date, g.getin_date());//added
-        contentValue.put(DatabaseHelper.training_survey_name, g.getsurvey_name());//added
+        contentValue.put(DatabaseHelper.training_survey_name, g.gettsurvey_name());
         contentValue.put(DatabaseHelper.training_country, g.getc_name());
         contentValue.put(DatabaseHelper.training_region, g.getcr_name());
         contentValue.put(DatabaseHelper.training_district, g.getdcw_name());
@@ -139,7 +139,7 @@ public class DbAccess {
         ContentValues contentValue = new ContentValues();
         contentValue.put(DatabaseHelper.nursery_enum_name, g.getename());//added
         contentValue.put(DatabaseHelper.nursery_date, g.getin_date());//added
-        contentValue.put(DatabaseHelper.nursery_survey_name, g.getsurvey_name());//added
+        contentValue.put(DatabaseHelper.nursery_survey_name, g.getnsurvey_name());//added
         contentValue.put(DatabaseHelper.nursery_country, g.getnursery_country());
         contentValue.put(DatabaseHelper.nursery_county, g.getnursery_county());
         contentValue.put(DatabaseHelper.nursery_district, g.getnursery_district());
@@ -185,7 +185,7 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.graft_source_prisons, g.getprisons());
         contentValue.put(DatabaseHelper.graft_source_others, g.getother_graft_sources());
         contentValue.put(DatabaseHelper.seeds_quantity_purchased, g.getqpurchased());
-        contentValue.put(DatabaseHelper.units, g.getunits());
+        contentValue.put(DatabaseHelper.qunits, g.getqunits());
         contentValue.put(DatabaseHelper.seed_sown, g.getseed_sown());
         contentValue.put(DatabaseHelper.unitsown, g.getunitsown());
         contentValue.put(DatabaseHelper.date_seeds_sown, g.getdate_sown());
@@ -202,7 +202,7 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.farmerID, g.getfid());
         contentValue.put(DatabaseHelper.fmnr_enum_name, g.getename());
         contentValue.put(DatabaseHelper.fmnr_date, g.getin_date());
-        contentValue.put(DatabaseHelper.famnr_survey_name, g.getsurvey_name());
+        contentValue.put(DatabaseHelper.famnr_survey_name, g.getfsurvey_name());
         contentValue.put(DatabaseHelper.fmnr_farmer_inst_name, g.getfname());
         contentValue.put(DatabaseHelper.fmnr_country, g.getcountry());
         contentValue.put(DatabaseHelper.fmnr_county_region, g.getcounty_region());

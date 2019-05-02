@@ -25,24 +25,23 @@
         <item>Cape verde</item>
         <item>Ivory Coast</item>-->
     </string-array>
-    <string-array name="survey_name">
+    <string-array name="landsize">
+    <item>Select Unit</item>
+    <item>Hectares</item>
+    <item>Acres</item>
+    </string-array>
+    <string-array name="projects">
         <item>Select Survey</item>
         <item>Regreening Africa</item>
         <item>Dry Dev</item>
-        <item>Other</item>
+        <!--<item>Other</item>-->
     </string-array>
     <string-array name="units">
         <item>Select Unit</item>
         <item>Kgs</item>
         <item>Grams</item>
         <item>Count</item>
-        <item>Other</item>
-    </string-array>
-    <string-array name="landsize_units">
-        <item>Select Unit</item>
-        <item>Hectares</item>
-        <item>Acres</item>
-        <item>Other</item>
+        <!--<item>Other</item>-->
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

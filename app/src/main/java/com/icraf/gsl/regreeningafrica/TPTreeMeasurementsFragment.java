@@ -29,7 +29,28 @@ public class TPTreeMeasurementsFragment extends Fragment {
         View view = inflater.inflate(R.layout.tree_measurements, container,
                 false);
 
+        //show dbh
+        final Button b = (Button) view.findViewById(R.id.d_rcd1) ;
+        final LinearLayout   dhr=(LinearLayout)view.findViewById(R.id.dbh_rcd);
+        final LinearLayout   dhr2=(LinearLayout)view.findViewById(R.id.dbh_rcd);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //show edittext
+                dhr.setVisibility(View.VISIBLE);
 
+            }
+        });
+        //show rcd
+        final Button b2 = (Button) view.findViewById(R.id.d_rcd2) ;
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //show edittext
+                dhr2.setVisibility(View.VISIBLE);
+
+            }
+        });
     /*    final LinearLayout r1=(LinearLayout) view.findViewById(R.id.rcd_);
         //final LinearLayout   r2=(LinearLayout)view.findViewById(R.id.height_);
         final LinearLayout   r3=(LinearLayout)view.findViewById(R.id.dbh_);
@@ -110,7 +131,7 @@ public class TPTreeMeasurementsFragment extends Fragment {
                 }
             }
         });*/
-        final Button less_three = (Button) view.findViewById(R.id.d_rcd) ;
+        /*final Button less_three = (Button) view.findViewById(R.id.d_rcd) ;
         final LinearLayout   text1=(LinearLayout)view.findViewById(R.id.dbh_rcd);
         less_three.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,11 +145,61 @@ public class TPTreeMeasurementsFragment extends Fragment {
                         break;
                 }
             }
-        });
+        });*/
         //get fid
         String cohort_id = g.getcid();
         TextView cid = (TextView) view.findViewById(R.id.cid);
         cid.setText(cohort_id);
+
+        //check on radio buttons
+        final RadioButton less_one = (RadioButton) view.findViewById(R.id.less15) ;
+        //final LinearLayout   text=(LinearLayout)view.findViewById(R.id.dbh_rcd);
+        less_one.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(less_one.isChecked()){
+                    b.setVisibility(View.VISIBLE);
+                    b2.setVisibility(View.GONE);
+                    dhr.setVisibility(View.GONE);
+                }else{
+                    b2.setVisibility(View.GONE);
+                    b.setVisibility(View.VISIBLE);
+                    dhr.setVisibility(View.GONE);
+                }
+            }
+        });
+        final RadioButton less_three = (RadioButton) view.findViewById(R.id.less3) ;
+        //final LinearLayout   text1=(LinearLayout)view.findViewById(R.id.dbh_rcd);
+        less_three.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(less_three.isChecked()){
+                    b2.setVisibility(View.VISIBLE);
+                    b.setVisibility(View.GONE);
+                    dhr.setVisibility(View.GONE);
+                }else{
+                    b.setVisibility(View.GONE);
+                    b2.setVisibility(View.VISIBLE);
+                    dhr.setVisibility(View.GONE);
+                }
+            }
+        });
+        final RadioButton more_three = (RadioButton) view.findViewById(R.id.more3) ;
+        //final LinearLayout   text2=(LinearLayout)view.findViewById(R.id.dbh_rcd);
+        more_three.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(more_three.isChecked()){
+                    b2.setVisibility(View.VISIBLE);
+                    b.setVisibility(View.GONE);
+                    dhr.setVisibility(View.GONE);
+                }else{
+                    b.setVisibility(View.GONE);
+                    b2.setVisibility(View.VISIBLE);
+                    dhr.setVisibility(View.GONE);
+                }
+            }
+        });
 
         return view;
     }

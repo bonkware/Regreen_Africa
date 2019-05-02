@@ -2,6 +2,7 @@ package com.icraf.gsl.regreeningafrica;
 
 /**
  * Created by benard on 2/4/19.
+ *
  */
 import android.content.Intent;
 import android.support.v4.app.Fragment;
@@ -172,13 +173,13 @@ public class TrainingsNoParticipantsFragment extends Fragment {
         EditText date = (EditText) getActivity().findViewById(R.id.in_date);
         g.setin_date(date.getText().toString());
 
-        Spinner survey_name = (Spinner) getActivity().findViewById(R.id.survey_name);
-        //check if spinner is selected
-        if(survey_name != null && survey_name.getSelectedItem() !=null ) {
-            g.setsurvey_name(survey_name.getSelectedItem().toString());
-        }//added for survey project selection
-        EditText other_survey = (EditText) getActivity().findViewById(R.id.survey_other);
-        g.setsurvey_name(other_survey.getText().toString());//added for other project option
+        Spinner cs_name = (Spinner) getActivity().findViewById(R.id.project);
+        //g.setc_name(c_name.getText().toString());
+        if(cs_name != null && cs_name.getSelectedItem() !=null ) {
+            g.settsurvey_name(cs_name.getSelectedItem().toString());
+        }
+        //EditText other_survey = (EditText) getActivity().findViewById(R.id.survey_other);
+        //g.settsurvey_name(other_survey.getText().toString());//added for other project option
         Spinner c_name = (Spinner) getActivity().findViewById(R.id.cname);
         //g.setc_name(c_name.getText().toString());
         if(c_name != null && c_name.getSelectedItem() !=null ) {

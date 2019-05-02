@@ -82,20 +82,21 @@
                     android:text="more than 3m"
                     android:textSize="@dimen/add_edit_textsize" />
         </RadioGroup>
-            <TextView
-                android:paddingTop="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Click the button below if the tree circumference is measured"
-                android:textSize="@dimen/textsize"
-                android:textStyle="italic">
-            </TextView>
+
             <Button
-                android:id="@+id/d_rcd"
+                android:id="@+id/d_rcd1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:text="DBH/RCD"/>
+                android:visibility="gone"
+                android:text="RCD(cm)"/>
+            <Button
+                android:id="@+id/d_rcd2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:visibility="gone"
+                android:text="DBH(cm)"/>
             <!--<LinearLayout
                 android:id="@+id/height_"
                 android:visibility="visible"
@@ -148,13 +149,6 @@
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="DBH/RCD [cm]"
-                    android:textSize="@dimen/textsize"
-                    android:padding="10dp"
-                    android:textStyle="italic"/>
                 <EditText
                     android:id="@+id/db_rc"
                     android:backgroundTint="#008000"
@@ -165,7 +159,6 @@
                     android:textSize="@dimen/add_edit_textsize">
                 </EditText>
             </LinearLayout>
-
         </LinearLayout>
     </ScrollView>
 

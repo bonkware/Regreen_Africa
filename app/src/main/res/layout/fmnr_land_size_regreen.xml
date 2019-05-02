@@ -105,7 +105,7 @@
                 android:layout_centerVertical="true"
                 android:textSize="@dimen/add_edit_textsize">
             </EditText>
-            <Spinner
+            <!--<Spinner
                 android:id="@+id/units"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -113,7 +113,7 @@
                 android:layout_marginRight="8dip"
                 android:layout_marginTop="10dip"
                 android:background="@android:drawable/btn_dropdown"
-                android:entries="@array/landsize_units" />
+                android:entries="@array/landsize" />
             <EditText
                 android:id="@+id/other_units"
                 android:layout_width="match_parent"
@@ -122,7 +122,37 @@
                 android:textSize="@dimen/add_edit_textsize"
                 android:hint="Other unit(s)"
                 android:paddingTop="20dp"
-                android:visibility="gone"/>
+                android:visibility="gone"/>-->
+            <RelativeLayout
+                android:id="@+id/sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="25dp">
+                <EditText
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Add new unit to the list and select"
+                    android:id="@+id/editText1"
+                    android:backgroundTint="#008000"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add"
+                    android:id="@+id/button1"
+                    android:layout_alignBottom="@+id/editText1"
+                    android:layout_toRightOf="@+id/editText1"
+                    android:layout_toEndOf="@+id/editText1" />
+                <Spinner
+                    android:id="@+id/units"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/editText1"
+                    android:background="@android:drawable/btn_dropdown"
+                    android:paddingTop="10dp"/>
+            </RelativeLayout>
         </LinearLayout>
     </ScrollView>
 

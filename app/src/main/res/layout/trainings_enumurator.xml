@@ -75,25 +75,38 @@
                 android:textSize="@dimen/textsize"
                 android:paddingTop="20dp"
                 android:text="Survey Name" />
-            <Spinner
-                android:id="@+id/survey_name"
-                android:layout_width="fill_parent"
+            <!-- add new item to spinner -->
+            <RelativeLayout
+                android:id="@+id/sp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dip"
-                android:layout_marginRight="8dip"
-                android:layout_marginTop="10dip"
-                android:background="@android:drawable/btn_dropdown"
-                android:entries="@array/survey_name" />
-            <EditText
-                android:id="@+id/survey_other"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/view_padding"
-                android:textSize="@dimen/add_edit_textsize"
-                android:hint="Other survey"
-                android:paddingTop="20dp"
-                android:visibility="gone">
-            </EditText>
+                android:paddingTop="10dp">
+                <Spinner
+                    android:id="@+id/project"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/editText1"
+                    android:background="@android:drawable/btn_dropdown"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:paddingTop="10dp"/>
+                <EditText
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Add project name if not in the list"
+                    android:id="@+id/editText1"
+                    android:backgroundTint="#008000"
+                    android:paddingTop="100dp"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add"
+                    android:id="@+id/button1"
+                    android:layout_alignBottom="@+id/editText1"
+                    android:layout_toRightOf="@+id/editText1"
+                    android:layout_toEndOf="@+id/editText1" />
+            </RelativeLayout>
         </LinearLayout>
     </ScrollView>
 

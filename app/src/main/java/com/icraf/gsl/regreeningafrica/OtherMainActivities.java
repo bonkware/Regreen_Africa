@@ -1086,11 +1086,9 @@ public class OtherMainActivities extends AppCompatActivity {
                     //retry policy to avoid crash
                     request.setRetryPolicy(new DefaultRetryPolicy( 0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
-                    //queue.add(request);
-                    Singleton.getInstance(mContext).addToRequestQueue(request);
-                    //VolleySingleton.getInstance(this).addToRequestQueue(request);
+                    queue.add(request);
+                    //Singleton.getInstance(mContext).addToRequestQueue(request);
                     //manage out of memory issues and cache clear
-                   // RequestQueue volleyQueue = Volley.newRequestQueue(this);
                     DiskBasedCache cache = new DiskBasedCache(getCacheDir(), 16 * 1024 * 1024);
                     queue = new RequestQueue(cache, new BasicNetwork(new HurlStack()));
                     queue.start();
@@ -1140,8 +1138,8 @@ public class OtherMainActivities extends AppCompatActivity {
             if (cursor.moveToFirst()) {
                 do {
                     //
-                    final String training_enum_name = cursor.getString(cursor.getColumnIndex("ename"));
-                    final String training_record_date = cursor.getString(cursor.getColumnIndex("in_date"));
+                    final String training_enum_name = cursor.getString(cursor.getColumnIndex("enum_name"));
+                    final String training_record_date = cursor.getString(cursor.getColumnIndex("date"));
                     final String training_survey_name = cursor.getString(cursor.getColumnIndex("survey_name"));//
                     final String training_country = cursor.getString(cursor.getColumnIndex("training_country"));
                     final String training_region = cursor.getString(cursor.getColumnIndex("training_region"));
@@ -1329,5 +1327,4 @@ public class OtherMainActivities extends AppCompatActivity {
                     + e.getMessage(), e);
         }
     }
-
 }

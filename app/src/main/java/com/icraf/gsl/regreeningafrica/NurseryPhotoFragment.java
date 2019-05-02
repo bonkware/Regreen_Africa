@@ -176,13 +176,18 @@ public class NurseryPhotoFragment extends Fragment {
         EditText date = (EditText) getActivity().findViewById(R.id.in_date);
         g.setin_date(date.getText().toString());
 
-        Spinner survey_name = (Spinner) getActivity().findViewById(R.id.survey_name);
+        /*Spinner survey_name = (Spinner) getActivity().findViewById(R.id.survey_name);
         //check if spinner is selected
         if(survey_name != null && survey_name.getSelectedItem() !=null ) {
-            g.setsurvey_name(survey_name.getSelectedItem().toString());
+            g.setproject_name(survey_name.getSelectedItem().toString());
         }//added for survey project selection
-        EditText other_survey = (EditText) getActivity().findViewById(R.id.survey_other);
-        g.setsurvey_name(other_survey.getText().toString());//added for other project option
+        */
+        Spinner survey = (Spinner) getActivity().findViewById(R.id.survey_name);
+        if(survey != null && survey.getSelectedItem() !=null ) {
+            g.setnsurvey_name(survey.getSelectedItem().toString());
+        }
+       // EditText other_survey = (EditText) getActivity().findViewById(R.id.survey_other);
+        //g.setnsurvey_name(other_survey.getText().toString());//added for other project option
 
         Spinner country = (Spinner) getActivity().findViewById(R.id.spinner1);
         //g.setnursery_country(country.getText().toString());

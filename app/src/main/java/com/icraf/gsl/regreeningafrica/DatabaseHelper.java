@@ -145,7 +145,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String graft_source_prisons = "prisons";
     public static final String graft_source_others = "other_graft_sources";
     public static final String seeds_quantity_purchased = "quantity_purchased";
-    public static final String units = "units";
+    public static final String qunits = "units";
     public static final String seed_sown = "seed_sown";
     public static final String unitsown = "units_sown";
     public static final String date_seeds_sown = "date_sown";
@@ -268,7 +268,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     _nid + " INTEGER PRIMARY KEY AUTOINCREMENT, " + nurseryID + " TEXT NOT NULL," + nursery_species + " TEXT NOT NULL, " + nursery_local + " TEXT NOT NULL, " + method_bare_root + " TEXT,"+
                     method_containerised + " TEXT,"+other_methods + " TEXT,"+propagation_seed + " TEXT,"+propagation_graft + " TEXT,"+propagation_cutting + " TEXT,"+propagation_marcotting + " TEXT,"+seed_source_onfarm + " TEXT,"+seed_source_local_dealer + " TEXT," +
                     ""+seed_source_national_dealer + " TEXT,"+seed_source_NGOs + " TEXT,"+other_seed_sources + " TEXT,"+graft_source_farmland + " TEXT,"+graft_source_plantation + " TEXT,"+graft_source_mother_blocks + " TEXT,"+graft_source_prisons + " TEXT,"+graft_source_others + " TEXT," +
-                    ""+seeds_quantity_purchased + " TEXT,"+units + " TEXT,"+seed_sown + " TEXT,"+unitsown + " TEXT,"+date_seeds_sown + " TEXT,"+seedlings_germinated + " TEXT,"+seedlings_servived + " TEXT,"+seedlings_age + " TEXT,"+seedlings_price + " TEXT);";
+                    ""+seeds_quantity_purchased + " TEXT,"+qunits + " TEXT,"+seed_sown + " TEXT,"+unitsown + " TEXT,"+date_seeds_sown + " TEXT,"+seedlings_germinated + " TEXT,"+seedlings_servived + " TEXT,"+seedlings_age + " TEXT,"+seedlings_price + " TEXT);";
     // Creating farmer/institution table for fmnr
     private static final String CREATE_TABLE_FMNR_FARMER_INST =
             "create table " +

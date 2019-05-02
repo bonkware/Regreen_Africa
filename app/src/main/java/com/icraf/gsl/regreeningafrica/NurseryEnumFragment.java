@@ -8,12 +8,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * Created by benard on 1/18/19.
@@ -24,6 +29,19 @@ public class NurseryEnumFragment extends Fragment {
     Button btnDatePicker,btnDatePicker1;
     EditText txtDate,txtDate1;
     private int mYear, mMonth, mDay;
+    //add items to spinner
+    Spinner SPINNER;
+    Button ADD;
+    EditText EDITTEXT;
+    String[] spinnerItems = new String[]{
+            "Select project",
+            "Regreening Africa",
+            "Dry Dev"
+
+    };
+    String GETTEXT;
+    List<String> stringlist;
+    ArrayAdapter<String> arrayadapter;//end of spinner items
     public NurseryEnumFragment() {
         // Required empty public constructor
     }
@@ -89,28 +107,34 @@ public class NurseryEnumFragment extends Fragment {
                 }
             }
         });
+        //spinner add item
+        SPINNER = (Spinner)view.findViewById(R.id.survey_name);
+        ADD = (Button)view.findViewById(R.id.button1);
+        EDITTEXT = (EditText)view.findViewById(R.id.editText1);
 
-        //if survey other is selected
-        final Spinner s1 = (Spinner)view.findViewById(R.id.survey_name);
-        final EditText text1=(EditText) view.findViewById(R.id.survey_other);
-        s1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> parent, View view,
-                                       int position, long id) {
-                String sp1= String.valueOf(s1.getSelectedItem());
-                if(sp1.contentEquals("Other")) {
-                    text1.setVisibility(View.VISIBLE);  //if other is chosen then show
-                }
-                else {
-                    text1.setVisibility(View.GONE); //otherwise hide
-                }
+        stringlist = new ArrayList<>(Arrays.asList(spinnerItems));
 
-            }
+        arrayadapter = new ArrayAdapter<String>(NurseryEnumFragment.this.getActivity(),R.layout.textview,stringlist );
+
+        arrayadapter.setDropDownViewResource(R.layout.textview);
+
+        SPINNER.setAdapter(arrayadapter);
+
+        ADD.setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
 
+                GETTEXT = EDITTEXT.getText().toString();
+
+                stringlist.add(GETTEXT);
+
+                arrayadapter.notifyDataSetChanged();
+
+                Toast.makeText(NurseryEnumFragment.this.getActivity(), "Item Added", Toast.LENGTH_LONG).show();
             }
-        });//end of spinner selection 1
+        });
 
         return view;
     }

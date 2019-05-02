@@ -12,7 +12,7 @@ public class RegreeningGlobal {
     private Boolean GPS_fix;
     private String districts,fname,county_region,country,select_location,select_site,fmnr_date,in_date,landsize,number_planted,number_survived,species_name,local_name,date_planted,select_measurement,stems;
     private String mg1,mg2,mg3,mg4,mg5,mg6,mg_other,mg_others,usage1,usage2,usage3,usage4,usage5,usage6,usage7,us_other,usg_other;
-    private String fmnr_fenced,survey_name,seed_sown,units,unitsown,livestock_other,c_name,cr_name,
+    private String fmnr_fenced,survey_name,tsurvey_name,fsurvey_name,tpsurvey_name,nsurvey_name,project_name,seed_sown,units,qunits,unitsown,livestock_other,c_name,cr_name,
             dcw_name,training_topic,training_partners,training_date,training_venue,number_participants,ename,male_participants,female_participants,youth_participants;
     private String dbh,height,rcd,path,fid,cid;
     //for nursery module
@@ -62,13 +62,51 @@ public class RegreeningGlobal {
     public void setcountry(String country) {
         this.country = country;
     }
+
     //Getter
-    public String getsurvey_name() {
-        return survey_name;
+    public String getproject_name() {
+        return project_name;
     }
     //Setting
-    public void setsurvey_name(String survey_name) {
-        this.survey_name = survey_name;
+    public void setproject_name(String project_name) {
+        this.project_name = project_name;
+    }
+
+
+    //Getter
+    public String gettpsurvey_name() {
+        return tpsurvey_name;
+    }
+    //Setting
+    public void settpsurvey_name(String tpsurvey_name) {
+        this.tpsurvey_name = tpsurvey_name;
+    }
+
+    //Getter
+    public String getnsurvey_name() {
+        return nsurvey_name;
+    }
+    //Setting
+    public void setnsurvey_name(String nsurvey_name) {
+        this.nsurvey_name = nsurvey_name;
+    }
+
+    //Getter
+    public String getfsurvey_name() {
+        return fsurvey_name;
+    }
+    //Setting
+    public void setfsurvey_name(String fsurvey_name) {
+        this.fsurvey_name = fsurvey_name;
+    }
+
+    //Getter
+    public String gettsurvey_name() {
+        return tsurvey_name;
+    }
+    //Setting
+    public void settsurvey_name(String tsurvey_name) {
+        this.tsurvey_name = tsurvey_name;
     }
     //Getter for select site
     public String getselect_site() {
@@ -816,6 +854,13 @@ public class RegreeningGlobal {
     }
     public void setseed_sown(String seed_sown) {
         this.seed_sown = seed_sown;
+    }
+
+    public String getqunits() {
+        return qunits;
+    }
+    public void setqunits(String qunits) {
+        this.qunits = qunits;
     }
 
     public String getunits() {
