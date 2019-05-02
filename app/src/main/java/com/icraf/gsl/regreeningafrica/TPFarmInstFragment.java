@@ -152,7 +152,7 @@ public class TPFarmInstFragment extends Fragment {
                 if(sp2.contentEquals("Marsabit")) {
                     List<String> list = new ArrayList<String>();
                     list.add("Select Sub-counties");
-                    list.add("Not yet");
+                    list.add("Laisamis");
                     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -162,7 +162,9 @@ public class TPFarmInstFragment extends Fragment {
                 if(sp2.contentEquals("Samburu")) {
                     List<String> list = new ArrayList<String>();
                     list.add("Select Sub-counties");
-                    list.add("Not yet");
+                    list.add("Samburu North");
+                    list.add("Samburu West");
+                    list.add("Samburu East");
                     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -172,7 +174,7 @@ public class TPFarmInstFragment extends Fragment {
                 if(sp2.contentEquals("Isiolo")) {
                     List<String> list = new ArrayList<String>();
                     list.add("Select Sub-counties");
-                    list.add("Not yet");
+                    list.add("Isiolo");
                     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -182,7 +184,7 @@ public class TPFarmInstFragment extends Fragment {
                 if(sp2.contentEquals("Laikipia")) {
                     List<String> list = new ArrayList<String>();
                     list.add("Select Sub-counties");
-                    list.add("Not yet");
+                    list.add("Laikipia North");
                     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -192,7 +194,8 @@ public class TPFarmInstFragment extends Fragment {
                 if(sp2.contentEquals("Baringo")) {
                     List<String> list = new ArrayList<String>();
                     list.add("Select Sub-counties");
-                    list.add("Not yet");
+                    list.add("Mogotio");
+                    list.add("Baringo South");
                     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -202,7 +205,10 @@ public class TPFarmInstFragment extends Fragment {
                 if(sp2.contentEquals("Marakwet")) {
                     List<String> list = new ArrayList<String>();
                     list.add("Select Sub-counties");
-                    list.add("Not yet");
+                    list.add("Keiyo South");
+                    list.add("Keiyo North");
+                    list.add("Marakwet West");
+                    list.add("Marakwet East");
                     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -212,7 +218,9 @@ public class TPFarmInstFragment extends Fragment {
                 if(sp2.contentEquals("Nakuru")) {
                     List<String> list = new ArrayList<String>();
                     list.add("Select Sub-counties");
-                    list.add("Not yet");
+                    list.add("Rongai");
+                    list.add("Gilgil");
+                    list.add("Naivasha");
                     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -222,7 +230,7 @@ public class TPFarmInstFragment extends Fragment {
                 if(sp2.contentEquals("Homa Bay")) {
                     List<String> list = new ArrayList<String>();
                     list.add("Select Sub-counties");
-                    list.add("Not yet");
+                    list.add("Lawbwe");
                     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -232,7 +240,7 @@ public class TPFarmInstFragment extends Fragment {
                 if(sp2.contentEquals("Migori")) {
                     List<String> list = new ArrayList<String>();
                     list.add("Select Sub-counties");
-                    list.add("Not yet");
+                    list.add("Nyatike");
                     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -257,11 +265,11 @@ public class TPFarmInstFragment extends Fragment {
                     list.add("Select Woredas");
                     list.add("Arsi Negele");
                     list.add("Ziway Dugda");
-                    list.add("Hitosa");
+                    list.add("Heban Arsi");
                     list.add("Dodota");
                     list.add("Sire");
                     list.add("Boset");
-                    list.add("Wenchi");
+                    list.add("Merti");
                     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -269,11 +277,10 @@ public class TPFarmInstFragment extends Fragment {
                     s3.setAdapter(dataAdapter);
                 }
 
-                if(sp2.contentEquals("Amharaa")) {
+                if(sp2.contentEquals("Amhara")) {
                     List<String> list = new ArrayList<String>();
                     list.add("Select Woredas");
-                    list.add("Gonder Zuria");
-                    list.add("Chilga");
+                    list.add("Ambasel");
                     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -320,9 +327,9 @@ public class TPFarmInstFragment extends Fragment {
                 //somalia starts
                 if(sp2.contentEquals("Somaliland")) {
                     List<String> list = new ArrayList<String>();
-                    list.add("Select Districts");
-                    list.add("Dweyne");
-                    list.add("Awdac");
+                    list.add("Select Regions");
+                    list.add("Owdeyne/Toghdeer");
+                    list.add("Awdal");
                     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -331,9 +338,8 @@ public class TPFarmInstFragment extends Fragment {
                 }
                 if(sp2.contentEquals("Puntland")) {
                     List<String> list = new ArrayList<String>();
-                    list.add("Select Districts");
+                    list.add("Select Regions");
                     list.add("Sanaag");
-                    list.add("Kakar");
                     list.add("Bari");
                     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
@@ -442,6 +448,7 @@ public class TPFarmInstFragment extends Fragment {
                     list.add("Ndiene Lagane");
                     list.add("Ouadiour");
                     list.add("Patar Lia");
+
                     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
