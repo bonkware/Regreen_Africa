@@ -247,6 +247,7 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.fmnr_management_thinning, g.getmg4());
         contentValue.put(DatabaseHelper.management_organic_fertilizer, g.getmg5());
         contentValue.put(DatabaseHelper.fmnr_management_pollarding_lopping, g.getmg6());
+        contentValue.put(DatabaseHelper.fmnr_management_coppicing, g.getmg7());
         contentValue.put(DatabaseHelper.fmnr_management_other, g.getmg_other());
         contentValue.put(DatabaseHelper.fmnr_use_firewood, g.getusage1());
         contentValue.put(DatabaseHelper.fmnr_use_housing_construction, g.getusage2());

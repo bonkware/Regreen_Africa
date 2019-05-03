@@ -70,14 +70,58 @@ public class TrainingsMainActivity extends AppCompatActivity {
         viewPager.setCurrentItem(0);
     }
     public void jumpToDetails(View view){
-        viewPager.setCurrentItem(2);
+        EditText crs = (EditText) findViewById(R.id.crname);
+        EditText dis = (EditText) findViewById(R.id.dcwname);
+        boolean fail = false;
+        if (crs.getText().toString().trim().length() == 0) {
+            fail = true;
+            crs.requestFocus();
+            crs.setError("Enter region/state/county");
+        }
+        if (dis.getText().toString().trim().length() == 0) {
+            fail = true;
+            dis.requestFocus();
+            dis.setError("Enter district/woreda/commune");
+        }
+        if (!fail) {
+            viewPager.setCurrentItem(2);
+        }
+        //viewPager.setCurrentItem(2);
     }
     //navigate back to enumerator name
     public void jumpBackTrainings(View view){
         viewPager.setCurrentItem(1);
     }
     public void jumpToParticipants(View view){
-        viewPager.setCurrentItem(3);
+        EditText crs = (EditText) findViewById(R.id.topic);
+        EditText date = (EditText) findViewById(R.id.training_date);
+        EditText venue = (EditText) findViewById(R.id.venue);
+        EditText partner = (EditText) findViewById(R.id.partners);
+        boolean fail = false;
+        if (crs.getText().toString().trim().length() == 0) {
+            fail = true;
+            crs.requestFocus();
+            crs.setError("Enter topic");
+        }
+        if (date.getText().toString().trim().length() == 0) {
+            fail = true;
+            date.requestFocus();
+            date.setError("Select date");
+        }
+        if (venue.getText().toString().trim().length() == 0) {
+            fail = true;
+            venue.requestFocus();
+            venue.setError("Enter the venue");
+        }
+        if (partner.getText().toString().trim().length() == 0) {
+            fail = true;
+            partner.requestFocus();
+            partner.setError("Enter the partners names");
+        }
+        if (!fail) {
+            viewPager.setCurrentItem(3);
+        }
+        //viewPager.setCurrentItem(3);
     }
     //navigate back to enumerator name
     public void jumpBackDetails(View view){

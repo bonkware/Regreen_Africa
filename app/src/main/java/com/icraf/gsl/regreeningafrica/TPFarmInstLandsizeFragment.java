@@ -23,6 +23,7 @@ import java.util.Random;
 
 /**
  * Created by benard on 1/18/19.
+ *
  */
 
 public class TPFarmInstLandsizeFragment extends Fragment {
@@ -40,11 +41,13 @@ public class TPFarmInstLandsizeFragment extends Fragment {
     String GETTEXT;
     List<String> stringlist;
     ArrayAdapter<String> arrayadapter;//end of spinner items
+
     public TPFarmInstLandsizeFragment() {
         // Required empty public constructor
     }
 
     RegreeningGlobal g = RegreeningGlobal.getInstance();
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -73,16 +76,12 @@ public class TPFarmInstLandsizeFragment extends Fragment {
             }
         });
         //add item to spinner from edittext
-        SPINNER = (Spinner)view.findViewById(R.id.units);
-        ADD = (Button)view.findViewById(R.id.button1);
-        EDITTEXT = (EditText)view.findViewById(R.id.editText1);
-
+        SPINNER = (Spinner) view.findViewById(R.id.units);
+        ADD = (Button) view.findViewById(R.id.button1);
+        EDITTEXT = (EditText) view.findViewById(R.id.editText1);
         stringlist = new ArrayList<>(Arrays.asList(spinnerItems));
-
-        arrayadapter = new ArrayAdapter<String>(TPFarmInstLandsizeFragment.this.getActivity(),R.layout.textview,stringlist );
-
+        arrayadapter = new ArrayAdapter<String>(TPFarmInstLandsizeFragment.this.getActivity(), R.layout.textview, stringlist);
         arrayadapter.setDropDownViewResource(R.layout.textview);
-
         SPINNER.setAdapter(arrayadapter);
 
         ADD.setOnClickListener(new View.OnClickListener() {
@@ -90,23 +89,19 @@ public class TPFarmInstLandsizeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-
                 GETTEXT = EDITTEXT.getText().toString();
-
                 stringlist.add(GETTEXT);
-
                 arrayadapter.notifyDataSetChanged();
-
                 Toast.makeText(TPFarmInstLandsizeFragment.this.getActivity(), "Item Added", Toast.LENGTH_LONG).show();
             }
         });
 
 
-
         return view;
     }
+
     // save farmer/institution data when you go next
-    public void  saveFarmerInst(){
+    public void saveFarmerInst() {
         //generate unique id for farmer/institution
         Random generator = new Random();
         int n = 10000;
@@ -121,7 +116,7 @@ public class TPFarmInstLandsizeFragment extends Fragment {
 
         Spinner survey_name = (Spinner) getActivity().findViewById(R.id.survey_name);
         //check if spinner is selected
-        if(survey_name != null && survey_name.getSelectedItem() !=null ) {
+        if (survey_name != null && survey_name.getSelectedItem() != null) {
             g.settpsurvey_name(survey_name.getSelectedItem().toString());
         }//added for survey project selection
         //EditText other_survey = (EditText) getActivity().findViewById(R.id.survey_other);
@@ -131,14 +126,14 @@ public class TPFarmInstLandsizeFragment extends Fragment {
         g.setfname(farmer_institution_name.getText().toString());
         Spinner country = (Spinner) getActivity().findViewById(R.id.spinner1);
         //check if spinner is selected
-        if(country != null && country.getSelectedItem() !=null ) {
+        if (country != null && country.getSelectedItem() != null) {
             g.setcountry(country.getSelectedItem().toString());
         }
          /*EditText county_region = (EditText) getActivity().findViewById(R.id.county);
         g.setcounty_region(county_region.getText().toString());*/
         Spinner county_region = (Spinner) getActivity().findViewById(R.id.spinner2);
         //check if spinner is selected
-        if(county_region != null && county_region.getSelectedItem() !=null ) {
+        if (county_region != null && county_region.getSelectedItem() != null) {
             g.setcounty_region(county_region.getSelectedItem().toString());
         }
 
@@ -146,7 +141,7 @@ public class TPFarmInstLandsizeFragment extends Fragment {
         g.setdistricts(district.getText().toString());*/
         Spinner district = (Spinner) getActivity().findViewById(R.id.spinner3);
         //check if spinner is selected
-        if(district != null && district.getSelectedItem() !=null ) {
+        if (district != null && district.getSelectedItem() != null) {
             g.setdistricts(district.getSelectedItem().toString());
         }
         /*RadioGroup radioGroup = (RadioGroup) getActivity().findViewById(R.id.planting_location);
@@ -163,38 +158,38 @@ public class TPFarmInstLandsizeFragment extends Fragment {
             g.setselect_location(select.getText().toString());
         }*/
         CheckBox owner = (CheckBox) getActivity().findViewById(R.id.own);
-        if(owner.isChecked()) {
+        if (owner.isChecked()) {
             g.setindividual_ownership("yes");
-        }else {
+        } else {
             g.setindividual_ownership("no");
         }
         CheckBox community = (CheckBox) getActivity().findViewById(R.id.comm_land);
-        if(community.isChecked()) {
+        if (community.isChecked()) {
             g.setcommunity_ownership("yes");
-        }else {
+        } else {
             g.setcommunity_ownership("no");
         }
         CheckBox govt = (CheckBox) getActivity().findViewById(R.id.govt_land);
-        if(govt.isChecked()) {
+        if (govt.isChecked()) {
             g.setgovt_land_ownership("yes");
-        }else {
+        } else {
             g.setgovt_land_ownership("no");
         }
 
         CheckBox mchurch_mosque = (CheckBox) getActivity().findViewById(R.id.mosque_church);
-        if(mchurch_mosque.isChecked()) {
+        if (mchurch_mosque.isChecked()) {
             g.setmosque_church_ownership("yes");
-        }else {
+        } else {
             g.setmosque_church_ownership("no");
         }
 
         CheckBox schools = (CheckBox) getActivity().findViewById(R.id.schools);
-        if(schools.isChecked()) {
+        if (schools.isChecked()) {
             g.setschools_ownership("yes");
-        }else {
+        } else {
             g.setschools_ownership("no");
         }
-        EditText n_type=(EditText) getActivity().findViewById(R.id.other_locations);
+        EditText n_type = (EditText) getActivity().findViewById(R.id.other_locations);
         g.setother_ownership(n_type.getText().toString());
 
         /*RadioGroup group = (RadioGroup) getActivity().findViewById(R.id.planting_site);
@@ -216,7 +211,7 @@ public class TPFarmInstLandsizeFragment extends Fragment {
 
         Spinner units = (Spinner) getActivity().findViewById(R.id.units);
         //check if spinner is selected
-        if(units != null && units.getSelectedItem() !=null ) {
+        if (units != null && units.getSelectedItem() != null) {
             g.setunits(units.getSelectedItem().toString());
         }
         //EditText other_units = (EditText) getActivity().findViewById(R.id.other_units);

@@ -11,7 +11,7 @@ public class RegreeningGlobal {
     private double latitude=0.0, longitude=0.0, accuracy=0.0, altitude=0.0;
     private Boolean GPS_fix;
     private String districts,fname,county_region,country,select_location,select_site,fmnr_date,in_date,landsize,number_planted,number_survived,species_name,local_name,date_planted,select_measurement,stems;
-    private String mg1,mg2,mg3,mg4,mg5,mg6,mg_other,mg_others,usage1,usage2,usage3,usage4,usage5,usage6,usage7,us_other,usg_other;
+    private String mg1,mg2,mg3,mg4,mg5,mg6,mg7,mg_other,mg_others,usage1,usage2,usage3,usage4,usage5,usage6,usage7,us_other,usg_other;
     private String fmnr_fenced,survey_name,tsurvey_name,fsurvey_name,tpsurvey_name,nsurvey_name,project_name,seed_sown,units,qunits,unitsown,livestock_other,c_name,cr_name,
             dcw_name,training_topic,training_partners,training_date,training_venue,number_participants,ename,male_participants,female_participants,youth_participants;
     private String dbh,height,rcd,path,fid,cid;
@@ -356,6 +356,14 @@ public class RegreeningGlobal {
     //Setting
     public void setmg6(String mg6) {
         this.mg6 = mg6;
+    }
+    //Getting
+    public String getmg7() {
+        return mg7;
+    }
+    //Setting
+    public void setmg7(String mg7) {
+        this.mg7 = mg7;
     }
     //Getting
     public String getusage6() {

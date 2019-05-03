@@ -832,6 +832,7 @@ public class OtherMainActivities extends AppCompatActivity {
                     final String fmnr_management_thinning = cursor.getString(cursor.getColumnIndex("mg4"));
                     final String fmnr_management_organic_fertilizer = cursor.getString(cursor.getColumnIndex("mg5"));
                     final String fmnr_management_pollarding_lopping = cursor.getString(cursor.getColumnIndex("mg6"));
+                    final String fmnr_management_coppicing = cursor.getString(cursor.getColumnIndex("mg7"));
                     final String fmnr_management_other = cursor.getString(cursor.getColumnIndex("mg_other"));
                     final String fmnr_use_firewood = cursor.getString(cursor.getColumnIndex("usage1"));
                     final String fmnr_use_housing_construction = cursor.getString(cursor.getColumnIndex("usage2"));
@@ -1036,6 +1037,7 @@ public class OtherMainActivities extends AppCompatActivity {
                             param.put("management_thinning", fmnr_management_thinning);
                             param.put("management_organic_fertilizer", fmnr_management_organic_fertilizer);
                             param.put("management_pollarding_lopping", fmnr_management_pollarding_lopping);
+                            param.put("management_coppicing", fmnr_management_coppicing);
                             param.put("management_other", fmnr_management_other);
                             param.put("use_firewood", fmnr_use_firewood);
                             param.put("use_housing_construction", fmnr_use_housing_construction);
