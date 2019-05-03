@@ -31,6 +31,8 @@ public class TPTreeMeasurementsFragment extends Fragment {
 
         //show dbh
         final Button b = (Button) view.findViewById(R.id.d_rcd1) ;
+        final TextView d1 = (TextView) view.findViewById(R.id.d1);
+        final TextView r1 = (TextView) view.findViewById(R.id.r1);
         final LinearLayout   dhr=(LinearLayout)view.findViewById(R.id.dbh_rcd);
         final LinearLayout   dhr2=(LinearLayout)view.findViewById(R.id.dbh_rcd);
         b.setOnClickListener(new View.OnClickListener() {
@@ -38,6 +40,9 @@ public class TPTreeMeasurementsFragment extends Fragment {
             public void onClick(View v) {
                 //show edittext
                 dhr.setVisibility(View.VISIBLE);
+                r1.setVisibility(View.VISIBLE);
+                d1.setVisibility(View.GONE);
+
 
             }
         });
@@ -48,6 +53,8 @@ public class TPTreeMeasurementsFragment extends Fragment {
             public void onClick(View v) {
                 //show edittext
                 dhr2.setVisibility(View.VISIBLE);
+                d1.setVisibility(View.VISIBLE);
+                r1.setVisibility(View.GONE);
 
             }
         });

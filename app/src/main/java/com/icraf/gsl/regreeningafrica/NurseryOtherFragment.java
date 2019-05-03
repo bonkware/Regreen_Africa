@@ -140,32 +140,22 @@ public class NurseryOtherFragment extends Fragment {
             }
         });//end of text watcher1
 
-
         //add item to spinner from edittext
         SPINNER = (Spinner)view.findViewById(R.id.spinner_units);
         ADD = (Button)view.findViewById(R.id.button1);
         EDITTEXT = (EditText)view.findViewById(R.id.editText1);
-
         stringlist = new ArrayList<>(Arrays.asList(spinnerItems));
-
         arrayadapter = new ArrayAdapter<String>(NurseryOtherFragment.this.getActivity(),R.layout.textview,stringlist );
-
         arrayadapter.setDropDownViewResource(R.layout.textview);
-
         SPINNER.setAdapter(arrayadapter);
-
         ADD.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-
                 GETTEXT = EDITTEXT.getText().toString();
-
                 stringlist.add(GETTEXT);
-
                 arrayadapter.notifyDataSetChanged();
-
                 Toast.makeText(NurseryOtherFragment.this.getActivity(), "Item Added", Toast.LENGTH_LONG).show();
             }
         });
@@ -173,15 +163,10 @@ public class NurseryOtherFragment extends Fragment {
         SPINNER2 = (Spinner)view.findViewById(R.id.spinner_unitsown);
         ADD2 = (Button)view.findViewById(R.id.button2);
         EDITTEXT2 = (EditText)view.findViewById(R.id.editText2);
-
         stringlist2 = new ArrayList<>(Arrays.asList(spinnerItems));
-
         arrayadapter2 = new ArrayAdapter<String>(NurseryOtherFragment.this.getActivity(),R.layout.textview,stringlist2 );
-
         arrayadapter2.setDropDownViewResource(R.layout.textview);
-
         SPINNER2.setAdapter(arrayadapter2);
-
         ADD2.setOnClickListener(new View.OnClickListener() {
 
             @Override

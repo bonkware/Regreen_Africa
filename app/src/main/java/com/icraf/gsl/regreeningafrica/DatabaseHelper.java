@@ -231,7 +231,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_FARMER_INST =
             "create table " +
                     TABLE_FARMER_INST + "(" +
-                    _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + enum_name + " TEXT NOT NULL, " + date + " TEXT NOT NULL,  " + survey_name + " TEXT, " + farmer_inst_name + " TEXT,"+
+                    _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + enum_name + " TEXT, " + date + " TEXT,  " + survey_name + " TEXT, " + farmer_inst_name + " TEXT,"+
                     country + " TEXT,"+county_region +  " TEXT,"+district + " TEXT,"+land_individual + " TEXT,"+land_community + " TEXT,"+land_government + " TEXT,"+land_mosque_church + " TEXT,"+land_schools + " TEXT,"+land_other + " TEXT,"+landsize_regreen + " TEXT,"+tp_units + " TEXT,"+
                     farmer_id+" TEXT);";
 
@@ -259,14 +259,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_NURSERY =
             "create table " +
                     TABLE_NURSERY + "(" +
-                    id + " INTEGER PRIMARY KEY AUTOINCREMENT, " + nursery_id + " TEXT NOT NULL," + nursery_enum_name + " TEXT," + nursery_date + " TEXT," + nursery_survey_name + " TEXT NOT NULL," + nursery_country + " TEXT NOT NULL, " + nursery_county + " TEXT NOT NULL, " + nursery_district + " TEXT,"+
+                    id + " INTEGER PRIMARY KEY AUTOINCREMENT, " + nursery_id + " TEXT," + nursery_enum_name + " TEXT," + nursery_date + " TEXT," + nursery_survey_name + " TEXT," + nursery_country + " TEXT, " + nursery_county + " TEXT, " + nursery_district + " TEXT,"+
                     nursery_operator + " TEXT,"+nursery_contact + " TEXT,"+type_government + " TEXT,"+type_church_mosque + " TEXT,"+type_schools + " TEXT,"+type_women_groups + " TEXT,"+type_youth_groups + " TEXT,"+type_private_individual + " TEXT,"+type_communal_village + " TEXT,"+
                     other_nursery_types + " TEXT,"+ nursery_latitude + " TEXT,"+nursery_longitude + " TEXT,"+nursery_altitude + " TEXT,"+nursery_accuracy+" TEXT,"+nursery_image_path + " TEXT);";
     //create nursery species
     private static final String CREATE_TABLE_NURSERY_SPECIES =
             "create table " +
                     TABLE_NURSERY_SPECIES + "(" +
-                    _nid + " INTEGER PRIMARY KEY AUTOINCREMENT, " + nurseryID + " TEXT NOT NULL," + nursery_species + " TEXT NOT NULL, " + nursery_local + " TEXT NOT NULL, " + method_bare_root + " TEXT,"+
+                    _nid + " INTEGER PRIMARY KEY AUTOINCREMENT, " + nurseryID + " TEXT," + nursery_species + " TEXT, " + nursery_local + " TEXT, " + method_bare_root + " TEXT,"+
                     method_containerised + " TEXT,"+other_methods + " TEXT,"+propagation_seed + " TEXT,"+propagation_graft + " TEXT,"+propagation_cutting + " TEXT,"+propagation_marcotting + " TEXT,"+seed_source_onfarm + " TEXT,"+seed_source_local_dealer + " TEXT," +
                     ""+seed_source_national_dealer + " TEXT,"+seed_source_NGOs + " TEXT,"+other_seed_sources + " TEXT,"+graft_source_farmland + " TEXT,"+graft_source_plantation + " TEXT,"+graft_source_mother_blocks + " TEXT,"+graft_source_prisons + " TEXT,"+graft_source_others + " TEXT," +
                     ""+seeds_quantity_purchased + " TEXT,"+qunits + " TEXT,"+seed_sown + " TEXT,"+unitsown + " TEXT,"+date_seeds_sown + " TEXT,"+seedlings_germinated + " TEXT,"+seedlings_servived + " TEXT,"+seedlings_age + " TEXT,"+seedlings_price + " TEXT);";
@@ -274,7 +274,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_FMNR_FARMER_INST =
             "create table " +
                     TABLE_FMNR_FARMER_INST + "(" +
-                    _ID_fmnr + " INTEGER PRIMARY KEY AUTOINCREMENT, " + fmnr_enum_name + " TEXT NOT NULL, " + fmnr_date + " TEXT NOT NULL, " + famnr_survey_name + " TEXT, " + fmnr_farmer_inst_name + " TEXT,"+
+                    _ID_fmnr + " INTEGER PRIMARY KEY AUTOINCREMENT, " + fmnr_enum_name + " TEXT, " + fmnr_date + " TEXT, " + famnr_survey_name + " TEXT, " + fmnr_farmer_inst_name + " TEXT,"+
                     fmnr_country + " TEXT,"+fmnr_county_region +  " TEXT,"+fmnr_district + " TEXT,"+fmnr_land_individual + " TEXT,"+fmnr_land_community + " TEXT,"+fmnr_land_government + " TEXT,"+fmnr_land_mosque_church + " TEXT,"+fmnr_land_schools + " TEXT,"+fmnr_land_other + " TEXT,"+fmnr_species_number_start + " TEXT,"+fmnr_started_date + " TEXT,"+fmnr_fenced + " TEXT,"+fmnr_landsize_regreen + " TEXT,"+fmnr_units + " TEXT,"+
                     fmnr_farmer_id+" TEXT);";
     //creating table for measurement fmnr
@@ -289,7 +289,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_LANDSIZEPOLYGON =
             "create table " +
                     TABLE_LANDSIZEPOLYGON + "(" +
-                    id + " INTEGER PRIMARY KEY AUTOINCREMENT, " + fid + " TEXT NOT NULL,"+ landsize_polygon_latitude + " TEXT,"+landsize_polygon_longitude + " TEXT,"+landsize_polygon_altitude + " TEXT,"+landsize_polygon_accuracy+" TEXT);";
+                    id + " INTEGER PRIMARY KEY AUTOINCREMENT, " + fid + " TEXT,"+ landsize_polygon_latitude + " TEXT,"+landsize_polygon_longitude + " TEXT,"+landsize_polygon_altitude + " TEXT,"+landsize_polygon_accuracy+" TEXT);";
 
     public DatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);

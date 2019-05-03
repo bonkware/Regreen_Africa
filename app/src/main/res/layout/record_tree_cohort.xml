@@ -16,22 +16,22 @@
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:layout_margin="6dp"
             android:paddingRight="@dimen/activity_horizontal_margin">
-            <!--<TextView
+            <TextView
                 android:id="@+id/text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Add trees in the cohort"
+                android:text="Add cohort"
                 android:layout_gravity="center"
                 android:textSize="18sp"
-                android:textStyle="bold"/>-->
+                android:textStyle="bold"/>
             <TextView
                 android:id="@+id/hint"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Add trees planted during the same rainy season"
+                android:text="(Cohort -> Trees of the same species planted in the same rainy season)"
                 android:layout_gravity="center"
                 android:textSize="18sp"
-                android:textStyle="italic|bold"/>
+                android:textStyle="italic"/>
 
             <TextView
                 android:layout_width="fill_parent"

@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:drawableLeft="@drawable/noun_back"
-                android:text="Add Trees"/>
+                android:text="Add another tree species"/>
         </TableRow>
         <TableRow
             android:layout_width="0dp"

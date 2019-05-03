@@ -22,7 +22,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Do you want to measure another tree?"
+                android:text="Do you want to add another dominant species?"
                 android:textStyle="bold|italic"
                 android:layout_margin="10dp"
                 android:textSize="15sp">
@@ -34,7 +34,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="(Measure maximum 5 most dominant species)"
+                android:text="(Add maximum 5 most dominant species)"
                 android:layout_margin="10dp"
                 android:textStyle="italic"
                 android:textSize="15sp">
@@ -69,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:drawableLeft="@drawable/noun_back"
-                android:text="Measure another tree"/>
+                android:text="Add another dominant species"/>
         </TableRow>
     </TableLayout>
     <LinearLayout
