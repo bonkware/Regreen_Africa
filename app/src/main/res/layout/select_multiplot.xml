@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/db1_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/select_plots"
+        android:layout_weight="1"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:gravity="center|bottom"
+        android:orientation="vertical" >
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="*" >
+        <TableRow
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" >
+        <Button
+            android:id="@+id/b1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:drawableRight="@drawable/noun_next"
+            android:textAllCaps="false"
+            android:text="New profile"/>
+        </TableRow>
+            <TableRow
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/b2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:drawableRight="@drawable/noun_next"
+            android:textAllCaps="false"
+            android:text="Additional plot"/>
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:id="@id/nav">
+
+        <Button
+            android:id="@+id/prev"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            android:layout_weight="1"
+            android:text="PREV"/>
+
+        <Button
+            android:id="@+id/fi"
+            android:layout_width="wrap_content"
+            android:layout_height="49dp"
+            android:onClick="jumpToFI"
+            android:enabled="false"
+            android:layout_weight="1"
+            android:drawableRight="@drawable/noun_next"
+            android:text="NEXT"/>
+
+    </LinearLayout>
+</LinearLayout>

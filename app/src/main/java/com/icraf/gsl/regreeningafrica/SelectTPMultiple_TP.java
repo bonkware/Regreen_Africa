@@ -11,17 +11,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
-    Button addButton, dataButton, helpButton, aboutButton,test;
-      DbAccess dbAccess;
+/**
+ * Created by benard on 5/6/19.
+ *
+ */
 
-      RegreeningGlobal g = RegreeningGlobal.getInstance();
+public class SelectTPMultiple_TP extends AppCompatActivity {
+    Button Button1, Button2;
+    DbAccess dbAccess;
+
+    RegreeningGlobal g = RegreeningGlobal.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.select_multiplot);
         //read and write permission
         getStoragepermission();
 
@@ -29,63 +34,47 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionbar = getSupportActionBar();
         actionbar.hide();
 
-        addButton = (Button) findViewById(R.id.button_add);
-        dataButton = (Button) findViewById(R.id.data);
-        aboutButton = (Button) findViewById(R.id.about);
-        helpButton = (Button) findViewById(R.id.help);
+        Button1 = (Button) findViewById(R.id.b1);
+        Button2 = (Button) findViewById(R.id.b2);
 
         dbAccess = new DbAccess(this);
         dbAccess.open();
 
-        //add data
-        addButton.setOnClickListener(new View.OnClickListener() {
+        //add new profile
+        Button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, SelectSurvey.class);
+                Intent i = new Intent(SelectTPMultiple_TP.this, TPFarmInstiMainAcivity.class);
                 startActivity(i);
                 overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
             }
         });
-        //send data
-        dataButton.setOnClickListener(new View.OnClickListener() {
+        //previous profile
+        Button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, OtherMainActivities.class);
+                Intent i = new Intent(SelectTPMultiple_TP.this, Select_Farmer_Institution_TP.class);
                 startActivity(i);
                 overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
             }
         });
-        //about regreening
-        aboutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, About.class);
-                startActivity(i);
-                overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
-            }
-        });
-        //Regreening guide
-        //about regreening
-        helpButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, AppGuide.class);
-                startActivity(i);
-                overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
-            }
-        });
-        //testing farmer list
-       /* test.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, SelectTPMultiple_TP.class);
-                startActivity(i);
-                overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
-            }
-        });*/
 
+        //previous/back button
+        Button button_next = (Button) findViewById(R.id.prev);
+        button_next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    case R.id.prev:
+                        Intent intent = new Intent(SelectTPMultiple_TP.this, SelectSurvey.class);
+                        startActivity(intent);
+                        overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
+                        //Toast.makeText(SelectSurvey.this.getActivity(),"Saved",Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+        });
     }
-
     // check external write permision in android 6+
     int MY_PERMISSIONS_STORAGE;
 
@@ -96,9 +85,7 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, MY_PERMISSIONS_STORAGE);
     }
     //on back pressed close the app
-    public void onBackPressed() {
+    /*public void onBackPressed() {
         moveTaskToBack(true);
-    }
-
+    }*/
 }
-

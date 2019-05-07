@@ -11,6 +11,9 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.icraf.gsl.regreeningafrica.DatabaseHelper.TABLE_COHORT;
 import static com.icraf.gsl.regreeningafrica.DatabaseHelper.TABLE_FARMER_INST;
 import static com.icraf.gsl.regreeningafrica.DatabaseHelper.TABLE_FMNR_FARMER_INST;
@@ -364,6 +367,32 @@ public class DbAccess {
         }
         cur.close();
         return x;
+    }
+    //get the list of farmer/institution with their farmer ids
+    public List<String> getFI_names() {
+        List<String> list = new ArrayList<>();
+        String selectQuery = "SELECT farmerID,name FROM farmer_institution";
+        Cursor cursor = database.rawQuery(selectQuery, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0) + cursor.getString(1));
+            list.add(cursor.getString(1));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+    //select all farmers/institutions from db
+    public Cursor fetch_FInames() {
+        String selectQuery = "SELECT * FROM farmer_institution ORDER BY _id desc  ";
+        Cursor cursor = database.rawQuery(selectQuery, null);
+        return cursor;
+    }
+    //select all farmers/institutions from db
+    public Cursor fetch_FInamesFMNR() {
+        String selectQuery = "SELECT * FROM fmnr_farmer_inst ORDER BY _id desc  ";
+        Cursor cursor = database.rawQuery(selectQuery, null);
+        return cursor;
     }
 
 }

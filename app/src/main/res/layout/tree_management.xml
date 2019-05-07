@@ -163,6 +163,5 @@
             android:onClick="jumpToUsage"
             android:drawableRight="@drawable/noun_next"
             android:text="NEXT"/>
-
     </LinearLayout>
 </RelativeLayout>

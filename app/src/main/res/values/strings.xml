@@ -93,4 +93,7 @@
         <b>Cohort</b>-Trees of the same species planted in the same rainy season\n
         <b>Marcotting</b> also known as air layering is a type of plant propagation that involves rooting of part of a stem while it is still attached to the parent plant\n
     </string>
+    <string name="select_plots">
+        Is this a new farmer/Institution or an additional plot by the previous farmer/Institution?\n
+    </string>
 </resources>

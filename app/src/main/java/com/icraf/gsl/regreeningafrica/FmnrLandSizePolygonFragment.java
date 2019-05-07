@@ -71,7 +71,6 @@ public class FmnrLandSizePolygonFragment extends Fragment implements LocationLis
         update = (Button) view.findViewById(R.id.update);
         save = (Button) view.findViewById(R.id.save);
 
-
         //proceed to tree recording after recording five points
         final Button button_next = (Button) view.findViewById(R.id.tospecies);
         button_next.setEnabled(false);//disable button

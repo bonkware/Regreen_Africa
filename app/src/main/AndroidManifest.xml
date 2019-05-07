@@ -44,6 +44,10 @@
         <activity android:name="com.icraf.gsl.regreeningafrica.FmnrTreeMeasureMainActivity" android:configChanges="orientation|screenSize|keyboardHidden" />
         <activity android:name="com.icraf.gsl.regreeningafrica.FmnrLandSizeMainActivity" android:configChanges="orientation|screenSize|keyboardHidden" />
         <activity android:name="com.icraf.gsl.regreeningafrica.TPLandSizeMainActivity" android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity android:name="com.icraf.gsl.regreeningafrica.SelectTPMultiple_TP" />
+        <activity android:name="com.icraf.gsl.regreeningafrica.SelectTPMultiple_FMNR" />
+        <activity android:name="com.icraf.gsl.regreeningafrica.Select_Farmer_Institution_TP" />
+        <activity android:name="com.icraf.gsl.regreeningafrica.Select_Farmer_Institution_FMNR" />
     </application>
 
 </manifest>

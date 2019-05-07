@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -99,7 +98,7 @@ public class TPFarmInstEnumFragment extends Fragment {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.prev:
-                        Intent intent = new Intent(getActivity(), SelectSurvey.class);
+                        Intent intent = new Intent(getActivity(), SelectTPMultiple_TP.class);
                         startActivity(intent);
                         getActivity().overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
                         //Toast.makeText(SelectSurvey.this.getActivity(),"Saved",Toast.LENGTH_SHORT).show();

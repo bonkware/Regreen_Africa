@@ -99,5 +99,20 @@
                 android:layout_margin="10dp"
                 android:text="Send completed data" />
         </TableRow>
+       <!-- <TableRow
+            android:id="@+id/tableRowtest"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/test"
+                android:background="@drawable/index_buttons"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:textAllCaps="false"
+                android:textSize="20sp"
+                android:textColor="#fff"
+                android:layout_margin="10dp"
+                android:text="Test Farmer List" />
+        </TableRow>-->
     </TableLayout>
 </LinearLayout>
