@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:drawableLeft="@android:drawable/ic_menu_search"
         android:hint="Search..."
-        android:visibility="gone"
+        android:visibility="visible"
         android:inputType="textVisiblePassword"/>
 
     <ListView

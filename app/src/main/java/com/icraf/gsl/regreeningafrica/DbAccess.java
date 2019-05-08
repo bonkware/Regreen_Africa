@@ -394,5 +394,35 @@ public class DbAccess {
         Cursor cursor = database.rawQuery(selectQuery, null);
         return cursor;
     }
+    //fetch data by search from editttext on tree planting
+    public Cursor fetchdatabyfilterTP(String inputText,String filtercolumn) throws SQLException {
+        Cursor row = null;
+        String query = "SELECT * FROM "+TABLE_FARMER_INST;
+        if (inputText == null  ||  inputText.length () == 0)  {
+            row = database.rawQuery(query, null);
+        }else {
+            query = "SELECT * FROM "+TABLE_FARMER_INST+" WHERE "+filtercolumn+" like '%"+inputText+"%'";
+            row = database.rawQuery(query, null);
+        }
+        if (row != null) {
+            row.moveToFirst();
+        }
+        return row;
+    }
+    //fetch data by search from edittext on FMNR
+    public Cursor fetchdatabyfilterFMNR(String inputText,String filtercolumn) throws SQLException {
+        Cursor row = null;
+        String query = "SELECT * FROM "+TABLE_FMNR_FARMER_INST;
+        if (inputText == null  ||  inputText.length () == 0)  {
+            row = database.rawQuery(query, null);
+        }else {
+            query = "SELECT * FROM "+TABLE_FMNR_FARMER_INST+" WHERE "+filtercolumn+" like '%"+inputText+"%'";
+            row = database.rawQuery(query, null);
+        }
+        if (row != null) {
+            row.moveToFirst();
+        }
+        return row;
+    }
 
 }

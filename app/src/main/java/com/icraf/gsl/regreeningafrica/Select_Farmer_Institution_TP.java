@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FilterQueryProvider;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
@@ -71,6 +72,30 @@ public class Select_Farmer_Institution_TP extends AppCompatActivity {
         adapter = new SimpleCursorAdapter(this, R.layout.farmer_view, cursor, from, to, 0);
         adapter.notifyDataSetChanged();
         listView.setAdapter(adapter);
+        //data search start on edittext
+        adapter.setFilterQueryProvider(new FilterQueryProvider() {
+            @Override
+            public Cursor runQuery(CharSequence constraint) {
+                //String partialValue = constraint.toString();
+                return dbAccess.fetchdatabyfilterTP(constraint.toString(),"name");//filter farmer/instituition names
+            }
+        });
+        //filter data in list view
+        inputSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                adapter.getFilter().filter(s.toString());
+            }
+        });//end of filter
 
         // OnCLickListiner For List Items
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
