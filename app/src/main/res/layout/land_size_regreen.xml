@@ -73,6 +73,14 @@
                     android:layout_below="@+id/editText1"
                     android:background="@android:drawable/btn_dropdown"
                     android:paddingTop="10dp"/>
+                <!--<EditText
+                    android:id="@+id/status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/units"
+                    android:text="no"
+                    android:visibility="visible">
+                </EditText>-->
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>

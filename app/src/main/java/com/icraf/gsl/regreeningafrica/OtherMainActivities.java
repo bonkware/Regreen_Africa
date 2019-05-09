@@ -271,11 +271,7 @@ public class OtherMainActivities extends AppCompatActivity {
                                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
-                                                //delete all records after send
-                                                dbAccess.deleteFarmer_Inst();
-                                                dbAccess.deleteCohort();
-                                                dbAccess.deleteMeasurements();
-                                                //dbAccess.deleteLandsizePolygon();
+                                                dbAccess.uploadStatusTP();//update column uploaded to yes
                                                 //delete the images as well
                                                 File fdelete = new File(path);
                                                 if (fdelete.exists()) {
@@ -879,19 +875,8 @@ public class OtherMainActivities extends AppCompatActivity {
                                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
-                                                //delete all records after send
-                                                dbAccess.deleteFmnrFarmer_Inst();
-                                                dbAccess.deleteFmnrSpecies();
-                                                //dbAccess.deleteLandsizePolygon();
-                                                //delete the images as well
-                                                /*File rdelete = new File(fmnr_restoration_photo);
-                                                if (rdelete.exists()) {
-                                                    if (rdelete.delete()) {
-                                                        System.out.println("file Deleted :" + fmnr_restoration_photo);
-                                                    } else {
-                                                        System.out.println("file not Deleted :" + fmnr_restoration_photo);
-                                                    }
-                                                }*///end of restoration image delete
+                                                //update uploaded column to yes
+                                                dbAccess.uploadStatusFMNR();//update column to yes
                                                 File fdelete = new File(fmnr_tree_image_path);
                                                 if (fdelete.exists()) {
                                                     if (fdelete.delete()) {

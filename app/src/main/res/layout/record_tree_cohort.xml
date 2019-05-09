@@ -20,7 +20,7 @@
                 android:id="@+id/text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Add cohort"
+                android:text="Add Trees"
                 android:layout_gravity="center"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
@@ -28,7 +28,7 @@
                 android:id="@+id/hint"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="(Cohort -> Trees of the same species planted in the same rainy season)"
+                android:text="(Trees of the same species planted in the same rainy season)"
                 android:layout_gravity="center"
                 android:textSize="18sp"
                 android:textStyle="italic"/>

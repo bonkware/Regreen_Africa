@@ -14,7 +14,7 @@ public class RegreeningGlobal {
     private String mg1,mg2,mg3,mg4,mg5,mg6,mg7,mg_other,mg_others,usage1,usage2,usage3,usage4,usage5,usage6,usage7,us_other,usg_other;
     private String fmnr_fenced,survey_name,tsurvey_name,fsurvey_name,tpsurvey_name,nsurvey_name,project_name,seed_sown,units,qunits,unitsown,livestock_other,c_name,cr_name,
             dcw_name,training_topic,training_partners,training_date,training_venue,number_participants,ename,male_participants,female_participants,youth_participants;
-    private String dbh,height,rcd,path,fid,cid;
+    private String dbh,height,rcd,path,fid,cid,uploaded;
     //for nursery module
     private String nursery_country, nursery_county, nursery_district, nursery_operator, nursery_contact,
             govt, church_mosque,schools,women,youth,private_individual,communal_village,other_type,
@@ -497,6 +497,15 @@ public class RegreeningGlobal {
     //Setting
     public void setename(String ename) {
         this.ename = ename;
+    }
+
+    //Getting
+    public String getuploaded() {
+        return uploaded;
+    }
+    //Setting
+    public void setuploaded(String uploaded) {
+        this.uploaded = uploaded;
     }
 
     //cohort id

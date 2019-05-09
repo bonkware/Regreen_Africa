@@ -280,7 +280,6 @@ public class FmnrFarmInstLandsizeFragment extends Fragment {
         if(units != null && units.getSelectedItem() !=null ) {
             g.setunits(units.getSelectedItem().toString());
         }
-       // EditText other_units = (EditText) getActivity().findViewById(R.id.other_units);
-       // g.setunits(other_units.getText().toString());//added for other option
+        g.setuploaded("no");//set uploaded to no on insert
     }
 }

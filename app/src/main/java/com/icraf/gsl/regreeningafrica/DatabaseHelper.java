@@ -36,6 +36,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //public static final String planting_site = "planting_site";
     public static final String landsize_regreen = "landsize_regreen";
     public static final String tp_units = "units";
+    public static final String tp_uploaded = "uploaded";//for status check, sent or not
 
     //Cohort columns
     public static final String farmerID = "farmerID";
@@ -182,6 +183,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String fmnr_fenced = "fmnr_fenced";
     public static final String fmnr_landsize_regreen = "landsize_regreen";
     public static final String fmnr_units = "units";
+    public static final String fmnr_uploaded = "uploaded";//for status check, sent or not
 
     //columns for fmnr species
     public static final String fmnrfarmer_id = "farmerID";
@@ -232,7 +234,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "create table " +
                     TABLE_FARMER_INST + "(" +
                     _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + enum_name + " TEXT, " + date + " TEXT,  " + survey_name + " TEXT, " + farmer_inst_name + " TEXT,"+
-                    country + " TEXT,"+county_region +  " TEXT,"+district + " TEXT,"+land_individual + " TEXT,"+land_community + " TEXT,"+land_government + " TEXT,"+land_mosque_church + " TEXT,"+land_schools + " TEXT,"+land_other + " TEXT,"+landsize_regreen + " TEXT,"+tp_units + " TEXT,"+
+                    country + " TEXT,"+county_region +  " TEXT,"+district + " TEXT,"+land_individual + " TEXT,"+land_community + " TEXT,"+land_government + " TEXT,"+land_mosque_church + " TEXT,"+land_schools + " TEXT,"+land_other + " TEXT,"+landsize_regreen + " TEXT,"+tp_units + " TEXT,"+tp_uploaded+ " TEXT,"+
                     farmer_id+" TEXT);";
 
     //creating cohort table
@@ -275,7 +277,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "create table " +
                     TABLE_FMNR_FARMER_INST + "(" +
                     _ID_fmnr + " INTEGER PRIMARY KEY AUTOINCREMENT, " + fmnr_enum_name + " TEXT, " + fmnr_date + " TEXT, " + famnr_survey_name + " TEXT, " + fmnr_farmer_inst_name + " TEXT,"+
-                    fmnr_country + " TEXT,"+fmnr_county_region +  " TEXT,"+fmnr_district + " TEXT,"+fmnr_land_individual + " TEXT,"+fmnr_land_community + " TEXT,"+fmnr_land_government + " TEXT,"+fmnr_land_mosque_church + " TEXT,"+fmnr_land_schools + " TEXT,"+fmnr_land_other + " TEXT,"+fmnr_species_number_start + " TEXT,"+fmnr_started_date + " TEXT,"+fmnr_fenced + " TEXT,"+fmnr_landsize_regreen + " TEXT,"+fmnr_units + " TEXT,"+
+                    fmnr_country + " TEXT,"+fmnr_county_region +  " TEXT,"+fmnr_district + " TEXT,"+fmnr_land_individual + " TEXT,"+fmnr_land_community + " TEXT,"+fmnr_land_government + " TEXT,"+fmnr_land_mosque_church + " TEXT,"+fmnr_land_schools + " TEXT,"+fmnr_land_other + " TEXT,"+fmnr_species_number_start + " TEXT,"+fmnr_started_date + " TEXT,"+fmnr_fenced + " TEXT,"+fmnr_landsize_regreen + " TEXT,"+fmnr_units + " TEXT,"+fmnr_uploaded+ " TEXT,"+
                     fmnr_farmer_id+" TEXT);";
     //creating table for measurement fmnr
     private static final String CREATE_TABLE_FMNR_SPECIES =

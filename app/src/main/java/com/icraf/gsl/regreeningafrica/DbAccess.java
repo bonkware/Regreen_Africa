@@ -66,6 +66,7 @@ public class DbAccess {
         //contentValue.put(DatabaseHelper.planting_site, g.getselect_site());
         contentValue.put(DatabaseHelper.landsize_regreen, g.getlandsize());
         contentValue.put(DatabaseHelper.tp_units, g.getunits());
+        contentValue.put(DatabaseHelper.tp_uploaded, g.getuploaded());
         contentValue.put(DatabaseHelper.farmerID, g.getfid());
         //insert
         database.insert(TABLE_FARMER_INST, null, contentValue);
@@ -224,6 +225,7 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.fmnr_fenced, g.getfmnr_fenced());
         contentValue.put(DatabaseHelper.fmnr_landsize_regreen, g.getlandsize());
         contentValue.put(DatabaseHelper.fmnr_units, g.getunits());
+        contentValue.put(DatabaseHelper.fmnr_uploaded, g.getuploaded());
         //insert
         database.insert(TABLE_FMNR_FARMER_INST, null, contentValue);
     }
@@ -303,7 +305,7 @@ public class DbAccess {
     }
     //get all records from db for uploading
     public Cursor getTP() {
-        String selectQuery = "SELECT * FROM farmer_institution,cohort,tree_measurements,landsizepolygon WHERE farmer_institution.farmerID = cohort.farmerID and cohort.cohortID = tree_measurements.cohortID and farmer_institution.farmerID=landsizepolygon.farmerID";
+        String selectQuery = "SELECT * FROM farmer_institution,cohort,tree_measurements,landsizepolygon WHERE farmer_institution.farmerID = cohort.farmerID and cohort.cohortID = tree_measurements.cohortID and farmer_institution.farmerID=landsizepolygon.farmerID and farmer_institution.uploaded='no' ";
         Cursor c = database.rawQuery(selectQuery, null);
         return c;
     }
@@ -314,7 +316,7 @@ public class DbAccess {
     }
     //count no. of records tree planting
     public int getcount(){
-        Cursor cur = database.rawQuery("SELECT count(*) from farmer_institution,cohort,tree_measurements WHERE farmer_institution.farmerID = cohort.farmerID and cohort.cohortID = tree_measurements.cohortID ", null);
+        Cursor cur = database.rawQuery("SELECT count(*) from farmer_institution,cohort,tree_measurements WHERE farmer_institution.farmerID = cohort.farmerID and cohort.cohortID = tree_measurements.cohortID and farmer_institution.uploaded='no' ", null);
         int x = 0;
         if (cur.moveToFirst())
         {
@@ -353,13 +355,13 @@ public class DbAccess {
     }
     //get fmnr data
     public Cursor getFMNR() {
-       String selectQuery = "SELECT * FROM fmnr_farmer_inst,fmnr_species,landsizepolygon WHERE fmnr_farmer_inst.farmerID = fmnr_species.farmerID and fmnr_farmer_inst.farmerID=landsizepolygon.farmerID ";
+       String selectQuery = "SELECT * FROM fmnr_farmer_inst,fmnr_species,landsizepolygon WHERE fmnr_farmer_inst.farmerID = fmnr_species.farmerID and fmnr_farmer_inst.farmerID=landsizepolygon.farmerID and fmnr_farmer_inst.uploaded='no' ";
         Cursor c = database.rawQuery(selectQuery, null);
         return c;
     }
     //count number of records in fmnr
     public int getfmnrcount(){
-        Cursor cur = database.rawQuery("SELECT count(*) from fmnr_farmer_inst,fmnr_species WHERE fmnr_farmer_inst.farmerID = fmnr_species.farmerID ", null);
+        Cursor cur = database.rawQuery("SELECT count(*) from fmnr_farmer_inst,fmnr_species WHERE fmnr_farmer_inst.farmerID = fmnr_species.farmerID and fmnr_farmer_inst.uploaded='no' ", null);
         int x = 0;
         if (cur.moveToFirst())
         {
@@ -423,6 +425,17 @@ public class DbAccess {
             row.moveToFirst();
         }
         return row;
+    }
+    //insert status to no
+    public void uploadStatusTP() {
+        String updateQuery = "Update farmer_institution set uploaded='yes' where farmerID=farmerID";
+        Cursor c = database.rawQuery(updateQuery, null);
+        c.moveToFirst();
+    }
+    public void uploadStatusFMNR() {
+        String updateQuery = "Update fmnr_farmer_inst set uploaded='yes' where farmerID=farmerID";
+        Cursor c = database.rawQuery(updateQuery, null);
+        c.moveToFirst();
     }
 
 }
