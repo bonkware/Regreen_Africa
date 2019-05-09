@@ -572,9 +572,8 @@ public class OtherMainActivities extends AppCompatActivity {
                                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
-                                                //delete records after send
-                                                dbAccess.deletenurseryinfo();
-                                                dbAccess.deletenurseryspecies();
+                                                //update uploaded column to yes
+                                                dbAccess.uploadStatusNursery();//set it to no
                                                 //delete the images as well
                                                 File fdelete = new File(path);
                                                 if (fdelete.exists()) {

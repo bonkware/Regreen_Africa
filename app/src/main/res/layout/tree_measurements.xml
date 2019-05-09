@@ -45,7 +45,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Select one tree from the cohort and take the measurements"
+                android:text="Select one tree and take the measurements"
                 android:textSize="@dimen/textsize"
                 android:padding="10dp"
                 android:textStyle="italic"/>

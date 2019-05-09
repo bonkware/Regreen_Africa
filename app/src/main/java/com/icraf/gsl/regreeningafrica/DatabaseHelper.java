@@ -93,6 +93,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public  static  final String male_participants = "male_participants";
     public  static  final String female_participants = "female_participants";
     public  static  final String youth_participants = "youth_participants";
+    public static final String uploaded = "uploaded";//for status check, sent or not
 
     //tables for nursery information
     // nursery info
@@ -123,6 +124,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String nursery_altitude = "altitude";
     public static final String nursery_accuracy = "accuracy";
     public static final String nursery_image_path = "image";
+    public static final String nursery_uploaded = "uploaded";//for status check, sent or not
     //nursery trees
     public static final String _nid = "_id";
     public static final String nurseryID = "nurseryID";
@@ -256,14 +258,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "create table " +
                     TABLE_Trainings + "(" +
                     _id + " INTEGER PRIMARY KEY AUTOINCREMENT, " + " TEXT,"+ training_enum_name + " TEXT,"+ training_record_date + " TEXT,"+ training_survey_name + " TEXT,"+ training_country + " TEXT,"+training_region + " TEXT,"+training_district + " TEXT,"+training_topic + " TEXT,"+training_date+" TEXT,"+training_venue + " TEXT,"+
-                    training_partners +" TEXT,"+training_participants + " TEXT,"+male_participants+" TEXT,"+female_participants+" TEXT,"+youth_participants+" TEXT);";
+                    training_partners +" TEXT,"+training_participants + " TEXT,"+male_participants+" TEXT,"+female_participants+" TEXT,"+youth_participants+" TEXT,"+uploaded+" TEXT);";
     //nursery info table
     private static final String CREATE_TABLE_NURSERY =
             "create table " +
                     TABLE_NURSERY + "(" +
                     id + " INTEGER PRIMARY KEY AUTOINCREMENT, " + nursery_id + " TEXT," + nursery_enum_name + " TEXT," + nursery_date + " TEXT," + nursery_survey_name + " TEXT," + nursery_country + " TEXT, " + nursery_county + " TEXT, " + nursery_district + " TEXT,"+
                     nursery_operator + " TEXT,"+nursery_contact + " TEXT,"+type_government + " TEXT,"+type_church_mosque + " TEXT,"+type_schools + " TEXT,"+type_women_groups + " TEXT,"+type_youth_groups + " TEXT,"+type_private_individual + " TEXT,"+type_communal_village + " TEXT,"+
-                    other_nursery_types + " TEXT,"+ nursery_latitude + " TEXT,"+nursery_longitude + " TEXT,"+nursery_altitude + " TEXT,"+nursery_accuracy+" TEXT,"+nursery_image_path + " TEXT);";
+                    other_nursery_types + " TEXT,"+ nursery_latitude + " TEXT,"+nursery_longitude + " TEXT,"+nursery_altitude + " TEXT,"+nursery_accuracy+" TEXT,"+nursery_image_path + " TEXT,"+nursery_uploaded + " TEXT);";
     //create nursery species
     private static final String CREATE_TABLE_NURSERY_SPECIES =
             "create table " +

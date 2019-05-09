@@ -135,6 +135,7 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.male_participants, g.getmale_participants());
         contentValue.put(DatabaseHelper.female_participants, g.getfemale_participants());
         contentValue.put(DatabaseHelper.youth_participants, g.getyouth_participants());
+        contentValue.put(DatabaseHelper.uploaded, g.getuploaded());
         //insert
         database.insert(TABLE_Trainings, null, contentValue);
     }
@@ -163,6 +164,7 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.nursery_accuracy, g.getAccuracy());
         contentValue.put(DatabaseHelper.nursery_image_path, g.getpath());
         contentValue.put(DatabaseHelper.nursery_id, g.getnid());
+        contentValue.put(DatabaseHelper.nursery_uploaded, g.getuploaded());
         //insert
         database.insert(TABLE_NURSERY, null, contentValue);
     }
@@ -310,7 +312,7 @@ public class DbAccess {
         return c;
     }
     public Cursor getTrainings() {
-        String selectQuery = "SELECT * FROM trainings";
+        String selectQuery = "SELECT * FROM trainings where training.uploaded='no'";
         Cursor c = database.rawQuery(selectQuery, null);
         return c;
     }
@@ -327,7 +329,7 @@ public class DbAccess {
     }
     //count no. of records trainings
     public int getcount_trainings(){
-        Cursor cur = database.rawQuery(" SELECT Count(*) FROM " + TABLE_Trainings, null);
+        Cursor cur = database.rawQuery(" SELECT Count(*) FROM trainings where uploaded='no' ", null);
         int x = 0;
         if (cur.moveToFirst())
         {
@@ -337,14 +339,14 @@ public class DbAccess {
         return x;
     }
     public Cursor getNursery() {
-        String selectQuery = "SELECT * FROM nursery_info,nursery_species WHERE nursery_info.nurseryID = nursery_species.nurseryID";
+        String selectQuery = "SELECT * FROM nursery_info,nursery_species WHERE nursery_info.nurseryID = nursery_species.nurseryID and nursery_info.uploaded='no'";
         Cursor c = database.rawQuery(selectQuery, null);
         return c;
     }
 
     //count no. of records tree planting
     public int getnurserycount(){
-        Cursor cur = database.rawQuery("SELECT count(*) from nursery_info,nursery_species WHERE nursery_info.nurseryID = nursery_species.nurseryID ", null);
+        Cursor cur = database.rawQuery("SELECT count(*) from nursery_info,nursery_species WHERE nursery_info.nurseryID = nursery_species.nurseryID and nursery_info.uploaded='no' ", null);
         int x = 0;
         if (cur.moveToFirst())
         {
@@ -426,7 +428,7 @@ public class DbAccess {
         }
         return row;
     }
-    //insert status to no
+    //update uploaded status to yes once data is uploaded
     public void uploadStatusTP() {
         String updateQuery = "Update farmer_institution set uploaded='yes' where farmerID=farmerID";
         Cursor c = database.rawQuery(updateQuery, null);
@@ -434,6 +436,15 @@ public class DbAccess {
     }
     public void uploadStatusFMNR() {
         String updateQuery = "Update fmnr_farmer_inst set uploaded='yes' where farmerID=farmerID";
+        Cursor c = database.rawQuery(updateQuery, null);
+        c.moveToFirst();
+    }
+    public void uploadStatusNursery() {
+        String updateQuery = "Update nursery_info set uploaded='yes' where nurseryID=nurseryID";
+        Cursor c = database.rawQuery(updateQuery, null);
+        c.moveToFirst();
+    }public void uploadStatusTraining() {
+        String updateQuery = "Update trainings set uploaded='yes' where _id=_id";
         Cursor c = database.rawQuery(updateQuery, null);
         c.moveToFirst();
     }

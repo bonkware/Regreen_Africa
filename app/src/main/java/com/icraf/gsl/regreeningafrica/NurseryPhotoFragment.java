@@ -261,6 +261,7 @@ public class NurseryPhotoFragment extends Fragment {
         g.setother_type(n_type.getText().toString());
         //get locations from global
         //get photo
+        g.setuploaded("no");//set uploaded to no on insert
     }
 
 }

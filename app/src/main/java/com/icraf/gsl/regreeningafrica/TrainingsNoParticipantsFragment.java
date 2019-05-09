@@ -205,5 +205,6 @@ public class TrainingsNoParticipantsFragment extends Fragment {
         g.setfemale_participants(female_participants.getText().toString());
         EditText youth_participants = (EditText) getActivity().findViewById(R.id.y_participants);
         g.setyouth_participants(youth_participants.getText().toString());
+        g.setuploaded("no");//set uploaded to no on insert
     }
 }
