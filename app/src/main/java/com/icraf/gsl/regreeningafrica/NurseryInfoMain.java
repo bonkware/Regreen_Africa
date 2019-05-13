@@ -56,7 +56,7 @@ public class NurseryInfoMain extends AppCompatActivity {
         if (ed.getText().toString().trim().length() == 0) {
             fail = true;
             ed.requestFocus();
-            ed.setError("Enter Enumulator name");
+            ed.setError("Enter data collector name");
         }
         if (date.getText().toString().trim().length() == 0) {
             fail = true;

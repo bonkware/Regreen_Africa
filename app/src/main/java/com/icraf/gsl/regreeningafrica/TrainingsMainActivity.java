@@ -28,7 +28,7 @@ public class TrainingsMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tree_planting);
 
         //set title
-        setTitle("Trainings");
+        setTitle("Training");
         //logo
         ActionBar logo = getSupportActionBar();
         logo.setDisplayUseLogoEnabled(true);
@@ -54,7 +54,7 @@ public class TrainingsMainActivity extends AppCompatActivity {
         if (ed.getText().toString().trim().length() == 0) {
             fail = true;
             ed.requestFocus();
-            ed.setError("Enter Enumulator name");
+            ed.setError("Enter data collector name");
         }
         if (date.getText().toString().trim().length() == 0) {
             fail = true;
