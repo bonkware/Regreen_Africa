@@ -180,7 +180,6 @@
             android:layout_weight="1"
             android:visibility="visible"
             android:enabled="false"
-            android:onClick="jumpBackMeasurement"
             android:text="PREV"/>
 
         <Button

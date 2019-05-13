@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    Button addButton, dataButton, helpButton, aboutButton,test;
+    Button addButton, dataButton, helpButton, aboutButton,view;
       DbAccess dbAccess;
 
       RegreeningGlobal g = RegreeningGlobal.getInstance();
@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         dataButton = (Button) findViewById(R.id.data);
         aboutButton = (Button) findViewById(R.id.about);
         helpButton = (Button) findViewById(R.id.help);
+        view = (Button) findViewById(R.id.view);
 
         dbAccess = new DbAccess(this);
         dbAccess.open();
@@ -75,14 +76,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //testing farmer list
-       /* test.setOnClickListener(new View.OnClickListener() {
+        view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, SelectTPMultiple_TP.class);
+                Intent i = new Intent(MainActivity.this, ViewMainActivity.class);
                 startActivity(i);
                 overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
             }
-        });*/
+        });
 
     }
 

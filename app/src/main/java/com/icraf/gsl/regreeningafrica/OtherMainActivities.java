@@ -1159,8 +1159,8 @@ public class OtherMainActivities extends AppCompatActivity {
                                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
-                                                //delete records after send
-                                                dbAccess.deleteTrainings();
+                                                //update to yes once sent
+                                                dbAccess.uploadStatusTraining();
                                                 //dismiss dialog by intent
                                                 Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
                                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

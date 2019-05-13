@@ -443,10 +443,34 @@ public class DbAccess {
         String updateQuery = "Update nursery_info set uploaded='yes' where nurseryID=nurseryID";
         Cursor c = database.rawQuery(updateQuery, null);
         c.moveToFirst();
-    }public void uploadStatusTraining() {
+    }
+    public void uploadStatusTraining() {
         String updateQuery = "Update trainings set uploaded='yes' where _id=_id";
         Cursor c = database.rawQuery(updateQuery, null);
         c.moveToFirst();
+    }
+    //select all farmers/institutions from db and view
+    public Cursor fetchTP() {
+        //String selectQuery = "Select * from farmer_data,tree_data WHERE farmer_data.farmerID = tree_data.farmerID";
+        String selectQuery = "SELECT * FROM farmer_institution,cohort,tree_measurements WHERE farmer_institution.farmerID = cohort.farmerID and cohort.cohortID = tree_measurements.cohortID and farmer_institution.uploaded='no' ";
+        Cursor cursor = database.rawQuery(selectQuery, null);
+        return cursor;
+    }
+    public Cursor fetchFMNR() {
+        //String selectQuery = "Select * from farmer_data,tree_data WHERE farmer_data.farmerID = tree_data.farmerID";
+        String selectQuery = "SELECT * FROM fmnr_farmer_inst,fmnr_species WHERE fmnr_farmer_inst.farmerID = fmnr_species.farmerID and fmnr_farmer_inst.uploaded='no' ";
+        Cursor cursor = database.rawQuery(selectQuery, null);
+        return cursor;
+    }
+    public Cursor fetchNursery() {
+        String selectQuery = "SELECT * FROM nursery_info,nursery_species WHERE nursery_info.nurseryID = nursery_species.nurseryID and nursery_info.uploaded='no' ";
+        Cursor cursor = database.rawQuery(selectQuery, null);
+        return cursor;
+    }
+    public Cursor fetchTrainings() {
+        String selectQuery = "SELECT * FROM trainings WHERE uploaded='no' ";
+        Cursor cursor = database.rawQuery(selectQuery, null);
+        return cursor;
     }
 
 }

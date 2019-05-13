@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -71,7 +72,21 @@ public class TPFarmInstLandsizePolygonFragment extends Fragment implements Locat
         update = (Button) view.findViewById(R.id.update);
         save = (Button) view.findViewById(R.id.save);
 
-
+        //for previous/back button
+        /*Button button_prev = (Button) view.findViewById(R.id.prev);
+        button_prev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    case R.id.prev:
+                        Intent intent = new Intent(getActivity(), Select_Farmer_Institution_TP.class);
+                        startActivity(intent);
+                        getActivity().overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
+                        //Toast.makeText(SelectSurvey.this.getActivity(),"Saved",Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+        });*/
         //proceed to tree recording after recording five points
         final Button button_next = (Button) view.findViewById(R.id.tospecies);
         button_next.setEnabled(false);//disable button

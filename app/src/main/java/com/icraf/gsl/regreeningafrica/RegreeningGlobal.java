@@ -24,7 +24,7 @@ public class RegreeningGlobal {
             species_number,individual_ownership, community_ownership, govt_land_ownership,mosque_church_ownership, schools_ownership, other_ownership,other_s1,observation,image,nid,
             woodlot,iboundary,eboundary,garden,crop_field,pasture_grassland,fallow_pushland,other_sites;
     private Bitmap photo;
-    private Boolean save_add;
+    private Boolean Multiplot;
 
     //constructors
     public RegreeningGlobal(){
@@ -897,6 +897,11 @@ public class RegreeningGlobal {
 
     //********************************* end nursery module *****************************//
     //for the polygon points
+    //getter setter
+    public Boolean getMultiplot(){return Multiplot;}
+    public void setMultiplot(Boolean species_browse){
+        this.Multiplot = Multiplot;
+    }
 
     //Getting Lat/Long
     public double getLatitude(){
