@@ -122,9 +122,8 @@ public class NurseryPhotoFragment extends Fragment {
     private File getFile() {
         File fileName = new File(Environment.getExternalStorageDirectory().getAbsolutePath());
         File folder = new File(fileName + "/RegreenAfrica/Nursery");
-        //File folder = new File("sdcard/RegreenAfrica/Nursery");
         if (!folder.exists()) {
-            folder.mkdir();
+            folder.mkdirs();
         }
         //image random name
         Random generator = new Random();

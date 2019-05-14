@@ -2,9 +2,12 @@ package com.icraf.gsl.regreeningafrica;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+
+import java.io.File;
 
 public class Splash extends AppCompatActivity {
     /** Duration of wait **/
@@ -17,6 +20,12 @@ public class Splash extends AppCompatActivity {
         //hide main menu action
         ActionBar actionbar = getSupportActionBar();
         actionbar.hide();
+        //create folder regreening on start
+        File fileName = new File(Environment.getExternalStorageDirectory().getAbsolutePath());
+        File mainfolder = new File(fileName + "/RegreenAfrica");
+        if (!mainfolder.exists()) {
+            mainfolder.mkdirs();
+        }//end of folder creation
         /* New Handler to start the Menu-Activity
          * and close this Splash-Screen after some seconds.*/
         new Handler().postDelayed(new Runnable(){

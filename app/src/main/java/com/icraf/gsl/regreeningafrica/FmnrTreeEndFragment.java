@@ -56,6 +56,7 @@ public class FmnrTreeEndFragment extends Fragment {
                             Intent intent = new Intent(getActivity(), FmnrTreeMeasureMainActivity.class);
                             startActivity(intent);*/
                         Intent intent = new Intent(getActivity(), FmnrTreeMeasureMainActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                         getActivity().overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
                         //Toast.makeText(SelectSurvey.this.getActivity(),"Saved! Add new tree",Toast.LENGTH_SHORT).show();
@@ -73,6 +74,7 @@ public class FmnrTreeEndFragment extends Fragment {
                         saveMeasurements();
                         dbAccess.insertFmnrSpecies();
                         Intent intent = new Intent(getActivity(), MainActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                         break;
                 }

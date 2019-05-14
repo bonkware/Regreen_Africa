@@ -158,6 +158,7 @@ public class TrainingsNoParticipantsFragment extends Fragment {
                         saveTrainings();//save
                         dbAccess.insertTraining();
                         Intent intent = new Intent(getActivity(), MainActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                         //Toast.makeText(SelectSurvey.this.getActivity(),"Saved! Add new tree",Toast.LENGTH_SHORT).show();
                         break;

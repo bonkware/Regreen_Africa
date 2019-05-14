@@ -3,7 +3,7 @@
     package="com.icraf.gsl.regreeningafrica">
 
     <uses-feature
-        android:name="android.hardware.camera.any"
+        android:name="android.hardware.camera"
         android:required="true" />
     <uses-feature
         android:name="android.hardware.camera.autofocus"

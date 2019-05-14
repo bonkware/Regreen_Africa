@@ -100,7 +100,7 @@ public class TPTreePhotoFragment extends Fragment {
                 File folder = new File(fileName + "/RegreenAfrica/TP");
                 //File folder = new File("sdcard/RegreenAfrica/TP");
                 if (!folder.exists()) {
-                    folder.mkdir();
+                    folder.mkdirs();
                 }
                 //image random name
                 Random generator = new Random();

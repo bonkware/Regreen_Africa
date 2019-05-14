@@ -100,7 +100,7 @@ public class FmnrTreePhotoFragment extends Fragment {
         File folder = new File(fileName + "/RegreenAfrica/FMNR");
         //File folder = new File("sdcard/RegreenAfrica/FMNR");
         if (!folder.exists()) {
-            folder.mkdir();
+            folder.mkdirs();
         }
         //image random name
         Random generator = new Random();

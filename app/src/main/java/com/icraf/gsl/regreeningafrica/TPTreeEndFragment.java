@@ -43,6 +43,7 @@ public class TPTreeEndFragment extends Fragment {
                         saveMeasurement();
                         dbAccess.insertMeasurent();
                         Intent intent = new Intent(getActivity(), TPTreeMeasureMainAcivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                         getActivity().overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
                         //Toast.makeText(SelectSurvey.this.getActivity(),"Saved! Add new tree",Toast.LENGTH_SHORT).show();
@@ -60,6 +61,7 @@ public class TPTreeEndFragment extends Fragment {
                         saveMeasurement();
                         dbAccess.insertMeasurent();
                         Intent intent = new Intent(getActivity(), TPCohortMainAcivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                         getActivity().overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
                         break;
@@ -75,6 +77,7 @@ public class TPTreeEndFragment extends Fragment {
                         saveMeasurement();
                         dbAccess.insertMeasurent();
                         Intent intent = new Intent(getActivity(), TPFarmInstiMainAcivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                         //Toast.makeText(SelectSurvey.this.getActivity(),"Saved! Add new tree",Toast.LENGTH_SHORT).show();
                         break;
@@ -91,6 +94,7 @@ public class TPTreeEndFragment extends Fragment {
                         saveMeasurement();
                         dbAccess.insertMeasurent();
                         Intent intent = new Intent(getActivity(), MainActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                         break;
                 }
