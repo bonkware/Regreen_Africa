@@ -27,6 +27,18 @@ public class NurseryEdit extends Activity implements OnClickListener {
         super.onCreate(savedInstanceState);
         // setTitle("Edit Data");
         setContentView(R.layout.nursery_edit);
+        //for previous/back button
+        final Button button_prev = (Button) findViewById(R.id.prev);
+        button_prev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(NurseryEdit.this, NurseryView.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
+                //Toast.makeText(SelectSurvey.this.getActivity(),"Saved",Toast.LENGTH_SHORT).show();
+
+            }
+        });
         //DB access
         dbAccess = new DbAccess(this);
         dbAccess.open();

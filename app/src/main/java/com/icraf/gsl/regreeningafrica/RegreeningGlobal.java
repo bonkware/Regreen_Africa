@@ -899,7 +899,7 @@ public class RegreeningGlobal {
     //for the polygon points
     //getter setter
     public Boolean getMultiplot(){return Multiplot;}
-    public void setMultiplot(Boolean species_browse){
+    public void setMultiplot(Boolean Multiplot){
         this.Multiplot = Multiplot;
     }
 

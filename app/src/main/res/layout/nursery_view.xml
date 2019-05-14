@@ -99,8 +99,9 @@
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@id/id"
         android:ellipsize="end"
-        android:maxLines="2"
-        android:padding="3dp" />
+        android:maxLines="1"
+        android:padding="5dp"
+        android:textSize="15sp"/>
     <TextView
         android:id="@+id/contact"
         android:layout_width="fill_parent"
@@ -571,9 +572,9 @@
         android:layout_height="30dp"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:visibility="gone"
         android:gravity="right"
         android:layout_gravity="right"
+        android:background="@drawable/noun_next"
         android:clickable="true"
         android:text=""
         android:textOff=""

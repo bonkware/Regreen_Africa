@@ -451,7 +451,7 @@ public class DbAccess {
     }
     //select all farmers/institutions from db and view
     public Cursor fetchTP() {
-        //String selectQuery = "Select * from farmer_data,tree_data WHERE farmer_data.farmerID = tree_data.farmerID";
+        //String selectQuery = "Select * from cohort,farmer_institution,tree_measurements";
         String selectQuery = "SELECT * FROM farmer_institution,cohort,tree_measurements WHERE farmer_institution.farmerID = cohort.farmerID and cohort.cohortID = tree_measurements.cohortID and farmer_institution.uploaded='no' ";
         Cursor cursor = database.rawQuery(selectQuery, null);
         return cursor;

@@ -66,6 +66,7 @@ public class TPFarmInstLandsizeFragment extends Fragment {
                     case R.id.tocohort:
                         saveFarmerInst();//save
                         dbAccess.insertFarmerInst();//insert details to db
+                        g.setMultiplot(false);//set it true
                         //Intent intent = new Intent(getActivity(), TPCohortMainAcivity.class);
                         Intent intent = new Intent(getActivity(), TPLandSizeMainActivity.class);
                         startActivity(intent);

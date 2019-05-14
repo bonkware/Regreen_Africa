@@ -64,9 +64,8 @@
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@id/fid"
         android:maxLines="1"
-        android:textStyle="bold"
-        android:padding="15dp"
-        android:textSize="17sp"/>
+        android:padding="5dp"
+        android:textSize="15sp"/>
     <TextView
         android:id="@+id/country"
         android:layout_width="fill_parent"
@@ -156,21 +155,10 @@
         android:padding="3dp"
         android:visibility="gone" />
     <TextView
-        android:id="@+id/latitude"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/schools"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@id/id"
-        android:ellipsize="end"
-        android:maxLines="2"
-        android:padding="3dp"
-        android:visibility="gone" />
-    <TextView
         android:id="@+id/other_locations"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/latitude"
+        android:layout_below="@id/schools"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@id/id"
         android:ellipsize="end"
@@ -536,9 +524,9 @@
         android:layout_height="30dp"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:visibility="gone"
         android:gravity="right"
         android:layout_gravity="right"
+        android:background="@drawable/noun_next"
         android:clickable="true"
         android:text=""
         android:textOff=""

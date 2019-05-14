@@ -104,6 +104,7 @@ public class Select_Farmer_Institution_FMNR extends AppCompatActivity {
                 //String farmer_name = name.getText().toString();
                 RegreeningGlobal g = RegreeningGlobal.getInstance();
                 g.setfid(farmer_id);//pass farmerID to the next page
+                g.setMultiplot(true);
 
                 Intent tp_intent = new Intent(getApplicationContext(), FmnrLandSizeMainActivity.class);
                 startActivity(tp_intent);

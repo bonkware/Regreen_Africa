@@ -107,6 +107,7 @@ public class Select_Farmer_Institution_TP extends AppCompatActivity {
                 //String farmer_name = name.getText().toString();
                 RegreeningGlobal g = RegreeningGlobal.getInstance();
                 g.setfid(farmer_id);//pass farmerID to the next page
+                g.setMultiplot(true);//set it true
 
                 Intent tp_intent = new Intent(getApplicationContext(), TPLandSizeMainActivity.class);
                 startActivity(tp_intent);

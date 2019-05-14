@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_gravity="center"
-            android:text="Select training venue" />
+            android:text="Select training venue to view data" />
         <!--filter farmer/institution names-->
         <!--<EditText
             android:id="@+id/inputSearch"

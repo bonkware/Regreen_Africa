@@ -70,6 +70,7 @@ public class FmnrFarmInstLandsizeFragment extends Fragment {
                     case R.id.topolygon:
                         saveFmnrFarmerInst();//save
                         dbAccess.insertFmnrFarmerInst();//insert details to db
+                        g.setMultiplot(false);
                         Intent intent = new Intent(getActivity(), FmnrLandSizeMainActivity.class);
                         startActivity(intent);
                         getActivity().overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);

@@ -73,20 +73,25 @@ public class TPFarmInstLandsizePolygonFragment extends Fragment implements Locat
         save = (Button) view.findViewById(R.id.save);
 
         //for previous/back button
-        /*Button button_prev = (Button) view.findViewById(R.id.prev);
+        final Button button_prev = (Button) view.findViewById(R.id.prev);
         button_prev.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switch (v.getId()) {
-                    case R.id.prev:
-                        Intent intent = new Intent(getActivity(), Select_Farmer_Institution_TP.class);
-                        startActivity(intent);
-                        getActivity().overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
-                        //Toast.makeText(SelectSurvey.this.getActivity(),"Saved",Toast.LENGTH_SHORT).show();
-                        break;
+                if(g.getMultiplot()==true) {
+                    Intent intent = new Intent(getActivity(), Select_Farmer_Institution_TP.class);
+                    startActivity(intent);
+                    getActivity().overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
+                    //Toast.makeText(SelectSurvey.this.getActivity(),"Saved",Toast.LENGTH_SHORT).show();
                 }
+                else{
+                    button_prev.setEnabled(false);
+                    //Intent intent = new Intent(getActivity(), TPFarmInstiMainAcivity.class);
+                    //startActivity(intent);
+                    //getActivity().overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
+                }
+
             }
-        });*/
+        });
         //proceed to tree recording after recording five points
         final Button button_next = (Button) view.findViewById(R.id.tospecies);
         button_next.setEnabled(false);//disable button
@@ -267,5 +272,6 @@ public class TPFarmInstLandsizePolygonFragment extends Fragment implements Locat
         g.setfid(farmerid.getText().toString());
         //get points from global
     }
+
 }
 
