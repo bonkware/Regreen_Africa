@@ -45,6 +45,8 @@ public class NurseryView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_listnusery);
+        //set title
+        setTitle("Nursery");
 
         dbAccess = new DbAccess(this);
         dbAccess.open();

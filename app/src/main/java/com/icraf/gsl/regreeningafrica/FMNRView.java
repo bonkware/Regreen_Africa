@@ -41,6 +41,8 @@ public class FMNRView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_listfmnr);
+        //set title
+        setTitle("FMNR");
 
         dbAccess = new DbAccess(this);
         dbAccess.open();

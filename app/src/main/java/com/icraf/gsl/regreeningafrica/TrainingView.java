@@ -37,6 +37,8 @@ public class TrainingView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_listtraining);
+        //set title
+        setTitle("Training");
 
         dbAccess = new DbAccess(this);
         dbAccess.open();

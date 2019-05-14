@@ -47,6 +47,8 @@ public class TPView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_listtp);
+        //set title
+        setTitle("Tree planting");
 
         dbAccess = new DbAccess(this);
         dbAccess.open();

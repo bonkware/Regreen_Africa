@@ -62,6 +62,19 @@ public class ViewMainActivity extends AppCompatActivity {
 
         setContentView(R.layout.view_main_activities);
 
+        //for previous/back button
+        final Button button_prev = (Button) findViewById(R.id.prev);
+        button_prev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ViewMainActivity.this, MainActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
+                //Toast.makeText(SelectSurvey.this.getActivity(),"Saved",Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
         // Get the application context
         mContext = getApplicationContext();
         mActivity = ViewMainActivity.this;
@@ -70,8 +83,8 @@ public class ViewMainActivity extends AppCompatActivity {
         getStoragepermission();
 
         //hide main menu action
-        ActionBar actionbar = getSupportActionBar();
-        actionbar.hide();
+        //ActionBar actionbar = getSupportActionBar();
+        //actionbar.hide();
 
 
         TPButton = (Button) findViewById(R.id.tree_planting);
@@ -177,6 +190,10 @@ public class ViewMainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, MY_PERMISSIONS_STORAGE);
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, MY_PERMISSIONS_STORAGE);
+    }
+    //on back pressed close the app
+    public void onBackPressed() {
+        moveTaskToBack(true);
     }
 
 }

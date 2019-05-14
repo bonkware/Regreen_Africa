@@ -53,26 +53,28 @@
         </LinearLayout>
     </ScrollView>
 
-    <!--<View
-        android:layout_height="2dip"
-        android:layout_width="wrap_content"
-        android:layout_above="@+id/link"
-        android:background="#d7589f06"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
-        android:id="@+id/link">
+        android:id="@+id/nav">
 
-        <TextView
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:text="@string/url"
-            android:autoLink="all"
-            android:layout_span="3"
-            android:padding="15dip"
-            android:gravity="center"
-            android:textColor="#000"/>
-    </LinearLayout>-->
+        <Button
+            android:id="@+id/prev"
+            android:layout_width="wrap_content"
+            android:layout_height="49dp"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/n_back"
+            android:text="PREV"/>
+
+        <Button
+            android:id="@+id/next"
+            android:layout_width="wrap_content"
+            android:layout_height="49dp"
+            android:layout_weight="1"
+            android:enabled="false"
+            android:drawableRight="@drawable/noun_next"
+            android:text="NEXT"/>
+    </LinearLayout>
 </RelativeLayout>
