@@ -312,7 +312,7 @@ public class DbAccess {
         return c;
     }
     public Cursor getTrainings() {
-        String selectQuery = "SELECT * FROM trainings where training.uploaded='no'";
+        String selectQuery = "SELECT * FROM trainings where uploaded='no'";
         Cursor c = database.rawQuery(selectQuery, null);
         return c;
     }
