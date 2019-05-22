@@ -389,13 +389,13 @@ public class DbAccess {
     }
     //select all farmers/institutions from db
     public Cursor fetch_FInames() {
-        String selectQuery = "SELECT * FROM farmer_institution ORDER BY _id desc  ";
+        String selectQuery = "SELECT * FROM farmer_institution where uploaded='no' ORDER BY _id desc  ";
         Cursor cursor = database.rawQuery(selectQuery, null);
         return cursor;
     }
     //select all farmers/institutions from db
     public Cursor fetch_FInamesFMNR() {
-        String selectQuery = "SELECT * FROM fmnr_farmer_inst ORDER BY _id desc  ";
+        String selectQuery = "SELECT * FROM fmnr_farmer_inst where uploaded='no' ORDER BY _id desc  ";
         Cursor cursor = database.rawQuery(selectQuery, null);
         return cursor;
     }

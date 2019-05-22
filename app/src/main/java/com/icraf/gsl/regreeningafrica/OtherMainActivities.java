@@ -4,6 +4,7 @@ package com.icraf.gsl.regreeningafrica;
  * Created by benard on 2/11/19.
  *
  */
+
 import android.Manifest;
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -17,7 +18,6 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
@@ -44,7 +44,6 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -61,6 +60,9 @@ public class OtherMainActivities extends AppCompatActivity {
     RegreeningGlobal g = RegreeningGlobal.getInstance();
     private Context mContext;
     private Activity mActivity;
+
+    private RequestQueue queue;
+    private StringRequest request;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -871,9 +873,14 @@ public class OtherMainActivities extends AppCompatActivity {
                     final String landsize_polygon_accuracy = cursor.getString(cursor.getColumnIndex("accuracy"));
 
                     // create an object of volley request queue
-                    RequestQueue queue = Volley.newRequestQueue(OtherMainActivities.this);
+                   // RequestQueue queue = Volley.newRequestQueue(this);
+                    // create an object of volley request queue
+                    if (queue == null) {
+                        queue = Volley.newRequestQueue(this);
+                    }
                     // Request a string response from the provided url above to server.
                     StringRequest request = new StringRequest(Request.Method.POST, fmnr_url, new Response.Listener<String>() {
+                    //request = new StringRequest(Request.Method.POST, fmnr_url, new Response.Listener<String>() {
                         @Override
                         //successful response
                         public void onResponse(String response) {
@@ -892,14 +899,6 @@ public class OtherMainActivities extends AppCompatActivity {
                                             public void onClick(DialogInterface dialog, int which) {
                                                 //update uploaded column to yes
                                                 dbAccess.uploadStatusFMNR();//update column to yes
-                                                /*File fdelete = new File(fmnr_tree_image_path);
-                                                if (fdelete.exists()) {
-                                                    if (fdelete.delete()) {
-                                                        System.out.println("file Deleted :" + fmnr_tree_image_path);
-                                                    } else {
-                                                        System.out.println("file not Deleted :" + fmnr_tree_image_path);
-                                                    }
-                                                }*///end of tree image delete
                                                 //dismiss dialog by intent
                                                 Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
                                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -1022,11 +1021,6 @@ public class OtherMainActivities extends AppCompatActivity {
                             param.put("fmnr_fenced", fmnr_fenced);
                             param.put("landsize_regreen", fmnr_landsize_regreen);
                             param.put("units", fmnr_units);
-                           /* BitmapFactory.Options option = new BitmapFactory.Options();
-                            option.inSampleSize = 8;//compress file further to avoid out of memory error
-                            Bitmap bitmap_rest = BitmapFactory.decodeFile(fmnr_restoration_photo,option);
-                            String image_rest = getStringImage(bitmap_rest);
-                            param.put("fmnr_restoration_photo", image_rest);*/
                             //species
                             param.put("farmerID", fmnrfarmer_id);
                             param.put("species", fmnr_species_name);
@@ -1095,7 +1089,7 @@ public class OtherMainActivities extends AppCompatActivity {
                     DiskBasedCache cache = new DiskBasedCache(getCacheDir(), 16 * 1024 * 1024);
                     queue = new RequestQueue(cache, new BasicNetwork(new HurlStack()));
                     queue.start();
-                    //queue.add(new ClearCacheRequest(cache, null));//end of cache clear
+                    queue.add(new ClearCacheRequest(cache, null));//end of cache clear
                     //VolleySingleton.getInstance(this).addToRequestQueue(request);
                     //add listener to the queue which is executed when the request ends
                     queue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<String>() {
@@ -1112,6 +1106,7 @@ public class OtherMainActivities extends AppCompatActivity {
             Log.d("Upload failed", "Exception : "
                     + e.getMessage(), e);
         }
+
     }
     //convert bitmap to string
     public String getStringImage(Bitmap bitmap){
