@@ -65,6 +65,7 @@ public class TPFarmInstLandsizeFragment extends Fragment {
                 switch (v.getId()) {
                     case R.id.tocohort:
                         saveFarmerInst();//save
+                        plotid();//generate plot id for the polygons
                         dbAccess.insertFarmerInst();//insert details to db
                         g.setMultiplot(false);//set it true
                         //Intent intent = new Intent(getActivity(), TPCohortMainAcivity.class);
@@ -107,7 +108,7 @@ public class TPFarmInstLandsizeFragment extends Fragment {
         Random generator = new Random();
         int n = 10000;
         n = generator.nextInt(n);//random number generator
-        String fid = "farm_Insti_" + n;
+        String fid = "fgi_" + n;
         g.setfid(fid);
         //edittexts
         EditText e_name = (EditText) getActivity().findViewById(R.id.ename);
@@ -216,5 +217,14 @@ public class TPFarmInstLandsizeFragment extends Fragment {
             g.setunits(units.getSelectedItem().toString());
         }
         g.setuploaded("no");//set uploaded to no on insert
+    }
+    //setting plot id for polygons
+    public void plotid(){
+        //generate unique id for farmer/institution
+        Random generator = new Random();
+        int n = 10000;
+        n = generator.nextInt(n);//random number generator
+        String pid = "plot_" + n;
+        g.setpid(pid);
     }
 }

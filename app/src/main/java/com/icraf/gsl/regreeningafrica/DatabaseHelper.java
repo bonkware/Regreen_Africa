@@ -221,6 +221,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String TABLE_LANDSIZEPOLYGON = "landsizepolygon";
     //columns for both fmnr and tree planting landsize polygons
     public static final String fid = "farmerID";
+    public static final String pid = "plotID";
     public static final String landsize_polygon_latitude = "latitude";
     public static final String landsize_polygon_longitude = "longitude";
     public static final String landsize_polygon_altitude = "altitude";
@@ -293,7 +294,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_LANDSIZEPOLYGON =
             "create table " +
                     TABLE_LANDSIZEPOLYGON + "(" +
-                    id + " INTEGER PRIMARY KEY AUTOINCREMENT, " + fid + " TEXT,"+ landsize_polygon_latitude + " TEXT,"+landsize_polygon_longitude + " TEXT,"+landsize_polygon_altitude + " TEXT,"+landsize_polygon_accuracy+" TEXT);";
+                    id + " INTEGER PRIMARY KEY AUTOINCREMENT, " + fid + " TEXT," + pid + " TEXT,"+ landsize_polygon_latitude + " TEXT,"+landsize_polygon_longitude + " TEXT,"+landsize_polygon_altitude + " TEXT,"+landsize_polygon_accuracy+" TEXT);";
 
     public DatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);

@@ -259,6 +259,7 @@ public class OtherMainActivities extends AppCompatActivity {
                     final String path = cursor.getString(cursor.getColumnIndex("path"));
                     //for tree planting plot polygon
                     final String farmerid = cursor.getString(cursor.getColumnIndex("farmerID"));
+                    final String pid = cursor.getString(cursor.getColumnIndex("plotID"));
                     final String landsize_polygon_latitude = cursor.getString(cursor.getColumnIndex("latitude"));
                     final String landsize_polygon_longitude = cursor.getString(cursor.getColumnIndex("longitude"));
                     final String landsize_polygon_altitude = cursor.getString(cursor.getColumnIndex("altitude"));
@@ -286,14 +287,14 @@ public class OtherMainActivities extends AppCompatActivity {
                                             public void onClick(DialogInterface dialog, int which) {
                                                 dbAccess.uploadStatusTP();//update column uploaded to yes
                                                 //delete the images as well
-                                                File fdelete = new File(path);
+                                                /*File fdelete = new File(path);
                                                 if (fdelete.exists()) {
                                                     if (fdelete.delete()) {
                                                         System.out.println("file Deleted :" + path);
                                                     } else {
                                                         System.out.println("file not Deleted :" + path);
                                                     }
-                                                }//end of image delete
+                                                }*///end of image delete
                                                 //dismiss dialog by intent
                                                 Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
                                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -457,6 +458,7 @@ public class OtherMainActivities extends AppCompatActivity {
                             param.put("path", image);
                             //landsize polygon
                             param.put("farmerID", farmerid);
+                            param.put("plotID", pid);
                             param.put("latitude", landsize_polygon_latitude);
                             param.put("longitude", landsize_polygon_longitude);
                             param.put("altitude", landsize_polygon_altitude);
@@ -588,14 +590,14 @@ public class OtherMainActivities extends AppCompatActivity {
                                                 //update uploaded column to yes
                                                 dbAccess.uploadStatusNursery();//set it to no
                                                 //delete the images as well
-                                                File fdelete = new File(path);
+                                                /*File fdelete = new File(path);
                                                 if (fdelete.exists()) {
                                                     if (fdelete.delete()) {
                                                         System.out.println("file Deleted :" + path);
                                                     } else {
                                                         System.out.println("file not Deleted :" + path);
                                                     }
-                                                }//end of image delete
+                                                }*///end of image delete
                                                 //dismiss dialog by intent
                                                 Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
                                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -862,6 +864,7 @@ public class OtherMainActivities extends AppCompatActivity {
 
                     //for fmnr plot polygon
                     final String fid = cursor.getString(cursor.getColumnIndex("farmerID"));
+                    final String pid = cursor.getString(cursor.getColumnIndex("plotID"));
                     final String landsize_polygon_latitude = cursor.getString(cursor.getColumnIndex("latitude"));
                     final String landsize_polygon_longitude = cursor.getString(cursor.getColumnIndex("longitude"));
                     final String landsize_polygon_altitude = cursor.getString(cursor.getColumnIndex("altitude"));
@@ -889,14 +892,14 @@ public class OtherMainActivities extends AppCompatActivity {
                                             public void onClick(DialogInterface dialog, int which) {
                                                 //update uploaded column to yes
                                                 dbAccess.uploadStatusFMNR();//update column to yes
-                                                File fdelete = new File(fmnr_tree_image_path);
+                                                /*File fdelete = new File(fmnr_tree_image_path);
                                                 if (fdelete.exists()) {
                                                     if (fdelete.delete()) {
                                                         System.out.println("file Deleted :" + fmnr_tree_image_path);
                                                     } else {
                                                         System.out.println("file not Deleted :" + fmnr_tree_image_path);
                                                     }
-                                                }//end of tree image delete
+                                                }*///end of tree image delete
                                                 //dismiss dialog by intent
                                                 Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
                                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -1062,6 +1065,7 @@ public class OtherMainActivities extends AppCompatActivity {
                             //param.put("path", path);
                             //landsize polygon
                             param.put("farmerID", fid);
+                            param.put("plotID", pid);
                             param.put("latitude", landsize_polygon_latitude);
                             param.put("longitude", landsize_polygon_longitude);
                             param.put("altitude", landsize_polygon_altitude);

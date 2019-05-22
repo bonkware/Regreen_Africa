@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by benard on 5/6/19.
@@ -40,7 +41,7 @@ public class Select_Farmer_Institution_TP extends AppCompatActivity {
 
     final int[] to = new int[] {R.id.farmerID,R.id.FIname
     };
-
+    RegreeningGlobal g = RegreeningGlobal.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,12 +109,22 @@ public class Select_Farmer_Institution_TP extends AppCompatActivity {
                 RegreeningGlobal g = RegreeningGlobal.getInstance();
                 g.setfid(farmer_id);//pass farmerID to the next page
                 g.setMultiplot(true);//set it true
+                plotid();//generate plot id for polygond
 
                 Intent tp_intent = new Intent(getApplicationContext(), TPLandSizeMainActivity.class);
                 startActivity(tp_intent);
                 overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
             }
         });
+    }
+    //setting plot id for polygons
+    public void plotid(){
+        //generate unique id for farmer/institution
+        Random generator = new Random();
+        int n = 10000;
+        n = generator.nextInt(n);//random number generator
+        String pid = "plot_" + n;
+        g.setpid(pid);
     }
 
 }

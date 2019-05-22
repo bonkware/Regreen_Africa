@@ -68,7 +68,8 @@ public class FmnrFarmInstLandsizeFragment extends Fragment {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.topolygon:
-                        saveFmnrFarmerInst();//save
+                        saveFmnrFarmerInst();//save inputs
+                        plotid();//generate plot id for polygons
                         dbAccess.insertFmnrFarmerInst();//insert details to db
                         g.setMultiplot(false);
                         Intent intent = new Intent(getActivity(), FmnrLandSizeMainActivity.class);
@@ -156,7 +157,7 @@ public class FmnrFarmInstLandsizeFragment extends Fragment {
         Random generator = new Random();
         int n = 10000;
         n = generator.nextInt(n);//random number generator
-        String fid = "farm_Insti_" + n;
+        String fid = "fgi_" + n;
         g.setfid(fid);
         //edittexts
         EditText e_name = (EditText) getActivity().findViewById(R.id.ename);
@@ -282,5 +283,14 @@ public class FmnrFarmInstLandsizeFragment extends Fragment {
             g.setunits(units.getSelectedItem().toString());
         }
         g.setuploaded("no");//set uploaded to no on insert
+    }
+    //setting plot id for polygons
+    public void plotid(){
+        //generate unique id for farmer/institution
+        Random generator = new Random();
+        int n = 10000;
+        n = generator.nextInt(n);//random number generator
+        String pid = "plot_" + n;
+        g.setpid(pid);
     }
 }

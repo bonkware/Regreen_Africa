@@ -34,9 +34,9 @@ import java.util.ArrayList;
  *
  */
 
-public class TPFarmInstLandsizePolygonFragment extends Fragment implements LocationListener {
+public class TPFarmInstLandsizePolygonFragment extends Fragment {
     private static final int REQUEST_LOCATION = 1;
-    Button b,record,update,save;
+    Button b,fixgps,updategps,getlocation,save;
     TableRow button_update;
     TextView result;
     TableLayout t;
@@ -59,6 +59,10 @@ public class TPFarmInstLandsizePolygonFragment extends Fragment implements Locat
         String farmer_id = g.getfid();
         TextView fid = (TextView) view.findViewById(R.id.fid);
         fid.setText(farmer_id);
+        //get the generated id for polygons
+        String plot_id = g.getpid();
+        TextView pid = (TextView) view.findViewById(R.id.pid);
+        pid.setText(plot_id);
         //check permission first on nadroid 6++
         getGpspermission();
         //show locations in edittext
@@ -68,8 +72,9 @@ public class TPFarmInstLandsizePolygonFragment extends Fragment implements Locat
         acctext =  view.findViewById(R.id.accuraccy);
 
         //buttons
-        record = (Button) view.findViewById(R.id.record);
-        update = (Button) view.findViewById(R.id.update);
+        fixgps = (Button) view.findViewById(R.id.record);
+        getlocation = (Button) view.findViewById(R.id.getlocation);
+        updategps = (Button) view.findViewById(R.id.updategps);
         save = (Button) view.findViewById(R.id.save);
 
         //for previous/back button
@@ -110,29 +115,41 @@ public class TPFarmInstLandsizePolygonFragment extends Fragment implements Locat
                 }
             }
         });
-        //Get the location
-        record.setOnClickListener(new View.OnClickListener()
+        //fix the gps location
+        fixgps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // check if GPS enabled first before start fixing the gps
+                locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+                if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                    buildAlertMessageNoGps();
+                } else if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                    GPSfix();//fix the gps
+                    fixgps.setVisibility(View.GONE);//click only once and hide it
+                    getlocation.setVisibility(View.VISIBLE);//show the save button
+                }
+            }
+        });
+        //get location to labels at first
+        getlocation.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                gpsfix();
-                record.setVisibility(View.GONE);//click only once and hide it
+                setLocation();//get the location
+                getlocation.setVisibility(View.GONE);//click only once and hide it
+                updategps.setVisibility(View.VISIBLE);//show the update button
                 save.setVisibility(View.VISIBLE);//show the save button
 
             }
         });
         //update the location
-        update.setOnClickListener(new View.OnClickListener()
+        updategps.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                gpsfix();
-                //show update button
-                update.setVisibility(View.GONE);//hide the update button on save
-                save.setVisibility(View.VISIBLE);//show the save button after location update.
-
+                setLocation();//get the location
             }
         });
         //keep saving the locations
@@ -144,10 +161,15 @@ public class TPFarmInstLandsizePolygonFragment extends Fragment implements Locat
                 savePolygon();//save
                 dbAccess.insertLandsizepolygon();//insert details to db
                 clickcount=clickcount+1;
-                if(clickcount==1)
-                {
+                // if(clickcount==1)
+                //check how many times clicked and so on
+                if (clickcount >= 5){
+                    button_next.setEnabled(true);//enable this button after 4 polygon point are saved
+                }
+                Toast.makeText(TPFarmInstLandsizePolygonFragment.this.getActivity(),"Point "+clickcount+" saved", Toast.LENGTH_LONG).show();
+               /* {
                     //first time clicked to do this
-                    Toast.makeText(TPFarmInstLandsizePolygonFragment.this.getActivity(),"First point is saved!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(FmnrLandSizePolygonFragment.this.getActivity(),"First point is saved!", Toast.LENGTH_LONG).show();
                 }
                 else
                 {
@@ -155,11 +177,11 @@ public class TPFarmInstLandsizePolygonFragment extends Fragment implements Locat
                     if (clickcount >= 5){
                         button_next.setEnabled(true);//enable this button after 4 polygon point are saved
                     }
-                    Toast.makeText(TPFarmInstLandsizePolygonFragment.this.getActivity(),"Point "+clickcount+" saved", Toast.LENGTH_LONG).show();
-                }
+                    Toast.makeText(FmnrLandSizePolygonFragment.this.getActivity(),"Point "+clickcount+" saved", Toast.LENGTH_LONG).show();
+                }*/
                 //show update button
-                update.setVisibility(View.VISIBLE);//show update button after save.
-                save.setVisibility(View.GONE);//hide save button to update location
+                //updategps.setVisibility(View.VISIBLE);//show update button after save.
+                //save.setVisibility(View.GONE);//hide save button to update location
 
             }
         });
@@ -174,49 +196,27 @@ public class TPFarmInstLandsizePolygonFragment extends Fragment implements Locat
 
         }
     }
-    public  void gpsfix(){
-        locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
-        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-            buildAlertMessageNoGps();
+    // call gps fix method from gps class
+    public void GPSfix() {
+        GPS gps = GPS.getInstance();
+        gps.getGPSFix(getContext());
 
-        } else if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-            //getLocation();
+        if (g.getGPS_fix() == false) {
+            ProgressDialog progDailog;
+            progDailog = ProgressDialog.show(getActivity(), "GPS fix", "Please wait for GPS to fix location.", true);//please wait
+            gps.setProgDailog(progDailog);
+        } else {
+            //setLocation();//call this if the gps has already been fixed
+            getlocation.setVisibility(View.VISIBLE);//show the get location button
 
-            Criteria criteria = new Criteria();
-
-            //start the progress dialog until gps fixes
-            myDialog = ProgressDialog.show(this.getActivity(), "GPS getting the location", "Please wait for GPS to fix location.", true);//please wait
-            myDialog.setCancelable(true);
-            myDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-                public void onCancel(DialogInterface dialog) {
-                    Log.i("inside on cancel","Cancel Called");
-                    //finish(); //If you want to finish the activity.
-                }
-            });
-
-            mprovider = locationManager.getBestProvider(criteria, true);
-
-            if (mprovider != null && !mprovider.equals("")) {
-                if (ActivityCompat.checkSelfPermission(TPFarmInstLandsizePolygonFragment.this.getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
-                        != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission
-                        (TPFarmInstLandsizePolygonFragment.this.getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-
-                    ActivityCompat.requestPermissions(TPFarmInstLandsizePolygonFragment.this.getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
-
-                }
-                Location location = locationManager.getLastKnownLocation(mprovider);
-                locationManager.requestLocationUpdates(mprovider, 1500, 1, this);
-                if (location != null) {
-                    onLocationChanged(location);
-                }
-            }
         }
     }
+    // set location points on the labels
+    public void setLocation(){
 
-    @Override
-    public void onLocationChanged(Location location) {
+        GPS gps  = GPS.getInstance();
         //global variables
-        g.setcurrentlat_long(location.getLatitude(),location.getLongitude(),location.getAltitude(),location.getAccuracy());
+        g.setcurrentlat_long(gps.getLatitude(),gps.getLongitude(),gps.getAltitude(),gps.getAccuracy());
         //display loc
         double lat = g.getLatitude();
         double lon = g.getLongitude();
@@ -231,24 +231,7 @@ public class TPFarmInstLandsizePolygonFragment extends Fragment implements Locat
         alttext.setText("Altitude: " + loc_alt);
         acctext.setText("Accuracy: " +loc_acc);
 
-        myDialog.dismiss();
     }
-
-    @Override
-    public void onStatusChanged(String s, int i, Bundle bundle) {
-
-    }
-
-    @Override
-    public void onProviderEnabled(String s) {
-
-    }
-
-    @Override
-    public void onProviderDisabled(String s) {
-
-    }
-
     protected void buildAlertMessageNoGps() {
 
         final android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this.getActivity());
@@ -270,6 +253,8 @@ public class TPFarmInstLandsizePolygonFragment extends Fragment implements Locat
     public  void savePolygon() {
         TextView farmerid = (TextView) getActivity().findViewById(R.id.fid);
         g.setfid(farmerid.getText().toString());
+        TextView plotid = (TextView) getActivity().findViewById(R.id.pid);
+        g.setpid(plotid.getText().toString());
         //get points from global
     }
 

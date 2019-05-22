@@ -94,7 +94,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
                 android:textAllCaps="false"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textColor="#fff"
                 android:layout_margin="10dp"
                 android:text="View completed data" />
@@ -109,7 +109,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
                 android:textAllCaps="false"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textColor="#fff"
                 android:layout_margin="10dp"
                 android:text="Send completed data" />

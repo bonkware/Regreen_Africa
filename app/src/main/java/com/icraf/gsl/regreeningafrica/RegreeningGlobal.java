@@ -9,7 +9,7 @@ import android.graphics.Bitmap;
 public class RegreeningGlobal {
     private static RegreeningGlobal instance;
     private double latitude=0.0, longitude=0.0, accuracy=0.0, altitude=0.0;
-    private Boolean GPS_fix;
+    private Boolean GPS_fix=false;
     private String districts,fname,county_region,country,select_location,select_site,fmnr_date,in_date,landsize,number_planted,number_survived,species_name,local_name,date_planted,select_measurement,stems;
     private String mg1,mg2,mg3,mg4,mg5,mg6,mg7,mg_other,mg_others,usage1,usage2,usage3,usage4,usage5,usage6,usage7,us_other,usg_other;
     private String fmnr_fenced,survey_name,tsurvey_name,fsurvey_name,tpsurvey_name,nsurvey_name,project_name,seed_sown,units,qunits,unitsown,livestock_other,c_name,cr_name,
@@ -20,7 +20,7 @@ public class RegreeningGlobal {
             govt, church_mosque,schools,women,youth,private_individual,communal_village,other_type,
             seed,graft,cutting,marcotting,farmland,plantation,mother_blocks,prisons,other_graft_sources,qpurchased,date_sown,germinated,survived,seedling_age,price,
             select_radio, bare_root,container,other_method, other, own_farm_seeds, local_dealer_seeds, national_seed,ngos_seed,
-            other_seed_source, other_s, nursery_species, nursery_local, seedlings_number, seedlings_age, hardening,
+            other_seed_source, other_s, nursery_species, nursery_local, seedlings_number, seedlings_age, pid,
             species_number,individual_ownership, community_ownership, govt_land_ownership,mosque_church_ownership, schools_ownership, other_ownership,other_s1,observation,image,nid,
             woodlot,iboundary,eboundary,garden,crop_field,pasture_grassland,fallow_pushland,other_sites;
     private Bitmap photo;
@@ -618,6 +618,14 @@ public class RegreeningGlobal {
     public void setyouth_participants(String youth_participants) {
         this.youth_participants = youth_participants;
     }
+    //Getting
+    public String getpid() {
+        return pid;
+    }
+    //Setting
+    public void setpid(String pid) {
+        this.pid = pid;
+    }
 
     //********************************* for nursery module *****************************//
     //Getter and setter for all nursery assessment
@@ -917,11 +925,18 @@ public class RegreeningGlobal {
         return altitude;
     }
 
-    public  void setcurrentlat_long(Double latitude, Double longitude,Double altitude, float accuracy) {
+    public  void setcurrentlat_long(Double latitude, Double longitude,Double altitude, double accuracy) {
         this.latitude = latitude;
         this.longitude = longitude;
         this.altitude = altitude;
         this.accuracy = accuracy;
+    }
+    //Getting/setting key for GPS_button status
+    public Boolean getGPS_fix(){
+        return GPS_fix;
+    }
+    public  void setGPS_fix(Boolean GPS_fix){
+        this.GPS_fix = GPS_fix;
     }
 
     public static synchronized RegreeningGlobal getInstance(){

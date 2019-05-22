@@ -106,7 +106,7 @@ public class NurseryEdit extends Activity implements OnClickListener {
         Intent intent = getIntent();
         String id = intent.getStringExtra("id");
         String nurseryid = intent.getStringExtra("nid");
-        String nursery_ename = intent.getStringExtra("ename");
+        String nursery_ename = intent.getStringExtra("enume");
         String nursery_date = intent.getStringExtra("date");
         String nursery_survey = intent.getStringExtra("survey_name");
         String nursery_country = intent.getStringExtra("nursery_country");

@@ -235,6 +235,7 @@ public class DbAccess {
     public void insertLandsizepolygon() {
         ContentValues contentValue = new ContentValues();
         contentValue.put(DatabaseHelper.fid, g.getfid());
+        contentValue.put(DatabaseHelper.pid, g.getpid());
         contentValue.put(DatabaseHelper.landsize_polygon_latitude, g.getLatitude());
         contentValue.put(DatabaseHelper.landsize_polygon_longitude, g.getLongitude());
         contentValue.put(DatabaseHelper.landsize_polygon_altitude, g.getAltitude());
