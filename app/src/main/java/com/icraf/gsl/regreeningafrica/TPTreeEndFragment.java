@@ -126,5 +126,6 @@ public class TPTreeEndFragment extends Fragment {
         g.setdbh(dbh.getText().toString());
         //get Gps get it from global
         //get Photo get it from global
+        g.setuploaded("no");//set uploaded to no on insert
     }
 }

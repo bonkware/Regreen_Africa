@@ -156,7 +156,7 @@ public class FmnrLandSizePolygonFragment extends Fragment {
             public void onClick(View v)
             {
                 savePolygon();//save
-                dbAccess.insertLandsizepolygon();//insert details to db
+                dbAccess.insertLandsizepolygonfmnr();//insert details to db
                 clickcount=clickcount+1;
                 // if(clickcount==1)
                 //check how many times clicked and so on
@@ -252,6 +252,7 @@ public class FmnrLandSizePolygonFragment extends Fragment {
         TextView pid = (TextView) getActivity().findViewById(R.id.pid);
         g.setpid(pid.getText().toString());
         //get points from global
+        g.setuploaded("no");//set uploaded to no on insert
     }
 }
 

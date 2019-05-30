@@ -6,27 +6,19 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Criteria;
-import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.ArrayList;
 
 
 /**
@@ -159,7 +151,7 @@ public class TPFarmInstLandsizePolygonFragment extends Fragment {
             public void onClick(View v)
             {
                 savePolygon();//save
-                dbAccess.insertLandsizepolygon();//insert details to db
+                dbAccess.insertLandsizepolygontp();//insert details to db
                 clickcount=clickcount+1;
                 // if(clickcount==1)
                 //check how many times clicked and so on
@@ -256,6 +248,7 @@ public class TPFarmInstLandsizePolygonFragment extends Fragment {
         TextView plotid = (TextView) getActivity().findViewById(R.id.pid);
         g.setpid(plotid.getText().toString());
         //get points from global
+        g.setuploaded("no");//set uploaded to no on insert
     }
 
 }

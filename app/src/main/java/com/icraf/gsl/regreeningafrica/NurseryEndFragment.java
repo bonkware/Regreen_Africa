@@ -211,6 +211,8 @@ public class NurseryEndFragment extends Fragment {
         g.setseedlings_age(seedlings_age.getText().toString());
         EditText price = (EditText) getActivity().findViewById(R.id.price);
         g.setprice(price.getText().toString());
+
+        g.setuploaded("no");//set uploaded to no on insert
     }
 }
 

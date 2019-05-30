@@ -18,7 +18,8 @@ import static com.icraf.gsl.regreeningafrica.DatabaseHelper.TABLE_COHORT;
 import static com.icraf.gsl.regreeningafrica.DatabaseHelper.TABLE_FARMER_INST;
 import static com.icraf.gsl.regreeningafrica.DatabaseHelper.TABLE_FMNR_FARMER_INST;
 import static com.icraf.gsl.regreeningafrica.DatabaseHelper.TABLE_FMNR_SPECIES;
-import static com.icraf.gsl.regreeningafrica.DatabaseHelper.TABLE_LANDSIZEPOLYGON;
+import static com.icraf.gsl.regreeningafrica.DatabaseHelper.TABLE_LANDSIZEPOLYGONFMNR;
+import static com.icraf.gsl.regreeningafrica.DatabaseHelper.TABLE_LANDSIZEPOLYGONTP;
 import static com.icraf.gsl.regreeningafrica.DatabaseHelper.TABLE_Measurement;
 import static com.icraf.gsl.regreeningafrica.DatabaseHelper.TABLE_NURSERY;
 import static com.icraf.gsl.regreeningafrica.DatabaseHelper.TABLE_NURSERY_SPECIES;
@@ -100,6 +101,7 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.use_food, g.getusage4());
         contentValue.put(DatabaseHelper.use_mulching, g.getusage5());
         contentValue.put(DatabaseHelper.use_other, g.getus_other());
+        contentValue.put(DatabaseHelper.tp_cohort_uploaded, g.getuploaded());
         //insert
         database.insert(TABLE_COHORT, null, contentValue);
     }
@@ -115,6 +117,7 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.tree_altitude, g.getAltitude());
         contentValue.put(DatabaseHelper.tree_accuracy, g.getAccuracy());
         contentValue.put(DatabaseHelper.tree_image_path, g.getpath());
+        contentValue.put(DatabaseHelper.tp_measurement_uploaded, g.getuploaded());
         //insert
         database.insert(TABLE_Measurement, null, contentValue);
     }
@@ -199,6 +202,7 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.seedlings_servived, g.getsurvived());
         contentValue.put(DatabaseHelper.seedlings_age, g.getseedlings_age());
         contentValue.put(DatabaseHelper.seedlings_price, g.getprice());
+        contentValue.put(DatabaseHelper.nursery_species_uploaded, g.getuploaded());
         //insert
         database.insert(TABLE_NURSERY_SPECIES, null, contentValue);
     }
@@ -231,17 +235,31 @@ public class DbAccess {
         //insert
         database.insert(TABLE_FMNR_FARMER_INST, null, contentValue);
     }
-    //insert polygon points
-    public void insertLandsizepolygon() {
+    //insert polygon points for tree planting
+    public void insertLandsizepolygontp() {
         ContentValues contentValue = new ContentValues();
-        contentValue.put(DatabaseHelper.fid, g.getfid());
-        contentValue.put(DatabaseHelper.pid, g.getpid());
-        contentValue.put(DatabaseHelper.landsize_polygon_latitude, g.getLatitude());
-        contentValue.put(DatabaseHelper.landsize_polygon_longitude, g.getLongitude());
-        contentValue.put(DatabaseHelper.landsize_polygon_altitude, g.getAltitude());
-        contentValue.put(DatabaseHelper.landsize_polygon_accuracy, g.getAccuracy());
+        contentValue.put(DatabaseHelper.fidtp, g.getfid());
+        contentValue.put(DatabaseHelper.pidtp, g.getpid());
+        contentValue.put(DatabaseHelper.landsize_polygon_latitudetp, g.getLatitude());
+        contentValue.put(DatabaseHelper.landsize_polygon_longitudetp, g.getLongitude());
+        contentValue.put(DatabaseHelper.landsize_polygon_altitudetp, g.getAltitude());
+        contentValue.put(DatabaseHelper.landsize_polygon_accuracytp, g.getAccuracy());
+        contentValue.put(DatabaseHelper.tp_polygon_uploaded, g.getuploaded());
         //insert
-        database.insert(TABLE_LANDSIZEPOLYGON, null, contentValue);
+        database.insert(TABLE_LANDSIZEPOLYGONTP, null, contentValue);
+    }
+    //insert polygon points for fmnr
+    public void insertLandsizepolygonfmnr() {
+        ContentValues contentValue = new ContentValues();
+        contentValue.put(DatabaseHelper.fidfmnr, g.getfid());
+        contentValue.put(DatabaseHelper.pidfmnr, g.getpid());
+        contentValue.put(DatabaseHelper.landsize_polygon_latitudefmnr, g.getLatitude());
+        contentValue.put(DatabaseHelper.landsize_polygon_longitudefmnr, g.getLongitude());
+        contentValue.put(DatabaseHelper.landsize_polygon_altitudefmnr, g.getAltitude());
+        contentValue.put(DatabaseHelper.landsize_polygon_accuracyfmnr, g.getAccuracy());
+        contentValue.put(DatabaseHelper.fmnr_polygon_uploaded, g.getuploaded());
+        //insert
+        database.insert(TABLE_LANDSIZEPOLYGONFMNR, null, contentValue);
     }
     //insert fmnr species
     public void insertFmnrSpecies() {
@@ -274,52 +292,34 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.fmnr_tree_altitude, g.getAltitude());
         contentValue.put(DatabaseHelper.fmnr_tree_accuracy, g.getAccuracy());
         contentValue.put(DatabaseHelper.fmnr_tree_image_path, g.getpath());
+        contentValue.put(DatabaseHelper.fmnr_species_uploaded, g.getuploaded());
         //insert
         database.insert(TABLE_FMNR_SPECIES, null, contentValue);
     }
-    //delete
-    public void deleteFarmer_Inst(){
-        database.execSQL("delete from "+ TABLE_FARMER_INST);
-    }
-    public void deleteCohort(){
-        database.execSQL("delete from "+ TABLE_COHORT);
-    }
-    public void deleteMeasurements(){
-        database.execSQL("delete from "+ TABLE_Measurement);
-    }
-    public void deleteTrainings(){
-        database.execSQL("delete from "+ TABLE_Trainings);
-    }
-    public void deletenurseryinfo(){
-        database.execSQL("delete from "+ TABLE_NURSERY);
-    }
-    public void deletenurseryspecies(){
-        database.execSQL("delete from "+ TABLE_NURSERY_SPECIES);
-    }
-
-    public void deleteFmnrFarmer_Inst(){
-        database.execSQL("delete from "+ TABLE_FMNR_FARMER_INST);
-    }
-    public void deleteFmnrSpecies(){
-        database.execSQL("delete from "+ TABLE_FMNR_SPECIES);
-    }
-    public void deleteLandsizePolygon(){
-        database.execSQL("delete from "+ TABLE_LANDSIZEPOLYGON);
-    }
-    //get all records from db for uploading
-    public Cursor getTP() {
-        String selectQuery = "SELECT * FROM farmer_institution,cohort,tree_measurements,landsizepolygon WHERE farmer_institution.farmerID = cohort.farmerID and cohort.cohortID = tree_measurements.cohortID and farmer_institution.farmerID=landsizepolygon.farmerID and farmer_institution.uploaded='no' ";
+  //tree planting queries
+    public Cursor getTPinfo() {
+        String selectQuery = "SELECT * FROM farmer_institution WHERE uploaded='no' ";
         Cursor c = database.rawQuery(selectQuery, null);
         return c;
     }
-    public Cursor getTrainings() {
-        String selectQuery = "SELECT * FROM trainings where uploaded='no'";
+    public Cursor getTPcohort() {
+        String selectQuery = "SELECT * FROM cohort WHERE uploaded='no' ";
+        Cursor c = database.rawQuery(selectQuery, null);
+        return c;
+    }
+    public Cursor getTPmeasurements() {
+        String selectQuery = "SELECT * FROM tree_measurements WHERE uploaded='no' ";
+        Cursor c = database.rawQuery(selectQuery, null);
+        return c;
+    }
+    public Cursor getTPpolygon() {
+        String selectQuery = "SELECT * FROM landsizepolygontp WHERE uploaded='no' ";
         Cursor c = database.rawQuery(selectQuery, null);
         return c;
     }
     //count no. of records tree planting
     public int getcount(){
-        Cursor cur = database.rawQuery("SELECT count(*) from farmer_institution,cohort,tree_measurements WHERE farmer_institution.farmerID = cohort.farmerID and cohort.cohortID = tree_measurements.cohortID and farmer_institution.uploaded='no' ", null);
+        Cursor cur = database.rawQuery("SELECT count(*) from farmer_institution,cohort,tree_measurements WHERE farmer_institution.uploaded='no' and cohort.uploaded='no' and tree_measurements.uploaded='no' ", null);
         int x = 0;
         if (cur.moveToFirst())
         {
@@ -327,6 +327,39 @@ public class DbAccess {
         }
         cur.close();
         return x;
+    }
+    //fmnr queries
+    public Cursor getFMNRinfo() {
+        String selectQuery = "SELECT * FROM fmnr_farmer_inst WHERE uploaded='no' ";
+        Cursor c = database.rawQuery(selectQuery, null);
+        return c;
+    }
+    public Cursor getFMNRspecies() {
+        String selectQuery = "SELECT * FROM fmnr_species WHERE uploaded='no' ";
+        Cursor c = database.rawQuery(selectQuery, null);
+        return c;
+    }
+    public Cursor getFMNRpolygon() {
+        String selectQuery = "SELECT * FROM landsizepolygonfmnr WHERE uploaded='no' ";
+        Cursor c = database.rawQuery(selectQuery, null);
+        return c;
+    }
+    //count number of records in fmnr
+    public int getfmnrcount(){
+        Cursor cur = database.rawQuery("SELECT count(*) from fmnr_farmer_inst,fmnr_species WHERE fmnr_species.uploaded='no' and fmnr_farmer_inst.uploaded='no' ", null);
+        int x = 0;
+        if (cur.moveToFirst())
+        {
+            x = cur.getInt(0);
+        }
+        cur.close();
+        return x;
+    }
+    //training queries
+    public Cursor getTrainings() {
+        String selectQuery = "SELECT * FROM trainings where uploaded='no'";
+        Cursor c = database.rawQuery(selectQuery, null);
+        return c;
     }
     //count no. of records trainings
     public int getcount_trainings(){
@@ -339,40 +372,28 @@ public class DbAccess {
         cur.close();
         return x;
     }
-    public Cursor getNursery() {
-        String selectQuery = "SELECT * FROM nursery_info,nursery_species WHERE nursery_info.nurseryID = nursery_species.nurseryID and nursery_info.uploaded='no'";
+   //nursery queries
+    public Cursor getNurseryinfo() {
+        String selectQuery = "SELECT * FROM nursery_info WHERE uploaded='no'";
         Cursor c = database.rawQuery(selectQuery, null);
         return c;
+    }
+    public Cursor getNurseryspecies(String nurseryID) {
+        String selectQuery = "SELECT * FROM nursery_species WHERE nurseryID='"+nurseryID+"' and uploaded='no'";
+        Cursor c = database.rawQuery(selectQuery, null);
+        return c;
+    }
+    public int getnurserycount(){
+        Cursor cur = database.rawQuery("SELECT count(*) from nursery_info,nursery_species WHERE nursery_info.uploaded='no' and nursery_species.uploaded='no' ", null);
+        int x = 0;
+        if (cur.moveToFirst())
+        {
+            x = cur.getInt(0);
+        }
+        cur.close();
+        return x;
     }
 
-    //count no. of records tree planting
-    public int getnurserycount(){
-        Cursor cur = database.rawQuery("SELECT count(*) from nursery_info,nursery_species WHERE nursery_info.nurseryID = nursery_species.nurseryID and nursery_info.uploaded='no' ", null);
-        int x = 0;
-        if (cur.moveToFirst())
-        {
-            x = cur.getInt(0);
-        }
-        cur.close();
-        return x;
-    }
-    //get fmnr data
-    public Cursor getFMNR() {
-       String selectQuery = "SELECT * FROM fmnr_farmer_inst,fmnr_species,landsizepolygon WHERE fmnr_farmer_inst.farmerID = fmnr_species.farmerID and fmnr_farmer_inst.farmerID=landsizepolygon.farmerID and fmnr_farmer_inst.uploaded='no' ";
-        Cursor c = database.rawQuery(selectQuery, null);
-        return c;
-    }
-    //count number of records in fmnr
-    public int getfmnrcount(){
-        Cursor cur = database.rawQuery("SELECT count(*) from fmnr_farmer_inst,fmnr_species WHERE fmnr_farmer_inst.farmerID = fmnr_species.farmerID and fmnr_farmer_inst.uploaded='no' ", null);
-        int x = 0;
-        if (cur.moveToFirst())
-        {
-            x = cur.getInt(0);
-        }
-        cur.close();
-        return x;
-    }
     //get the list of farmer/institution with their farmer ids
     public List<String> getFI_names() {
         List<String> list = new ArrayList<>();
@@ -387,13 +408,13 @@ public class DbAccess {
         cursor.close();
         return list;
     }
-    //select all farmers/institutions from db
+    //select all farmers/institutions from db to be used on multi polygon
     public Cursor fetch_FInames() {
         String selectQuery = "SELECT * FROM farmer_institution where uploaded='no' ORDER BY _id desc  ";
         Cursor cursor = database.rawQuery(selectQuery, null);
         return cursor;
     }
-    //select all farmers/institutions from db
+    //select all farmers/institutions from db for multi polygon use
     public Cursor fetch_FInamesFMNR() {
         String selectQuery = "SELECT * FROM fmnr_farmer_inst where uploaded='no' ORDER BY _id desc  ";
         Cursor cursor = database.rawQuery(selectQuery, null);
@@ -430,18 +451,49 @@ public class DbAccess {
         return row;
     }
     //update uploaded status to yes once data is uploaded
-    public void uploadStatusTP() {
+    public void uploadStatusTPinfo() {
         String updateQuery = "Update farmer_institution set uploaded='yes' where farmerID=farmerID";
         Cursor c = database.rawQuery(updateQuery, null);
         c.moveToFirst();
     }
-    public void uploadStatusFMNR() {
+    public void uploadStatusTPcohort() {
+        String updateQuery = "Update cohort set uploaded='yes' where farmerID=farmerID";
+        Cursor c = database.rawQuery(updateQuery, null);
+        c.moveToFirst();
+    }
+    public void uploadStatusTPmeasurement() {
+        String updateQuery = "Update tree_measurements set uploaded='yes'";
+        Cursor c = database.rawQuery(updateQuery, null);
+        c.moveToFirst();
+    }
+    public void uploadStatusTPpolygon() {
+        String updateQuery = "Update landsizepolygontp set uploaded='yes' where farmerID=farmerID";
+        Cursor c = database.rawQuery(updateQuery, null);
+        c.moveToFirst();
+    }
+    public void uploadStatusFMNRinfo() {
         String updateQuery = "Update fmnr_farmer_inst set uploaded='yes' where farmerID=farmerID";
         Cursor c = database.rawQuery(updateQuery, null);
         c.moveToFirst();
     }
-    public void uploadStatusNursery() {
-        String updateQuery = "Update nursery_info set uploaded='yes' where nurseryID=nurseryID";
+    public void uploadStatusFMNRspecies() {
+        String updateQuery = "Update fmnr_species set uploaded='yes' where farmerID=farmerID";
+        Cursor c = database.rawQuery(updateQuery, null);
+        c.moveToFirst();
+    }
+    public void uploadStatusFMNRpolygon() {
+        String updateQuery = "Update landsizepolygonfmnr set uploaded='yes' where farmerID=farmerID";
+        Cursor c = database.rawQuery(updateQuery, null);
+        c.moveToFirst();
+    }
+
+    public void uploadStatusNurseryinfo(String nurseryID) {
+        String updateQuery = "Update nursery_info set uploaded='yes' where nurseryID='"+nurseryID+"'";
+        Cursor c = database.rawQuery(updateQuery, null);
+        c.moveToFirst();
+    }
+    public void uploadStatusNurseryspecies(String nurseryID) {
+        String updateQuery = "Update nursery_species set uploaded='yes' where nurseryID='"+nurseryID+"'";
         Cursor c = database.rawQuery(updateQuery, null);
         c.moveToFirst();
     }
@@ -450,7 +502,7 @@ public class DbAccess {
         Cursor c = database.rawQuery(updateQuery, null);
         c.moveToFirst();
     }
-    //select all farmers/institutions from db and view
+    //select all farmers/institutions from db and view the saved data
     public Cursor fetchTP() {
         //String selectQuery = "Select * from cohort,farmer_institution,tree_measurements";
         String selectQuery = "SELECT * FROM farmer_institution,cohort,tree_measurements WHERE farmer_institution.farmerID = cohort.farmerID and cohort.cohortID = tree_measurements.cohortID and farmer_institution.uploaded='no' ";

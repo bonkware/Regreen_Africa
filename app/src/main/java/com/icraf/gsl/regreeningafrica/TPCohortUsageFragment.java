@@ -15,6 +15,7 @@ import java.util.Random;
 
 /**
  * Created by benard on 1/18/19.
+ *
  */
 
 public class TPCohortUsageFragment extends Fragment {
@@ -238,8 +239,7 @@ public class TPCohortUsageFragment extends Fragment {
         //get the edit text value for other
         EditText text1=(EditText) getActivity().findViewById(R.id.us_other);
         g.setus_other(text1.getText().toString());
-
-
+        g.setuploaded("no");//set uploaded to no on insert
 
     }
 }

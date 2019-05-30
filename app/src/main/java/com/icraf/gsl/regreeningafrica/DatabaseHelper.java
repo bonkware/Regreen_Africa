@@ -65,6 +65,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String use_food = "usage4";
     public static final String use_mulching = "usage5";
     public static final String use_other = "us_other";
+    public static final String tp_cohort_uploaded = "uploaded";//for status check, sent or not
 
     //tree measurement
     public static final String cohortID = "cohortID";
@@ -76,6 +77,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String tree_altitude = "tree_altitude";
     public static final String tree_accuracy = "tree_accuracy";
     public static final String tree_image_path = "path";
+    public static final String tp_measurement_uploaded = "uploaded";//for status check, sent or not
 
     //table for trainings
     public static final String _id = "_id";
@@ -156,6 +158,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String seedlings_servived = "seedlings_survived";
     public static final String seedlings_age = "seedlings_age";
     public static final String seedlings_price = "seedlings_price";
+    public static final String nursery_species_uploaded = "uploaded";//for status check, sent or not
     //end of nursery columns
 
     // fmnr farmer/institution info table
@@ -216,16 +219,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String fmnr_tree_altitude = "tree_altitude";
     public static final String fmnr_tree_accuracy = "tree_accuracy";
     public static final String fmnr_tree_image_path = "path";
+    public static final String fmnr_species_uploaded = "uploaded";//for status check, sent or not
 
     //table for fmnr and tree planting landsize polygon
-    public static final String TABLE_LANDSIZEPOLYGON = "landsizepolygon";
+    public static final String TABLE_LANDSIZEPOLYGONTP = "landsizepolygontp";
+    public static final String TABLE_LANDSIZEPOLYGONFMNR = "landsizepolygonfmnr";
     //columns for both fmnr and tree planting landsize polygons
-    public static final String fid = "farmerID";
-    public static final String pid = "plotID";
-    public static final String landsize_polygon_latitude = "latitude";
-    public static final String landsize_polygon_longitude = "longitude";
-    public static final String landsize_polygon_altitude = "altitude";
-    public static final String landsize_polygon_accuracy = "accuracy";
+    public static final String fidtp = "farmerID";
+    public static final String pidtp = "plotID";
+    public static final String landsize_polygon_latitudetp = "latitude";
+    public static final String landsize_polygon_longitudetp = "longitude";
+    public static final String landsize_polygon_altitudetp = "altitude";
+    public static final String landsize_polygon_accuracytp = "accuracy";
+    public static final String tp_polygon_uploaded = "uploaded";//for status check, sent or not
+    //fmnr
+    public static final String fidfmnr = "farmerID";
+    public static final String pidfmnr = "plotID";
+    public static final String landsize_polygon_latitudefmnr = "latitude";
+    public static final String landsize_polygon_longitudefmnr = "longitude";
+    public static final String landsize_polygon_altitudefmnr = "altitude";
+    public static final String landsize_polygon_accuracyfmnr = "accuracy";
+    public static final String fmnr_polygon_uploaded = "uploaded";//for status check, sent or not
     // Database name
     static final String DB_NAME = "regreen_africa.sqlite";
 
@@ -247,13 +261,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + " TEXT,"+ species_name + " TEXT,"+date_planted + " TEXT,"+number_planted + " TEXT,"+number_survived + " TEXT,"+woodlot + " TEXT,"+iboundary + " TEXT,"+eboundary + " TEXT,"
                     +garden + " TEXT,"+crop_field + " TEXT,"+pasture_grassland + " TEXT,"+fallow_bushland + " TEXT,"+other_sites + " TEXT,"+management_pruning+" TEXT,"+management_fencing + " TEXT,"+
                     management_weeding + " TEXT,"+management_watering + " TEXT,"+ management_organic_fertilizer + " TEXT,"+management_other + " TEXT,"+use_firewood+" TEXT,"+use_housing_construction +
-                    " TEXT,"+use_animal_feed +  " TEXT,"+use_food + " TEXT,"+use_mulching + " TEXT,"+use_other+" TEXT,"+farmerID+" TEXT,"+cohort_id+" TEXT);";
+                    " TEXT,"+use_animal_feed +  " TEXT,"+use_food + " TEXT,"+use_mulching + " TEXT,"+use_other+" TEXT,"+farmerID+" TEXT,"+tp_cohort_uploaded+ " TEXT,"+cohort_id+" TEXT);";
     //creating tree measurement table
     private static final String CREATE_TABLE_TREE =
             "create table " +
                     TABLE_Measurement + "(" +
                     _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + " TEXT,"+ tree_height + " TEXT,"+tree_dbh + " TEXT,"+tree_latitude + " TEXT,"+tree_longitude+" TEXT,"+tree_altitude + " TEXT,"+
-                    tree_accuracy +" TEXT,"+tree_image_path + " TEXT,"+cohortID+" TEXT);";
+                    tree_accuracy +" TEXT,"+tree_image_path + " TEXT,"+tp_measurement_uploaded+ " TEXT,"+cohortID+" TEXT);";
     //creating training table
     private static final String CREATE_TABLE_TRAININGS =
             "create table " +
@@ -274,7 +288,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     _nid + " INTEGER PRIMARY KEY AUTOINCREMENT, " + nurseryID + " TEXT," + nursery_species + " TEXT, " + nursery_local + " TEXT, " + method_bare_root + " TEXT,"+
                     method_containerised + " TEXT,"+other_methods + " TEXT,"+propagation_seed + " TEXT,"+propagation_graft + " TEXT,"+propagation_cutting + " TEXT,"+propagation_marcotting + " TEXT,"+seed_source_onfarm + " TEXT,"+seed_source_local_dealer + " TEXT," +
                     ""+seed_source_national_dealer + " TEXT,"+seed_source_NGOs + " TEXT,"+other_seed_sources + " TEXT,"+graft_source_farmland + " TEXT,"+graft_source_plantation + " TEXT,"+graft_source_mother_blocks + " TEXT,"+graft_source_prisons + " TEXT,"+graft_source_others + " TEXT," +
-                    ""+seeds_quantity_purchased + " TEXT,"+qunits + " TEXT,"+seed_sown + " TEXT,"+unitsown + " TEXT,"+date_seeds_sown + " TEXT,"+seedlings_germinated + " TEXT,"+seedlings_servived + " TEXT,"+seedlings_age + " TEXT,"+seedlings_price + " TEXT);";
+                    ""+seeds_quantity_purchased + " TEXT,"+qunits + " TEXT,"+seed_sown + " TEXT,"+unitsown + " TEXT,"+date_seeds_sown + " TEXT,"+seedlings_germinated + " TEXT,"+seedlings_servived + " TEXT,"+seedlings_age + " TEXT,"+seedlings_price + " TEXT,"+nursery_species_uploaded + " TEXT);";
     // Creating farmer/institution table for fmnr
     private static final String CREATE_TABLE_FMNR_FARMER_INST =
             "create table " +
@@ -289,12 +303,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + " TEXT,"+ fmnr_species_name + " TEXT,"+fmnr_local_name + " TEXT,"+fmnr_management_pruning + " TEXT,"+fmnr_management_fencing + " TEXT,"+fmnr_management_weeding+" TEXT,"+fmnr_management_thinning + " TEXT,"+
                     fmnr_management_organic_fertilizer + " TEXT,"+fmnr_management_pollarding_lopping + " TEXT,"+fmnr_management_coppicing + " TEXT,"+fmnr_management_other + " TEXT,"+ fmnr_use_firewood + " TEXT,"+fmnr_use_housing_construction + " TEXT,"+fmnr_use_fodder+" TEXT,"+fmnr_use_fruits +
                     " TEXT,"+fmnr_use_soil_fertility +  " TEXT,"+fmnr_use_leafy_vegetables +  " TEXT,"+fmnr_use_nuts +  " TEXT,"+fmnr_use_other + " TEXT,"+fmnr_tree_stems + " TEXT,"+fmnr_tree_height+" TEXT,"+fmnr_tree_dbh + " TEXT,"+fmnr_tree_latitude + " TEXT,"+fmnr_tree_longitude+" TEXT,"+
-                    fmnr_tree_altitude +  " TEXT,"+fmnr_tree_accuracy + " TEXT,"+fmnr_tree_image_path + " TEXT,"+fmnrfarmer_id+" TEXT);";
-    //creating columns for polygon
-    private static final String CREATE_TABLE_LANDSIZEPOLYGON =
+                    fmnr_tree_altitude +  " TEXT,"+fmnr_tree_accuracy + " TEXT,"+fmnr_tree_image_path + " TEXT,"+fmnr_species_uploaded+ " TEXT,"+fmnrfarmer_id+" TEXT);";
+    //creating columns for tp polygon
+    private static final String CREATE_TABLE_LANDSIZEPOLYGONTP =
             "create table " +
-                    TABLE_LANDSIZEPOLYGON + "(" +
-                    id + " INTEGER PRIMARY KEY AUTOINCREMENT, " + fid + " TEXT," + pid + " TEXT,"+ landsize_polygon_latitude + " TEXT,"+landsize_polygon_longitude + " TEXT,"+landsize_polygon_altitude + " TEXT,"+landsize_polygon_accuracy+" TEXT);";
+                    TABLE_LANDSIZEPOLYGONTP + "(" +
+                    id + " INTEGER PRIMARY KEY AUTOINCREMENT, " + fidtp + " TEXT," + pidtp + " TEXT,"+ landsize_polygon_latitudetp + " TEXT,"+landsize_polygon_longitudetp + " TEXT,"+landsize_polygon_altitudetp + " TEXT,"+landsize_polygon_accuracytp+" TEXT,"+tp_polygon_uploaded+" TEXT);";
+    //columns for fmnr polygon
+    private static final String CREATE_TABLE_LANDSIZEPOLYGONFMNR =
+            "create table " +
+                    TABLE_LANDSIZEPOLYGONFMNR + "(" +
+                    id + " INTEGER PRIMARY KEY AUTOINCREMENT, " + fidfmnr + " TEXT," + pidfmnr + " TEXT,"+ landsize_polygon_latitudefmnr + " TEXT,"+landsize_polygon_longitudefmnr + " TEXT,"+landsize_polygon_altitudefmnr + " TEXT,"+landsize_polygon_accuracyfmnr+" TEXT,"+fmnr_polygon_uploaded+" TEXT);";
 
     public DatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -310,7 +329,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_NURSERY);
         db.execSQL(CREATE_TABLE_NURSERY_SPECIES);
         db.execSQL(CREATE_TABLE_FMNR_FARMER_INST);
-        db.execSQL(CREATE_TABLE_LANDSIZEPOLYGON);
+        db.execSQL(CREATE_TABLE_LANDSIZEPOLYGONTP);
+        db.execSQL(CREATE_TABLE_LANDSIZEPOLYGONFMNR);
         db.execSQL(CREATE_TABLE_FMNR_SPECIES);
 
     }
@@ -326,6 +346,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_NURSERY_SPECIES);
         db.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_FMNR_FARMER_INST);
         db.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_FMNR_SPECIES);
+        db.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_LANDSIZEPOLYGONTP);
+        db.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_LANDSIZEPOLYGONFMNR);
         //create new tables
         onCreate(db);
     }
