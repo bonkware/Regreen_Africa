@@ -1,21 +1,14 @@
 package com.icraf.gsl.regreeningafrica;
 
-import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.GpsStatus;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.provider.Settings;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
-import android.widget.Toast;
 
 /**
  * Created on 21/05/19.
@@ -78,10 +71,6 @@ public class GPS {
                     gpslocationListener);
 
         }// end if GPS permission
-
-
-
-
     }// end getGPSFix
 
 
@@ -124,8 +113,10 @@ public class GPS {
                             altitude = gpslocation.getAltitude();
                             accuracy = gpslocation.getAccuracy();
 
-                            // show dialog till fix achived
-                            progDailog.dismiss();
+                            // show dialog till fix achieved
+                            if(progDailog != null) {
+                                progDailog.dismiss();
+                            }
                             progDailog=null;
 
                             /*

@@ -2,19 +2,14 @@ package com.icraf.gsl.regreeningafrica;
 
 import android.Manifest;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Criteria;
-import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,17 +18,16 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TableLayout;
 
-import java.util.ArrayList;
-
 
 /**
  * Created by benard on 1/18/19.
  *
  */
 
-public class FmnrTreeGpsFragment extends Fragment implements LocationListener {
+public class FmnrTreeGpsFragment extends Fragment {
     private static final int REQUEST_LOCATION = 1;
     ImageButton b;
+    Button fixgps,updategps,getlocation,save;
     TableLayout t;
     EditText lattext,lontext,alttext,acctext;
     LocationManager locationManager;
@@ -66,12 +60,13 @@ public class FmnrTreeGpsFragment extends Fragment implements LocationListener {
                 //show table when this button is clicked
                 t = (TableLayout) view.findViewById(R.id.gpscoord);
                 t.setVisibility(View.VISIBLE);
+                //setLocation();
+                GPSfix();
                 bnext.setEnabled(true);
                 //and start the gps fixing
-                gpsfix();
-
             }
         });
+
         return view;
     }
     public  void getGpspermission() {
@@ -83,50 +78,26 @@ public class FmnrTreeGpsFragment extends Fragment implements LocationListener {
 
         }
     }
-    public  void gpsfix(){
-        locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
-        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-            buildAlertMessageNoGps();
+    // call gps fix method from gps class
+    public void GPSfix() {
+        GPS gps = GPS.getInstance();
+        gps.getGPSFix(getContext());
 
-        } else if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-            //getLocation();
+        if (g.getGPS_fix() == false) {
+            ProgressDialog progDailog;
+            progDailog = ProgressDialog.show(getActivity(), "GPS fix", "Please wait for GPS to fix location.", true);//please wait
+            gps.setProgDailog(progDailog);
+        } else {
+            setLocation();//call this if the gps has already been fixed
+            //getlocation.setVisibility(View.VISIBLE);//show the get location button
 
-            Criteria criteria = new Criteria();
-
-            //start the progress dialog until gps fixes
-            myDialog = ProgressDialog.show(this.getActivity(), "GPS fix", "Please wait for GPS to fix location.", true);//please wait
-            myDialog.setCancelable(true);
-            myDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-                public void onCancel(DialogInterface dialog) {
-                    Log.i("inside on cancel","Cancel Called");
-                    //finish(); //If you want to finish the activity.
-                }
-            });
-
-
-            mprovider = locationManager.getBestProvider(criteria, true);
-
-            if (mprovider != null && !mprovider.equals("")) {
-                if (ActivityCompat.checkSelfPermission(FmnrTreeGpsFragment.this.getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
-                        != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission
-                        (FmnrTreeGpsFragment.this.getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-
-                    ActivityCompat.requestPermissions(FmnrTreeGpsFragment.this.getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
-
-                }
-                Location location = locationManager.getLastKnownLocation(mprovider);
-                locationManager.requestLocationUpdates(mprovider, 1500, 1, this);
-                if (location != null) {
-                    onLocationChanged(location);
-                }
-            }
         }
     }
-
-    @Override
-    public void onLocationChanged(Location location) {
+    // set location points on the labels
+    public void setLocation(){
+        GPS gps  = GPS.getInstance();
         //global variables
-        g.setcurrentlat_long(location.getLatitude(),location.getLongitude(),location.getAltitude(),location.getAccuracy());
+        g.setcurrentlat_long(gps.getLatitude(),gps.getLongitude(),gps.getAltitude(),gps.getAccuracy());
         //display loc
         double lat = g.getLatitude();
         double lon = g.getLongitude();
@@ -140,33 +111,8 @@ public class FmnrTreeGpsFragment extends Fragment implements LocationListener {
         lontext.setText(loc_lon);
         alttext.setText(loc_alt);
         acctext.setText(loc_acc);
-        //remove updates
-       /* if (ActivityCompat.checkSelfPermission(GPSFragment.this.getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this.getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }*/
-        //locationManager.removeUpdates(this);//remove updates
-
-        //dismiss dialog
-        myDialog.dismiss();
     }
-
-    @Override
-    public void onStatusChanged(String s, int i, Bundle bundle) {
-
-    }
-
-    @Override
-    public void onProviderEnabled(String s) {
-
-    }
-
-    @Override
-    public void onProviderDisabled(String s) {
-
-    }
-
     protected void buildAlertMessageNoGps() {
-
         final android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this.getActivity());
         builder.setMessage("Please Turn ON your GPS Connection")
                 .setCancelable(false)

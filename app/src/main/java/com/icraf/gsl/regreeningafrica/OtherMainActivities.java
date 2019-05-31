@@ -54,16 +54,16 @@ public class OtherMainActivities extends AppCompatActivity {
     ProgressDialog progressDialog;
     int count = 1;
     //urls for data submission
-    String treePlantinginfo_url = "http://172.28.0.155/regreen_africa/insertTPinfo.php";
-    String treePlantingcohort_url = "http://172.28.0.155/regreen_africa/insertTPcohort.php";
-    String treePlantingmeasurement_url = "http://172.28.0.155/regreen_africa/insertTPmeasurement.php";
-    String treePlantingpolygon_url = "http://172.28.0.155/regreen_africa/insertTPpolygon.php";
-    String trainings_url = "http://172.28.0.155/regreen_africa/insertTrainings.php";
-    String nurseryinfo_url = "http://172.28.0.155/regreen_africa/insertNurseryinfo.php";
-    String nurseryspecies_url = "http://172.28.0.155/regreen_africa/insertNurseryspecies.php";
-    String fmnrinfo_url = "http://172.28.0.155/regreen_africa/insertFMNRinfo.php";
-    String fmnrspecies_url = "http://172.28.0.155/regreen_africa/insertFMNRspecies.php";
-    String fmnrpolygon_url = "http://172.28.0.155/regreen_africa/insertFMNRpolygon.php";
+    String treePlantinginfo_url = "http://41.204.191.62/regreen_africa/insertTPinfo.php";
+    String treePlantingcohort_url = "http://41.204.191.62/regreen_africa/insertTPcohort.php";
+    String treePlantingmeasurement_url = "http://41.204.191.62/regreen_africa/insertTPmeasurement.php";
+    String treePlantingpolygon_url = "http://41.204.191.62/regreen_africa/insertTPpolygon.php";
+    String trainings_url = "http://41.204.191.62/regreen_africa/insertTrainings.php";
+    String nurseryinfo_url = "http://41.204.191.62/regreen_africa/insertNurseryinfo.php";
+    String nurseryspecies_url = "http://41.204.191.62/regreen_africa/insertNurseryspecies.php";
+    String fmnrinfo_url = "http://41.204.191.62/regreen_africa/insertFMNRinfo.php";
+    String fmnrspecies_url = "http://41.204.191.62/regreen_africa/insertFMNRspecies.php";
+    String fmnrpolygon_url = "http://41.204.191.62/regreen_africa/insertFMNRpolygon.php";
 
     RegreeningGlobal g = RegreeningGlobal.getInstance();
     private Context mContext;
@@ -230,7 +230,6 @@ public class OtherMainActivities extends AppCompatActivity {
 
                     // create an object of volley request queue
                     //RequestQueue queue = Volley.newRequestQueue(OtherMainActivities.this);
-                    //RequestQueue queue=AppController.getInstance().getRequestQueue();
                     if (queue == null) {
                         queue = Volley.newRequestQueue(this);
                     }
@@ -399,7 +398,6 @@ public class OtherMainActivities extends AppCompatActivity {
 
                     // create an object of volley request queue
                     //RequestQueue queue = Volley.newRequestQueue(OtherMainActivities.this);
-                    //RequestQueue queue=AppController.getInstance().getRequestQueue();
                     if (queue == null) {
                         queue = Volley.newRequestQueue(this);
                     }
@@ -488,15 +486,6 @@ public class OtherMainActivities extends AppCompatActivity {
                     request.setRetryPolicy(new DefaultRetryPolicy( 0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
                     queue.add(request);
-                    //VolleySingleton.getInstance(this).addToRequestQueue(request);
-                    //add listener to the queue which is executed when the request ends
-                   /* queue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<String>() {
-                        @Override
-                        public void onRequestFinished(Request<String> request) {
-                            if (progressDialog !=  null && progressDialog.isShowing())
-                                progressDialog.dismiss();
-                        }
-                    });*/
 
                 } while (cursor.moveToNext());
             }//end of cursor
@@ -524,7 +513,6 @@ public class OtherMainActivities extends AppCompatActivity {
 
                     // create an object of volley request queue
                     //RequestQueue queue = Volley.newRequestQueue(OtherMainActivities.this);
-                    //RequestQueue queue=AppController.getInstance().getRequestQueue();
                     if (queue == null) {
                         queue = Volley.newRequestQueue(this);
                     }
@@ -601,15 +589,6 @@ public class OtherMainActivities extends AppCompatActivity {
                     request.setRetryPolicy(new DefaultRetryPolicy( 0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
                     queue.add(request);
-                    //VolleySingleton.getInstance(this).addToRequestQueue(request);
-                    //add listener to the queue which is executed when the request ends
-                    /*queue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<String>() {
-                        @Override
-                        public void onRequestFinished(Request<String> request) {
-                            if (progressDialog !=  null && progressDialog.isShowing())
-                                progressDialog.dismiss();
-                        }
-                    });*/
 
                 } while (cursor.moveToNext());
             }//end of cursor
@@ -634,7 +613,6 @@ public class OtherMainActivities extends AppCompatActivity {
 
                     // create an object of volley request queue
                     //RequestQueue queue = Volley.newRequestQueue(OtherMainActivities.this);
-                    //RequestQueue queue=AppController.getInstance().getRequestQueue();
                     if (queue == null) {
                         queue = Volley.newRequestQueue(this);
                     }
@@ -703,15 +681,6 @@ public class OtherMainActivities extends AppCompatActivity {
                     request.setRetryPolicy(new DefaultRetryPolicy( 0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
                     queue.add(request);
-                    //VolleySingleton.getInstance(this).addToRequestQueue(request);
-                    //add listener to the queue which is executed when the request ends
-                    /*queue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<String>() {
-                        @Override
-                        public void onRequestFinished(Request<String> request) {
-                            if (progressDialog !=  null && progressDialog.isShowing())
-                                progressDialog.dismiss();
-                        }
-                    });*/
 
                 } while (cursor.moveToNext());
             }//end of cursor
@@ -1248,7 +1217,6 @@ public class OtherMainActivities extends AppCompatActivity {
                         queue = Volley.newRequestQueue(this);
                     }
                     // Request a string response from the provided url above to server.
-                    //StringRequest request = new StringRequest(Request.Method.POST, fmnr_url, new Response.Listener<String>() {
                     request = new StringRequest(Request.Method.POST, fmnrpolygon_url, new Response.Listener<String>() {
                         @Override
                         //successful response
@@ -1312,21 +1280,6 @@ public class OtherMainActivities extends AppCompatActivity {
                     request.setRetryPolicy(new DefaultRetryPolicy( 0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
                     queue.add(request);
-                    //Singleton.getInstance(mContext).addToRequestQueue(request);
-                    //manage out of memory issues and cache clear
-                    DiskBasedCache cache = new DiskBasedCache(getCacheDir(), 16 * 1024 * 1024);
-                    queue = new RequestQueue(cache, new BasicNetwork(new HurlStack()));
-                    queue.start();
-                    queue.add(new ClearCacheRequest(cache, null));//end of cache clear
-                    //VolleySingleton.getInstance(this).addToRequestQueue(request);
-                    //add listener to the queue which is executed when the request ends
-                    /*queue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<String>() {
-                        @Override
-                        public void onRequestFinished(Request<String> request) {
-                            if (progressDialog !=  null && progressDialog.isShowing())
-                                progressDialog.dismiss();
-                        }
-                    });*/
 
                 } while (cursor.moveToNext());
             }//end of cursor
@@ -1379,7 +1332,6 @@ public class OtherMainActivities extends AppCompatActivity {
                         queue = Volley.newRequestQueue(this);
                     }
                     // Request a string response from the provided url above to server.
-                    //StringRequest request = new StringRequest(Request.Method.POST, fmnr_url, new Response.Listener<String>() {
                     request = new StringRequest(Request.Method.POST, fmnrspecies_url, new Response.Listener<String>() {
                         @Override
                         //successful response
@@ -1470,21 +1422,6 @@ public class OtherMainActivities extends AppCompatActivity {
                     request.setRetryPolicy(new DefaultRetryPolicy( 0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
                     queue.add(request);
-                    //Singleton.getInstance(mContext).addToRequestQueue(request);
-                    //manage out of memory issues and cache clear
-                    DiskBasedCache cache = new DiskBasedCache(getCacheDir(), 16 * 1024 * 1024);
-                    queue = new RequestQueue(cache, new BasicNetwork(new HurlStack()));
-                    queue.start();
-                    queue.add(new ClearCacheRequest(cache, null));//end of cache clear
-                    //VolleySingleton.getInstance(this).addToRequestQueue(request);
-                    //add listener to the queue which is executed when the request ends
-                    /*queue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<String>() {
-                        @Override
-                        public void onRequestFinished(Request<String> request) {
-                            if (progressDialog !=  null && progressDialog.isShowing())
-                                progressDialog.dismiss();
-                        }
-                    });*/
 
                 } while (cursor.moveToNext());
             }//end of cursor
@@ -1561,7 +1498,7 @@ public class OtherMainActivities extends AppCompatActivity {
                                 //dbAccess.uploadStatusTraining();
                                 //Toast.makeText(OtherMainActivities.this, count + " record(s) " + response, Toast.LENGTH_LONG).show();
                                 //refresh activity after dialog
-                                final AlertDialog.Builder builder = new AlertDialog.Builder(OtherMainActivities.this).setTitle("Data").setMessage(response)
+                                final AlertDialog.Builder builder = new AlertDialog.Builder(OtherMainActivities.this).setTitle("Data sent!").setMessage(count + " record(s) " + response)
                                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
