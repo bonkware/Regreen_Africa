@@ -43,7 +43,7 @@
             android:id="@+id/text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Record points around the plot"
+            android:text="Record points around the re-greening part of the plot"
             android:layout_gravity="center"
             android:textSize="15sp"
             android:textStyle="bold"/>

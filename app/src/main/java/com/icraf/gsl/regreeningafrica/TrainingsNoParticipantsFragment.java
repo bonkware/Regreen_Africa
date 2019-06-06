@@ -5,8 +5,8 @@ package com.icraf.gsl.regreeningafrica;
  *
  */
 import android.content.Intent;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 public class TrainingsNoParticipantsFragment extends Fragment {
     private DbAccess dbAccess;
@@ -153,15 +152,34 @@ public class TrainingsNoParticipantsFragment extends Fragment {
         button_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switch (v.getId()) {
-                    case R.id.finish:
-                        saveTrainings();//save
-                        dbAccess.insertTraining();
-                        Intent intent = new Intent(getActivity(), MainActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(intent);
-                        //Toast.makeText(SelectSurvey.this.getActivity(),"Saved! Add new tree",Toast.LENGTH_SHORT).show();
-                        break;
+                boolean fail = false;
+                if (total.getText().toString().trim().length() == 0) {
+                    fail = true;
+                    total.requestFocus();
+                    total.setError("Enter total number");
+                }
+                if (male.getText().toString().trim().length() == 0) {
+                    fail = true;
+                    male.requestFocus();
+                    male.setError("Enter number of men");
+                }
+                if (female.getText().toString().trim().length() == 0) {
+                    fail = true;
+                    female.requestFocus();
+                    female.setError("Enter number of women");
+                }
+                if (youth.getText().toString().trim().length() == 0) {
+                    fail = true;
+                    youth.requestFocus();
+                    youth.setError("Enter number of youth");
+                }
+                if (!fail) {
+                    saveTrainings();//save
+                    dbAccess.insertTraining();
+                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    //Toast.makeText(SelectSurvey.this.getActivity(),"Saved! Add new tree",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -192,6 +210,8 @@ public class TrainingsNoParticipantsFragment extends Fragment {
         g.setdcw_name(dcw_name.getText().toString());
         EditText topic = (EditText) getActivity().findViewById(R.id.topic);
         g.settraining_topic(topic.getText().toString());
+        EditText type = (EditText) getActivity().findViewById(R.id.type);
+        g.settraining_type(type.getText().toString());
         EditText training_date = (EditText) getActivity().findViewById(R.id.training_date);
         g.settraining_date(training_date.getText().toString());
         EditText training_venue = (EditText) getActivity().findViewById(R.id.venue);
@@ -206,6 +226,9 @@ public class TrainingsNoParticipantsFragment extends Fragment {
         g.setfemale_participants(female_participants.getText().toString());
         EditText youth_participants = (EditText) getActivity().findViewById(R.id.y_participants);
         g.setyouth_participants(youth_participants.getText().toString());
+        EditText notes = (EditText) getActivity().findViewById(R.id.notes);
+        g.setnotes(notes.getText().toString());
         g.setuploaded("no");//set uploaded to no on insert
+        g.setmodule("Training");//set which module is this on insert
     }
 }

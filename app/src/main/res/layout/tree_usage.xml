@@ -111,6 +111,35 @@
                         android:button="@drawable/custom_checkbox_mulching"/>
 
                     <CheckBox
+                        android:id="@+id/usage6"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:button="@drawable/custom_checkbox_medicinal"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/mulch1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="@dimen/add_edit_textsize"
+                        android:text="Soil \n fertility" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="@dimen/add_edit_textsize"
+                        android:text="Medicinal" />
+                </TableRow>
+                <TableRow
+                    android:id="@+id/u_other"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" >
+                    <CheckBox
                         android:id="@+id/usg_other"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -121,13 +150,6 @@
                     android:id="@+id/mulch"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content" >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:textSize="@dimen/add_edit_textsize"
-                        android:text="Soil \n fertility" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

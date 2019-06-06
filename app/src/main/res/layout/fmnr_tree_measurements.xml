@@ -52,6 +52,14 @@
                     android:textSize="@dimen/textsize"
                     android:padding="10dp"
                     android:textStyle="italic"/>
+                <TextView
+                    android:id="@+id/texthint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="[Stems ->The number of stems regenerating from stump]"
+                    android:layout_gravity="center"
+                    android:textSize="15sp"
+                    android:textStyle="italic"/>
                 <EditText
                     android:id="@+id/stems"
                     android:backgroundTint="#008000"

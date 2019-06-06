@@ -249,6 +249,7 @@ public class TPFarmInstLandsizePolygonFragment extends Fragment {
         g.setpid(plotid.getText().toString());
         //get points from global
         g.setuploaded("no");//set uploaded to no on insert
+        g.setmodule("TreePlanting");//set which module is this on insert
     }
 
 }

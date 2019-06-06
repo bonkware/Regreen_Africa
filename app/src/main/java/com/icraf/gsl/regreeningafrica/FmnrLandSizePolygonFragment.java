@@ -253,6 +253,7 @@ public class FmnrLandSizePolygonFragment extends Fragment {
         g.setpid(pid.getText().toString());
         //get points from global
         g.setuploaded("no");//set uploaded to no on insert
+        g.setmodule("FMNR");//set which module is this on insert
     }
 }
 

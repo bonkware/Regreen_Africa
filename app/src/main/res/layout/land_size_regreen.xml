@@ -20,7 +20,7 @@
                 android:id="@+id/text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Land size estimation"
+                android:text="Tree planting plot information"
                 android:layout_gravity="center"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
@@ -28,7 +28,42 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Estimate the area size of the plot(s) part of Regreening project [select unit below]"
+                android:text="Does the plot have food crops?"
+                android:textSize="@dimen/textsize"
+                android:paddingTop="10dp"
+                android:textStyle="italic"/>
+            <RadioGroup
+                android:id="@+id/crop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="10dp">
+                <RadioButton
+                    android:id="@+id/yes_crop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Yes"
+                    android:textSize="@dimen/add_edit_textsize" />
+                <RadioButton
+                    android:id="@+id/no_crop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No"
+                    android:textSize="@dimen/add_edit_textsize" />
+            </RadioGroup>
+            <EditText
+                android:id="@+id/crops"
+                android:backgroundTint="#008000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:hint="Which crop(s)?"
+                android:padding="@dimen/view_padding"
+                android:textSize="@dimen/add_edit_textsize"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Estimate the area size of the regreening part of the plot [select unit below]"
                 android:textSize="@dimen/textsize"
                 android:paddingTop="20dp"
                 android:textStyle="italic"/>

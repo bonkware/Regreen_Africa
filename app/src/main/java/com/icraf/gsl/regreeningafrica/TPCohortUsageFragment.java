@@ -229,6 +229,12 @@ public class TPCohortUsageFragment extends Fragment {
         }else {
             g.setusage5("no");
         }
+        CheckBox usage6 = (CheckBox) getActivity().findViewById(R.id.usage6) ;
+        if(usage6.isChecked()) {
+            g.setusage6("yes");
+        }else {
+            g.setusage6("no");
+        }
         CheckBox check1 = (CheckBox) getActivity().findViewById(R.id.usg_other) ;
         if(check1.isChecked()) {
             g.setusg_other(check1.getText().toString());

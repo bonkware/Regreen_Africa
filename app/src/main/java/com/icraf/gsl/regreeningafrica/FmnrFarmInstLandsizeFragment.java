@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -148,6 +147,26 @@ public class FmnrFarmInstLandsizeFragment extends Fragment {
                 Toast.makeText(FmnrFarmInstLandsizeFragment.this.getActivity(), "Item Added", Toast.LENGTH_LONG).show();
             }
         });
+        //if yes radio button yes is clicked show edit text
+        final RadioButton yes_crop = (RadioButton) view.findViewById(R.id.yes_crop) ;
+        final RadioButton no_crop = (RadioButton) view.findViewById(R.id.no_crop) ;
+        final EditText txtcrops=(EditText)view.findViewById(R.id.crops);
+        yes_crop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(yes_crop.isChecked()){
+                    txtcrops.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        no_crop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(no_crop.isChecked()){
+                    txtcrops.setVisibility(View.GONE);
+                }
+            }
+        });//end
 
         return view;
     }
@@ -274,6 +293,21 @@ public class FmnrFarmInstLandsizeFragment extends Fragment {
             // radioButton text
             g.setfmnr_fenced(select.getText().toString());
         }
+        RadioGroup crop = (RadioGroup) getActivity().findViewById(R.id.crop);
+        //check whether it is checked
+        if(crop.getCheckedRadioButtonId()==-1){
+            //Toast.makeText(FmnrFarmInstLandsizeFragment.this.getActivity(),"Please select Radio Button!",Toast.LENGTH_SHORT).show();
+        }
+        else {
+            // get selected radioButton from radioGroup
+            int selectedId = crop.getCheckedRadioButtonId();
+            // find the radioButton by returned id
+            RadioButton select = (RadioButton) getActivity().findViewById(selectedId);
+            // radioButton text
+            g.setcrops(select.getText().toString());
+        }
+        EditText croplist = (EditText) getActivity().findViewById(R.id.crops);
+        g.setcroplist(croplist.getText().toString());//crop or list of crops
         EditText regreen_size = (EditText) getActivity().findViewById(R.id.landestimate);
         g.setlandsize(regreen_size.getText().toString());
 
@@ -283,6 +317,7 @@ public class FmnrFarmInstLandsizeFragment extends Fragment {
             g.setunits(units.getSelectedItem().toString());
         }
         g.setuploaded("no");//set uploaded to no on insert
+        g.setmodule("FMNR");//set which module is this on insert
     }
     //setting plot id for polygons
     public void plotid(){

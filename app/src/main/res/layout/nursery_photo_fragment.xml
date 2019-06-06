@@ -8,7 +8,7 @@
         android:id="@+id/t1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Take a nursery photo as shown below \n [The photo serves as an evidence of the regreening adoption on the land]"
+        android:text="Take a nursery photo as shown below \n [The photo should cover the nursery not just seedlings]"
         android:gravity="center"
         android:textSize="15sp" />
     <ImageView

@@ -180,7 +180,7 @@
             android:id="@+id/fi"
             android:layout_width="wrap_content"
             android:layout_height="49dp"
-            android:onClick="jumpTotype"
+            android:onClick="jumpToNurseryinfo"
             android:layout_weight="1"
             android:drawableRight="@drawable/noun_next"
             android:text="NEXT"/>

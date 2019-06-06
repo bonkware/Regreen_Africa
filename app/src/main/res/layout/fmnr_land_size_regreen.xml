@@ -28,15 +28,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Select month/year the FMNR was started"
+                android:text="Select month/year the FMNR was started on this plot"
                 android:textSize="@dimen/textsize"
-                android:paddingTop="20dp"
+                android:paddingTop="10dp"
                 android:textStyle="italic"/>
             <RelativeLayout
                 android:id="@+id/date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="25dp">
+                android:paddingTop="15dp">
                 <EditText
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
@@ -63,15 +63,14 @@
                 android:layout_height="wrap_content"
                 android:text="Is the land fenced?"
                 android:textSize="@dimen/textsize"
-                android:paddingTop="20dp"
+                android:paddingTop="10dp"
                 android:textStyle="italic"/>
-
             <RadioGroup
                 android:id="@+id/fenced"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingTop="20dp">
+                android:orientation="horizontal"
+                android:paddingTop="10dp">
                 <RadioButton
                     android:id="@+id/yes"
                     android:layout_width="wrap_content"
@@ -89,7 +88,42 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Estimate the area size of the plot(s) [select unit]"
+                android:text="Does the plot have food crops?"
+                android:textSize="@dimen/textsize"
+                android:paddingTop="10dp"
+                android:textStyle="italic"/>
+            <RadioGroup
+                android:id="@+id/crop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="10dp">
+                <RadioButton
+                    android:id="@+id/yes_crop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Yes"
+                    android:textSize="@dimen/add_edit_textsize" />
+                <RadioButton
+                    android:id="@+id/no_crop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No"
+                    android:textSize="@dimen/add_edit_textsize" />
+            </RadioGroup>
+            <EditText
+                android:id="@+id/crops"
+                android:backgroundTint="#008000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:hint="Which crop(s)?"
+                android:padding="@dimen/view_padding"
+                android:textSize="@dimen/add_edit_textsize"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Estimate the area size of the re-greening part of the plot [select unit]"
                 android:textSize="@dimen/textsize"
                 android:paddingTop="20dp"
                 android:textStyle="italic"/>
@@ -109,7 +143,7 @@
                 android:id="@+id/sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="25dp">
+                android:paddingTop="20dp">
                 <EditText
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"

@@ -43,6 +43,7 @@ public class NurseryInfoMain extends AppCompatActivity {
         //All fragments
         adapter.addFragment(new NurseryEnumFragment(), "nursery enum");
         adapter.addFragment(new NurseryInfoFragment(), "nursery info");
+        adapter.addFragment(new NurserySpeciesinfoFragment(), "nursery species info");
         adapter.addFragment(new NurseryTypeFragment(), "nursery type");
         adapter.addFragment(new NurseryGpsFragment(), "nursery gps");
         adapter.addFragment(new NurseryPhotoFragment(), "nursery photo");
@@ -70,7 +71,7 @@ public class NurseryInfoMain extends AppCompatActivity {
     public void jumpBackFI(View view){
         viewPager.setCurrentItem(0);
     }
-    public void jumpTotype(View view){
+    public void jumpToNurseryinfo(View view){
         //EditText ed = (EditText) findViewById(R.id.nursery_county);
         //EditText district = (EditText) findViewById(R.id.nursery_district);
         EditText operator = (EditText) findViewById(R.id.nursery_operator);
@@ -99,22 +100,29 @@ public class NurseryInfoMain extends AppCompatActivity {
         if (!fail) {
             viewPager.setCurrentItem(2);
         }
-       // viewPager.setCurrentItem(1);
+        // viewPager.setCurrentItem(1);
+
     }
-    public void jumpBackInfo(View view){
+    public void jumpBackNurseryinfo(View view){
         viewPager.setCurrentItem(1);
     }
-    public void jumpToLocation(View view){
+    public void jumpTotype(View view){
         viewPager.setCurrentItem(3);
     }
-    public void jumpBackType(View view){
+    public void jumpBackInfo(View view){
         viewPager.setCurrentItem(2);
     }
-    public void jumpToPhoto(View view){
+    public void jumpToLocation(View view){
         viewPager.setCurrentItem(4);
     }
-    public void jumpBackLocation(View view){
+    public void jumpBackType(View view){
         viewPager.setCurrentItem(3);
+    }
+    public void jumpToPhoto(View view){
+        viewPager.setCurrentItem(5);
+    }
+    public void jumpBackLocation(View view){
+        viewPager.setCurrentItem(4);
     }
     //end of nav buttons
     class ViewPagerAdapter extends FragmentPagerAdapter {

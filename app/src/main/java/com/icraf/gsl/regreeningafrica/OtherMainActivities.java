@@ -53,17 +53,17 @@ public class OtherMainActivities extends AppCompatActivity {
     DbAccess dbAccess;
     ProgressDialog progressDialog;
     int count = 1;
-    //urls for data submission
-    String treePlantinginfo_url = "http://41.204.191.62/regreen_africa/insertTPinfo.php";
-    String treePlantingcohort_url = "http://41.204.191.62/regreen_africa/insertTPcohort.php";
-    String treePlantingmeasurement_url = "http://41.204.191.62/regreen_africa/insertTPmeasurement.php";
-    String treePlantingpolygon_url = "http://41.204.191.62/regreen_africa/insertTPpolygon.php";
-    String trainings_url = "http://41.204.191.62/regreen_africa/insertTrainings.php";
-    String nurseryinfo_url = "http://41.204.191.62/regreen_africa/insertNurseryinfo.php";
-    String nurseryspecies_url = "http://41.204.191.62/regreen_africa/insertNurseryspecies.php";
-    String fmnrinfo_url = "http://41.204.191.62/regreen_africa/insertFMNRinfo.php";
-    String fmnrspecies_url = "http://41.204.191.62/regreen_africa/insertFMNRspecies.php";
-    String fmnrpolygon_url = "http://41.204.191.62/regreen_africa/insertFMNRpolygon.php";
+    //urls for data submission ...172.28.0.155
+    String treePlantinginfo_url = "http://172.28.0.155/regreen_africa/insertTPinfo.php";
+    String treePlantingcohort_url = "http://172.28.0.155/regreen_africa/insertTPcohort.php";
+    String treePlantingmeasurement_url = "http://172.28.0.155/regreen_africa/insertTPmeasurement.php";
+    String treePlantingpolygon_url = "http://172.28.0.155/regreen_africa/insertTPpolygon.php";
+    String trainings_url = "http://172.28.0.155/regreen_africa/insertTrainings.php";
+    String nurseryinfo_url = "http://172.28.0.155/regreen_africa/insertNurseryinfo.php";
+    String nurseryspecies_url = "http://172.28.0.155/regreen_africa/insertNurseryspecies.php";
+    String fmnrinfo_url = "http://172.28.0.155/regreen_africa/insertFMNRinfo.php";
+    String fmnrspecies_url = "http://172.28.0.155/regreen_africa/insertFMNRspecies.php";
+    String fmnrpolygon_url = "http://172.28.0.155/regreen_africa/insertFMNRpolygon.php";
 
     RegreeningGlobal g = RegreeningGlobal.getInstance();
     private Context mContext;
@@ -212,6 +212,7 @@ public class OtherMainActivities extends AppCompatActivity {
                 do {
                     //farmer/institution
                     final String farmerID = cursor.getString(cursor.getColumnIndex("farmerID"));
+                    final String tp_module = cursor.getString(cursor.getColumnIndex("module"));//
                     final String enum_name = cursor.getString(cursor.getColumnIndex("ename"));
                     final String date = cursor.getString(cursor.getColumnIndex("in_date"));
                     final String survey_name = cursor.getString(cursor.getColumnIndex("survey_name"));
@@ -225,6 +226,8 @@ public class OtherMainActivities extends AppCompatActivity {
                     final String land_mosque_church = cursor.getString(cursor.getColumnIndex("land_mosque_church"));
                     final String land_schools = cursor.getString(cursor.getColumnIndex("land_schools"));
                     final String land_other = cursor.getString(cursor.getColumnIndex("land_other"));
+                    final String tp_crops = cursor.getString(cursor.getColumnIndex("crops"));
+                    final String tp_croplist = cursor.getString(cursor.getColumnIndex("croplist"));
                     final String landsize_regreen = cursor.getString(cursor.getColumnIndex("landsize_regreen"));
                     final String tp_units = cursor.getString(cursor.getColumnIndex("units"));
 
@@ -309,6 +312,7 @@ public class OtherMainActivities extends AppCompatActivity {
                             Map<String, String> param = new HashMap<String, String>();
                             //farmer/institution
                             param.put("farmerID", farmerID);
+                            param.put("module", tp_module);
                             param.put("enum_name", enum_name);
                             param.put("date", date);
                             param.put("survey_name", survey_name);
@@ -323,6 +327,8 @@ public class OtherMainActivities extends AppCompatActivity {
                             param.put("land_mosque_church", land_mosque_church);
                             param.put("land_schools", land_schools);
                             param.put("land_other", land_other);
+                            param.put("crops", tp_crops);
+                            param.put("croplist", tp_croplist);
                             param.put("landsize_regreen", landsize_regreen);
                             param.put("units", tp_units);
                             return checkParams(param);
@@ -394,9 +400,10 @@ public class OtherMainActivities extends AppCompatActivity {
                     final String use_animal_feed = cursor.getString(cursor.getColumnIndex("usage3"));
                     final String use_food = cursor.getString(cursor.getColumnIndex("usage4"));
                     final String use_mulching = cursor.getString(cursor.getColumnIndex("usage5"));
+                    final String use_medicinal = cursor.getString(cursor.getColumnIndex("usage6"));
                     final String use_other = cursor.getString(cursor.getColumnIndex("us_other"));
 
-                    // create an object of volley request queue
+                    // create an object of volley request queue8
                     //RequestQueue queue = Volley.newRequestQueue(OtherMainActivities.this);
                     if (queue == null) {
                         queue = Volley.newRequestQueue(this);
@@ -464,6 +471,7 @@ public class OtherMainActivities extends AppCompatActivity {
                             param.put("use_animal_feed", use_animal_feed);
                             param.put("use_food", use_food);
                             param.put("use_mulching", use_mulching);
+                            param.put("use_medicinal", use_medicinal);
                             param.put("use_other", use_other);
                             //measurement
                             return checkParams(param);
@@ -510,6 +518,7 @@ public class OtherMainActivities extends AppCompatActivity {
                     final String tree_altitude = cursor.getString(cursor.getColumnIndex("tree_altitude"));
                     final String tree_accuracy = cursor.getString(cursor.getColumnIndex("tree_accuracy"));
                     final String path = cursor.getString(cursor.getColumnIndex("path"));
+                    final String tp_notes = cursor.getString(cursor.getColumnIndex("notes"));
 
                     // create an object of volley request queue
                     //RequestQueue queue = Volley.newRequestQueue(OtherMainActivities.this);
@@ -568,6 +577,7 @@ public class OtherMainActivities extends AppCompatActivity {
                             Bitmap bitmap = BitmapFactory.decodeFile(path,options);
                             String image = getStringImage(bitmap);
                             param.put("path", image);
+                            param.put("notes", tp_notes);
                             //return param;
                             return checkParams(param);
                         }
@@ -606,6 +616,7 @@ public class OtherMainActivities extends AppCompatActivity {
                     //for tree planting plot polygon
                     final String farmerid = cursor.getString(cursor.getColumnIndex("farmerID"));
                     final String pid = cursor.getString(cursor.getColumnIndex("plotID"));
+                    final String tpp_module = cursor.getString(cursor.getColumnIndex("module"));
                     final String landsize_polygon_latitude = cursor.getString(cursor.getColumnIndex("latitude"));
                     final String landsize_polygon_longitude = cursor.getString(cursor.getColumnIndex("longitude"));
                     final String landsize_polygon_altitude = cursor.getString(cursor.getColumnIndex("altitude"));
@@ -656,6 +667,7 @@ public class OtherMainActivities extends AppCompatActivity {
                             //landsize polygon
                             param.put("farmerID", farmerid);
                             param.put("plotID", pid);
+                            param.put("module", tpp_module);
                             param.put("latitude", landsize_polygon_latitude);
                             param.put("longitude", landsize_polygon_longitude);
                             param.put("altitude", landsize_polygon_altitude);
@@ -704,6 +716,7 @@ public class OtherMainActivities extends AppCompatActivity {
                 do {
                     //nursery info
                     final String nurseryID = cursor.getString(cursor.getColumnIndex("nurseryID"));
+                    final String nursery_module = cursor.getString(cursor.getColumnIndex("module"));//
                     final String enum_name = cursor.getString(cursor.getColumnIndex("ename"));
                     final String date = cursor.getString(cursor.getColumnIndex("in_date"));
                     final String survey_name = cursor.getString(cursor.getColumnIndex("survey_name"));
@@ -711,6 +724,10 @@ public class OtherMainActivities extends AppCompatActivity {
                     final String county = cursor.getString(cursor.getColumnIndex("county"));
                     final String district = cursor.getString(cursor.getColumnIndex("district"));
                     final String operator = cursor.getString(cursor.getColumnIndex("operator"));
+                    final String nursery_name = cursor.getString(cursor.getColumnIndex("nursery_name"));
+                    final String species_number = cursor.getString(cursor.getColumnIndex("species_number"));
+                    final String started_date = cursor.getString(cursor.getColumnIndex("started_date"));
+
                     final String contact = cursor.getString(cursor.getColumnIndex("contact"));
                     final String type_government = cursor.getString(cursor.getColumnIndex("government"));
                     final String type_church_mosque = cursor.getString(cursor.getColumnIndex("church_mosque"));
@@ -799,6 +816,7 @@ public class OtherMainActivities extends AppCompatActivity {
                             Map<String, String> param = new HashMap<String, String>();
                             //farmer data
                             param.put("nurseryID", nurseryID);
+                            param.put("module", nursery_module);
                             param.put("enum_name", enum_name);
                             param.put("date", date);
                             param.put("survey_name", survey_name);
@@ -807,6 +825,9 @@ public class OtherMainActivities extends AppCompatActivity {
                             param.put("district", district);
                             param.put("operator", operator);
                             param.put("contact", contact);
+                            param.put("nursery_name", nursery_name);
+                            param.put("species_number", species_number);
+                            param.put("started_date", started_date);
                             param.put("government", type_government);
                             param.put("church_mosque", type_church_mosque);
                             param.put("schools", type_schools);
@@ -902,6 +923,7 @@ public class OtherMainActivities extends AppCompatActivity {
                     final String seedlings_servived = cursor.getString(cursor.getColumnIndex("seedlings_survived"));
                     final String seedlings_age = cursor.getString(cursor.getColumnIndex("seedlings_age"));
                     final String seedlings_price = cursor.getString(cursor.getColumnIndex("seedlings_price"));
+                    final String nursery_notes = cursor.getString(cursor.getColumnIndex("notes"));
 
                     // create an object of volley request queue
                     //RequestQueue queue = Volley.newRequestQueue(OtherMainActivities.this);
@@ -973,6 +995,7 @@ public class OtherMainActivities extends AppCompatActivity {
                             param.put("seedlings_survived", seedlings_servived);
                             param.put("seedlings_age", seedlings_age);
                             param.put("seedlings_price", seedlings_price);
+                            param.put("notes", nursery_notes);
 
                             //return param;
                             return checkParams(param);
@@ -1046,8 +1069,11 @@ public class OtherMainActivities extends AppCompatActivity {
                     //final String fmnr_restoration_photo = cursor.getString(cursor.getColumnIndex("fmnr_restoration_photo"));
                     final String fmnr_started_date = cursor.getString(cursor.getColumnIndex("fmnr_started_date"));
                     final String fmnr_fenced = cursor.getString(cursor.getColumnIndex("fmnr_fenced"));
+                    final String fmnr_crops = cursor.getString(cursor.getColumnIndex("crops"));
+                    final String fmnr_croplist = cursor.getString(cursor.getColumnIndex("croplist"));
                     final String fmnr_landsize_regreen = cursor.getString(cursor.getColumnIndex("landsize_regreen"));
                     final String fmnr_units = cursor.getString(cursor.getColumnIndex("units"));//
+                    final String fmnr_module = cursor.getString(cursor.getColumnIndex("module"));//
 
                     // create an object of volley request queue
                    // RequestQueue queue = Volley.newRequestQueue(this);
@@ -1131,6 +1157,7 @@ public class OtherMainActivities extends AppCompatActivity {
                             Map<String, String> param = new HashMap<String, String>();
                             //farmer/institution
                             param.put("farmerID", fmnr_farmer_id);
+                            param.put("module", fmnr_module);
                             param.put("enum_name", fmnr_enum_name);
                             param.put("date", fmnr_date);
                             param.put("survey_name", fmnr_survey_name);
@@ -1149,6 +1176,8 @@ public class OtherMainActivities extends AppCompatActivity {
                             //param.put("fmnr_restoration_photo", fmnr_restoration_photo);
                             param.put("fmnr_started_date", fmnr_started_date);
                             param.put("fmnr_fenced", fmnr_fenced);
+                            param.put("crops", fmnr_crops);
+                            param.put("croplist", fmnr_croplist);
                             param.put("landsize_regreen", fmnr_landsize_regreen);
                             param.put("units", fmnr_units);
                             //return param;
@@ -1205,6 +1234,7 @@ public class OtherMainActivities extends AppCompatActivity {
                     //for fmnr plot polygon
                     final String fid = cursor.getString(cursor.getColumnIndex("farmerID"));
                     final String pid = cursor.getString(cursor.getColumnIndex("plotID"));
+                    final String fmnrp_module = cursor.getString(cursor.getColumnIndex("module"));
                     final String landsize_polygon_latitude = cursor.getString(cursor.getColumnIndex("latitude"));
                     final String landsize_polygon_longitude = cursor.getString(cursor.getColumnIndex("longitude"));
                     final String landsize_polygon_altitude = cursor.getString(cursor.getColumnIndex("altitude"));
@@ -1256,6 +1286,7 @@ public class OtherMainActivities extends AppCompatActivity {
                             //landsize polygon
                             param.put("farmerID", fid);
                             param.put("plotID", pid);
+                            param.put("module", fmnrp_module);
                             param.put("latitude", landsize_polygon_latitude);
                             param.put("longitude", landsize_polygon_longitude);
                             param.put("altitude", landsize_polygon_altitude);
@@ -1314,6 +1345,7 @@ public class OtherMainActivities extends AppCompatActivity {
                     final String fmnr_use_soil_fertility = cursor.getString(cursor.getColumnIndex("usage5"));
                     final String fmnr_use_leafy_vegetables = cursor.getString(cursor.getColumnIndex("usage6"));
                     final String fmnr_use_nuts = cursor.getString(cursor.getColumnIndex("usage7"));
+                    final String fmnr_use_medicinal = cursor.getString(cursor.getColumnIndex("usage8"));
                     final String fmnr_use_other = cursor.getString(cursor.getColumnIndex("us_other"));
                     final String fmnr_tree_stems = cursor.getString(cursor.getColumnIndex("stems"));
                     final String fmnr_tree_height = cursor.getString(cursor.getColumnIndex("height"));
@@ -1324,6 +1356,7 @@ public class OtherMainActivities extends AppCompatActivity {
                     final String fmnr_tree_altitude = cursor.getString(cursor.getColumnIndex("tree_altitude"));
                     final String fmnr_tree_accuracy = cursor.getString(cursor.getColumnIndex("tree_accuracy"));
                     final String fmnr_tree_image_path = cursor.getString(cursor.getColumnIndex("path"));
+                    final String fmnr_notes = cursor.getString(cursor.getColumnIndex("notes"));
 
                     // create an object of volley request queue
                     // RequestQueue queue = Volley.newRequestQueue(this);
@@ -1386,6 +1419,7 @@ public class OtherMainActivities extends AppCompatActivity {
                             param.put("use_soil_fertility", fmnr_use_soil_fertility);
                             param.put("use_leafy_vegetables", fmnr_use_leafy_vegetables);
                             param.put("use_nuts", fmnr_use_nuts);
+                            param.put("use_medicinal", fmnr_use_medicinal);
                             param.put("use_other", fmnr_use_other);
                             param.put("stems", fmnr_tree_stems);
                             param.put("tree_height", fmnr_tree_height);
@@ -1402,6 +1436,7 @@ public class OtherMainActivities extends AppCompatActivity {
                             Bitmap bitmap = BitmapFactory.decodeFile(fmnr_tree_image_path,options);
                             String image = getStringImage(bitmap);
                             param.put("path", image);
+                            param.put("notes", fmnr_notes);
                             //return param;
                             return checkParams(param);
                         }
@@ -1460,6 +1495,7 @@ public class OtherMainActivities extends AppCompatActivity {
             if (cursor.moveToFirst()) {
                 do {
                     //
+                    final String training_module = cursor.getString(cursor.getColumnIndex("module"));//
                     final String training_enum_name = cursor.getString(cursor.getColumnIndex("enum_name"));
                     final String training_record_date = cursor.getString(cursor.getColumnIndex("date"));
                     final String training_survey_name = cursor.getString(cursor.getColumnIndex("survey_name"));//
@@ -1467,6 +1503,7 @@ public class OtherMainActivities extends AppCompatActivity {
                     final String training_region = cursor.getString(cursor.getColumnIndex("training_region"));
                     final String training_district = cursor.getString(cursor.getColumnIndex("training_district"));
                     final String training_topic = cursor.getString(cursor.getColumnIndex("training_topic"));
+                    final String training_type = cursor.getString(cursor.getColumnIndex("training_type"));
                     final String training_date = cursor.getString(cursor.getColumnIndex("training_date"));
                     final String training_venue = cursor.getString(cursor.getColumnIndex("training_venue"));
                     final String training_partners = cursor.getString(cursor.getColumnIndex("training_partners"));
@@ -1474,6 +1511,7 @@ public class OtherMainActivities extends AppCompatActivity {
                     final String male_participants = cursor.getString(cursor.getColumnIndex("male_participants"));
                     final String female_participants = cursor.getString(cursor.getColumnIndex("female_participants"));
                     final String youth_participants = cursor.getString(cursor.getColumnIndex("youth_participants"));
+                    final String notes = cursor.getString(cursor.getColumnIndex("notes"));
 
                     // create an object of volley request queue
                     //RequestQueue queue = Volley.newRequestQueue(OtherMainActivities.this);
@@ -1546,6 +1584,7 @@ public class OtherMainActivities extends AppCompatActivity {
                         protected Map<String, String> getParams() throws AuthFailureError {
                             Map<String, String> param = new HashMap<String, String>();
                             //farmer data
+                            param.put("module", training_module);
                             param.put("enum_name", training_enum_name);
                             param.put("date", training_record_date);
                             param.put("survey_name", training_survey_name);
@@ -1553,6 +1592,7 @@ public class OtherMainActivities extends AppCompatActivity {
                             param.put("training_region", training_region);
                             param.put("training_district", training_district);
                             param.put("training_topic", training_topic);
+                            param.put("training_type", training_type);
                             param.put("training_date", training_date);
                             param.put("training_venue", training_venue);
                             param.put("training_partners", training_partners);
@@ -1560,6 +1600,7 @@ public class OtherMainActivities extends AppCompatActivity {
                             param.put("male_participants", male_participants);
                             param.put("female_participants", female_participants);
                             param.put("youth_participants", youth_participants);
+                            param.put("notes", notes);
                             //return param;
                             return checkParams(param);
                         }

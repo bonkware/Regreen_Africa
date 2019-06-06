@@ -20,6 +20,30 @@
             android:layout_height="wrap_content" >
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Comments"
+                android:textSize="@dimen/textsize"
+                android:padding="15dp"
+                android:textStyle="italic"/>
+        </TableRow>
+        <TableRow
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" >
+            <EditText
+                android:id="@+id/notes"
+                android:backgroundTint="#008000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="share any other insights"
+                android:padding="@dimen/view_padding"
+                android:textSize="@dimen/add_edit_textsize"/>
+        </TableRow>
+        <TableRow
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" >
+
+            <TextView
                 android:layout_width="0dp" android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="Do you want to measure another tree in the same cohort?"

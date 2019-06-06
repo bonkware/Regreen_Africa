@@ -214,6 +214,12 @@ public class NurseryPhotoFragment extends Fragment {
         g.setnursery_operator(operator.getText().toString());
         EditText contact = (EditText) getActivity().findViewById(R.id.nursery_contact);
         g.setnursery_contact(contact.getText().toString());
+        EditText nursery_name = (EditText) getActivity().findViewById(R.id.nursery_name);
+        g.setnursery_name(nursery_name.getText().toString());
+        EditText species_number = (EditText) getActivity().findViewById(R.id.species_number);
+        g.setnspecies_number(species_number.getText().toString());
+        EditText ndate = (EditText) getActivity().findViewById(R.id.n_date);
+        g.setndate(ndate.getText().toString());
         CheckBox govt = (CheckBox) getActivity().findViewById(R.id.govt);
         if(govt.isChecked()) {
             g.setgovt("yes");
@@ -261,6 +267,7 @@ public class NurseryPhotoFragment extends Fragment {
         //get locations from global
         //get photo
         g.setuploaded("no");//set uploaded to no on insert
+        g.setmodule("Nursery");//set which module is this on insert
     }
 
 }

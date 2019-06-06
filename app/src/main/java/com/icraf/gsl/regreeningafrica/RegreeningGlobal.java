@@ -11,10 +11,10 @@ public class RegreeningGlobal {
     private double latitude=0.0, longitude=0.0, accuracy=0.0, altitude=0.0;
     private Boolean GPS_fix=false;
     private String districts,fname,county_region,country,select_location,select_site,fmnr_date,in_date,landsize,number_planted,number_survived,species_name,local_name,date_planted,select_measurement,stems;
-    private String mg1,mg2,mg3,mg4,mg5,mg6,mg7,mg_other,mg_others,usage1,usage2,usage3,usage4,usage5,usage6,usage7,us_other,usg_other;
+    private String mg1,mg2,mg3,mg4,mg5,mg6,mg7,mg_other,mg_others,usage1,usage2,usage3,usage4,usage5,usage6,usage7,usage8,us_other,usg_other;
     private String fmnr_fenced,survey_name,tsurvey_name,fsurvey_name,tpsurvey_name,nsurvey_name,project_name,seed_sown,units,qunits,unitsown,livestock_other,c_name,cr_name,
             dcw_name,training_topic,training_partners,training_date,training_venue,number_participants,ename,male_participants,female_participants,youth_participants;
-    private String dbh,height,rcd,path,fid,cid,uploaded;
+    private String dbh,height,rcd,path,fid,cid,uploaded,nursery_name,nspecies_number,ndate;
     //for nursery module
     private String nursery_country, nursery_county, nursery_district, nursery_operator, nursery_contact,
             govt, church_mosque,schools,women,youth,private_individual,communal_village,other_type,
@@ -22,7 +22,7 @@ public class RegreeningGlobal {
             select_radio, bare_root,container,other_method, other, own_farm_seeds, local_dealer_seeds, national_seed,ngos_seed,
             other_seed_source, other_s, nursery_species, nursery_local, seedlings_number, seedlings_age, pid,
             species_number,individual_ownership, community_ownership, govt_land_ownership,mosque_church_ownership, schools_ownership, other_ownership,other_s1,observation,image,nid,
-            woodlot,iboundary,eboundary,garden,crop_field,pasture_grassland,fallow_pushland,other_sites;
+            woodlot,iboundary,eboundary,garden,crop_field,pasture_grassland,fallow_pushland,other_sites,module,training_type,notes,crops,croplist;
     private Bitmap photo;
     private Boolean Multiplot;
 
@@ -380,6 +380,14 @@ public class RegreeningGlobal {
     //Setting
     public void setusage7(String usage7) {
         this.usage7 = usage7;
+    }
+    //Getting
+    public String getusage8() {
+        return usage8;
+    }
+    //Setting
+    public void setusage8(String usage8) {
+        this.usage8 = usage8;
     }
     //Getting
     public String getindividual_ownership() {
@@ -901,6 +909,58 @@ public class RegreeningGlobal {
     public void setunitsown(String unitsown) {
         this.unitsown = unitsown;
     }
+
+    public String getmodule() {
+        return module;
+    }
+    public void setmodule(String module) {
+        this.module = module;
+    }
+
+    public String gettraining_type() {
+        return training_type;
+    }
+    public void settraining_type(String training_type) {
+        this.training_type = training_type;
+    }
+    public String getnotes() {
+        return notes;
+    }
+    public void setnotes(String notes) {
+        this.notes = notes;
+    }
+    public String getnursery_name() {
+        return nursery_name;
+    }
+    public void setnursery_name(String nursery_name) {
+        this.nursery_name = nursery_name;
+    }
+    public String getnspecies_number() {
+        return nspecies_number;
+    }
+    public void setnspecies_number(String nspecies_number) {
+        this.nspecies_number = nspecies_number;
+    }
+    public String getndate() {
+        return ndate;
+    }
+    public void setndate(String ndate) {
+        this.ndate = ndate;
+    }
+    public String getcrops() {
+        return crops;
+    }
+    public void setcrops(String crops) {
+        this.crops = crops;
+    }
+
+    public String getcroplist() {
+        return croplist;
+    }
+    public void setcroplist(String croplist) {
+        this.croplist = croplist;
+    }
+
 
 
     //********************************* end nursery module *****************************//

@@ -65,9 +65,12 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.land_schools, g.getschools_ownership());
         contentValue.put(DatabaseHelper.land_other, g.getother_ownership());
         //contentValue.put(DatabaseHelper.planting_site, g.getselect_site());
+        contentValue.put(DatabaseHelper.tp_crops, g.getcrops());
+        contentValue.put(DatabaseHelper.tp_croplist, g.getcroplist());
         contentValue.put(DatabaseHelper.landsize_regreen, g.getlandsize());
         contentValue.put(DatabaseHelper.tp_units, g.getunits());
         contentValue.put(DatabaseHelper.tp_uploaded, g.getuploaded());
+        contentValue.put(DatabaseHelper.tp_module, g.getmodule());
         contentValue.put(DatabaseHelper.farmerID, g.getfid());
         //insert
         database.insert(TABLE_FARMER_INST, null, contentValue);
@@ -100,6 +103,7 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.use_animal_feed, g.getusage3());
         contentValue.put(DatabaseHelper.use_food, g.getusage4());
         contentValue.put(DatabaseHelper.use_mulching, g.getusage5());
+        contentValue.put(DatabaseHelper.use_medicinal, g.getusage6());
         contentValue.put(DatabaseHelper.use_other, g.getus_other());
         contentValue.put(DatabaseHelper.tp_cohort_uploaded, g.getuploaded());
         //insert
@@ -117,6 +121,7 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.tree_altitude, g.getAltitude());
         contentValue.put(DatabaseHelper.tree_accuracy, g.getAccuracy());
         contentValue.put(DatabaseHelper.tree_image_path, g.getpath());
+        contentValue.put(DatabaseHelper.tp_notes, g.getnotes());
         contentValue.put(DatabaseHelper.tp_measurement_uploaded, g.getuploaded());
         //insert
         database.insert(TABLE_Measurement, null, contentValue);
@@ -131,6 +136,7 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.training_region, g.getcr_name());
         contentValue.put(DatabaseHelper.training_district, g.getdcw_name());
         contentValue.put(DatabaseHelper.training_topic, g.gettraining_topic());
+        contentValue.put(DatabaseHelper.training_type, g.gettraining_type());
         contentValue.put(DatabaseHelper.training_date, g.gettraining_date());
         contentValue.put(DatabaseHelper.training_venue, g.gettraining_venue());
         contentValue.put(DatabaseHelper.training_partners, g.gettraining_partners());
@@ -139,6 +145,8 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.female_participants, g.getfemale_participants());
         contentValue.put(DatabaseHelper.youth_participants, g.getyouth_participants());
         contentValue.put(DatabaseHelper.uploaded, g.getuploaded());
+        contentValue.put(DatabaseHelper.notes, g.getnotes());
+        contentValue.put(DatabaseHelper.training_module, g.getmodule());
         //insert
         database.insert(TABLE_Trainings, null, contentValue);
     }
@@ -153,6 +161,10 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.nursery_district, g.getnursery_district());
         contentValue.put(DatabaseHelper.nursery_operator, g.getnursery_operator());
         contentValue.put(DatabaseHelper.nursery_contact, g.getnursery_contact());
+        contentValue.put(DatabaseHelper.nursery_name, g.getnursery_name());
+        contentValue.put(DatabaseHelper.species_number, g.getnspecies_number());
+        contentValue.put(DatabaseHelper.n_date, g.getndate());
+
         contentValue.put(DatabaseHelper.type_government, g.getgovt());
         contentValue.put(DatabaseHelper.type_church_mosque, g.getchurch_mosque());
         contentValue.put(DatabaseHelper.type_schools, g.getschools());
@@ -168,6 +180,7 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.nursery_image_path, g.getpath());
         contentValue.put(DatabaseHelper.nursery_id, g.getnid());
         contentValue.put(DatabaseHelper.nursery_uploaded, g.getuploaded());
+        contentValue.put(DatabaseHelper.nursery_module, g.getmodule());
         //insert
         database.insert(TABLE_NURSERY, null, contentValue);
     }
@@ -202,6 +215,7 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.seedlings_servived, g.getsurvived());
         contentValue.put(DatabaseHelper.seedlings_age, g.getseedlings_age());
         contentValue.put(DatabaseHelper.seedlings_price, g.getprice());
+        contentValue.put(DatabaseHelper.nursery_notes, g.getnotes());
         contentValue.put(DatabaseHelper.nursery_species_uploaded, g.getuploaded());
         //insert
         database.insert(TABLE_NURSERY_SPECIES, null, contentValue);
@@ -229,9 +243,12 @@ public class DbAccess {
        // contentValue.put(DatabaseHelper.fmnr_restoration_photo, g.getpath());
         contentValue.put(DatabaseHelper.fmnr_started_date, g.getfmnr_date());
         contentValue.put(DatabaseHelper.fmnr_fenced, g.getfmnr_fenced());
+        contentValue.put(DatabaseHelper.fmnr_crops, g.getcrops());
+        contentValue.put(DatabaseHelper.fmnr_croplist, g.getcroplist());
         contentValue.put(DatabaseHelper.fmnr_landsize_regreen, g.getlandsize());
         contentValue.put(DatabaseHelper.fmnr_units, g.getunits());
         contentValue.put(DatabaseHelper.fmnr_uploaded, g.getuploaded());
+        contentValue.put(DatabaseHelper.fmnr_module, g.getmodule());
         //insert
         database.insert(TABLE_FMNR_FARMER_INST, null, contentValue);
     }
@@ -245,6 +262,7 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.landsize_polygon_altitudetp, g.getAltitude());
         contentValue.put(DatabaseHelper.landsize_polygon_accuracytp, g.getAccuracy());
         contentValue.put(DatabaseHelper.tp_polygon_uploaded, g.getuploaded());
+        contentValue.put(DatabaseHelper.tpp_module, g.getmodule());
         //insert
         database.insert(TABLE_LANDSIZEPOLYGONTP, null, contentValue);
     }
@@ -258,6 +276,7 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.landsize_polygon_altitudefmnr, g.getAltitude());
         contentValue.put(DatabaseHelper.landsize_polygon_accuracyfmnr, g.getAccuracy());
         contentValue.put(DatabaseHelper.fmnr_polygon_uploaded, g.getuploaded());
+        contentValue.put(DatabaseHelper.fmnrp_module, g.getmodule());
         //insert
         database.insert(TABLE_LANDSIZEPOLYGONFMNR, null, contentValue);
     }
@@ -282,6 +301,7 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.fmnr_use_soil_fertility, g.getusage5());
         contentValue.put(DatabaseHelper.fmnr_use_leafy_vegetables, g.getusage6());
         contentValue.put(DatabaseHelper.fmnr_use_nuts, g.getusage7());
+        contentValue.put(DatabaseHelper.fmnr_use_medicinal, g.getusage8());
         contentValue.put(DatabaseHelper.fmnr_use_other, g.getus_other());
         contentValue.put(DatabaseHelper.fmnr_tree_stems, g.getstems());
         contentValue.put(DatabaseHelper.fmnr_tree_height, g.getheight());
@@ -292,6 +312,7 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.fmnr_tree_altitude, g.getAltitude());
         contentValue.put(DatabaseHelper.fmnr_tree_accuracy, g.getAccuracy());
         contentValue.put(DatabaseHelper.fmnr_tree_image_path, g.getpath());
+        contentValue.put(DatabaseHelper.fmnr_notes, g.getnotes());
         contentValue.put(DatabaseHelper.fmnr_species_uploaded, g.getuploaded());
         //insert
         database.insert(TABLE_FMNR_SPECIES, null, contentValue);
@@ -319,7 +340,7 @@ public class DbAccess {
     }
     //count no. of records tree planting
     public int getcount(){
-        Cursor cur = database.rawQuery("SELECT count(*) from farmer_institution,cohort,tree_measurements WHERE farmer_institution.uploaded='no' and cohort.uploaded='no' and tree_measurements.uploaded='no' ", null);
+        Cursor cur = database.rawQuery("SELECT count(*) from farmer_institution,cohort,tree_measurements WHERE farmer_institution.farmerID=cohort.farmerID and cohort.cohortID=tree_measurements.cohortID and farmer_institution.uploaded='no' and cohort.uploaded='no' and tree_measurements.uploaded='no' ", null);
         int x = 0;
         if (cur.moveToFirst())
         {
@@ -346,7 +367,7 @@ public class DbAccess {
     }
     //count number of records in fmnr
     public int getfmnrcount(){
-        Cursor cur = database.rawQuery("SELECT count(*) from fmnr_farmer_inst,fmnr_species WHERE fmnr_species.uploaded='no' and fmnr_farmer_inst.uploaded='no' ", null);
+        Cursor cur = database.rawQuery("SELECT count(*) from fmnr_farmer_inst,fmnr_species WHERE fmnr_farmer_inst.farmerID=fmnr_species.farmerID and fmnr_species.uploaded='no' and fmnr_farmer_inst.uploaded='no' ", null);
         int x = 0;
         if (cur.moveToFirst())
         {
@@ -384,7 +405,7 @@ public class DbAccess {
         return c;
     }
     public int getnurserycount(){
-        Cursor cur = database.rawQuery("SELECT count(*) from nursery_info,nursery_species WHERE nursery_info.uploaded='no' and nursery_species.uploaded='no' ", null);
+        Cursor cur = database.rawQuery("SELECT count(*) from nursery_info,nursery_species WHERE nursery_info.nurseryID=nursery_species.nurseryID and nursery_info.uploaded='no' and nursery_species.uploaded='no' ", null);
         int x = 0;
         if (cur.moveToFirst())
         {
@@ -393,7 +414,6 @@ public class DbAccess {
         cur.close();
         return x;
     }
-
     //get the list of farmer/institution with their farmer ids
     public List<String> getFI_names() {
         List<String> list = new ArrayList<>();

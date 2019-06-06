@@ -204,6 +204,12 @@ public class FmnrTreeEndFragment extends Fragment {
         }else {
             g.setusage7("no");
         }
+        CheckBox usage8 = (CheckBox) getActivity().findViewById(R.id.usage8) ;
+        if(usage8.isChecked()) {
+            g.setusage8("yes");
+        }else {
+            g.setusage8("no");
+        }
         CheckBox check1 = (CheckBox) getActivity().findViewById(R.id.usg_other) ;
         if(check1.isChecked()) {
             g.setusg_other(check1.getText().toString());
@@ -237,6 +243,8 @@ public class FmnrTreeEndFragment extends Fragment {
         g.setdbh(dbh.getText().toString());
         //get Gps get it from global
         //get Photo get it from global
+        EditText notes = (EditText) getActivity().findViewById(R.id.notes);
+        g.setnotes(notes.getText().toString());
         g.setuploaded("no");//set uploaded to no on insert
     }
 }

@@ -126,6 +126,8 @@ public class TPTreeEndFragment extends Fragment {
         g.setdbh(dbh.getText().toString());
         //get Gps get it from global
         //get Photo get it from global
+        EditText notes = (EditText) getActivity().findViewById(R.id.notes);
+        g.setnotes(notes.getText().toString());
         g.setuploaded("no");//set uploaded to no on insert
     }
 }
