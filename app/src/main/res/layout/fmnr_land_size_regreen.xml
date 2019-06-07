@@ -187,18 +187,12 @@
             android:onClick="jumpBackSnumber"
             android:drawableLeft="@drawable/n_back"
             android:text="PREV"/>
-        <!--<Button
-            android:id="@+id/next"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="jumpToCohort"
-            android:text="NEXT"/>-->
         <Button
-            android:id="@+id/topolygon"
+            android:id="@+id/next"
             android:layout_width="wrap_content"
             android:layout_height="49dp"
             android:layout_weight="1"
+            android:onClick="jumpTopolygon"
             android:drawableRight="@drawable/noun_next"
             android:text="NEXT"/>
 

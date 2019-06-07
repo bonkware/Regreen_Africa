@@ -1,13 +1,17 @@
 package com.icraf.gsl.regreeningafrica;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.RadioButton;
+import android.widget.Spinner;
+
+import java.util.Random;
 
 /**
  * Created by benard on 1/18/19.
@@ -15,31 +19,40 @@ import android.widget.RadioButton;
  */
 
 public class FmnrFarmInstLocFragment extends Fragment {
+    private DbAccess dbAccess;
     public FmnrFarmInstLocFragment() {
         // Required empty public constructor
     }
-
+    RegreeningGlobal g = RegreeningGlobal.getInstance();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fmnr_tree_location, container,
                 false);
 
-        //check if other is checked
-       /* final RadioButton radio_other = (RadioButton) view.findViewById(R.id.others) ;
-        final EditText text=(EditText) view.findViewById(R.id.other_locations);
 
-        radio_other.setOnClickListener(new View.OnClickListener() {
+        dbAccess = new DbAccess(this.getActivity());
+        dbAccess.open();
 
+        //proceed to land size polygon
+        Button button_next = (Button) view.findViewById(R.id.jumpTosnumber);
+        button_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(radio_other.isChecked()){
-                    text.setVisibility(View.VISIBLE);
-                }else{
-                    text.setVisibility(View.GONE);
+                switch (v.getId()) {
+                    case R.id.jumpTosnumber:
+                        saveFmnrFarmerInst();//save inputs
+                        plotid();//generate plot id for polygons
+                        dbAccess.insertFmnrFarmerInst();//insert details to db
+                        g.setMultiplot(false);
+                        Intent intent = new Intent(getActivity(), FmnrLandSizeMainActivity.class);
+                        startActivity(intent);
+                        getActivity().overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
+                        //Toast.makeText(SelectSurvey.this.getActivity(),"Saved",Toast.LENGTH_SHORT).show();
+                        break;
                 }
             }
-        });*/
+        });
         //check if other is checked
         final CheckBox check_other = (CheckBox) view.findViewById(R.id.others) ;
         final EditText text=(EditText) view.findViewById(R.id.other_locations);
@@ -55,5 +68,96 @@ public class FmnrFarmInstLocFragment extends Fragment {
         });
 
         return view;
+    }
+    // save farmer/institution data when you go next
+    public void  saveFmnrFarmerInst(){
+        //generate unique id for farmer/institution
+        Random generator = new Random();
+        int n = 10000;
+        n = generator.nextInt(n);//random number generator
+        String fid = "fgi_" + n;
+        g.setfid(fid);
+        //edittexts
+        EditText e_name = (EditText) getActivity().findViewById(R.id.ename);
+        g.setename(e_name.getText().toString());
+        EditText date = (EditText) getActivity().findViewById(R.id.in_date);
+        g.setin_date(date.getText().toString());
+
+        Spinner survey_name = (Spinner) getActivity().findViewById(R.id.survey_name);
+        //check if spinner is selected
+        if(survey_name != null && survey_name.getSelectedItem() !=null ) {
+            g.setfsurvey_name(survey_name.getSelectedItem().toString());
+        }//added for survey project selection
+        //EditText other_survey = (EditText) getActivity().findViewById(R.id.survey_other);
+        //g.setfsurvey_name(other_survey.getText().toString());//added for other project option
+
+        EditText farmer_institution_name = (EditText) getActivity().findViewById(R.id.fnames);
+        g.setfname(farmer_institution_name.getText().toString());
+        Spinner country = (Spinner) getActivity().findViewById(R.id.spinner1);
+        //check if spinner is selected
+        if(country != null && country.getSelectedItem() !=null ) {
+            g.setcountry(country.getSelectedItem().toString());
+        }
+        /*EditText county_region = (EditText) getActivity().findViewById(R.id.county);
+        g.setcounty_region(county_region.getText().toString());*/
+        Spinner county_region = (Spinner) getActivity().findViewById(R.id.spinner2);
+        //check if spinner is selected
+        if(county_region != null && county_region.getSelectedItem() !=null ) {
+            g.setcounty_region(county_region.getSelectedItem().toString());
+        }
+
+        /*EditText district = (EditText) getActivity().findViewById(R.id.district);
+        g.setdistricts(district.getText().toString());*/
+        Spinner district = (Spinner) getActivity().findViewById(R.id.spinner3);
+        //check if spinner is selected
+        if(district != null && district.getSelectedItem() !=null ) {
+            g.setdistricts(district.getSelectedItem().toString());
+        }
+        CheckBox owner = (CheckBox) getActivity().findViewById(R.id.own);
+        if(owner.isChecked()) {
+            g.setindividual_ownership("yes");
+        }else {
+            g.setindividual_ownership("no");
+        }
+        CheckBox community = (CheckBox) getActivity().findViewById(R.id.comm_land);
+        if(community.isChecked()) {
+            g.setcommunity_ownership("yes");
+        }else {
+            g.setcommunity_ownership("no");
+        }
+        CheckBox govt = (CheckBox) getActivity().findViewById(R.id.govt_land);
+        if(govt.isChecked()) {
+            g.setgovt_land_ownership("yes");
+        }else {
+            g.setgovt_land_ownership("no");
+        }
+
+        CheckBox mchurch_mosque = (CheckBox) getActivity().findViewById(R.id.mosque_church);
+        if(mchurch_mosque.isChecked()) {
+            g.setmosque_church_ownership("yes");
+        }else {
+            g.setmosque_church_ownership("no");
+        }
+
+        CheckBox schools = (CheckBox) getActivity().findViewById(R.id.schools);
+        if(schools.isChecked()) {
+            g.setschools_ownership("yes");
+        }else {
+            g.setschools_ownership("no");
+        }
+        EditText n_type=(EditText) getActivity().findViewById(R.id.other_locations);
+        g.setother_ownership(n_type.getText().toString());
+
+        g.setuploaded("no");//set uploaded to no on insert
+        g.setmodule("FMNR");//set which module is this on insert
+    }
+    //setting plot id for polygons
+    public void plotid(){
+        //generate unique id for farmer/institution
+        Random generator = new Random();
+        int n = 10000;
+        n = generator.nextInt(n);//random number generator
+        String pid = "plot_" + n;
+        g.setpid(pid);
     }
 }
