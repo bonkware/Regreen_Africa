@@ -9,12 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -60,6 +60,32 @@ public class FmnrFarmInstLandsizeFragment extends Fragment {
         dbAccess = new DbAccess(this.getActivity());
         dbAccess.open();
 
+        //get fid
+        String farmer_id = g.getfid();
+        TextView fid = (TextView) view.findViewById(R.id.fid);
+        fid.setText(farmer_id);
+
+        //for previous/back button
+        /*final Button button_prev = (Button) view.findViewById(R.id.prev);
+        button_prev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(g.getMultiplot()==true) {
+                    Intent intent = new Intent(getActivity(), Select_Farmer_Institution_FMNR.class);
+                    startActivity(intent);
+                    getActivity().overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
+                    //Toast.makeText(SelectSurvey.this.getActivity(),"Saved",Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    button_prev.setEnabled(false);
+                    //Intent intent = new Intent(getActivity(), TPFarmInstiMainActivity.class);
+                    //startActivity(intent);
+                    //getActivity().overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
+                }
+
+            }
+        });*/
+
         //proceed to land size polygon
         Button button_next = (Button) view.findViewById(R.id.topolygon);
         button_next.setOnClickListener(new View.OnClickListener() {
@@ -67,10 +93,10 @@ public class FmnrFarmInstLandsizeFragment extends Fragment {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.topolygon:
-                        saveFmnrFarmerInst();//save inputs
+                        saveFmnrPlotinfo();//save inputs
                         plotid();//generate plot id for polygons
-                        dbAccess.insertFmnrFarmerInst();//insert details to db
-                        g.setMultiplot(false);
+                        dbAccess.insertFmnrPlotInfo();//insert fmnr plot info details to db
+                        //g.setMultiplot(false);
                         Intent intent = new Intent(getActivity(), FmnrLandSizeMainActivity.class);
                         startActivity(intent);
                         getActivity().overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
@@ -171,98 +197,10 @@ public class FmnrFarmInstLandsizeFragment extends Fragment {
         return view;
     }
     // save farmer/institution data when you go next
-    public void  saveFmnrFarmerInst(){
-        //generate unique id for farmer/institution
-        Random generator = new Random();
-        int n = 10000;
-        n = generator.nextInt(n);//random number generator
-        String fid = "fgi_" + n;
-        g.setfid(fid);
-        //edittexts
-        EditText e_name = (EditText) getActivity().findViewById(R.id.ename);
-        g.setename(e_name.getText().toString());
-        EditText date = (EditText) getActivity().findViewById(R.id.in_date);
-        g.setin_date(date.getText().toString());
-
-        Spinner survey_name = (Spinner) getActivity().findViewById(R.id.survey_name);
-        //check if spinner is selected
-        if(survey_name != null && survey_name.getSelectedItem() !=null ) {
-            g.setfsurvey_name(survey_name.getSelectedItem().toString());
-        }//added for survey project selection
-        //EditText other_survey = (EditText) getActivity().findViewById(R.id.survey_other);
-        //g.setfsurvey_name(other_survey.getText().toString());//added for other project option
-
-        EditText farmer_institution_name = (EditText) getActivity().findViewById(R.id.fnames);
-        g.setfname(farmer_institution_name.getText().toString());
-        Spinner country = (Spinner) getActivity().findViewById(R.id.spinner1);
-        //check if spinner is selected
-        if(country != null && country.getSelectedItem() !=null ) {
-            g.setcountry(country.getSelectedItem().toString());
-        }
-        /*EditText county_region = (EditText) getActivity().findViewById(R.id.county);
-        g.setcounty_region(county_region.getText().toString());*/
-        Spinner county_region = (Spinner) getActivity().findViewById(R.id.spinner2);
-        //check if spinner is selected
-        if(county_region != null && county_region.getSelectedItem() !=null ) {
-            g.setcounty_region(county_region.getSelectedItem().toString());
-        }
-
-        /*EditText district = (EditText) getActivity().findViewById(R.id.district);
-        g.setdistricts(district.getText().toString());*/
-        Spinner district = (Spinner) getActivity().findViewById(R.id.spinner3);
-        //check if spinner is selected
-        if(district != null && district.getSelectedItem() !=null ) {
-            g.setdistricts(district.getSelectedItem().toString());
-        }
-
-       /* RadioGroup radioGroup = (RadioGroup) getActivity().findViewById(R.id.planting_location);
-        //check whether it is checked
-        if(radioGroup.getCheckedRadioButtonId()==-1){
-            //Toast.makeText(FarmerDetails.this.getActivity(),"Please select Radio Button!",Toast.LENGTH_SHORT).show();
-        }
-        else {
-            // get selected radioButton from radioGroup
-            int selectedId = radioGroup.getCheckedRadioButtonId();
-            // find the radioButton by returned id
-            RadioButton select = (RadioButton) getActivity().findViewById(selectedId);
-            // radioButton text
-            g.setselect_location(select.getText().toString());
-        }*/
-        CheckBox owner = (CheckBox) getActivity().findViewById(R.id.own);
-        if(owner.isChecked()) {
-            g.setindividual_ownership("yes");
-        }else {
-            g.setindividual_ownership("no");
-        }
-        CheckBox community = (CheckBox) getActivity().findViewById(R.id.comm_land);
-        if(community.isChecked()) {
-            g.setcommunity_ownership("yes");
-        }else {
-            g.setcommunity_ownership("no");
-        }
-        CheckBox govt = (CheckBox) getActivity().findViewById(R.id.govt_land);
-        if(govt.isChecked()) {
-            g.setgovt_land_ownership("yes");
-        }else {
-            g.setgovt_land_ownership("no");
-        }
-
-        CheckBox mchurch_mosque = (CheckBox) getActivity().findViewById(R.id.mosque_church);
-        if(mchurch_mosque.isChecked()) {
-            g.setmosque_church_ownership("yes");
-        }else {
-            g.setmosque_church_ownership("no");
-        }
-
-        CheckBox schools = (CheckBox) getActivity().findViewById(R.id.schools);
-        if(schools.isChecked()) {
-            g.setschools_ownership("yes");
-        }else {
-            g.setschools_ownership("no");
-        }
-        EditText n_type=(EditText) getActivity().findViewById(R.id.other_locations);
-        g.setother_ownership(n_type.getText().toString());
-
+    public void  saveFmnrPlotinfo(){
+        //get unique id for farmer/institution
+        TextView fid = (TextView) getActivity().findViewById(R.id.fid);
+        g.setfid(fid.getText().toString());
         RadioGroup sn = (RadioGroup) getActivity().findViewById(R.id.species_number);
         //check whether it is checked
         if(sn.getCheckedRadioButtonId()==-1){
@@ -317,7 +255,7 @@ public class FmnrFarmInstLandsizeFragment extends Fragment {
             g.setunits(units.getSelectedItem().toString());
         }
         g.setuploaded("no");//set uploaded to no on insert
-        g.setmodule("FMNR");//set which module is this on insert
+        //g.setmodule("FMNR");//set which module is this on insert
     }
     //setting plot id for polygons
     public void plotid(){

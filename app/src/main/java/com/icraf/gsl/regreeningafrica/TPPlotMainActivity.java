@@ -16,8 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.icraf.gsl.regreeningafrica.R.id.pager;
-
-public class FmnrLandSizeMainActivity extends AppCompatActivity {
+public class TPPlotMainActivity extends AppCompatActivity {
     ViewPager viewPager;
 
     @Override
@@ -26,7 +25,7 @@ public class FmnrLandSizeMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_fmnr);
 
         //set title
-        setTitle("FMNR");
+        setTitle("Tree Planting");
         //logo
         ActionBar logo = getSupportActionBar();
         logo.setDisplayUseLogoEnabled(true);
@@ -35,16 +34,16 @@ public class FmnrLandSizeMainActivity extends AppCompatActivity {
         logo.setHomeAsUpIndicator(R.drawable.ic_fmnr);
         logo.setDisplayHomeAsUpEnabled(true);
 
-
         viewPager = (ViewPager) findViewById(pager);
-        viewPager.setOffscreenPageLimit(1);//number of fragments
+        viewPager.setOffscreenPageLimit(5);//number of fragments
         final ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         //All fragments
-        adapter.addFragment(new FmnrLandSizePolygonFragment(), "landsize polygon");
+        //adapter.addFragment(new FmnrFarmInstSpeciesNumberFragment(), "species number");
+        adapter.addFragment(new TPFarmInstLandsizeFragment(), "land size green");
         viewPager.setAdapter(adapter);
 
     }
-    //end of nav buttons
+
     class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
@@ -98,12 +97,13 @@ public class FmnrLandSizeMainActivity extends AppCompatActivity {
     public void onBackPressed() {
         new AlertDialog.Builder(this)
                 .setTitle("Really Exit?")
-                .setMessage("Exit from recording land size polygons?")
+                .setMessage("Exit from recording plot information?")
                 .setNegativeButton(android.R.string.no, null)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface arg0, int arg1) {
-                        FmnrLandSizeMainActivity.super.onBackPressed();
+                        TPPlotMainActivity.super.onBackPressed();
                     }
                 }).create().show();
     }
 }
+

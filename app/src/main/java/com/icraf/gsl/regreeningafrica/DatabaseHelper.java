@@ -12,6 +12,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Tables for tree planting
     public static final String TABLE_FARMER_INST = "farmer_institution";
+    public static final String TABLE_PLOT_INFO = "plot_info";
     public static final String TABLE_COHORT = "cohort";
     public static final String TABLE_Measurement = "tree_measurements";
     public static final String TABLE_Trainings = "trainings";//trainings table
@@ -34,12 +35,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String land_mosque_church = "land_mosque_church";
     public static final String land_schools = "land_schools";
     public static final String land_other = "land_other";
+    public static final String tp_uploaded = "uploaded";//for status check, sent or not
     //public static final String planting_site = "planting_site";
+    //Plot info
+    public static final String tpplotfarmer_id = "farmerID";
     public static final String tp_crops = "crops";
     public static final String tp_croplist = "croplist";
     public static final String landsize_regreen = "landsize_regreen";
     public static final String tp_units = "units";
-    public static final String tp_uploaded = "uploaded";//for status check, sent or not
+    public static final String tpplot_uploaded = "uploaded";//for status check, sent or not
 
     //Cohort columns
     public static final String farmerID = "farmerID";
@@ -176,6 +180,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // fmnr farmer/institution info table
     public static final String TABLE_FMNR_FARMER_INST = "fmnr_farmer_inst";
+    // fmnr farmer/institution info table
+    public static final String TABLE_FMNR_PLOT_INFO = "fmnr_plot_info";
     // fmnr species table
     public static final String TABLE_FMNR_SPECIES = "fmnr_species";
     //columns for farmer/institution info
@@ -196,15 +202,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String fmnr_land_mosque_church = "fmnr_land_mosque_church";
     public static final String fmnr_land_schools = "fmnr_land_schools";
     public static final String fmnr_land_other = "fmnr_land_other";
+    public static final String fmnr_uploaded = "uploaded";//for status check, sent or not
+    //plot info
+    public static final String fmnrplotfarmer_id = "farmerID";
     public static final String fmnr_species_number_start = "fmnr_species_number_start";
-    //public static final String fmnr_restoration_photo = "fmnr_restoration_photo";
     public static final String fmnr_started_date = "fmnr_started_date";
     public static final String fmnr_fenced = "fmnr_fenced";
     public static final String fmnr_crops = "crops";
     public static final String fmnr_croplist = "croplist";
     public static final String fmnr_landsize_regreen = "landsize_regreen";
     public static final String fmnr_units = "units";
-    public static final String fmnr_uploaded = "uploaded";//for status check, sent or not
+    public static final String fmnr_plot_uploaded = "uploaded";//for status check, sent or not
 
     //columns for fmnr species
     public static final String fmnrfarmer_id = "farmerID";
@@ -271,8 +279,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "create table " +
                     TABLE_FARMER_INST + "(" +
                     _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + tp_module + " TEXT, " + enum_name + " TEXT, " + date + " TEXT,  " + survey_name + " TEXT, " + farmer_inst_name + " TEXT,"+
-                    country + " TEXT,"+county_region +  " TEXT,"+district + " TEXT,"+land_individual + " TEXT,"+land_community + " TEXT,"+land_government + " TEXT,"+land_mosque_church + " TEXT,"+land_schools + " TEXT,"+land_other + " TEXT,"+tp_crops + " TEXT,"+tp_croplist + " TEXT,"+landsize_regreen + " TEXT,"+tp_units + " TEXT,"+tp_uploaded+ " TEXT,"+
+                    country + " TEXT,"+county_region +  " TEXT,"+district + " TEXT,"+land_individual + " TEXT,"+land_community + " TEXT,"+land_government + " TEXT,"+land_mosque_church + " TEXT,"+land_schools + " TEXT,"+land_other + " TEXT,"+tp_uploaded+ " TEXT,"+
                     farmer_id+" TEXT);";
+
+    private static final String CREATE_TABLE_PLOT_INFO =
+            "create table " +
+                    TABLE_PLOT_INFO + "(" +
+                    _ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"+tp_crops + " TEXT,"+tp_croplist + " TEXT,"+landsize_regreen + " TEXT,"+tp_units + " TEXT,"+tpplot_uploaded+ " TEXT,"+
+                    tpplotfarmer_id+" TEXT);";
 
     //creating cohort table
     private static final String CREATE_TABLE_COHORT =
@@ -314,7 +328,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "create table " +
                     TABLE_FMNR_FARMER_INST + "(" +
                     _ID_fmnr + " INTEGER PRIMARY KEY AUTOINCREMENT, " + fmnr_module + " TEXT," + fmnr_enum_name + " TEXT, " + fmnr_date + " TEXT, " + famnr_survey_name + " TEXT, " + fmnr_farmer_inst_name + " TEXT,"+
-                    fmnr_country + " TEXT,"+fmnr_county_region +  " TEXT,"+fmnr_district + " TEXT,"+fmnr_land_individual + " TEXT,"+fmnr_land_community + " TEXT,"+fmnr_land_government + " TEXT,"+fmnr_land_mosque_church + " TEXT,"+fmnr_land_schools + " TEXT,"+fmnr_land_other + " TEXT,"+fmnr_species_number_start + " TEXT,"+fmnr_started_date + " TEXT,"+fmnr_fenced + " TEXT,"+fmnr_crops + " TEXT,"+fmnr_croplist + " TEXT,"+fmnr_landsize_regreen + " TEXT,"+fmnr_units + " TEXT,"+fmnr_uploaded+ " TEXT,"+
+                    fmnr_country + " TEXT,"+fmnr_county_region +  " TEXT,"+fmnr_district + " TEXT,"+fmnr_land_individual + " TEXT,"+fmnr_land_community + " TEXT,"+fmnr_land_government + " TEXT,"+fmnr_land_mosque_church + " TEXT,"+fmnr_land_schools + " TEXT,"+fmnr_land_other + " TEXT,"+fmnr_species_number_start + " TEXT,"+fmnr_uploaded+ " TEXT,"+
+                    fmnr_farmer_id+" TEXT);";
+    private static final String CREATE_TABLE_FMNR_PLOT_INFO =
+            "create table " +
+                    TABLE_FMNR_PLOT_INFO + "(" +
+                    _ID_fmnr + " INTEGER PRIMARY KEY AUTOINCREMENT,"+fmnr_species_number_start + " TEXT,"+fmnr_started_date + " TEXT,"+fmnr_fenced + " TEXT,"+fmnr_crops + " TEXT,"+fmnr_croplist + " TEXT,"+fmnr_landsize_regreen + " TEXT,"+fmnr_units + " TEXT,"+fmnr_plot_uploaded+ " TEXT,"+
                     fmnr_farmer_id+" TEXT);";
     //creating table for measurement fmnr
     private static final String CREATE_TABLE_FMNR_SPECIES =
@@ -343,6 +362,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         //creating tables
         db.execSQL(CREATE_TABLE_FARMER_INST);
+        db.execSQL(CREATE_TABLE_PLOT_INFO);
         db.execSQL(CREATE_TABLE_COHORT);
         db.execSQL(CREATE_TABLE_TREE);
         db.execSQL(CREATE_TABLE_TRAININGS);
@@ -352,6 +372,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_LANDSIZEPOLYGONTP);
         db.execSQL(CREATE_TABLE_LANDSIZEPOLYGONFMNR);
         db.execSQL(CREATE_TABLE_FMNR_SPECIES);
+        db.execSQL(CREATE_TABLE_FMNR_PLOT_INFO);
 
     }
 
@@ -359,12 +380,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         //on upgrade drop old ones
         db.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_FARMER_INST);
+        db.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_PLOT_INFO);
         db.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_COHORT);
         db.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_TREE);
         db.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_TRAININGS);
         db.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_NURSERY);
         db.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_NURSERY_SPECIES);
         db.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_FMNR_FARMER_INST);
+        db.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_FMNR_PLOT_INFO);
         db.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_FMNR_SPECIES);
         db.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_LANDSIZEPOLYGONTP);
         db.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_LANDSIZEPOLYGONFMNR);

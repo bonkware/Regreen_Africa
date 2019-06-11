@@ -134,7 +134,7 @@ public class FmnrTreeEndFragment extends Fragment {
             g.setmg6("no");
         }
         CheckBox mg7 = (CheckBox) getActivity().findViewById(R.id.mg7) ;
-        if(mg6.isChecked()) {
+        if(mg7.isChecked()) {
             //g.setusage5(usage5.getText().toString());
             g.setmg7("yes");
         }else {

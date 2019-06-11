@@ -215,8 +215,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:enabled="false"
             android:visibility="visible"
-            android:onClick="jumpBackMeasurement"
             android:text="PREV"/>
 
         <Button

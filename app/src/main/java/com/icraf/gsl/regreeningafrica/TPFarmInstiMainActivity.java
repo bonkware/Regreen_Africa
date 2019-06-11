@@ -13,15 +13,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.icraf.gsl.regreeningafrica.R.id.pager;
 
-public class TPFarmInstiMainAcivity extends AppCompatActivity {
+public class TPFarmInstiMainActivity extends AppCompatActivity {
     ViewPager viewPager;
 
     @Override
@@ -47,7 +45,7 @@ public class TPFarmInstiMainAcivity extends AppCompatActivity {
         adapter.addFragment(new TPFarmInstFragment(), "farmer/institution details");
         adapter.addFragment(new TPFarmInstLocFragment(), "tree planting location");
         //adapter.addFragment(new TPFarmInstSiteFragment(), "tree planting site");
-        adapter.addFragment(new TPFarmInstLandsizeFragment(), "land size green");
+        //adapter.addFragment(new TPFarmInstLandsizeFragment(), "land size green");
         viewPager.setAdapter(adapter);
 
     }
@@ -159,7 +157,7 @@ public class TPFarmInstiMainAcivity extends AppCompatActivity {
                 .setNegativeButton(android.R.string.no, null)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface arg0, int arg1) {
-                        TPFarmInstiMainAcivity.super.onBackPressed();
+                        TPFarmInstiMainActivity.super.onBackPressed();
                     }
                 }).create().show();
     }

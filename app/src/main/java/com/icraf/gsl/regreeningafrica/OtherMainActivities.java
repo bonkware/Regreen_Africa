@@ -55,13 +55,15 @@ public class OtherMainActivities extends AppCompatActivity {
     int count = 1;
     //urls for data submission ...172.28.0.155
     String treePlantinginfo_url = "http://172.28.0.155/regreen_africa/insertTPinfo.php";
+    String tpplotinfo_url = "http://172.28.0.155/regreen_africa/insertTPplotinfo.php";
     String treePlantingcohort_url = "http://172.28.0.155/regreen_africa/insertTPcohort.php";
     String treePlantingmeasurement_url = "http://172.28.0.155/regreen_africa/insertTPmeasurement.php";
-    String treePlantingpolygon_url = "http://172.28.0.155/regreen_africa/insertTPpolygon.php";
+    String tppolygon_url = "http://172.28.0.155/regreen_africa/insertTPpolygon.php";
     String trainings_url = "http://172.28.0.155/regreen_africa/insertTrainings.php";
     String nurseryinfo_url = "http://172.28.0.155/regreen_africa/insertNurseryinfo.php";
     String nurseryspecies_url = "http://172.28.0.155/regreen_africa/insertNurseryspecies.php";
     String fmnrinfo_url = "http://172.28.0.155/regreen_africa/insertFMNRinfo.php";
+    String fmnrplotinfo_url = "http://172.28.0.155/regreen_africa/insertFMNRplotinfo.php";
     String fmnrspecies_url = "http://172.28.0.155/regreen_africa/insertFMNRspecies.php";
     String fmnrpolygon_url = "http://172.28.0.155/regreen_africa/insertFMNRpolygon.php";
 
@@ -226,10 +228,6 @@ public class OtherMainActivities extends AppCompatActivity {
                     final String land_mosque_church = cursor.getString(cursor.getColumnIndex("land_mosque_church"));
                     final String land_schools = cursor.getString(cursor.getColumnIndex("land_schools"));
                     final String land_other = cursor.getString(cursor.getColumnIndex("land_other"));
-                    final String tp_crops = cursor.getString(cursor.getColumnIndex("crops"));
-                    final String tp_croplist = cursor.getString(cursor.getColumnIndex("croplist"));
-                    final String landsize_regreen = cursor.getString(cursor.getColumnIndex("landsize_regreen"));
-                    final String tp_units = cursor.getString(cursor.getColumnIndex("units"));
 
                     // create an object of volley request queue
                     //RequestQueue queue = Volley.newRequestQueue(OtherMainActivities.this);
@@ -243,6 +241,7 @@ public class OtherMainActivities extends AppCompatActivity {
                         public void onResponse(String response) {
                             //get the response if success get response that data has been received
                             Log.i("My success", "" + response);
+                            uploadTPplotinfo();
                             uploadTPpolygon();
                             uploadTPcohort();//cohorts
                             uploadTPmeasurements();
@@ -263,6 +262,8 @@ public class OtherMainActivities extends AppCompatActivity {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
                                                 dbAccess.uploadStatusTPinfo();//update column uploaded to yes
+                                                dbAccess.uploadStatusTPplotinfo();
+                                                dbAccess.uploadStatusFMNRpolygon();//update column to yes
                                                 dbAccess.uploadStatusTPcohort();//update column uploaded to yes
                                                 dbAccess.uploadStatusTPmeasurement();
                                                 //dismiss dialog by intent
@@ -327,10 +328,6 @@ public class OtherMainActivities extends AppCompatActivity {
                             param.put("land_mosque_church", land_mosque_church);
                             param.put("land_schools", land_schools);
                             param.put("land_other", land_other);
-                            param.put("crops", tp_crops);
-                            param.put("croplist", tp_croplist);
-                            param.put("landsize_regreen", landsize_regreen);
-                            param.put("units", tp_units);
                             return checkParams(param);
                         }
                         //check empty for null values
@@ -361,6 +358,94 @@ public class OtherMainActivities extends AppCompatActivity {
                         }
                     });
                     count+=1;//increment cursor by 1 once on the response to make sure that dialog is dismissed after the last record
+                } while (cursor.moveToNext());
+            }//end of cursor
+        }catch(Exception e){//added catch
+            Log.d("Upload failed", "Exception : "
+                    + e.getMessage(), e);
+        }
+    }
+    public void uploadTPplotinfo() {
+        //get data from sqlite in a loop
+        try{//added try catch
+            final Cursor cursor = dbAccess.getTPplotinfo();//fetch all tree planting info data
+            //cursor.getCount();
+            if (cursor.moveToFirst()) {
+                do {
+                    //farmer/institution
+                    final String tp_farmerID = cursor.getString(cursor.getColumnIndex("farmerID"));
+                    final String tp_crops = cursor.getString(cursor.getColumnIndex("crops"));
+                    final String tp_croplist = cursor.getString(cursor.getColumnIndex("croplist"));
+                    final String landsize_regreen = cursor.getString(cursor.getColumnIndex("landsize_regreen"));
+                    final String tp_units = cursor.getString(cursor.getColumnIndex("units"));
+
+                    // create an object of volley request queue
+                    //RequestQueue queue = Volley.newRequestQueue(OtherMainActivities.this);
+                    if (queue == null) {
+                        queue = Volley.newRequestQueue(this);
+                    }
+                    // Request a string response from the provided url above to server.
+                    StringRequest request = new StringRequest(Request.Method.POST, tpplotinfo_url, new Response.Listener<String>() {
+                        @Override
+                        //successful response
+                        public void onResponse(String response) {
+                            //get the response if success get response that data has been received
+                            Log.i("My success", "" + response);
+                        }
+                        //get error response
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            //error responses if failed to connect
+                            if (error instanceof NetworkError) {
+                                Toast.makeText(OtherMainActivities.this,"Cannot connect to Internet...Please check your connection!",Toast.LENGTH_SHORT).show();
+                            } else if (error instanceof ServerError) {
+                                Toast.makeText(OtherMainActivities.this,"The server could not be found. Please try again after some time!!",Toast.LENGTH_SHORT).show();
+                            } else if (error instanceof AuthFailureError) {
+                                Toast.makeText(OtherMainActivities.this,"Cannot connect to Internet...Please check your connection!",Toast.LENGTH_SHORT).show();
+                            } else if (error instanceof ParseError) {
+                                Toast.makeText(OtherMainActivities.this,"Parsing error! Please try again after some time!!",Toast.LENGTH_SHORT).show();
+
+                            } else if (error instanceof TimeoutError) {
+                                Toast.makeText(OtherMainActivities.this,"Connection TimeOut! Please check your internet connection",Toast.LENGTH_SHORT).show();
+                            }
+                            Log.i("My error", "" + error);
+                            //dismiss dialog
+                            progressDialog.dismiss();
+
+                        }
+                    }) {
+                        @Override
+                        //hashmap class in volley
+                        //HashMap is a type of Collection that stores  data in a pair such that each element has a key associated with it.
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            Map<String, String> param = new HashMap<String, String>();
+                            //farmer/institution
+                            param.put("farmerID", tp_farmerID);
+                            param.put("crops", tp_crops);
+                            param.put("croplist", tp_croplist);
+                            param.put("landsize_regreen", landsize_regreen);
+                            param.put("units", tp_units);
+                            return checkParams(param);
+                        }
+                        //check empty for null values
+                        private Map<String, String> checkParams(Map<String, String> map){
+                            Iterator<Map.Entry<String, String>> it = map.entrySet().iterator();
+                            while (it.hasNext()) {
+                                Map.Entry<String, String> pairs = (Map.Entry<String, String>)it.next();
+                                if(pairs.getValue()==null){
+                                    map.put(pairs.getKey(), "");
+                                }
+                            }
+                            return map;
+                        }
+                    };
+
+                    //add the request to the request queue
+                    //retry policy to avoid crash
+                    request.setRetryPolicy(new DefaultRetryPolicy( 0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+                    queue.add(request);
                 } while (cursor.moveToNext());
             }//end of cursor
         }catch(Exception e){//added catch
@@ -610,31 +695,33 @@ public class OtherMainActivities extends AppCompatActivity {
     public void uploadTPpolygon() {
         //get data from sqlite in a loop
         try{//added try catch
-            final Cursor cursor = dbAccess.getTPpolygon();//fetch all tree planting data
+            final Cursor cursor = dbAccess.getTPpolygon();//fetch all fmnr data
             if (cursor.moveToFirst()) {
                 do {
-                    //for tree planting plot polygon
-                    final String farmerid = cursor.getString(cursor.getColumnIndex("farmerID"));
+                    //for fmnr plot polygon
+                    final String fid = cursor.getString(cursor.getColumnIndex("farmerID"));
                     final String pid = cursor.getString(cursor.getColumnIndex("plotID"));
-                    final String tpp_module = cursor.getString(cursor.getColumnIndex("module"));
+                    final String tp_module = cursor.getString(cursor.getColumnIndex("module"));
                     final String landsize_polygon_latitude = cursor.getString(cursor.getColumnIndex("latitude"));
                     final String landsize_polygon_longitude = cursor.getString(cursor.getColumnIndex("longitude"));
                     final String landsize_polygon_altitude = cursor.getString(cursor.getColumnIndex("altitude"));
                     final String landsize_polygon_accuracy = cursor.getString(cursor.getColumnIndex("accuracy"));
 
                     // create an object of volley request queue
-                    //RequestQueue queue = Volley.newRequestQueue(OtherMainActivities.this);
+                    // RequestQueue queue = Volley.newRequestQueue(this);
+                    // create an object of volley request queue
                     if (queue == null) {
                         queue = Volley.newRequestQueue(this);
                     }
                     // Request a string response from the provided url above to server.
-                    StringRequest request = new StringRequest(Request.Method.POST, treePlantingpolygon_url, new Response.Listener<String>() {
+                    request = new StringRequest(Request.Method.POST, tppolygon_url, new Response.Listener<String>() {
                         @Override
                         //successful response
                         public void onResponse(String response) {
                             //get the response if success get response that data has been received
                             Log.i("My success", "" + response);
-                            dbAccess.uploadStatusTPpolygon();//update column uploaded to yes
+                            //uploadFMNRspecies();//species
+                            //dbAccess.uploadStatusFMNRpolygon();//update column to yes
                         }
                         //get error response
                     }, new Response.ErrorListener() {
@@ -649,7 +736,6 @@ public class OtherMainActivities extends AppCompatActivity {
                                 Toast.makeText(OtherMainActivities.this,"Cannot connect to Internet...Please check your connection!",Toast.LENGTH_SHORT).show();
                             } else if (error instanceof ParseError) {
                                 Toast.makeText(OtherMainActivities.this,"Parsing error! Please try again after some time!!",Toast.LENGTH_SHORT).show();
-
                             } else if (error instanceof TimeoutError) {
                                 Toast.makeText(OtherMainActivities.this,"Connection TimeOut! Please check your internet connection",Toast.LENGTH_SHORT).show();
                             }
@@ -665,9 +751,9 @@ public class OtherMainActivities extends AppCompatActivity {
                         protected Map<String, String> getParams() throws AuthFailureError {
                             Map<String, String> param = new HashMap<String, String>();
                             //landsize polygon
-                            param.put("farmerID", farmerid);
+                            param.put("farmerID", fid);
                             param.put("plotID", pid);
-                            param.put("module", tpp_module);
+                            param.put("module", tp_module);
                             param.put("latitude", landsize_polygon_latitude);
                             param.put("longitude", landsize_polygon_longitude);
                             param.put("altitude", landsize_polygon_altitude);
@@ -687,7 +773,6 @@ public class OtherMainActivities extends AppCompatActivity {
                             return map;
                         }
                     };
-
                     //add the request to the request queue
                     //retry policy to avoid crash
                     request.setRetryPolicy(new DefaultRetryPolicy( 0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
@@ -696,10 +781,12 @@ public class OtherMainActivities extends AppCompatActivity {
 
                 } while (cursor.moveToNext());
             }//end of cursor
+            cursor.close();//close cursor
         }catch(Exception e){//added catch
             Log.d("Upload failed", "Exception : "
                     + e.getMessage(), e);
         }
+
     }
     //sending nursery data from sqlite
     public void uploadNurseryInfo() {
@@ -1064,15 +1151,6 @@ public class OtherMainActivities extends AppCompatActivity {
                     final String fmnr_land_mosque_church = cursor.getString(cursor.getColumnIndex("fmnr_land_mosque_church"));
                     final String fmnr_land_schools = cursor.getString(cursor.getColumnIndex("fmnr_land_schools"));
                     final String fmnr_land_other = cursor.getString(cursor.getColumnIndex("fmnr_land_other"));
-
-                    final String fmnr_species_number_start = cursor.getString(cursor.getColumnIndex("fmnr_species_number_start"));
-                    //final String fmnr_restoration_photo = cursor.getString(cursor.getColumnIndex("fmnr_restoration_photo"));
-                    final String fmnr_started_date = cursor.getString(cursor.getColumnIndex("fmnr_started_date"));
-                    final String fmnr_fenced = cursor.getString(cursor.getColumnIndex("fmnr_fenced"));
-                    final String fmnr_crops = cursor.getString(cursor.getColumnIndex("crops"));
-                    final String fmnr_croplist = cursor.getString(cursor.getColumnIndex("croplist"));
-                    final String fmnr_landsize_regreen = cursor.getString(cursor.getColumnIndex("landsize_regreen"));
-                    final String fmnr_units = cursor.getString(cursor.getColumnIndex("units"));//
                     final String fmnr_module = cursor.getString(cursor.getColumnIndex("module"));//
 
                     // create an object of volley request queue
@@ -1089,6 +1167,7 @@ public class OtherMainActivities extends AppCompatActivity {
                         public void onResponse(String response) {
                             //get the response if success get response that data has been received
                             Log.i("My success", "" + response);
+                            uploadFMNRplotInfo();//upload plot info
                             uploadFMNRpolygon();//polygon points
                             uploadFMNRspecies();//species
                             //dbAccess.uploadStatusFMNRinfo();//update column to yes
@@ -1109,6 +1188,7 @@ public class OtherMainActivities extends AppCompatActivity {
                                             public void onClick(DialogInterface dialog, int which) {
                                                 //update uploaded column to yes
                                                 dbAccess.uploadStatusFMNRinfo();//update column to yes
+                                                dbAccess.uploadStatusFMNRplotinfo();//update column to yes
                                                 dbAccess.uploadStatusFMNRpolygon();//update column to yes
                                                 dbAccess.uploadStatusFMNRspecies();//update column to yes
                                                 //dismiss dialog by intent
@@ -1172,6 +1252,116 @@ public class OtherMainActivities extends AppCompatActivity {
                             param.put("fmnr_land_mosque_church", fmnr_land_mosque_church);
                             param.put("fmnr_land_schools", fmnr_land_schools);
                             param.put("fmnr_land_other", fmnr_land_other);
+                            //return param;
+                            return checkParams(param);
+                        }
+                        //check empty for null values
+                        private Map<String, String> checkParams(Map<String, String> map){
+                            Iterator<Map.Entry<String, String>> it = map.entrySet().iterator();
+                            while (it.hasNext()) {
+                                Map.Entry<String, String> pairs = (Map.Entry<String, String>)it.next();
+                                if(pairs.getValue()==null){
+                                    map.put(pairs.getKey(), "");
+                                }
+                            }
+                            return map;
+                        }
+                    };
+                    //add the request to the request queue
+                    //retry policy to avoid crash
+                    request.setRetryPolicy(new DefaultRetryPolicy( 0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+                    queue.add(request);
+                    //Singleton.getInstance(mContext).addToRequestQueue(request);
+                    //manage out of memory issues and cache clear
+                    DiskBasedCache cache = new DiskBasedCache(getCacheDir(), 16 * 1024 * 1024);
+                    queue = new RequestQueue(cache, new BasicNetwork(new HurlStack()));
+                    queue.start();
+                    queue.add(new ClearCacheRequest(cache, null));//end of cache clear
+                    //VolleySingleton.getInstance(this).addToRequestQueue(request);
+                    //add listener to the queue which is executed when the request ends
+                    queue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<String>() {
+                        @Override
+                        public void onRequestFinished(Request<String> request) {
+                            if (progressDialog !=  null && progressDialog.isShowing())
+                                progressDialog.dismiss();
+                        }
+                    });
+                    count+=1;//increment cursor by 1 once on the response to make sure that dialog is dismissed after the last record
+                } while (cursor.moveToNext());
+            }//end of cursor
+            cursor.close();//close cursor
+        }catch(Exception e){//added catch
+            Log.d("Upload failed", "Exception : "
+                    + e.getMessage(), e);
+        }
+
+    }
+    public void uploadFMNRplotInfo() {
+        progressDialog = new ProgressDialog(OtherMainActivities.this);
+        progressDialog.setMessage("Sending FMNR data...");
+        progressDialog.setCancelable(true);
+        progressDialog.setIndeterminate(true);
+        progressDialog.show();
+
+        //get data from sqlite in a loop
+        try{//added try catch
+            final Cursor cursor = dbAccess.getFMNRplotinfo();//fetch all fmnr data
+            if (cursor.moveToFirst()) {
+                do {
+                    final String fmnr_farmer_id = cursor.getString(cursor.getColumnIndex("farmerID"));
+                    final String fmnr_species_number_start = cursor.getString(cursor.getColumnIndex("fmnr_species_number_start"));
+                    final String fmnr_started_date = cursor.getString(cursor.getColumnIndex("fmnr_started_date"));
+                    final String fmnr_fenced = cursor.getString(cursor.getColumnIndex("fmnr_fenced"));
+                    final String fmnr_crops = cursor.getString(cursor.getColumnIndex("crops"));
+                    final String fmnr_croplist = cursor.getString(cursor.getColumnIndex("croplist"));
+                    final String fmnr_landsize_regreen = cursor.getString(cursor.getColumnIndex("landsize_regreen"));
+                    final String fmnr_units = cursor.getString(cursor.getColumnIndex("units"));//
+
+                    // create an object of volley request queue
+                    // RequestQueue queue = Volley.newRequestQueue(this);
+                    // create an object of volley request queue
+                    if (queue == null) {
+                        queue = Volley.newRequestQueue(this);
+                    }
+                    // Request a string response from the provided url above to server.
+                    //StringRequest request = new StringRequest(Request.Method.POST, fmnr_url, new Response.Listener<String>() {
+                    request = new StringRequest(Request.Method.POST, fmnrplotinfo_url, new Response.Listener<String>() {
+                        @Override
+                        //successful response
+                        public void onResponse(String response) {
+                            //get the response if success get response that data has been received
+                            Log.i("My success", "" + response);
+
+                        }
+                        //get error response
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            //error responses if failed to connect
+                            if (error instanceof NetworkError) {
+                                Toast.makeText(OtherMainActivities.this,"Cannot connect to Internet...Please check your connection!",Toast.LENGTH_SHORT).show();
+                            } else if (error instanceof ServerError) {
+                                Toast.makeText(OtherMainActivities.this,"The server could not be found. Please try again after some time!!",Toast.LENGTH_SHORT).show();
+                            } else if (error instanceof AuthFailureError) {
+                                Toast.makeText(OtherMainActivities.this,"Cannot connect to Internet...Please check your connection!",Toast.LENGTH_SHORT).show();
+                            } else if (error instanceof ParseError) {
+                                Toast.makeText(OtherMainActivities.this,"Parsing error! Please try again after some time!!",Toast.LENGTH_SHORT).show();
+                            } else if (error instanceof TimeoutError) {
+                                Toast.makeText(OtherMainActivities.this,"Connection TimeOut! Please check your internet connection",Toast.LENGTH_SHORT).show();
+                            }
+                            Log.i("My error", "" + error);
+                            //dismiss dialog
+                            progressDialog.dismiss();
+
+                        }
+                    }) {
+                        @Override
+                        //hashmap class in volley
+                        //HashMap is a type of Collection that stores  data in a pair such that each element has a key associated with it.
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            Map<String, String> param = new HashMap<String, String>();
+                            param.put("farmerID", fmnr_farmer_id);
                             param.put("fmnr_species_number_start", fmnr_species_number_start);
                             //param.put("fmnr_restoration_photo", fmnr_restoration_photo);
                             param.put("fmnr_started_date", fmnr_started_date);

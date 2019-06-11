@@ -44,8 +44,8 @@ public class FmnrFarmInstMainActivity extends AppCompatActivity {
         adapter.addFragment(new FmnrFarmInstEnumFragment(), "enumurator");
         adapter.addFragment(new FmnrFarmInstFragment(), "farmer/institution details");
         adapter.addFragment(new FmnrFarmInstLocFragment(), "tree planting location");
-        adapter.addFragment(new FmnrFarmInstSpeciesNumberFragment(), "species number");
-        adapter.addFragment(new FmnrFarmInstLandsizeFragment(), "land size green");
+        /*adapter.addFragment(new FmnrFarmInstSpeciesNumberFragment(), "species number");
+        adapter.addFragment(new FmnrFarmInstLandsizeFragment(), "land size green");*/
         viewPager.setAdapter(adapter);
 
     }

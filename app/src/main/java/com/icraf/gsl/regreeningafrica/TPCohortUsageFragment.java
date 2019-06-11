@@ -84,9 +84,9 @@ public class TPCohortUsageFragment extends Fragment {
         EditText date_planted = (EditText) getActivity().findViewById(R.id.p_date);
         g.setdate_planted(date_planted.getText().toString());
         EditText planted = (EditText) getActivity().findViewById(R.id.number_planted);
-        g.setnumber_planted(date_planted.getText().toString());
+        g.setnumber_planted(planted.getText().toString());
         EditText survived = (EditText) getActivity().findViewById(R.id.number_survived);
-        g.setnumber_survived(date_planted.getText().toString());
+        g.setnumber_survived(survived.getText().toString());
 
         //tree planting area
         CheckBox woodlot = (CheckBox) getActivity().findViewById(R.id.woodlot);

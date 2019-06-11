@@ -3,16 +3,11 @@ package com.icraf.gsl.regreeningafrica;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FilterQueryProvider;
@@ -20,8 +15,6 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 /**
@@ -107,9 +100,9 @@ public class Select_Farmer_Institution_FMNR extends AppCompatActivity {
                 RegreeningGlobal g = RegreeningGlobal.getInstance();
                 g.setfid(farmer_id);//pass farmerID to the next page
                 g.setMultiplot(true);
-                plotid();//generate plot id for polygons
+               // plotid();//generate plot id for polygons
 
-                Intent tp_intent = new Intent(getApplicationContext(), FmnrLandSizeMainActivity.class);
+                Intent tp_intent = new Intent(getApplicationContext(), FmnrPlotMainActivity.class);
                 startActivity(tp_intent);
                 overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
             }

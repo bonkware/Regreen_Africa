@@ -30,7 +30,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.icraf.gsl.regreeningafrica.MainActivity" android:configChanges="orientation|screenSize|keyboardHidden"/>
-        <activity android:name="com.icraf.gsl.regreeningafrica.TPFarmInstiMainAcivity" android:configChanges="orientation|screenSize|keyboardHidden"/>
+        <activity android:name="com.icraf.gsl.regreeningafrica.TPFarmInstiMainActivity" android:configChanges="orientation|screenSize|keyboardHidden"/>
         <activity android:name="com.icraf.gsl.regreeningafrica.SelectSurvey" android:configChanges="orientation|screenSize|keyboardHidden"/>
         <activity android:name="com.icraf.gsl.regreeningafrica.TrainingsMainActivity" android:configChanges="orientation|screenSize|keyboardHidden"/>
         <activity android:name="com.icraf.gsl.regreeningafrica.TPCohortMainAcivity" android:configChanges="orientation|screenSize|keyboardHidden"/>
@@ -44,6 +44,8 @@
         <activity android:name="com.icraf.gsl.regreeningafrica.FmnrTreeMeasureMainActivity" android:configChanges="orientation|screenSize|keyboardHidden" />
         <activity android:name="com.icraf.gsl.regreeningafrica.FmnrLandSizeMainActivity" android:configChanges="orientation|screenSize|keyboardHidden" />
         <activity android:name="com.icraf.gsl.regreeningafrica.TPLandSizeMainActivity" android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity android:name="com.icraf.gsl.regreeningafrica.FmnrPlotMainActivity" android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity android:name="com.icraf.gsl.regreeningafrica.TPPlotMainActivity" android:configChanges="orientation|screenSize|keyboardHidden" />
         <activity android:name="com.icraf.gsl.regreeningafrica.SelectTPMultiple_TP" />
         <activity android:name="com.icraf.gsl.regreeningafrica.SelectTPMultiple_FMNR" />
         <activity android:name="com.icraf.gsl.regreeningafrica.Select_Farmer_Institution_TP" />

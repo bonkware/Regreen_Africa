@@ -76,7 +76,7 @@ public class TPTreeEndFragment extends Fragment {
                     case R.id.add_new_farmerinst:
                         saveMeasurement();
                         dbAccess.insertMeasurent();
-                        Intent intent = new Intent(getActivity(), TPFarmInstiMainAcivity.class);
+                        Intent intent = new Intent(getActivity(), TPFarmInstiMainActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                         //Toast.makeText(SelectSurvey.this.getActivity(),"Saved! Add new tree",Toast.LENGTH_SHORT).show();

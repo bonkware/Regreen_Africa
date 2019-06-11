@@ -210,10 +210,9 @@
             android:text="PREV"/>
 
         <Button
-            android:id="@+id/next"
+            android:id="@+id/tospeciesnumber"
             android:layout_width="wrap_content"
             android:layout_height="49dp"
-            android:onClick="jumpTosnumber"
             android:layout_weight="1"
             android:drawableRight="@drawable/noun_next"
             android:text="NEXT"/>

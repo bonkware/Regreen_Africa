@@ -18,7 +18,7 @@
                 android:id="@+id/select"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="How many tree species did the farmer/group/institution start with at the onset of FMNR?"
+                android:text="How many tree species did the farmer/group/institution start with at the onset of FMNR on this plot?"
                 android:textSize="@dimen/textsize"
                 android:textStyle="italic">
             </TextView>
@@ -74,7 +74,6 @@
             android:id="@+id/prev"
             android:layout_width="wrap_content"
             android:layout_height="49dp"
-            android:onClick="jumpBackLoc"
             android:layout_weight="1"
             android:drawableLeft="@drawable/n_back"
             android:text="PREV"/>

@@ -11,13 +11,14 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.icraf.gsl.regreeningafrica.R.id.pager;
 
-public class FmnrLandSizeMainActivity extends AppCompatActivity {
+public class FmnrPlotMainActivity extends AppCompatActivity {
     ViewPager viewPager;
 
     @Override
@@ -35,14 +36,21 @@ public class FmnrLandSizeMainActivity extends AppCompatActivity {
         logo.setHomeAsUpIndicator(R.drawable.ic_fmnr);
         logo.setDisplayHomeAsUpEnabled(true);
 
-
         viewPager = (ViewPager) findViewById(pager);
-        viewPager.setOffscreenPageLimit(1);//number of fragments
+        viewPager.setOffscreenPageLimit(5);//number of fragments
         final ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         //All fragments
-        adapter.addFragment(new FmnrLandSizePolygonFragment(), "landsize polygon");
+        adapter.addFragment(new FmnrFarmInstSpeciesNumberFragment(), "species number");
+        adapter.addFragment(new FmnrFarmInstLandsizeFragment(), "land size green");
         viewPager.setAdapter(adapter);
 
+    }
+    //for navigation buttons i.e move next if all fields are filled
+    public void jumpToEst(View view){
+        viewPager.setCurrentItem(1);
+    }
+    public void jumpBackSnumber(View view){
+        viewPager.setCurrentItem(0);
     }
     //end of nav buttons
     class ViewPagerAdapter extends FragmentPagerAdapter {
@@ -98,11 +106,11 @@ public class FmnrLandSizeMainActivity extends AppCompatActivity {
     public void onBackPressed() {
         new AlertDialog.Builder(this)
                 .setTitle("Really Exit?")
-                .setMessage("Exit from recording land size polygons?")
+                .setMessage("Exit from recording plot information?")
                 .setNegativeButton(android.R.string.no, null)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface arg0, int arg1) {
-                        FmnrLandSizeMainActivity.super.onBackPressed();
+                        FmnrPlotMainActivity.super.onBackPressed();
                     }
                 }).create().show();
     }

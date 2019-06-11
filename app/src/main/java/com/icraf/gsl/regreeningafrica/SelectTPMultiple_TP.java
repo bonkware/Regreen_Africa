@@ -44,7 +44,7 @@ public class SelectTPMultiple_TP extends AppCompatActivity {
         Button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(SelectTPMultiple_TP.this, TPFarmInstiMainAcivity.class);
+                Intent i = new Intent(SelectTPMultiple_TP.this, TPFarmInstiMainActivity.class);
                 startActivity(i);
                 overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
             }
