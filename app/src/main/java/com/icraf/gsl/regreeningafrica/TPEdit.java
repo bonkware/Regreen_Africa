@@ -12,15 +12,16 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class TPEdit extends Activity implements OnClickListener {
     //initialize
     private Button updateBtn, deleteBtn;
     private EditText enumText,nameText,surveyText,countryText,cText,dText,oText,clText,glText,mText,sText,
-            owText,lsText,unsText,mg1Text,mg2Text,mg3Text,mg4Text,mg5Text,mg_otherText,
-            usage1Text,usage2Text,usage3Text,usage4Text,usage5Text,us_otherText,
+            owText,cropsText,croplistText,lsText,unsText,mg1Text,mg2Text,mg3Text,mg4Text,mg5Text,mg_otherText,
+            usage1Text,usage2Text,usage3Text,usage4Text,usage5Text,usage6Text,us_otherText,
             speciesText,pText,numberpText,numbersText,wText,ibText,ebText,gText,
-            cfText,pgText,fbText,osText,hText,drText,in_dateText,latText,lonText,altText,accText;
+            cfText,pgText,fbText,osText,hText,drText,in_dateText,latText,lonText,altText,accText,notesText;
 
     private long _id;
 
@@ -61,6 +62,8 @@ public class TPEdit extends Activity implements OnClickListener {
         mText = (EditText) findViewById(R.id.ms);
         sText = (EditText) findViewById(R.id.schools);
         owText = (EditText) findViewById(R.id.other_owner);
+        cropsText = (EditText) findViewById(R.id.crops);
+        croplistText = (EditText) findViewById(R.id.croplist);
         lsText = (EditText) findViewById(R.id.landsize);
         unsText = (EditText) findViewById(R.id.units);
         speciesText = (EditText) findViewById(R.id.species);
@@ -87,6 +90,7 @@ public class TPEdit extends Activity implements OnClickListener {
         usage3Text = (EditText) findViewById(R.id.usage3);
         usage4Text = (EditText) findViewById(R.id.usage4);
         usage5Text = (EditText) findViewById(R.id.usage5);
+        usage6Text = (EditText) findViewById(R.id.usage6);
         us_otherText = (EditText) findViewById(R.id.us_other);
         hText = (EditText) findViewById(R.id.height);
         drText = (EditText) findViewById(R.id.d_r);
@@ -94,12 +98,10 @@ public class TPEdit extends Activity implements OnClickListener {
         lonText = (EditText) findViewById(R.id.tree_longitude);
         altText = (EditText) findViewById(R.id.tree_altitude);
         accText = (EditText) findViewById(R.id.tree_accuracy);
+        notesText = (EditText) findViewById(R.id.notes);
 
         updateBtn = (Button) findViewById(R.id.btn_update);
         deleteBtn = (Button) findViewById(R.id.btn_delete);
-        //disable delete button
-        updateBtn.setEnabled(false);
-        deleteBtn.setEnabled(false);
         //send data to a new activity
         Intent intent = getIntent();
         String id = intent.getStringExtra("id");
@@ -116,6 +118,8 @@ public class TPEdit extends Activity implements OnClickListener {
         String ms = intent.getStringExtra("mosque_church");
         String schools = intent.getStringExtra("school");
         String other_owner = intent.getStringExtra("other_owner");
+        String crops = intent.getStringExtra("crops");
+        String cropl = intent.getStringExtra("croplist");
         String landsize = intent.getStringExtra("landsize");
         String units = intent.getStringExtra("unit");
         String species = intent.getStringExtra("species");
@@ -142,6 +146,7 @@ public class TPEdit extends Activity implements OnClickListener {
         String usage3 = intent.getStringExtra("usage3");
         String usage4 = intent.getStringExtra("usage4");
         String usage5 = intent.getStringExtra("usage5");
+        String usage6 = intent.getStringExtra("usage6");
         String us_other = intent.getStringExtra("us_other");
         String height = intent.getStringExtra("height");
         String d_r = intent.getStringExtra("dcr");
@@ -149,6 +154,7 @@ public class TPEdit extends Activity implements OnClickListener {
         String lon = intent.getStringExtra("longitude");
         String alt = intent.getStringExtra("altitude");
         String acc = intent.getStringExtra("accuracy");
+        String note = intent.getStringExtra("notes");
 
         _id = Long.parseLong(id);
 
@@ -166,6 +172,8 @@ public class TPEdit extends Activity implements OnClickListener {
         mText.setText(ms);
         sText.setText(schools);
         owText.setText(other_owner);
+        cropsText.setText(crops);
+        croplistText.setText(cropl);
         lsText.setText(landsize);
         unsText.setText(units);
         speciesText.setText(species);
@@ -192,6 +200,7 @@ public class TPEdit extends Activity implements OnClickListener {
         usage3Text.setText(usage3);
         usage4Text.setText(usage4);
         usage5Text.setText(usage5);
+        usage6Text.setText(usage6);
         us_otherText.setText(us_other);
         hText.setText(height);
         drText.setText(d_r);
@@ -199,6 +208,7 @@ public class TPEdit extends Activity implements OnClickListener {
         lonText.setText(lon);
         altText.setText(alt);
         accText.setText(acc);
+        notesText.setText(note);
 
         updateBtn.setOnClickListener(this);
         deleteBtn.setOnClickListener(this);
@@ -208,24 +218,36 @@ public class TPEdit extends Activity implements OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_update:
-                //update values
-               /* String project = projectText.getText().toString();
+                //update values after editing
+                String ename = enumText.getText().toString();
+                String date = in_dateText.getText().toString();
+                String survey = surveyText.getText().toString();
                 String name = nameText.getText().toString();
-                String village = villageText.getText().toString();
                 String country = countryText.getText().toString();
-                String select = selectText.getText().toString();
-                String in_date = in_dateText.getText().toString();
-                String latitude = latitudeText.getText().toString();
-                String longitude = longitudeText.getText().toString();
-                String altitude = altitudeText.getText().toString();
-                String accuracy = accuracyText.getText().toString();
+                String county = cText.getText().toString();
+                String district = dText.getText().toString();
+                String own = oText.getText().toString();
+                String c_land = clText.getText().toString();
+                String g_land = glText.getText().toString();
+                String ms = mText.getText().toString();
+                String school = sText.getText().toString();
+                String other_owner = owText.getText().toString();
+                String crops = cropsText.getText().toString();
+                String croplist = croplistText.getText().toString();
+                String landsize = lsText.getText().toString();
+                String unit = unsText.getText().toString();
                 String species = speciesText.getText().toString();
-                String local = localText.getText().toString();
-                //String select_h = select_hText.getText().toString();
-                String dbh = dbhText.getText().toString();
-                String height = heightText.getText().toString();
-                String base_circum = base_circumText.getText().toString();
-                String path = pathText.getText().toString();
+                String dplanted = pText.getText().toString();
+                String nplanted = numberpText.getText().toString();
+                String nsurvived = numbersText.getText().toString();
+                String woodlot = wText.getText().toString();
+                String iboundary = ibText.getText().toString();
+                String eboundary = ebText.getText().toString();
+                String garden = gText.getText().toString();
+                String field = cfText.getText().toString();
+                String grassland = pgText.getText().toString();
+                String bushland = fbText.getText().toString();
+                String other_sites = osText.getText().toString();
                 String mg1 = mg1Text.getText().toString();
                 String mg2 = mg2Text.getText().toString();
                 String mg3 = mg3Text.getText().toString();
@@ -237,36 +259,35 @@ public class TPEdit extends Activity implements OnClickListener {
                 String usage3 = usage3Text.getText().toString();
                 String usage4 = usage4Text.getText().toString();
                 String usage5 = usage5Text.getText().toString();
+                String usage6 = usage6Text.getText().toString();
                 String us_other = us_otherText.getText().toString();
-                String livestock1 = livestock1Text.getText().toString();
-                String livestock2 = livestock2Text.getText().toString();
-                String livestock3 = livestock3Text.getText().toString();
-                String livestock4 = livestock4Text.getText().toString();
-                String livestock_other = livestock_otherText.getText().toString();
-                String fodder1 = fodder1Text.getText().toString();
-                String fodder2 = fodder2Text.getText().toString();
-                String fodder3 = fodder3Text.getText().toString();
-                String f_other = f_otherText.getText().toString();
-                String farm = farmText.getText().toString();
-                String market = marketText.getText().toString();
-                String s_other = s_otherText.getText().toString();
-                String date = dateText.getText().toString();
-                String ename = enameText.getText().toString();
+                String height = hText.getText().toString();
+                String dbh = drText.getText().toString();
+                String lat = latText.getText().toString();
+                String lon = lonText.getText().toString();
+                String alt = altText.getText().toString();
+                String acc = accText.getText().toString();
+                String notes = notesText.getText().toString();
 
                 //update the record
-                dbAccess.updateFarmerTree(_id, project, name, village, country,select,in_date,latitude,longitude,altitude,accuracy,species,local,dbh,
-                        height,base_circum,path,mg1,mg2,mg3,mg4,mg5,mg_other,usage1,usage2,usage3,usage4,usage5,us_other,
-                        livestock1,livestock2,livestock3,livestock4,livestock_other,fodder1,fodder2,fodder3,f_other,farm,market,s_other,date,ename);
+                dbAccess.updateTPinfo(_id, ename, date, survey, name,country,county,district,own,c_land,g_land,ms,school,other_owner);
+                dbAccess.updateTPplotinfo(_id,crops,croplist,landsize,unit);
+                dbAccess.updateTPcohort(_id,species,dplanted,nplanted,nsurvived,woodlot,iboundary,eboundary,garden,field,grassland,bushland,other_sites,
+                                          mg1,mg2,mg3,mg4,mg5,mg_other,usage1,usage2,usage3,usage4,usage5,usage6,us_other);
+                dbAccess.updateTPmeasurements(_id,height,dbh,lat,lon,alt,acc,notes);
                 Toast.makeText(TPEdit.this, "Updated Successfully", Toast.LENGTH_SHORT).show();
                 this.returnHome();
-                break;*/
+                break;
 
-            /*case R.id.btn_delete:
+            case R.id.btn_delete:
                 //delete
-                dbAccess.delete_farmer(_id);
+                dbAccess.delete_TPinfo(_id);
+                dbAccess.delete_TPplotinfo(_id);
+                dbAccess.delete_TPcohort(_id);
+                dbAccess.delete_TPmeasurement(_id);
                 Toast.makeText(TPEdit.this, "Successfully deleted", Toast.LENGTH_SHORT).show();
                 this.returnHome();
-                break;*/
+                break;
         }
     }
 

@@ -115,7 +115,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // nursery species
     public static final String TABLE_NURSERY_SPECIES = "nursery_species";
     //columns nursery profile
-    public static final String id = "id";
+    public static final String id = "_id";
     public static final String nursery_id = "nurseryID";
     public static final String nursery_module = "module";
     public static final String nursery_enum_name = "ename";
@@ -328,7 +328,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "create table " +
                     TABLE_FMNR_FARMER_INST + "(" +
                     _ID_fmnr + " INTEGER PRIMARY KEY AUTOINCREMENT, " + fmnr_module + " TEXT," + fmnr_enum_name + " TEXT, " + fmnr_date + " TEXT, " + famnr_survey_name + " TEXT, " + fmnr_farmer_inst_name + " TEXT,"+
-                    fmnr_country + " TEXT,"+fmnr_county_region +  " TEXT,"+fmnr_district + " TEXT,"+fmnr_land_individual + " TEXT,"+fmnr_land_community + " TEXT,"+fmnr_land_government + " TEXT,"+fmnr_land_mosque_church + " TEXT,"+fmnr_land_schools + " TEXT,"+fmnr_land_other + " TEXT,"+fmnr_species_number_start + " TEXT,"+fmnr_uploaded+ " TEXT,"+
+                    fmnr_country + " TEXT,"+fmnr_county_region +  " TEXT,"+fmnr_district + " TEXT,"+fmnr_land_individual + " TEXT,"+fmnr_land_community + " TEXT,"+fmnr_land_government + " TEXT,"+fmnr_land_mosque_church + " TEXT,"+fmnr_land_schools + " TEXT,"+fmnr_land_other + " TEXT,"+fmnr_uploaded+ " TEXT,"+
                     fmnr_farmer_id+" TEXT);";
     private static final String CREATE_TABLE_FMNR_PLOT_INFO =
             "create table " +

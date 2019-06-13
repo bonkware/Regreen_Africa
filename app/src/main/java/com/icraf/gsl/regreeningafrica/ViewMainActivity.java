@@ -6,48 +6,16 @@ package com.icraf.gsl.regreeningafrica;
  */
 import android.Manifest;
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Base64;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
-import com.android.volley.AuthFailureError;
-import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.NetworkError;
-import com.android.volley.ParseError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.ServerError;
-import com.android.volley.TimeoutError;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.BasicNetwork;
-import com.android.volley.toolbox.ClearCacheRequest;
-import com.android.volley.toolbox.DiskBasedCache;
-import com.android.volley.toolbox.HurlStack;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 
 public class ViewMainActivity extends AppCompatActivity {
     Button TPButton,TrainingButton,NurseryButton,FMNRButton;
@@ -118,11 +86,12 @@ public class ViewMainActivity extends AppCompatActivity {
                     Toast.makeText(ViewMainActivity.this, "No data to view", Toast.LENGTH_SHORT).show();
                 }else {//otherwise send
                     //uploadTrainings();
+                    Intent i = new Intent(ViewMainActivity.this, TrainingView.class);
+                    startActivity(i);
+                    overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
                 }
                 //Toast.makeText(Index.this, "Data Send", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(ViewMainActivity.this, TrainingView.class);
-                startActivity(i);
-                overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
+
             }
         });
         //for sending nursery data

@@ -12,12 +12,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class NurseryEdit extends Activity implements OnClickListener {
     //initialize
     private Button updateBtn, deleteBtn;
+    private EditText idTextView,nid,enume,date,survey,country,county,district,operator,contact,n_name,s_number,s_date,government,
+            church_mosque,schools,women_groups,youth_groups,private_individual,communal_village,other_types,latitude,longitude,altitude,accuracy,image,
+    nursery_species,nursery_local,bare_root,container,other,seed,graft,cutting,marcotting,own_farm,local_dealer,national_seed,ngos,other_s,farmland,plantation,m_blocks,prisons,
+    other_graft,qpurchased,units,seed_sown,units_sown,date_sown,seedlings_germinated,seedlings_survived,seedlings_age,seedlings_price,note;
     private long _id;
 
     private DbAccess dbAccess;
@@ -43,65 +46,66 @@ public class NurseryEdit extends Activity implements OnClickListener {
         dbAccess = new DbAccess(this);
         dbAccess.open();
 
-        EditText idTextView = (EditText) findViewById(R.id.id);
-        EditText nid = (EditText) findViewById(R.id.nurseryID);
-        EditText enume = (EditText) findViewById(R.id.enume);
-        EditText date = (EditText) findViewById(R.id.in_date);
-        EditText survey = (EditText) findViewById(R.id.survey_name);
-        EditText country = (EditText) findViewById(R.id.country);
-        TextView county = (EditText) findViewById(R.id.county);
-        EditText district = (EditText) findViewById(R.id.district);
-        EditText operator = (EditText) findViewById(R.id.operator);
-        EditText contact = (EditText) findViewById(R.id.contact);
-        EditText government = (EditText) findViewById(R.id.government);
-        EditText church_mosque = (EditText) findViewById(R.id.mosque_church);
-        EditText schools = (EditText) findViewById(R.id.schools);
-        EditText women_groups = (EditText) findViewById(R.id.women_grps);
-        EditText youth_groups = (EditText) findViewById(R.id.youth_grps);
-        EditText private_individual = (EditText) findViewById(R.id.private_individual);
-        EditText communal_village = (EditText) findViewById(R.id.communal_village);
-        EditText other_types = (EditText) findViewById(R.id.other_type);
-        EditText latitude = (EditText) findViewById(R.id.latitude);
-        EditText longitude = (EditText) findViewById(R.id.longitude);
-        EditText altitude = (EditText) findViewById(R.id.altitude);
-        EditText accuracy = (EditText) findViewById(R.id.accuracy);
-        EditText image = (EditText) findViewById(R.id.path);
-        EditText nursery_species = (EditText) findViewById(R.id.nursery_species);
-        EditText nursery_local = (EditText) findViewById(R.id.nursery_local);
-        EditText bare_root = (EditText) findViewById(R.id.bare_root);
-        EditText container = (EditText) findViewById(R.id.container);
-        EditText other = (EditText) findViewById(R.id.other);
-        EditText seed = (EditText) findViewById(R.id.seed);
-        EditText graft = (EditText) findViewById(R.id.graft);
-        EditText cutting = (EditText) findViewById(R.id.cutting);
-        EditText marcotting = (EditText) findViewById(R.id.marcotting);
-        EditText own_farm = (EditText) findViewById(R.id.own_farm);
-        EditText local_dealer = (EditText) findViewById(R.id.local_dealer);
-        EditText national_seed = (EditText) findViewById(R.id.national_seed);
-        EditText ngos = (EditText) findViewById(R.id.ngos);
-        EditText other_s = (EditText) findViewById(R.id.other_s);
-        EditText farmland = (EditText) findViewById(R.id.farmland);
-        EditText plantation = (EditText) findViewById(R.id.plantation);
-        EditText m_blocks = (EditText) findViewById(R.id.mother_blocks);
-        EditText prisons = (EditText) findViewById(R.id.prisons);
-        EditText other_graft = (EditText) findViewById(R.id.other_graft_sources);
+         idTextView = (EditText) findViewById(R.id.id);
+         nid = (EditText) findViewById(R.id.nurseryID);
+         enume = (EditText) findViewById(R.id.enume);
+         date = (EditText) findViewById(R.id.in_date);
+         survey = (EditText) findViewById(R.id.survey_name);
+         country = (EditText) findViewById(R.id.country);
+         county = (EditText) findViewById(R.id.county);
+         district = (EditText) findViewById(R.id.district);
+         operator = (EditText) findViewById(R.id.operator);
+         contact = (EditText) findViewById(R.id.contact);
+         n_name = (EditText) findViewById(R.id.nursery_name);
+         s_number = (EditText) findViewById(R.id.species_number);
+         s_date = (EditText) findViewById(R.id.start_date);
+         government = (EditText) findViewById(R.id.government);
+         church_mosque = (EditText) findViewById(R.id.mosque_church);
+         schools = (EditText) findViewById(R.id.schools);
+         women_groups = (EditText) findViewById(R.id.women_grps);
+         youth_groups = (EditText) findViewById(R.id.youth_grps);
+         private_individual = (EditText) findViewById(R.id.private_individual);
+         communal_village = (EditText) findViewById(R.id.communal_village);
+         other_types = (EditText) findViewById(R.id.other_type);
+         latitude = (EditText) findViewById(R.id.latitude);
+         longitude = (EditText) findViewById(R.id.longitude);
+         altitude = (EditText) findViewById(R.id.altitude);
+         accuracy = (EditText) findViewById(R.id.accuracy);
+         image = (EditText) findViewById(R.id.path);
+         nursery_species = (EditText) findViewById(R.id.nursery_species);
+         nursery_local = (EditText) findViewById(R.id.nursery_local);
+         bare_root = (EditText) findViewById(R.id.bare_root);
+         container = (EditText) findViewById(R.id.container);
+         other = (EditText) findViewById(R.id.other);
+         seed = (EditText) findViewById(R.id.seed);
+         graft = (EditText) findViewById(R.id.graft);
+         cutting = (EditText) findViewById(R.id.cutting);
+         marcotting = (EditText) findViewById(R.id.marcotting);
+         own_farm = (EditText) findViewById(R.id.own_farm);
+         local_dealer = (EditText) findViewById(R.id.local_dealer);
+         national_seed = (EditText) findViewById(R.id.national_seed);
+         ngos = (EditText) findViewById(R.id.ngos);
+         other_s = (EditText) findViewById(R.id.other_s);
+         farmland = (EditText) findViewById(R.id.farmland);
+         plantation = (EditText) findViewById(R.id.plantation);
+         m_blocks = (EditText) findViewById(R.id.mother_blocks);
+         prisons = (EditText) findViewById(R.id.prisons);
+         other_graft = (EditText) findViewById(R.id.other_graft_sources);
 
-        EditText qpurchased = (EditText) findViewById(R.id.quantity_purchased);
-        EditText units = (EditText) findViewById(R.id.units);
-        EditText seed_sown = (EditText) findViewById(R.id.seeds_sown);
-        EditText units_sown = (EditText) findViewById(R.id.units_sown);
-        EditText date_sown = (EditText) findViewById(R.id.date_sown);
-        EditText seedlings_germinated = (EditText) findViewById(R.id.germinated);
-        EditText seedlings_survived = (EditText) findViewById(R.id.survived);
-        EditText seedlings_age = (EditText) findViewById(R.id.age);
-        EditText seedlings_price = (EditText) findViewById(R.id.seedlings_price);
+         qpurchased = (EditText) findViewById(R.id.quantity_purchased);
+         units = (EditText) findViewById(R.id.units);
+         seed_sown = (EditText) findViewById(R.id.seeds_sown);
+         units_sown = (EditText) findViewById(R.id.units_sown);
+         date_sown = (EditText) findViewById(R.id.date_sown);
+         seedlings_germinated = (EditText) findViewById(R.id.germinated);
+         seedlings_survived = (EditText) findViewById(R.id.survived);
+         seedlings_age = (EditText) findViewById(R.id.age);
+         seedlings_price = (EditText) findViewById(R.id.seedlings_price);
+         note = (EditText) findViewById(R.id.notes);
 
 
         updateBtn = (Button) findViewById(R.id.btn_update);
         deleteBtn = (Button) findViewById(R.id.btn_delete);
-        //disable delete button
-        updateBtn.setEnabled(false);
-        deleteBtn.setEnabled(false);
         //send data to a new activity
         Intent intent = getIntent();
         String id = intent.getStringExtra("id");
@@ -114,6 +118,9 @@ public class NurseryEdit extends Activity implements OnClickListener {
         String nursery_district = intent.getStringExtra("nursery_village");
         String nursery_operator = intent.getStringExtra("nursery_operator");
         String nursery_contact = intent.getStringExtra("nursery_contact");
+        String nursery_name = intent.getStringExtra("nursery_name");
+        String nursery_snumber = intent.getStringExtra("species_number");
+        String nursery_sdate = intent.getStringExtra("n_date");
         String nursery_government = intent.getStringExtra("government");
         String nursery_church_mosque = intent.getStringExtra("church_mosque");
         String nursery_schools = intent.getStringExtra("schools");
@@ -157,6 +164,7 @@ public class NurseryEdit extends Activity implements OnClickListener {
         String ssurvived = intent.getStringExtra("seedlings_survived");
         String sage = intent.getStringExtra("seedlings_age");
         String sprice = intent.getStringExtra("seedlings_price");
+        String notes = intent.getStringExtra("nursery_notes");
 
 
         _id = Long.parseLong(id);
@@ -172,6 +180,9 @@ public class NurseryEdit extends Activity implements OnClickListener {
         district.setText(nursery_district);
         operator.setText(nursery_operator);
         contact.setText(nursery_contact);
+        n_name.setText(nursery_name);
+        s_number.setText(nursery_snumber);
+        s_date.setText(nursery_sdate);
         government.setText(nursery_government);
         church_mosque.setText(nursery_church_mosque);
         schools.setText(nursery_schools);
@@ -218,6 +229,7 @@ public class NurseryEdit extends Activity implements OnClickListener {
         seedlings_survived.setText(ssurvived);
         seedlings_age.setText(sage);
         seedlings_price.setText(sprice);
+        note.setText(notes);
 
         updateBtn.setOnClickListener(this);
         deleteBtn.setOnClickListener(this);
@@ -228,64 +240,78 @@ public class NurseryEdit extends Activity implements OnClickListener {
         switch (v.getId()) {
             case R.id.btn_update:
                 //update values
-            /*    String project = projectText.getText().toString();
-                String name = nameText.getText().toString();
-                String village = villageText.getText().toString();
-                String country = countryText.getText().toString();
-                String select = selectText.getText().toString();
-                String in_date = in_dateText.getText().toString();
-                String latitude = latitudeText.getText().toString();
-                String longitude = longitudeText.getText().toString();
-                String altitude = altitudeText.getText().toString();
-                String accuracy = accuracyText.getText().toString();
-                String species = speciesText.getText().toString();
-                String local = localText.getText().toString();
-                //String select_h = select_hText.getText().toString();
-                String dbh = dbhText.getText().toString();
-                String height = heightText.getText().toString();
-                String base_circum = base_circumText.getText().toString();
-                String path = pathText.getText().toString();
-                String mg1 = mg1Text.getText().toString();
-                String mg2 = mg2Text.getText().toString();
-                String mg3 = mg3Text.getText().toString();
-                String mg4 = mg4Text.getText().toString();
-                String mg5 = mg5Text.getText().toString();
-                String mg_other = mg_otherText.getText().toString();
-                String usage1 = usage1Text.getText().toString();
-                String usage2 = usage2Text.getText().toString();
-                String usage3 = usage3Text.getText().toString();
-                String usage4 = usage4Text.getText().toString();
-                String usage5 = usage5Text.getText().toString();
-                String us_other = us_otherText.getText().toString();
-                String livestock1 = livestock1Text.getText().toString();
-                String livestock2 = livestock2Text.getText().toString();
-                String livestock3 = livestock3Text.getText().toString();
-                String livestock4 = livestock4Text.getText().toString();
-                String livestock_other = livestock_otherText.getText().toString();
-                String fodder1 = fodder1Text.getText().toString();
-                String fodder2 = fodder2Text.getText().toString();
-                String fodder3 = fodder3Text.getText().toString();
-                String f_other = f_otherText.getText().toString();
-                String farm = farmText.getText().toString();
-                String market = marketText.getText().toString();
-                String s_other = s_otherText.getText().toString();
-                String date = dateText.getText().toString();
-                String ename = enameText.getText().toString();
+                String ename = enume.getText().toString();
+                String nursery_date = date.getText().toString();
+                String survey_name = survey.getText().toString();
+                String nursery_country = country.getText().toString();
+                String nursery_county = county.getText().toString();
+                String nursery_district = district.getText().toString();
+                String nursery_operator = operator.getText().toString();
+                String nursery_contact = contact.getText().toString();
+                String nursery_name = n_name.getText().toString();
+                String nursery_snumber = s_number.getText().toString();
+                String nursery_sdate = s_date.getText().toString();
+                String govt = government.getText().toString();
+                String cm = church_mosque.getText().toString();
+                String sch = schools.getText().toString();
+                String wg = women_groups.getText().toString();
+                String youth_group = youth_groups.getText().toString();
+                String pi = private_individual.getText().toString();
+                String cv = communal_village.getText().toString();
+                String ot = other_types.getText().toString();
+                String n_latitude = latitude.getText().toString();
+                String n_longitude = longitude.getText().toString();
+                String n_altitude = altitude.getText().toString();
+                String n_accuracy = accuracy.getText().toString();
+                String path = image.getText().toString();
+
+                String species = nursery_species.getText().toString();
+                String local = nursery_local.getText().toString();
+                String bare= bare_root.getText().toString();
+                String containerised = container.getText().toString();
+                String other_method = other.getText().toString();
+                String sd = seed.getText().toString();
+                String gf = graft.getText().toString();
+                String ct = cutting.getText().toString();
+                String mt = marcotting.getText().toString();
+                String ownfarm = own_farm.getText().toString();
+                String localdealer = local_dealer.getText().toString();
+                String nationalseed = national_seed.getText().toString();
+                String ng = ngos.getText().toString();
+                String other_source = other_s.getText().toString();
+                String fm = farmland.getText().toString();
+                String pt = plantation.getText().toString();
+                String mb = m_blocks.getText().toString();
+                String pr = prisons.getText().toString();
+                String og = other_graft.getText().toString();
+
+                String purchased = qpurchased.getText().toString();
+                String unit = units.getText().toString();
+                String seedsown = seed_sown.getText().toString();
+                String sownunits = units_sown.getText().toString();
+                String datesown = date_sown.getText().toString();
+                String germ = seedlings_germinated.getText().toString();
+                String surv = seedlings_survived.getText().toString();
+                String sage = seedlings_age.getText().toString();
+                String sprice = seedlings_price.getText().toString();
+                String notes = note.getText().toString();
 
                 //update the record
-                dbAccess.updateFarmerTree(_id, project, name, village, country,select,in_date,latitude,longitude,altitude,accuracy,species,local,dbh,
-                        height,base_circum,path,mg1,mg2,mg3,mg4,mg5,mg_other,usage1,usage2,usage3,usage4,usage5,us_other,
-                        livestock1,livestock2,livestock3,livestock4,livestock_other,fodder1,fodder2,fodder3,f_other,farm,market,s_other,date,ename);
-                Toast.makeText(ViewNurseryModifyActivity.this, "Updated Successfully", Toast.LENGTH_SHORT).show();
+                dbAccess.updateNursery(_id, ename, nursery_date, survey_name, nursery_country,nursery_county,nursery_district,nursery_operator,nursery_contact,nursery_name,nursery_snumber,nursery_sdate,govt,cm,
+                        sch,wg,youth_group,pi,cv,ot,n_latitude,n_longitude,n_altitude,n_accuracy,path);
+                dbAccess.updateNurseryspecies(_id, species,local,bare,containerised,
+                        other_method,sd,gf,ct,mt,ownfarm,localdealer,nationalseed,ng,other_source,fm,pt,mb,pr,og,purchased,unit,seedsown,sownunits,datesown,germ,surv,sage,sprice,notes);
+                Toast.makeText(NurseryEdit.this, "Updated Successfully", Toast.LENGTH_SHORT).show();
                 this.returnHome();
                 break;
 
-            /*case R.id.btn_delete:
+            case R.id.btn_delete:
                 //delete
-                dbAccess.delete_farmer(_id);
-                Toast.makeText(ModifyActivity.this, "Successfully deleted", Toast.LENGTH_SHORT).show();
+                dbAccess.delete_Nursery(_id);
+                dbAccess.delete_Nurseryspecies(_id);
+                Toast.makeText(NurseryEdit.this, "Successfully deleted", Toast.LENGTH_SHORT).show();
                 this.returnHome();
-                break;*/
+                break;
         }
     }
 

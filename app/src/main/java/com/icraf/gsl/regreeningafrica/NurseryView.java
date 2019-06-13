@@ -24,21 +24,21 @@ public class NurseryView extends AppCompatActivity {
     private SimpleCursorAdapter adapter;
 
     final String[] from = new String[] {DatabaseHelper._ID,DatabaseHelper.nursery_id,DatabaseHelper.nursery_enum_name,DatabaseHelper.nursery_date,DatabaseHelper.nursery_survey_name,
-            DatabaseHelper.nursery_country,DatabaseHelper.nursery_county, DatabaseHelper.nursery_district, DatabaseHelper.nursery_operator,DatabaseHelper.nursery_contact,DatabaseHelper.type_government,
+            DatabaseHelper.nursery_country,DatabaseHelper.nursery_county, DatabaseHelper.nursery_district, DatabaseHelper.nursery_operator,DatabaseHelper.nursery_contact,DatabaseHelper.nursery_name,DatabaseHelper.species_number,DatabaseHelper.n_date,DatabaseHelper.type_government,
             DatabaseHelper.type_church_mosque,DatabaseHelper.type_schools,DatabaseHelper.type_women_groups,DatabaseHelper.type_youth_groups,DatabaseHelper.type_private_individual,DatabaseHelper.type_communal_village,
             DatabaseHelper.other_nursery_types,DatabaseHelper.nursery_latitude,DatabaseHelper.nursery_longitude,DatabaseHelper.nursery_altitude,DatabaseHelper.nursery_accuracy,DatabaseHelper.nursery_image_path,
             DatabaseHelper.nursery_species,DatabaseHelper.nursery_local,DatabaseHelper.method_bare_root,DatabaseHelper.method_containerised,DatabaseHelper.other_methods,DatabaseHelper.propagation_seed,
             DatabaseHelper.propagation_graft,DatabaseHelper.propagation_cutting,DatabaseHelper.propagation_marcotting,DatabaseHelper.seed_source_onfarm,DatabaseHelper.seed_source_local_dealer,DatabaseHelper.seed_source_national_dealer,DatabaseHelper.seed_source_NGOs,DatabaseHelper.other_seed_sources,
             DatabaseHelper.graft_source_farmland,DatabaseHelper.graft_source_plantation,DatabaseHelper.graft_source_mother_blocks,DatabaseHelper.graft_source_prisons,DatabaseHelper.graft_source_others,
-            DatabaseHelper.seeds_quantity_purchased,DatabaseHelper.qunits,DatabaseHelper.seed_sown,DatabaseHelper.unitsown,DatabaseHelper.date_seeds_sown,DatabaseHelper.seedlings_germinated,DatabaseHelper.seedlings_servived,DatabaseHelper.seedlings_age,DatabaseHelper.seedlings_price
+            DatabaseHelper.seeds_quantity_purchased,DatabaseHelper.qunits,DatabaseHelper.seed_sown,DatabaseHelper.unitsown,DatabaseHelper.date_seeds_sown,DatabaseHelper.seedlings_germinated,DatabaseHelper.seedlings_servived,DatabaseHelper.seedlings_age,DatabaseHelper.seedlings_price,DatabaseHelper.notes,
     };
 
-    final int[] to = new int[] {R.id.id, R.id.nurseryID,R.id.ename,R.id.in_date,R.id.survey_name,R.id.country,R.id.county,R.id.district, R.id.operator, R.id.contact, R.id.government,R.id.schools,R.id.mosque_church,R.id.women_grps,
+    final int[] to = new int[] {R.id.id, R.id.nurseryID,R.id.ename,R.id.in_date,R.id.survey_name,R.id.country,R.id.county,R.id.district, R.id.operator, R.id.contact,R.id.nursery_name,R.id.species_number,R.id.n_date, R.id.government,R.id.schools,R.id.mosque_church,R.id.women_grps,
             R.id.youth_grps,R.id.private_individual,R.id.communal_village,R.id.other_type,R.id.latitude,R.id.longitude,
             R.id.altitude,R.id.accuracy,R.id.path,R.id.nursery_species,R.id.nursery_local,
             R.id.bare_root,R.id.container,R.id.other,R.id.seed,R.id.graft,R.id.cutting,R.id.marcotting,R.id.own_farm,R.id.local_dealer,R.id.national_seed,R.id.ngos,R.id.other_sources,R.id.farmland,R.id.plantation,R.id.mother_blocks,R.id.prisons,R.id.other_graft_sources,
             R.id.quantity_purchased,R.id.units,R.id.seeds_sown,R.id.units_sown,R.id.date_sown,R.id.germinated,R.id.survived,
-            R.id.age,R.id.seedlings_price
+            R.id.age,R.id.seedlings_price,R.id.notes
     };
 
     @Override
@@ -74,6 +74,11 @@ public class NurseryView extends AppCompatActivity {
                 TextView district = (TextView) view.findViewById(R.id.district);
                 TextView operator = (TextView) view.findViewById(R.id.operator);
                 TextView contact = (TextView) view.findViewById(R.id.contact);
+
+                TextView nursery_name = (TextView) view.findViewById(R.id.nursery_name);
+                TextView species_number = (TextView) view.findViewById(R.id.species_number);
+                TextView start_date = (TextView) view.findViewById(R.id.n_date);
+
                 TextView government = (TextView) view.findViewById(R.id.government);
                 TextView church_mosque = (TextView) view.findViewById(R.id.mosque_church);
                 TextView schools = (TextView) view.findViewById(R.id.schools);
@@ -118,6 +123,7 @@ public class NurseryView extends AppCompatActivity {
                 TextView seedlings_survived = (TextView) view.findViewById(R.id.survived);
                 TextView seedlings_age = (TextView) view.findViewById(R.id.age);
                 TextView seedlings_price = (TextView) view.findViewById(R.id.seedlings_price);
+                TextView notes = (TextView) view.findViewById(R.id.notes);
 
 
 
@@ -131,6 +137,9 @@ public class NurseryView extends AppCompatActivity {
                 String nursery_district = district.getText().toString();
                 String nursery_operator = operator.getText().toString();
                 String nursery_contact = contact.getText().toString();
+                String n_name = nursery_name.getText().toString();
+                String s_number = species_number.getText().toString();
+                String s_date = start_date.getText().toString();
                 String govt = government.getText().toString();
                 String cm = church_mosque.getText().toString();
                 String sch = schools.getText().toString();
@@ -175,6 +184,7 @@ public class NurseryView extends AppCompatActivity {
                 String surv = seedlings_survived.getText().toString();
                 String sage = seedlings_age.getText().toString();
                 String sprice = seedlings_price.getText().toString();
+                String note = notes.getText().toString();
 
 
                 Intent modify_intent = new Intent(getApplicationContext(), NurseryEdit.class);
@@ -187,6 +197,9 @@ public class NurseryView extends AppCompatActivity {
                 modify_intent.putExtra("nursery_village", nursery_district);
                 modify_intent.putExtra("nursery_operator", nursery_operator);
                 modify_intent.putExtra("nursery_contact", nursery_contact);
+                modify_intent.putExtra("nursery_name", n_name);
+                modify_intent.putExtra("species_number", s_number);
+                modify_intent.putExtra("n_date", s_date);
                 modify_intent.putExtra("government", govt);
                 modify_intent.putExtra("church_mosque", cm);
                 modify_intent.putExtra("schools", sch);
@@ -228,6 +241,7 @@ public class NurseryView extends AppCompatActivity {
                 modify_intent.putExtra("seedlings_survived", surv);
                 modify_intent.putExtra("seedlings_age", sage);
                 modify_intent.putExtra("seedlings_price", sprice);
+                modify_intent.putExtra("nursery_notes", note);
                 modify_intent.putExtra("id", id);
 
                 startActivity(modify_intent);

@@ -114,6 +114,39 @@
         android:padding="3dp"
         android:visibility="gone" />
     <TextView
+        android:id="@+id/nursery_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/operator"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/id"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:padding="3dp"
+        android:visibility="gone" />
+    <TextView
+        android:id="@+id/species_number"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/operator"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/id"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:padding="3dp"
+        android:visibility="gone" />
+    <TextView
+        android:id="@+id/n_date"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/operator"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/id"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:padding="3dp"
+        android:visibility="gone" />
+    <TextView
         android:id="@+id/government"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -557,6 +590,17 @@
         android:visibility="gone" />
     <TextView
         android:id="@+id/seedlings_price"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/age"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/id"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:padding="3dp"
+        android:visibility="gone" />
+    <TextView
+        android:id="@+id/notes"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/age"

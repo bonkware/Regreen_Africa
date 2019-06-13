@@ -90,6 +90,17 @@
         android:padding="3dp"
         android:visibility="gone"/>
     <TextView
+        android:id="@+id/training_type"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/country"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/id"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:padding="3dp"
+        android:visibility="gone"/>
+    <TextView
         android:id="@+id/training_date"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -168,6 +179,17 @@
         android:visibility="gone" />
     <TextView
         android:id="@+id/youth_participants"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/female_participants"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/id"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:padding="3dp"
+        android:visibility="gone" />
+    <TextView
+        android:id="@+id/notes"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/female_participants"

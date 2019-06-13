@@ -12,12 +12,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class TrainingEdit extends Activity implements OnClickListener {
     //initialize
     private Button updateBtn, deleteBtn;
-    private EditText enumText,in_dateText,surveyText,countryText,cText,dText,topicText,dateText,venueText,partnersText,participantsText,
-            maleText,femaleText,youthText;
+    private EditText enumText,in_dateText,surveyText,countryText,cText,dText,topicText,typeText,dateText,venueText,partnersText,participantsText,
+            maleText,femaleText,youthText,notesText;
 
     private long _id;
 
@@ -53,6 +54,7 @@ public class TrainingEdit extends Activity implements OnClickListener {
         cText = (EditText) findViewById(R.id.county);
         dText = (EditText) findViewById(R.id.district);
         topicText = (EditText) findViewById(R.id.topic);
+        typeText = (EditText) findViewById(R.id.type);
         dateText = (EditText) findViewById(R.id.date);
         venueText = (EditText) findViewById(R.id.venue);
         partnersText = (EditText) findViewById(R.id.partners);
@@ -60,12 +62,13 @@ public class TrainingEdit extends Activity implements OnClickListener {
         maleText = (EditText) findViewById(R.id.male);
         femaleText = (EditText) findViewById(R.id.female);
         youthText = (EditText) findViewById(R.id.youth);
+        notesText = (EditText) findViewById(R.id.notes);
 
         updateBtn = (Button) findViewById(R.id.btn_update);
         deleteBtn = (Button) findViewById(R.id.btn_delete);
         //disable delete button
-        updateBtn.setEnabled(false);
-        deleteBtn.setEnabled(false);
+        updateBtn.setEnabled(true);
+        deleteBtn.setEnabled(true);
         //send data to a new activity
         Intent intent = getIntent();
         String id = intent.getStringExtra("id");
@@ -76,6 +79,7 @@ public class TrainingEdit extends Activity implements OnClickListener {
         String county = intent.getStringExtra("county");
         String district = intent.getStringExtra("district");
         String topic = intent.getStringExtra("topic");
+        String type = intent.getStringExtra("type");
         String tdate = intent.getStringExtra("tdate");
         String tvenue = intent.getStringExtra("tvenue");
         String tpartners = intent.getStringExtra("tpartners");
@@ -83,6 +87,7 @@ public class TrainingEdit extends Activity implements OnClickListener {
         String male = intent.getStringExtra("male");
         String female = intent.getStringExtra("female");
         String youth = intent.getStringExtra("youth");
+        String note = intent.getStringExtra("notes");
         _id = Long.parseLong(id);
 
         // farmeridText.setText(farmerid);
@@ -93,6 +98,7 @@ public class TrainingEdit extends Activity implements OnClickListener {
         cText.setText(county);
         dText.setText(district);
         topicText.setText(topic);
+        typeText.setText(type);
         dateText.setText(tdate);
         venueText.setText(tvenue);
         partnersText.setText(tpartners);
@@ -100,6 +106,7 @@ public class TrainingEdit extends Activity implements OnClickListener {
         maleText.setText(male);
         femaleText.setText(female);
         youthText.setText(youth);
+        notesText.setText(note);
 
         updateBtn.setOnClickListener(this);
         deleteBtn.setOnClickListener(this);
@@ -109,70 +116,42 @@ public class TrainingEdit extends Activity implements OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_update:
-                //update values
-               /* String project = projectText.getText().toString();
-                String name = nameText.getText().toString();
-                String village = villageText.getText().toString();
-                String country = countryText.getText().toString();
-                String select = selectText.getText().toString();
+                //update after edit
+                String enume = enumText.getText().toString();
                 String in_date = in_dateText.getText().toString();
-                String latitude = latitudeText.getText().toString();
-                String longitude = longitudeText.getText().toString();
-                String altitude = altitudeText.getText().toString();
-                String accuracy = accuracyText.getText().toString();
-                String species = speciesText.getText().toString();
-                String local = localText.getText().toString();
-                //String select_h = select_hText.getText().toString();
-                String dbh = dbhText.getText().toString();
-                String height = heightText.getText().toString();
-                String base_circum = base_circumText.getText().toString();
-                String path = pathText.getText().toString();
-                String mg1 = mg1Text.getText().toString();
-                String mg2 = mg2Text.getText().toString();
-                String mg3 = mg3Text.getText().toString();
-                String mg4 = mg4Text.getText().toString();
-                String mg5 = mg5Text.getText().toString();
-                String mg_other = mg_otherText.getText().toString();
-                String usage1 = usage1Text.getText().toString();
-                String usage2 = usage2Text.getText().toString();
-                String usage3 = usage3Text.getText().toString();
-                String usage4 = usage4Text.getText().toString();
-                String usage5 = usage5Text.getText().toString();
-                String us_other = us_otherText.getText().toString();
-                String livestock1 = livestock1Text.getText().toString();
-                String livestock2 = livestock2Text.getText().toString();
-                String livestock3 = livestock3Text.getText().toString();
-                String livestock4 = livestock4Text.getText().toString();
-                String livestock_other = livestock_otherText.getText().toString();
-                String fodder1 = fodder1Text.getText().toString();
-                String fodder2 = fodder2Text.getText().toString();
-                String fodder3 = fodder3Text.getText().toString();
-                String f_other = f_otherText.getText().toString();
-                String farm = farmText.getText().toString();
-                String market = marketText.getText().toString();
-                String s_other = s_otherText.getText().toString();
-                String date = dateText.getText().toString();
-                String ename = enameText.getText().toString();
+                String survey = surveyText.getText().toString();
+                String country = countryText.getText().toString();
+                String county = cText.getText().toString();
+                String district = dText.getText().toString();
+                String topic = topicText.getText().toString();
+                String type = typeText.getText().toString();
+                String tdate = dateText.getText().toString();
+                String tvenue = venueText.getText().toString();
+                String tpartners = partnersText.getText().toString();
+                String tparticipants = participantsText.getText().toString();
+                String male = maleText.getText().toString();
+                String female = femaleText.getText().toString();
+                String youth = youthText.getText().toString();
+                String note = notesText.getText().toString();
 
                 //update the record
-                dbAccess.updateFarmerTree(_id, project, name, village, country,select,in_date,latitude,longitude,altitude,accuracy,species,local,dbh,
-                        height,base_circum,path,mg1,mg2,mg3,mg4,mg5,mg_other,usage1,usage2,usage3,usage4,usage5,us_other,
-                        livestock1,livestock2,livestock3,livestock4,livestock_other,fodder1,fodder2,fodder3,f_other,farm,market,s_other,date,ename);
-                Toast.makeText(TPEdit.this, "Updated Successfully", Toast.LENGTH_SHORT).show();
+                dbAccess.updateTraining(_id, enume, in_date, survey, country,county,district,topic,type,tdate,tvenue,tpartners,tparticipants,male,
+                        female,youth,note);
+                Toast.makeText(TrainingEdit.this, "Updated Successfully", Toast.LENGTH_SHORT).show();
                 this.returnHome();
-                break;*/
+                break;
 
-            /*case R.id.btn_delete:
+            case R.id.btn_delete:
                 //delete
-                dbAccess.delete_farmer(_id);
-                Toast.makeText(TPEdit.this, "Successfully deleted", Toast.LENGTH_SHORT).show();
+                dbAccess.delete_Training(_id);
+                Toast.makeText(TrainingEdit.this, "Successfully deleted", Toast.LENGTH_SHORT).show();
                 this.returnHome();
-                break;*/
+                break;
         }
     }
 
     public void returnHome() {
-        Intent home_intent = new Intent(getApplicationContext(), TPView.class)
+        Intent home_intent = new Intent(getApplicationContext(), TrainingView.class)
                 .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(home_intent);
     }

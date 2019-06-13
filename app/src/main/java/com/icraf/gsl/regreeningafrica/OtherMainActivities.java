@@ -263,7 +263,7 @@ public class OtherMainActivities extends AppCompatActivity {
                                             public void onClick(DialogInterface dialog, int which) {
                                                 dbAccess.uploadStatusTPinfo();//update column uploaded to yes
                                                 dbAccess.uploadStatusTPplotinfo();
-                                                dbAccess.uploadStatusFMNRpolygon();//update column to yes
+                                                dbAccess.uploadStatusTPpolygon();//update column to yes
                                                 dbAccess.uploadStatusTPcohort();//update column uploaded to yes
                                                 dbAccess.uploadStatusTPmeasurement();
                                                 //dismiss dialog by intent
@@ -1716,14 +1716,13 @@ public class OtherMainActivities extends AppCompatActivity {
                             //get the response if success get response that data has been received
                             Log.i("My success", "" + response);
                             //notification
-                            dbAccess.uploadStatusTraining();
+                            //dbAccess.uploadStatusTraining();
                             if(count == cursor.getCount()){
                                 progressDialog.dismiss();
                             }
                             try{
                                 //count records sent
                                 final int count = dbAccess.getcount_trainings();
-                                //dbAccess.uploadStatusTraining();
                                 //Toast.makeText(OtherMainActivities.this, count + " record(s) " + response, Toast.LENGTH_LONG).show();
                                 //refresh activity after dialog
                                 final AlertDialog.Builder builder = new AlertDialog.Builder(OtherMainActivities.this).setTitle("Data sent!").setMessage(count + " record(s) " + response)

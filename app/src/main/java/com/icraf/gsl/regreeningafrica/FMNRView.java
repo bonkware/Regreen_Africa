@@ -24,17 +24,17 @@ public class FMNRView extends AppCompatActivity {
     private SimpleCursorAdapter adapter;
 
     final String[] from = new String[] { DatabaseHelper._ID,DatabaseHelper.fmnr_farmer_id,
-            DatabaseHelper.fmnr_enum_name,DatabaseHelper.fmnr_date,DatabaseHelper.famnr_survey_name, DatabaseHelper.fmnr_farmer_inst_name, DatabaseHelper.fmnr_country,DatabaseHelper.fmnr_county_region,DatabaseHelper.fmnr_district,DatabaseHelper.fmnr_land_individual,DatabaseHelper.fmnr_land_community,DatabaseHelper.fmnr_land_government,DatabaseHelper.fmnr_land_mosque_church,DatabaseHelper.fmnr_land_schools,DatabaseHelper.fmnr_land_other,DatabaseHelper.fmnr_species_number_start,DatabaseHelper.fmnr_started_date,DatabaseHelper.fmnr_fenced,DatabaseHelper.fmnr_landsize_regreen,DatabaseHelper.fmnr_units,
+            DatabaseHelper.fmnr_enum_name,DatabaseHelper.fmnr_date,DatabaseHelper.famnr_survey_name, DatabaseHelper.fmnr_farmer_inst_name, DatabaseHelper.fmnr_country,DatabaseHelper.fmnr_county_region,DatabaseHelper.fmnr_district,DatabaseHelper.fmnr_land_individual,DatabaseHelper.fmnr_land_community,DatabaseHelper.fmnr_land_government,DatabaseHelper.fmnr_land_mosque_church,DatabaseHelper.fmnr_land_schools,DatabaseHelper.fmnr_land_other,DatabaseHelper.fmnr_species_number_start,DatabaseHelper.fmnr_started_date,DatabaseHelper.fmnr_fenced,DatabaseHelper.fmnr_crops,DatabaseHelper.fmnr_croplist,DatabaseHelper.fmnr_landsize_regreen,DatabaseHelper.fmnr_units,
             DatabaseHelper.fmnr_species_name,DatabaseHelper.fmnr_local_name,DatabaseHelper.fmnr_management_pruning,DatabaseHelper.fmnr_management_fencing,DatabaseHelper.fmnr_management_weeding,DatabaseHelper.fmnr_management_thinning,DatabaseHelper.fmnr_management_organic_fertilizer,DatabaseHelper.fmnr_management_pollarding_lopping,DatabaseHelper.fmnr_management_coppicing,DatabaseHelper.fmnr_management_other,
-            DatabaseHelper.fmnr_use_firewood,DatabaseHelper.fmnr_use_housing_construction,DatabaseHelper.fmnr_use_fodder,DatabaseHelper.fmnr_use_fruits,DatabaseHelper.fmnr_use_soil_fertility,DatabaseHelper.fmnr_use_leafy_vegetables,DatabaseHelper.fmnr_use_nuts,DatabaseHelper.fmnr_use_other,DatabaseHelper.fmnr_tree_stems, DatabaseHelper.fmnr_tree_height,DatabaseHelper.fmnr_tree_dbh,DatabaseHelper.fmnr_tree_latitude,DatabaseHelper.fmnr_tree_longitude,
-            DatabaseHelper.fmnr_tree_altitude,DatabaseHelper.fmnr_tree_accuracy
+            DatabaseHelper.fmnr_use_firewood,DatabaseHelper.fmnr_use_housing_construction,DatabaseHelper.fmnr_use_fodder,DatabaseHelper.fmnr_use_fruits,DatabaseHelper.fmnr_use_soil_fertility,DatabaseHelper.fmnr_use_leafy_vegetables,DatabaseHelper.fmnr_use_nuts,DatabaseHelper.fmnr_use_medicinal,DatabaseHelper.fmnr_use_other,DatabaseHelper.fmnr_tree_stems, DatabaseHelper.fmnr_tree_height,DatabaseHelper.fmnr_tree_dbh,DatabaseHelper.fmnr_tree_image_path,DatabaseHelper.fmnr_tree_latitude,DatabaseHelper.fmnr_tree_longitude,
+            DatabaseHelper.fmnr_tree_altitude,DatabaseHelper.fmnr_tree_accuracy,DatabaseHelper.fmnr_notes
     };
 
     final int[] to = new int[] { R.id.id, R.id.fid,R.id.ename,R.id.in_date, R.id.survey_name, R.id.fnames, R.id.country,R.id.county,R.id.district,R.id.own,
-            R.id.comm_land,R.id.govt_land,R.id.mosque_church,R.id.schools,R.id.other_locations,R.id.number_start,R.id.start_date,R.id.fenced,
+            R.id.comm_land,R.id.govt_land,R.id.mosque_church,R.id.schools,R.id.other_locations,R.id.number_start,R.id.start_date,R.id.fenced,R.id.crops,R.id.croplist,
             R.id.landsize,R.id.units,R.id.species,R.id.local_name,R.id.mg1,
-            R.id.mg2,R.id.mg3,R.id.mg4,R.id.mg5,R.id.mg6,R.id.mg7,R.id.mg_other,R.id.usage1,R.id.usage2,R.id.usage3,R.id.usage4,R.id.usage5,R.id.usage6,R.id.usage7,R.id.us_other,R.id.stems,R.id.height,R.id.dbh,R.id.tree_latitude,R.id.tree_longitude,
-            R.id.tree_altitude,R.id.tree_accuracy
+            R.id.mg2,R.id.mg3,R.id.mg4,R.id.mg5,R.id.mg6,R.id.mg7,R.id.mg_other,R.id.usage1,R.id.usage2,R.id.usage3,R.id.usage4,R.id.usage5,R.id.usage6,R.id.usage7,R.id.usage8,R.id.us_other,R.id.stems,R.id.height,R.id.dbh,R.id.path,R.id.tree_latitude,R.id.tree_longitude,
+            R.id.tree_altitude,R.id.tree_accuracy,R.id.notes
     };
 
     @Override
@@ -79,6 +79,8 @@ public class FMNRView extends AppCompatActivity {
                 TextView nstartTextView = (TextView) view.findViewById(R.id.number_start);
                 TextView sdateTextView = (TextView) view.findViewById(R.id.start_date);
                 TextView fencedTextView = (TextView) view.findViewById(R.id.fenced);
+                TextView cropsTextView = (TextView) view.findViewById(R.id.crops);
+                TextView croplistTextView = (TextView) view.findViewById(R.id.croplist);
                 TextView landsizeTextView = (TextView) view.findViewById(R.id.landsize);
                 TextView unitTextView = (TextView) view.findViewById(R.id.units);
                 TextView speciesTextView = (TextView) view.findViewById(R.id.species);
@@ -98,14 +100,17 @@ public class FMNRView extends AppCompatActivity {
                 TextView usage5TextView = (TextView) view.findViewById(R.id.usage5);
                 TextView usage6TextView = (TextView) view.findViewById(R.id.usage6);
                 TextView usage7TextView = (TextView) view.findViewById(R.id.usage7);
+                TextView usage8TextView = (TextView) view.findViewById(R.id.usage8);
                 TextView us_otherTextView = (TextView) view.findViewById(R.id.us_other);
                 TextView stemsTextView = (TextView) view.findViewById(R.id.stems);
                 TextView heightTextView = (TextView) view.findViewById(R.id.height);
                 TextView dbhTextView = (TextView) view.findViewById(R.id.dbh);
+                TextView pathTextView = (TextView) view.findViewById(R.id.path);
                 TextView latitudeTextView = (TextView) view.findViewById(R.id.tree_latitude);
                 TextView longitudeTextView = (TextView) view.findViewById(R.id.tree_longitude);
                 TextView altitudeTextView = (TextView) view.findViewById(R.id.tree_altitude);
                 TextView accuracyTextView = (TextView) view.findViewById(R.id.tree_accuracy);
+                TextView notesTextView = (TextView) view.findViewById(R.id.notes);
 
                 String id = idTextView.getText().toString();
                 String fid = fidTextView.getText().toString();
@@ -125,6 +130,8 @@ public class FMNRView extends AppCompatActivity {
                 String number_start = nstartTextView.getText().toString();
                 String start_date = sdateTextView.getText().toString();
                 String fenced = fencedTextView.getText().toString();
+                String crop = cropsTextView.getText().toString();
+                String cropl = croplistTextView.getText().toString();
                 String landsize = landsizeTextView.getText().toString();
                 String unit = unitTextView.getText().toString();
                 String species = speciesTextView.getText().toString();
@@ -144,14 +151,17 @@ public class FMNRView extends AppCompatActivity {
                 String usage5 = usage5TextView.getText().toString();
                 String usage6 = usage6TextView.getText().toString();
                 String usage7 = usage7TextView.getText().toString();
+                String usage8 = usage8TextView.getText().toString();
                 String us_other = us_otherTextView.getText().toString();
                 String stems = stemsTextView.getText().toString();
                 String height = heightTextView.getText().toString();
                 String dbh = dbhTextView.getText().toString();
+                String image = pathTextView.getText().toString();
                 String latitude = latitudeTextView.getText().toString();
                 String longitude = longitudeTextView.getText().toString();
                 String altitude = altitudeTextView.getText().toString();
                 String accuracy = accuracyTextView.getText().toString();
+                String note = notesTextView.getText().toString();
 
 
                 Intent modify_intent = new Intent(getApplicationContext(), FMNREdit.class);
@@ -172,6 +182,8 @@ public class FMNRView extends AppCompatActivity {
                 modify_intent.putExtra("number_start", number_start);
                 modify_intent.putExtra("start_date", start_date);
                 modify_intent.putExtra("fenced", fenced);
+                modify_intent.putExtra("crops", crop);
+                modify_intent.putExtra("croplist", cropl);
                 modify_intent.putExtra("landsize", landsize);
                 modify_intent.putExtra("unit", unit);
                 modify_intent.putExtra("species", species);
@@ -192,15 +204,18 @@ public class FMNRView extends AppCompatActivity {
                 modify_intent.putExtra("usage5", usage5);
                 modify_intent.putExtra("usage6", usage6);
                 modify_intent.putExtra("usage7", usage7);
+                modify_intent.putExtra("usage8", usage8);
                 modify_intent.putExtra("us_other", us_other);
 
                 modify_intent.putExtra("stems", stems);
                 modify_intent.putExtra("height", height);
                 modify_intent.putExtra("dbh", dbh);
+                modify_intent.putExtra("path", image);
                 modify_intent.putExtra("latitude", latitude);
                 modify_intent.putExtra("longitude", longitude);
                 modify_intent.putExtra("altitude", altitude);
                 modify_intent.putExtra("accuracy", accuracy);
+                modify_intent.putExtra("notes", note);
                 modify_intent.putExtra("id", id);
 
                 startActivity(modify_intent);

@@ -20,7 +20,6 @@
         android:id="@+id/farmerid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="false"
         android:padding="@dimen/view_padding"
         android:textSize="@dimen/add_edit_textsize"
         android:visibility="gone">
@@ -34,7 +33,6 @@
         android:id="@+id/enume"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="false"
         android:padding="@dimen/view_padding"
         android:textSize="@dimen/add_edit_textsize">
     </EditText>
@@ -47,7 +45,6 @@
         android:id="@+id/in_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="false"
         android:padding="@dimen/view_padding"
         android:textSize="@dimen/add_edit_textsize">
     </EditText>
@@ -60,7 +57,6 @@
         android:id="@+id/survey_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="false"
         android:padding="@dimen/view_padding"
         android:textSize="@dimen/add_edit_textsize">
     </EditText>
@@ -73,7 +69,6 @@
         android:id="@+id/fnames"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="false"
         android:padding="@dimen/view_padding"
         android:textSize="@dimen/add_edit_textsize">
     </EditText>
@@ -86,7 +81,6 @@
         android:id="@+id/country"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="false"
         android:padding="@dimen/view_padding"
         android:textSize="@dimen/add_edit_textsize">
     </EditText>
@@ -99,7 +93,6 @@
         android:id="@+id/county"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="false"
         android:padding="@dimen/view_padding"
         android:textSize="@dimen/add_edit_textsize">
     </EditText>
@@ -112,7 +105,6 @@
         android:id="@+id/district"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="false"
         android:padding="@dimen/view_padding"
         android:textSize="@dimen/add_edit_textsize">
     </EditText>
@@ -125,7 +117,6 @@
         android:id="@+id/own"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="false"
         android:padding="@dimen/view_padding"
         android:textSize="@dimen/add_edit_textsize">
     </EditText>
@@ -138,7 +129,6 @@
         android:id="@+id/c_land"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="false"
         android:padding="@dimen/view_padding"
         android:textSize="@dimen/add_edit_textsize">
     </EditText>
@@ -151,7 +141,6 @@
         android:id="@+id/g_land"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="false"
         android:padding="@dimen/view_padding"
         android:textSize="@dimen/add_edit_textsize">
     </EditText>
@@ -164,7 +153,6 @@
         android:id="@+id/ms"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="false"
         android:padding="@dimen/view_padding"
         android:textSize="@dimen/add_edit_textsize">
     </EditText>
@@ -177,7 +165,6 @@
         android:id="@+id/schools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="false"
         android:padding="@dimen/view_padding"
         android:textSize="@dimen/add_edit_textsize">
     </EditText>
@@ -190,7 +177,30 @@
         android:id="@+id/other_owner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="false"
+        android:padding="@dimen/view_padding"
+        android:textSize="@dimen/add_edit_textsize">
+    </EditText>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Crops"
+        android:textStyle="italic"/>
+    <EditText
+        android:id="@+id/crops"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/view_padding"
+        android:textSize="@dimen/add_edit_textsize">
+    </EditText>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Crop list"
+        android:textStyle="italic"/>
+    <EditText
+        android:id="@+id/croplist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:padding="@dimen/view_padding"
         android:textSize="@dimen/add_edit_textsize">
     </EditText>
@@ -203,7 +213,6 @@
         android:id="@+id/landsize"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="false"
         android:padding="@dimen/view_padding"
         android:textSize="@dimen/add_edit_textsize">
     </EditText>
@@ -216,7 +225,6 @@
         android:id="@+id/units"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="false"
         android:padding="@dimen/view_padding"
         android:textSize="@dimen/add_edit_textsize">
     </EditText>
@@ -229,7 +237,6 @@
         android:id="@+id/species"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="false"
         android:padding="@dimen/view_padding"
         android:textSize="@dimen/add_edit_textsize">
     </EditText>
@@ -242,7 +249,6 @@
         android:id="@+id/date_planted"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="false"
         android:padding="@dimen/view_padding"
         android:textSize="@dimen/add_edit_textsize">
     </EditText>
@@ -256,7 +262,6 @@
         android:id="@+id/number_planted"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="false"
         android:visibility="gone"
         android:padding="@dimen/view_padding"
         android:textSize="@dimen/add_edit_textsize">
@@ -271,7 +276,6 @@
         android:id="@+id/number_survived"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="false"
         android:visibility="gone"
         android:padding="@dimen/view_padding"
         android:textSize="@dimen/add_edit_textsize">
@@ -285,7 +289,6 @@
         android:id="@+id/woodlot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="false"
         android:padding="@dimen/view_padding"
         android:textSize="@dimen/add_edit_textsize">
     </EditText>
@@ -298,7 +301,6 @@
         android:id="@+id/iboundary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="false"
         android:padding="@dimen/view_padding"
         android:textSize="@dimen/add_edit_textsize">
     </EditText>
@@ -311,7 +313,6 @@
         android:id="@+id/eboundary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="false"
         android:padding="@dimen/view_padding"
         android:textSize="@dimen/add_edit_textsize">
     </EditText>
@@ -324,7 +325,6 @@
            android:id="@+id/garden"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:focusable="false"
            android:padding="@dimen/view_padding"
            android:textSize="@dimen/add_edit_textsize">
        </EditText>
@@ -337,7 +337,6 @@
            android:id="@+id/c_field"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:focusable="false"
            android:padding="@dimen/view_padding"
            android:textSize="@dimen/add_edit_textsize">
        </EditText>
@@ -350,7 +349,6 @@
            android:id="@+id/p_grassland"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:focusable="false"
            android:padding="@dimen/view_padding"
            android:textSize="@dimen/add_edit_textsize">
        </EditText>
@@ -363,7 +361,6 @@
            android:id="@+id/f_bushland"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:focusable="false"
            android:padding="@dimen/view_padding"
            android:textSize="@dimen/add_edit_textsize">
        </EditText>
@@ -376,7 +373,6 @@
            android:id="@+id/other_sites"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:focusable="false"
            android:padding="@dimen/view_padding"
            android:textSize="@dimen/add_edit_textsize">
        </EditText>
@@ -389,7 +385,6 @@
            android:id="@+id/mg1"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:focusable="false"
            android:padding="@dimen/view_padding"
            android:textSize="@dimen/add_edit_textsize">
        </EditText>
@@ -402,7 +397,6 @@
            android:id="@+id/mg2"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:focusable="false"
            android:padding="@dimen/view_padding"
            android:textSize="@dimen/add_edit_textsize">
        </EditText>
@@ -415,7 +409,6 @@
            android:id="@+id/mg3"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:focusable="false"
            android:padding="@dimen/view_padding"
            android:textSize="@dimen/add_edit_textsize">
        </EditText>
@@ -428,7 +421,6 @@
            android:id="@+id/mg4"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:focusable="false"
            android:padding="@dimen/view_padding"
            android:textSize="@dimen/add_edit_textsize">
        </EditText>
@@ -441,7 +433,6 @@
            android:id="@+id/mg5"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:focusable="false"
            android:padding="@dimen/view_padding"
            android:textSize="@dimen/add_edit_textsize">
        </EditText>
@@ -454,7 +445,6 @@
            android:id="@+id/mg_other"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:focusable="false"
            android:padding="@dimen/view_padding"
            android:textSize="@dimen/add_edit_textsize">
        </EditText>
@@ -467,7 +457,6 @@
            android:id="@+id/usage1"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:focusable="false"
            android:padding="@dimen/view_padding"
            android:textSize="@dimen/add_edit_textsize">
        </EditText>
@@ -480,7 +469,6 @@
            android:id="@+id/usage2"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:focusable="false"
            android:padding="@dimen/view_padding"
            android:textSize="@dimen/add_edit_textsize">
        </EditText>
@@ -493,7 +481,6 @@
            android:id="@+id/usage3"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:focusable="false"
            android:padding="@dimen/view_padding"
            android:textSize="@dimen/add_edit_textsize">
        </EditText>
@@ -506,7 +493,6 @@
            android:id="@+id/usage4"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:focusable="false"
            android:padding="@dimen/view_padding"
            android:textSize="@dimen/add_edit_textsize">
        </EditText>
@@ -519,10 +505,21 @@
            android:id="@+id/usage5"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:focusable="false"
            android:padding="@dimen/view_padding"
            android:textSize="@dimen/add_edit_textsize">
        </EditText>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Medicinal"
+        android:textStyle="italic"/>
+    <EditText
+        android:id="@+id/usage6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/view_padding"
+        android:textSize="@dimen/add_edit_textsize">
+    </EditText>
        <TextView
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
@@ -532,7 +529,6 @@
            android:id="@+id/us_other"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:focusable="false"
            android:padding="@dimen/view_padding"
            android:textSize="@dimen/add_edit_textsize">
        </EditText>
@@ -545,7 +541,6 @@
            android:id="@+id/height"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:focusable="false"
            android:padding="@dimen/view_padding"
            android:textSize="@dimen/add_edit_textsize">
        </EditText>
@@ -558,7 +553,6 @@
            android:id="@+id/d_r"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:focusable="false"
            android:padding="@dimen/view_padding"
            android:textSize="@dimen/add_edit_textsize">
        </EditText>
@@ -571,7 +565,6 @@
         android:id="@+id/tree_latitude"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="false"
         android:padding="@dimen/view_padding"
         android:textSize="@dimen/add_edit_textsize">
     </EditText>
@@ -584,7 +577,6 @@
         android:id="@+id/tree_longitude"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="false"
         android:padding="@dimen/view_padding"
         android:textSize="@dimen/add_edit_textsize">
     </EditText>
@@ -597,7 +589,6 @@
         android:id="@+id/tree_altitude"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="false"
         android:padding="@dimen/view_padding"
         android:textSize="@dimen/add_edit_textsize">
     </EditText>
@@ -610,7 +601,18 @@
         android:id="@+id/tree_accuracy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="false"
+        android:padding="@dimen/view_padding"
+        android:textSize="@dimen/add_edit_textsize">
+    </EditText>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Notes"
+        android:textStyle="italic"/>
+    <EditText
+        android:id="@+id/notes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:padding="@dimen/view_padding"
         android:textSize="@dimen/add_edit_textsize">
     </EditText>
@@ -627,7 +629,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:visibility="invisible"
             android:text="@string/btn_update" />
 
         <Button
@@ -635,7 +636,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:visibility="invisible"
             android:text="@string/btn_delete" />
     </LinearLayout>
     <LinearLayout

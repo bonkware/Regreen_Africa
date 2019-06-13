@@ -24,13 +24,13 @@ public class TrainingView extends AppCompatActivity {
     private SimpleCursorAdapter adapter;
 
     final String[] from = new String[] { DatabaseHelper._id,DatabaseHelper.training_enum_name,
-            DatabaseHelper.training_record_date,DatabaseHelper.training_survey_name,DatabaseHelper.training_country, DatabaseHelper.training_region, DatabaseHelper.training_district,DatabaseHelper.training_topic,DatabaseHelper.training_date,DatabaseHelper.training_venue,DatabaseHelper.training_partners,DatabaseHelper.training_participants,DatabaseHelper.male_participants,DatabaseHelper.female_participants,DatabaseHelper.youth_participants
+            DatabaseHelper.training_record_date,DatabaseHelper.training_survey_name,DatabaseHelper.training_country, DatabaseHelper.training_region, DatabaseHelper.training_district,DatabaseHelper.training_topic,DatabaseHelper.training_type,DatabaseHelper.training_date,DatabaseHelper.training_venue,DatabaseHelper.training_partners,DatabaseHelper.training_participants,DatabaseHelper.male_participants,DatabaseHelper.female_participants,DatabaseHelper.youth_participants,DatabaseHelper.notes
     };
 
     final int[] to = new int[] { R.id.id,R.id.ename,R.id.in_date, R.id.survey_name,R.id.country,R.id.county,
-            R.id.district,R.id.training_topic,R.id.training_date,R.id.training_venue,R.id.training_partners,
+            R.id.district,R.id.training_topic,R.id.training_type,R.id.training_date,R.id.training_venue,R.id.training_partners,
             R.id.total_participants,R.id.male_participants,R.id.female_participants,
-            R.id.youth_participants
+            R.id.youth_participants,R.id.notes
     };
 
     @Override
@@ -64,6 +64,7 @@ public class TrainingView extends AppCompatActivity {
                 TextView countyTextView = (TextView) view.findViewById(R.id.county);
                 TextView districtTextView = (TextView) view.findViewById(R.id.district);
                 TextView topicTextView = (TextView) view.findViewById(R.id.training_topic);
+                TextView typeTextView = (TextView) view.findViewById(R.id.training_type);
                 TextView tdateTextView = (TextView) view.findViewById(R.id.training_date);
                 TextView tvenueTextView = (TextView) view.findViewById(R.id.training_venue);
                 TextView tpartnersTextView = (TextView) view.findViewById(R.id.training_partners);
@@ -71,6 +72,7 @@ public class TrainingView extends AppCompatActivity {
                 TextView maleTextView = (TextView) view.findViewById(R.id.male_participants);
                 TextView femaleTextView = (TextView) view.findViewById(R.id.female_participants);
                 TextView youthTextView = (TextView) view.findViewById(R.id.youth_participants);
+                TextView notesTextView = (TextView) view.findViewById(R.id.notes);
 
                 String id = idTextView.getText().toString();
                 String enume = enumTextView.getText().toString();
@@ -80,6 +82,7 @@ public class TrainingView extends AppCompatActivity {
                 String county = countyTextView.getText().toString();
                 String district = districtTextView.getText().toString();
                 String topic = topicTextView.getText().toString();
+                String type = typeTextView.getText().toString();
                 String tdate = tdateTextView.getText().toString();
                 String tvenue = tvenueTextView.getText().toString();
                 String tpartners = tpartnersTextView.getText().toString();
@@ -87,6 +90,7 @@ public class TrainingView extends AppCompatActivity {
                 String male = maleTextView.getText().toString();
                 String female = femaleTextView.getText().toString();
                 String youth = youthTextView.getText().toString();
+                String note = notesTextView.getText().toString();
 
                 Intent modify_intent = new Intent(getApplicationContext(), TrainingEdit.class);
                 modify_intent.putExtra("enume", enume);
@@ -96,6 +100,7 @@ public class TrainingView extends AppCompatActivity {
                 modify_intent.putExtra("county", county);
                 modify_intent.putExtra("district", district);
                 modify_intent.putExtra("topic", topic);
+                modify_intent.putExtra("type", type);
                 modify_intent.putExtra("tdate", tdate);
                 modify_intent.putExtra("tvenue", tvenue);
                 modify_intent.putExtra("tpartners", tpartners);
@@ -103,6 +108,7 @@ public class TrainingView extends AppCompatActivity {
                 modify_intent.putExtra("male", male);
                 modify_intent.putExtra("female", female);
                 modify_intent.putExtra("youth", youth);
+                modify_intent.putExtra("notes", note);
                 modify_intent.putExtra("id", id);
 
                 startActivity(modify_intent);

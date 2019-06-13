@@ -26,21 +26,21 @@ public class TPView extends AppCompatActivity {
     private SimpleCursorAdapter adapter;
 
     final String[] from = new String[] { DatabaseHelper._ID,DatabaseHelper.farmer_id,
-            DatabaseHelper.enum_name,DatabaseHelper.date,DatabaseHelper.survey_name, DatabaseHelper.farmer_inst_name, DatabaseHelper.country,DatabaseHelper.county_region,DatabaseHelper.district,DatabaseHelper.land_individual,DatabaseHelper.land_community,DatabaseHelper.land_government,DatabaseHelper.land_mosque_church,DatabaseHelper.land_schools,DatabaseHelper.land_other,DatabaseHelper.landsize_regreen,DatabaseHelper.tp_units,
+            DatabaseHelper.enum_name,DatabaseHelper.date,DatabaseHelper.survey_name, DatabaseHelper.farmer_inst_name, DatabaseHelper.country,DatabaseHelper.county_region,DatabaseHelper.district,DatabaseHelper.land_individual,DatabaseHelper.land_community,DatabaseHelper.land_government,DatabaseHelper.land_mosque_church,DatabaseHelper.land_schools,DatabaseHelper.land_other,DatabaseHelper.tp_crops,DatabaseHelper.tp_croplist,DatabaseHelper.landsize_regreen,DatabaseHelper.tp_units,
             DatabaseHelper.species_name,DatabaseHelper.date_planted,DatabaseHelper.number_planted,DatabaseHelper.number_survived,DatabaseHelper.woodlot,DatabaseHelper.iboundary,
             DatabaseHelper.eboundary,DatabaseHelper.garden,DatabaseHelper.crop_field,DatabaseHelper.pasture_grassland,DatabaseHelper.fallow_bushland,
-            DatabaseHelper.other_sites,DatabaseHelper.management_pruning,DatabaseHelper.management_fencing,DatabaseHelper.management_weeding,DatabaseHelper.management_watering,DatabaseHelper.management_organic_fertilizer,DatabaseHelper.management_other,DatabaseHelper.use_firewood,DatabaseHelper.use_housing_construction,DatabaseHelper.use_animal_feed,DatabaseHelper.use_food,DatabaseHelper.use_mulching,DatabaseHelper.use_other,DatabaseHelper.tree_height,DatabaseHelper.tree_dbh,
+            DatabaseHelper.other_sites,DatabaseHelper.management_pruning,DatabaseHelper.management_fencing,DatabaseHelper.management_weeding,DatabaseHelper.management_watering,DatabaseHelper.management_organic_fertilizer,DatabaseHelper.management_other,DatabaseHelper.use_firewood,DatabaseHelper.use_housing_construction,DatabaseHelper.use_animal_feed,DatabaseHelper.use_food,DatabaseHelper.use_mulching,DatabaseHelper.use_medicinal,DatabaseHelper.use_other,DatabaseHelper.tree_height,DatabaseHelper.tree_dbh,
             DatabaseHelper.tree_latitude,DatabaseHelper.tree_longitude,
-            DatabaseHelper.tree_altitude,DatabaseHelper.tree_accuracy
+            DatabaseHelper.tree_altitude,DatabaseHelper.tree_accuracy,DatabaseHelper.tp_notes,
     };
 
     final int[] to = new int[] { R.id.id, R.id.fid,R.id.ename, R.id.in_date, R.id.survey_name, R.id.fnames, R.id.country,R.id.county,R.id.district,R.id.own,
-            R.id.comm_land,R.id.govt_land,R.id.mosque_church,R.id.schools,R.id.other_locations,
+            R.id.comm_land,R.id.govt_land,R.id.mosque_church,R.id.schools,R.id.other_locations,R.id.crops,R.id.croplist,
             R.id.landestimate,R.id.units,R.id.species,R.id.date_planted,R.id.number_planted,R.id.number_survived,R.id.woodlot,R.id.iboundary,
             R.id.eboundary,R.id.garden,R.id.crop_field,R.id.pasture_grassland,R.id.fallow_pushland,R.id.other_sites,R.id.mg1,
             R.id.mg2,R.id.mg3,R.id.mg4,R.id.mg5,R.id.mg_other,
-            R.id.usage1,R.id.usage2,R.id.usage3,R.id.usage4,R.id.usage5,R.id.us_other,R.id.height,R.id.db_rc,R.id.tree_latitude,R.id.tree_longitude,
-            R.id.tree_altitude,R.id.tree_accuracy
+            R.id.usage1,R.id.usage2,R.id.usage3,R.id.usage4,R.id.usage5,R.id.usage6,R.id.us_other,R.id.height,R.id.db_rc,R.id.tree_latitude,R.id.tree_longitude,
+            R.id.tree_altitude,R.id.tree_accuracy,R.id.notes,
     };
 
     @Override
@@ -80,6 +80,8 @@ public class TPView extends AppCompatActivity {
                 TextView m_sTextView = (TextView) view.findViewById(R.id.mosque_church);
                 TextView schoolsTextView = (TextView) view.findViewById(R.id.schools);
                 TextView otTextView = (TextView) view.findViewById(R.id.other_locations);
+                TextView cropsTextView = (TextView) view.findViewById(R.id.crops);
+                TextView croplistTextView = (TextView) view.findViewById(R.id.croplist);
                 TextView landsizeTextView = (TextView) view.findViewById(R.id.landestimate);
                 TextView unitTextView = (TextView) view.findViewById(R.id.units);
                 TextView speciesTextView = (TextView) view.findViewById(R.id.species);
@@ -105,6 +107,7 @@ public class TPView extends AppCompatActivity {
                 TextView usage3TextView = (TextView) view.findViewById(R.id.usage3);
                 TextView usage4TextView = (TextView) view.findViewById(R.id.usage4);
                 TextView usage5TextView = (TextView) view.findViewById(R.id.usage5);
+                TextView usage6TextView = (TextView) view.findViewById(R.id.usage6);
                 TextView us_otherTextView = (TextView) view.findViewById(R.id.us_other);
                 TextView hTextView = (TextView) view.findViewById(R.id.height);
                 TextView dbTextView = (TextView) view.findViewById(R.id.db_rc);
@@ -112,6 +115,7 @@ public class TPView extends AppCompatActivity {
                 TextView longitudeTextView = (TextView) view.findViewById(R.id.tree_longitude);
                 TextView altitudeTextView = (TextView) view.findViewById(R.id.tree_altitude);
                 TextView accuracyTextView = (TextView) view.findViewById(R.id.tree_accuracy);
+                TextView notesTextView = (TextView) view.findViewById(R.id.notes);
 
                 String id = idTextView.getText().toString();
                 String fid = fidTextView.getText().toString();
@@ -128,6 +132,8 @@ public class TPView extends AppCompatActivity {
                 String mosque_church = m_sTextView.getText().toString();
                 String school = schoolsTextView.getText().toString();
                 String other_locations = otTextView.getText().toString();
+                String crops = cropsTextView.getText().toString();
+                String cropl = croplistTextView.getText().toString();
                 String landsize = landsizeTextView.getText().toString();
                 String unit = unitTextView.getText().toString();
                 String species = speciesTextView.getText().toString();
@@ -153,6 +159,7 @@ public class TPView extends AppCompatActivity {
                 String usage3 = usage3TextView.getText().toString();
                 String usage4 = usage4TextView.getText().toString();
                 String usage5 = usage5TextView.getText().toString();
+                String usage6 = usage6TextView.getText().toString();
                 String us_other = us_otherTextView.getText().toString();
                 String height = hTextView.getText().toString();
                 String dcr = dbTextView.getText().toString();
@@ -160,6 +167,7 @@ public class TPView extends AppCompatActivity {
                 String longitude = longitudeTextView.getText().toString();
                 String altitude = altitudeTextView.getText().toString();
                 String accuracy = accuracyTextView.getText().toString();
+                String notes = notesTextView.getText().toString();
 
                 Intent modify_intent = new Intent(getApplicationContext(), TPEdit.class);
                 modify_intent.putExtra("fid", fid);
@@ -176,7 +184,9 @@ public class TPView extends AppCompatActivity {
                 modify_intent.putExtra("mosque_church", mosque_church);
                 modify_intent.putExtra("school", school);
                 modify_intent.putExtra("other_locations", other_locations);
-                modify_intent.putExtra("landsize", landsize);
+                modify_intent.putExtra("crops", landsize);
+                modify_intent.putExtra("croplist", crops);
+                modify_intent.putExtra("landsize", cropl);
                 modify_intent.putExtra("unit", unit);
                 modify_intent.putExtra("species", species);
                 modify_intent.putExtra("date_planted", date_planted);
@@ -202,6 +212,7 @@ public class TPView extends AppCompatActivity {
                 modify_intent.putExtra("usage3", usage3);
                 modify_intent.putExtra("usage4", usage4);
                 modify_intent.putExtra("usage5", usage5);
+                modify_intent.putExtra("usage6", usage6);
                 modify_intent.putExtra("us_other", us_other);
                 modify_intent.putExtra("height", height);
                 modify_intent.putExtra("dcr", dcr);
@@ -209,6 +220,7 @@ public class TPView extends AppCompatActivity {
                 modify_intent.putExtra("longitude", longitude);
                 modify_intent.putExtra("altitude", altitude);
                 modify_intent.putExtra("accuracy", accuracy);
+                modify_intent.putExtra("notes", notes);
                 modify_intent.putExtra("id", id);
 
                 startActivity(modify_intent);

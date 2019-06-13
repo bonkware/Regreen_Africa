@@ -166,6 +166,28 @@
         android:padding="3dp"
         android:visibility="gone" />
     <TextView
+        android:id="@+id/crops"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/other_locations"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/id"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:padding="3dp"
+        android:visibility="gone" />
+    <TextView
+        android:id="@+id/croplist"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/other_locations"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/id"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:padding="3dp"
+        android:visibility="gone" />
+    <TextView
         android:id="@+id/landestimate"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -442,6 +464,17 @@
         android:padding="3dp"
         android:visibility="gone" />
     <TextView
+        android:id="@+id/usage6"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/usage4"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/id"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:padding="3dp"
+        android:visibility="gone" />
+    <TextView
         android:id="@+id/us_other"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -512,6 +545,17 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tree_altitude"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/id"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:padding="3dp"
+        android:visibility="gone" />
+    <TextView
+        android:id="@+id/notes"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/usage4"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@id/id"
         android:ellipsize="end"
