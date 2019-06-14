@@ -210,7 +210,11 @@
             android:text="PREV"/>
 
         <Button
+<<<<<<< HEAD
             android:id="@+id/tospeciesnumber"
+=======
+            android:id="@+id/jumpTosnumber"
+>>>>>>> 3f6ba642ec336420e77b3d3fa7c4bd5884484747
             android:layout_width="wrap_content"
             android:layout_height="49dp"
             android:layout_weight="1"
