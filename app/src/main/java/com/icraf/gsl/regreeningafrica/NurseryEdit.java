@@ -7,12 +7,17 @@ package com.icraf.gsl.regreeningafrica;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
+
+import java.io.File;
 
 public class NurseryEdit extends Activity implements OnClickListener {
     //initialize
@@ -233,6 +238,13 @@ public class NurseryEdit extends Activity implements OnClickListener {
 
         updateBtn.setOnClickListener(this);
         deleteBtn.setOnClickListener(this);
+        //show image
+        File imgFile = new File(nursery_path);
+        if(imgFile.exists()){
+            Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+            ImageView myImage = (ImageView) findViewById(R.id.image);
+            myImage.setImageBitmap(myBitmap);
+        }
     }
 
     @Override

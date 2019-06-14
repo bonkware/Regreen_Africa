@@ -393,6 +393,11 @@ public class DbAccess {
         Cursor c = database.rawQuery(selectQuery, null);
         return c;
     }
+    public Cursor getpolygon() {
+        String selectQuery = "SELECT latitude,longitude FROM landsizepolygonfmnr WHERE uploaded='no' ";
+        Cursor c = database.rawQuery(selectQuery, null);
+        return c;
+    }
     //count number of records in fmnr
     public int getfmnrcount(){
         Cursor cur = database.rawQuery("SELECT count(*) from fmnr_farmer_inst,fmnr_plot_info where  fmnr_farmer_inst.farmerID=fmnr_plot_info.farmerID and fmnr_farmer_inst.uploaded='no'", null);
@@ -628,11 +633,12 @@ public class DbAccess {
         int nursery = database.update(TABLE_COHORT, contentValue, DatabaseHelper._ID + " = " + _id, null);
         return nursery;
     }
-    public int updateTPmeasurements(long _id,String height,String dbh,String lat,String lon,String alt, String acc,
+    public int updateTPmeasurements(long _id,String height,String dbh,String image,String lat,String lon,String alt, String acc,
                                  String note){
         ContentValues contentValue = new ContentValues();
         contentValue.put(DatabaseHelper.tree_height, height);
         contentValue.put(DatabaseHelper.tree_dbh, dbh);
+        contentValue.put(DatabaseHelper.tree_image_path, image);
         contentValue.put(DatabaseHelper.tree_latitude, lat);
         contentValue.put(DatabaseHelper.tree_longitude, lon);
         contentValue.put(DatabaseHelper.tree_altitude, alt);
@@ -694,7 +700,7 @@ public class DbAccess {
         return nursery;
     }
     public int updateFMNRspecies(long _id, String species, String local, String mg1,String mg2,String mg3,String mg4,String mg5,String mg6,String mg7,String mg_other,
-                                 String usage1, String usage2,String usage3,String usage4,String usage5,String usage6,String usage7,String usage8,String us_other,String stems, String height,String dbh,String lat,String lon,String alt, String acc,
+                                 String usage1, String usage2,String usage3,String usage4,String usage5,String usage6,String usage7,String usage8,String us_other,String stems, String height,String dbh,String image,String lat,String lon,String alt, String acc,
                                  String note){
         ContentValues contentValue = new ContentValues();
         contentValue.put(DatabaseHelper.fmnr_species_name, species);
@@ -719,6 +725,7 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.fmnr_tree_stems, stems);
         contentValue.put(DatabaseHelper.fmnr_tree_height, height);
         contentValue.put(DatabaseHelper.fmnr_tree_dbh, dbh);
+        contentValue.put(DatabaseHelper.fmnr_tree_image_path, image);
         contentValue.put(DatabaseHelper.fmnr_tree_latitude, lat);
         contentValue.put(DatabaseHelper.fmnr_tree_longitude, lon);
         contentValue.put(DatabaseHelper.fmnr_tree_altitude, alt);

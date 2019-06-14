@@ -559,6 +559,27 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Image"
+        android:textStyle="italic"/>
+    <EditText
+        android:id="@+id/path"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/view_padding"
+        android:focusable="false"
+        android:textSize="@dimen/add_edit_textsize">
+    </EditText>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxWidth="200dp"
+        android:maxHeight="200dp"
+        android:scaleType="fitCenter"
+        android:id="@+id/image"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Latitude"
         android:textStyle="italic"/>
     <EditText

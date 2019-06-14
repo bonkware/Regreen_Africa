@@ -19,7 +19,7 @@ public class GPS {
 
     private static GPS instance;
 
-    // location manaer for GPS
+    // location manager for GPS
     private LocationManager locationManager;
 
 
@@ -106,8 +106,15 @@ public class GPS {
 
 
                         if (gpslocation != null) {
+                            /*if (accuracy <= 5.5) {
+                                System.out.println("GPS Info:" + gpslocation.getLatitude() + ":" + gpslocation.getLongitude());
+                                latitude=gpslocation.getLatitude();
+                                longitude=gpslocation.getLongitude();
+                                altitude = gpslocation.getAltitude();
+                                accuracy = gpslocation.getAccuracy();
+                                break;
+                            }*/
                             System.out.println("GPS Info:" + gpslocation.getLatitude() + ":" + gpslocation.getLongitude());
-
                             latitude=gpslocation.getLatitude();
                             longitude=gpslocation.getLongitude();
                             altitude = gpslocation.getAltitude();
@@ -160,7 +167,6 @@ public class GPS {
                     }
 
                 }
-
         }
     };
 
@@ -186,5 +192,6 @@ public class GPS {
         progDailog = pD;
 
     }
+
 }
 

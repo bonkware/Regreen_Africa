@@ -508,6 +508,17 @@
         android:padding="3dp"
         android:visibility="gone" />
     <TextView
+        android:id="@+id/path"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/height"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/id"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:padding="3dp"
+        android:visibility="gone" />
+    <TextView
         android:id="@+id/tree_latitude"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

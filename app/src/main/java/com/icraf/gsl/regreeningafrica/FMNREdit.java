@@ -7,12 +7,17 @@ package com.icraf.gsl.regreeningafrica;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
+
+import java.io.File;
 
 public class FMNREdit extends Activity implements OnClickListener {
     //initialize
@@ -21,7 +26,7 @@ public class FMNREdit extends Activity implements OnClickListener {
             owText,lsText,unsText,spText,localText,mg1Text,mg2Text,mg3Text,mg4Text,mg5Text,mg6Text,mg7Text,mg_otherText,
             usage1Text,usage2Text,usage3Text,usage4Text,usage5Text,usage6Text,usage7Text,us_otherText,
             in_dateText,nstartText,dateText,fencedText,cropsText,croplistText,notesText,usage8Text,
-            cfText,pgText,fbText,osText,stemsText,heightText,dbhText,latText,lonText,altText,accText;
+            cfText,pgText,fbText,osText,stemsText,heightText,dbhText,pathText,latText,lonText,altText,accText;
 
     private long _id;
 
@@ -93,6 +98,7 @@ public class FMNREdit extends Activity implements OnClickListener {
         stemsText = (EditText) findViewById(R.id.stems);
         heightText = (EditText) findViewById(R.id.height);
         dbhText = (EditText) findViewById(R.id.dbh);
+        pathText = (EditText) findViewById(R.id.path);
         latText = (EditText) findViewById(R.id.tree_latitude);
         lonText = (EditText) findViewById(R.id.tree_longitude);
         altText = (EditText) findViewById(R.id.tree_altitude);
@@ -146,6 +152,7 @@ public class FMNREdit extends Activity implements OnClickListener {
         String stem = intent.getStringExtra("stems");
         String height = intent.getStringExtra("height");
         String dbh = intent.getStringExtra("dbh");
+        String image = intent.getStringExtra("path");
         String lat = intent.getStringExtra("latitude");
         String lon = intent.getStringExtra("longitude");
         String alt = intent.getStringExtra("altitude");
@@ -197,6 +204,7 @@ public class FMNREdit extends Activity implements OnClickListener {
         stemsText.setText(stem);
         heightText.setText(height);
         dbhText.setText(dbh);
+        pathText.setText(image);
         latText.setText(lat);
         lonText.setText(lon);
         altText.setText(alt);
@@ -205,6 +213,13 @@ public class FMNREdit extends Activity implements OnClickListener {
 
         updateBtn.setOnClickListener(this);
         deleteBtn.setOnClickListener(this);
+        //show image
+        File imgFile = new File(image);
+        if(imgFile.exists()){
+            Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+            ImageView myImage = (ImageView) findViewById(R.id.image);
+            myImage.setImageBitmap(myBitmap);
+        }
     }
 
     @Override
@@ -255,6 +270,7 @@ public class FMNREdit extends Activity implements OnClickListener {
                 String stems = stemsText.getText().toString();
                 String height = heightText.getText().toString();
                 String dbh = dbhText.getText().toString();
+                String image = pathText.getText().toString();
                 String lat = latText.getText().toString();
                 String lon = lonText.getText().toString();
                 String alt = altText.getText().toString();
@@ -265,7 +281,7 @@ public class FMNREdit extends Activity implements OnClickListener {
                         other_own);
                 dbAccess.updateFMNRplotinfo(_id, n_start,s_date,fence,crop,cropl,landsize,units);
                 dbAccess.updateFMNRspecies(_id, species,local,mg1,mg2,mg3,mg4,mg5,mg6,mg7,mg_other,usage1,usage2,usage3,usage4,usage5,usage6,usage7,usage8,us_other,stems,
-                        height,dbh,lat,lon,alt,acc,note);
+                        height,dbh,image,lat,lon,alt,acc,note);
 
                 Toast.makeText(FMNREdit.this, "Updated Successfully", Toast.LENGTH_SHORT).show();
                 this.returnHome();

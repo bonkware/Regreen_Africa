@@ -29,9 +29,9 @@
         <item>Ivory Coast</item>-->
     </string-array>
     <string-array name="landsize">
-    <item>Select Unit</item>
-    <item>Hectares</item>
-    <item>Acres</item>
+        <item>Select Unit</item>
+        <item>Hectares</item>
+        <item>Acres</item>
     </string-array>
     <string-array name="projects">
         <item>Select Survey</item>
@@ -98,4 +98,5 @@
     <string name="select_plots">
         Is this a new farmer/Institution or an additional plot by the previous farmer/Institution?\n
     </string>
+    <string name="title_activity_maps">Map</string>
 </resources>

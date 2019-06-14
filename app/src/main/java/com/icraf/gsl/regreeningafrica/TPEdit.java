@@ -7,12 +7,17 @@ package com.icraf.gsl.regreeningafrica;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
+
+import java.io.File;
 
 public class TPEdit extends Activity implements OnClickListener {
     //initialize
@@ -21,7 +26,7 @@ public class TPEdit extends Activity implements OnClickListener {
             owText,cropsText,croplistText,lsText,unsText,mg1Text,mg2Text,mg3Text,mg4Text,mg5Text,mg_otherText,
             usage1Text,usage2Text,usage3Text,usage4Text,usage5Text,usage6Text,us_otherText,
             speciesText,pText,numberpText,numbersText,wText,ibText,ebText,gText,
-            cfText,pgText,fbText,osText,hText,drText,in_dateText,latText,lonText,altText,accText,notesText;
+            cfText,pgText,fbText,osText,hText,drText,in_dateText,pathText,latText,lonText,altText,accText,notesText;
 
     private long _id;
 
@@ -94,6 +99,7 @@ public class TPEdit extends Activity implements OnClickListener {
         us_otherText = (EditText) findViewById(R.id.us_other);
         hText = (EditText) findViewById(R.id.height);
         drText = (EditText) findViewById(R.id.d_r);
+        pathText = (EditText) findViewById(R.id.path);
         latText = (EditText) findViewById(R.id.tree_latitude);
         lonText = (EditText) findViewById(R.id.tree_longitude);
         altText = (EditText) findViewById(R.id.tree_altitude);
@@ -150,6 +156,7 @@ public class TPEdit extends Activity implements OnClickListener {
         String us_other = intent.getStringExtra("us_other");
         String height = intent.getStringExtra("height");
         String d_r = intent.getStringExtra("dcr");
+        String image = intent.getStringExtra("path");
         String lat = intent.getStringExtra("latitude");
         String lon = intent.getStringExtra("longitude");
         String alt = intent.getStringExtra("altitude");
@@ -204,6 +211,7 @@ public class TPEdit extends Activity implements OnClickListener {
         us_otherText.setText(us_other);
         hText.setText(height);
         drText.setText(d_r);
+        pathText.setText(image);
         latText.setText(lat);
         lonText.setText(lon);
         altText.setText(alt);
@@ -212,6 +220,13 @@ public class TPEdit extends Activity implements OnClickListener {
 
         updateBtn.setOnClickListener(this);
         deleteBtn.setOnClickListener(this);
+        //show image
+        File imgFile = new File(image);
+        if(imgFile.exists()){
+            Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+            ImageView myImage = (ImageView) findViewById(R.id.image);
+            myImage.setImageBitmap(myBitmap);
+        }
     }
 
     @Override
@@ -263,6 +278,7 @@ public class TPEdit extends Activity implements OnClickListener {
                 String us_other = us_otherText.getText().toString();
                 String height = hText.getText().toString();
                 String dbh = drText.getText().toString();
+                String image = pathText.getText().toString();
                 String lat = latText.getText().toString();
                 String lon = lonText.getText().toString();
                 String alt = altText.getText().toString();
@@ -274,7 +290,7 @@ public class TPEdit extends Activity implements OnClickListener {
                 dbAccess.updateTPplotinfo(_id,crops,croplist,landsize,unit);
                 dbAccess.updateTPcohort(_id,species,dplanted,nplanted,nsurvived,woodlot,iboundary,eboundary,garden,field,grassland,bushland,other_sites,
                                           mg1,mg2,mg3,mg4,mg5,mg_other,usage1,usage2,usage3,usage4,usage5,usage6,us_other);
-                dbAccess.updateTPmeasurements(_id,height,dbh,lat,lon,alt,acc,notes);
+                dbAccess.updateTPmeasurements(_id,height,dbh,image,lat,lon,alt,acc,notes);
                 Toast.makeText(TPEdit.this, "Updated Successfully", Toast.LENGTH_SHORT).show();
                 this.returnHome();
                 break;

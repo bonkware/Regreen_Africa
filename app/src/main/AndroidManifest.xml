@@ -22,43 +22,86 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.icraf.gsl.regreeningafrica.Splash">
+        <activity android:name=".Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.icraf.gsl.regreeningafrica.MainActivity" android:configChanges="orientation|screenSize|keyboardHidden"/>
-        <activity android:name="com.icraf.gsl.regreeningafrica.TPFarmInstiMainActivity" android:configChanges="orientation|screenSize|keyboardHidden"/>
-        <activity android:name="com.icraf.gsl.regreeningafrica.SelectSurvey" android:configChanges="orientation|screenSize|keyboardHidden"/>
-        <activity android:name="com.icraf.gsl.regreeningafrica.TrainingsMainActivity" android:configChanges="orientation|screenSize|keyboardHidden"/>
-        <activity android:name="com.icraf.gsl.regreeningafrica.TPCohortMainAcivity" android:configChanges="orientation|screenSize|keyboardHidden"/>
-        <activity android:name="com.icraf.gsl.regreeningafrica.TPTreeMeasureMainAcivity" android:configChanges="orientation|screenSize|keyboardHidden"/>
-        <activity android:name="com.icraf.gsl.regreeningafrica.OtherMainActivities" android:configChanges="orientation|screenSize|keyboardHidden"/>
-        <activity android:name="com.icraf.gsl.regreeningafrica.NurseryOtherInfoMain" android:configChanges="orientation|screenSize|keyboardHidden" />
-        <activity android:name="com.icraf.gsl.regreeningafrica.NurseryInfoMain" android:configChanges="orientation|screenSize|keyboardHidden" android:launchMode="singleTask" />
-        <activity android:name="com.icraf.gsl.regreeningafrica.About" />
-        <activity android:name="com.icraf.gsl.regreeningafrica.AppGuide" />
-        <activity android:name="com.icraf.gsl.regreeningafrica.FmnrFarmInstMainActivity" android:configChanges="orientation|screenSize|keyboardHidden" />
-        <activity android:name="com.icraf.gsl.regreeningafrica.FmnrTreeMeasureMainActivity" android:configChanges="orientation|screenSize|keyboardHidden" />
-        <activity android:name="com.icraf.gsl.regreeningafrica.FmnrLandSizeMainActivity" android:configChanges="orientation|screenSize|keyboardHidden" />
-        <activity android:name="com.icraf.gsl.regreeningafrica.TPLandSizeMainActivity" android:configChanges="orientation|screenSize|keyboardHidden" />
-        <activity android:name="com.icraf.gsl.regreeningafrica.FmnrPlotMainActivity" android:configChanges="orientation|screenSize|keyboardHidden" />
-        <activity android:name="com.icraf.gsl.regreeningafrica.TPPlotMainActivity" android:configChanges="orientation|screenSize|keyboardHidden" />
-        <activity android:name="com.icraf.gsl.regreeningafrica.SelectTPMultiple_TP" />
-        <activity android:name="com.icraf.gsl.regreeningafrica.SelectTPMultiple_FMNR" />
-        <activity android:name="com.icraf.gsl.regreeningafrica.Select_Farmer_Institution_TP" />
-        <activity android:name="com.icraf.gsl.regreeningafrica.Select_Farmer_Institution_FMNR" />
-        <activity android:name="com.icraf.gsl.regreeningafrica.TPView" />
-        <activity android:name="com.icraf.gsl.regreeningafrica.TPEdit" />
-        <activity android:name="com.icraf.gsl.regreeningafrica.ViewMainActivity" />
-        <activity android:name="com.icraf.gsl.regreeningafrica.FMNRView" />
-        <activity android:name="com.icraf.gsl.regreeningafrica.FMNREdit" />
-        <activity android:name="com.icraf.gsl.regreeningafrica.NurseryView" />
-        <activity android:name="com.icraf.gsl.regreeningafrica.NurseryEdit" />
-        <activity android:name="com.icraf.gsl.regreeningafrica.TrainingView" />
-        <activity android:name="com.icraf.gsl.regreeningafrica.TrainingEdit" />
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity
+            android:name=".TPFarmInstiMainActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity
+            android:name=".SelectSurvey"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity
+            android:name=".TrainingsMainActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity
+            android:name=".TPCohortMainAcivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity
+            android:name=".TPTreeMeasureMainAcivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity
+            android:name=".OtherMainActivities"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity
+            android:name=".NurseryOtherInfoMain"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity
+            android:name=".NurseryInfoMain"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:launchMode="singleTask" />
+        <activity android:name=".About" />
+        <activity android:name=".AppGuide" />
+        <activity
+            android:name=".FmnrFarmInstMainActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity
+            android:name=".FmnrTreeMeasureMainActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity
+            android:name=".FmnrLandSizeMainActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity
+            android:name=".TPLandSizeMainActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity
+            android:name=".FmnrPlotMainActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity
+            android:name=".TPPlotMainActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity android:name=".SelectTPMultiple_TP" />
+        <activity android:name=".SelectTPMultiple_FMNR" />
+        <activity android:name=".Select_Farmer_Institution_TP" />
+        <activity android:name=".Select_Farmer_Institution_FMNR" />
+        <activity android:name=".TPView" />
+        <activity android:name=".TPEdit" />
+        <activity android:name=".ViewMainActivity" />
+        <activity android:name=".FMNRView" />
+        <activity android:name=".FMNREdit" />
+        <activity android:name=".NurseryView" />
+        <activity android:name=".NurseryEdit" />
+        <activity android:name=".TrainingView" />
+        <activity android:name=".TrainingEdit" />
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
     </application>
 
 </manifest>

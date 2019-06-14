@@ -30,7 +30,7 @@ public class TPView extends AppCompatActivity {
             DatabaseHelper.species_name,DatabaseHelper.date_planted,DatabaseHelper.number_planted,DatabaseHelper.number_survived,DatabaseHelper.woodlot,DatabaseHelper.iboundary,
             DatabaseHelper.eboundary,DatabaseHelper.garden,DatabaseHelper.crop_field,DatabaseHelper.pasture_grassland,DatabaseHelper.fallow_bushland,
             DatabaseHelper.other_sites,DatabaseHelper.management_pruning,DatabaseHelper.management_fencing,DatabaseHelper.management_weeding,DatabaseHelper.management_watering,DatabaseHelper.management_organic_fertilizer,DatabaseHelper.management_other,DatabaseHelper.use_firewood,DatabaseHelper.use_housing_construction,DatabaseHelper.use_animal_feed,DatabaseHelper.use_food,DatabaseHelper.use_mulching,DatabaseHelper.use_medicinal,DatabaseHelper.use_other,DatabaseHelper.tree_height,DatabaseHelper.tree_dbh,
-            DatabaseHelper.tree_latitude,DatabaseHelper.tree_longitude,
+            DatabaseHelper.tree_image_path,DatabaseHelper.tree_latitude,DatabaseHelper.tree_longitude,
             DatabaseHelper.tree_altitude,DatabaseHelper.tree_accuracy,DatabaseHelper.tp_notes,
     };
 
@@ -39,7 +39,7 @@ public class TPView extends AppCompatActivity {
             R.id.landestimate,R.id.units,R.id.species,R.id.date_planted,R.id.number_planted,R.id.number_survived,R.id.woodlot,R.id.iboundary,
             R.id.eboundary,R.id.garden,R.id.crop_field,R.id.pasture_grassland,R.id.fallow_pushland,R.id.other_sites,R.id.mg1,
             R.id.mg2,R.id.mg3,R.id.mg4,R.id.mg5,R.id.mg_other,
-            R.id.usage1,R.id.usage2,R.id.usage3,R.id.usage4,R.id.usage5,R.id.usage6,R.id.us_other,R.id.height,R.id.db_rc,R.id.tree_latitude,R.id.tree_longitude,
+            R.id.usage1,R.id.usage2,R.id.usage3,R.id.usage4,R.id.usage5,R.id.usage6,R.id.us_other,R.id.height,R.id.db_rc,R.id.path,R.id.tree_latitude,R.id.tree_longitude,
             R.id.tree_altitude,R.id.tree_accuracy,R.id.notes,
     };
 
@@ -111,6 +111,7 @@ public class TPView extends AppCompatActivity {
                 TextView us_otherTextView = (TextView) view.findViewById(R.id.us_other);
                 TextView hTextView = (TextView) view.findViewById(R.id.height);
                 TextView dbTextView = (TextView) view.findViewById(R.id.db_rc);
+                TextView pathTextView = (TextView) view.findViewById(R.id.path);
                 TextView latitudeTextView = (TextView) view.findViewById(R.id.tree_latitude);
                 TextView longitudeTextView = (TextView) view.findViewById(R.id.tree_longitude);
                 TextView altitudeTextView = (TextView) view.findViewById(R.id.tree_altitude);
@@ -163,6 +164,7 @@ public class TPView extends AppCompatActivity {
                 String us_other = us_otherTextView.getText().toString();
                 String height = hTextView.getText().toString();
                 String dcr = dbTextView.getText().toString();
+                String image = pathTextView.getText().toString();
                 String latitude = latitudeTextView.getText().toString();
                 String longitude = longitudeTextView.getText().toString();
                 String altitude = altitudeTextView.getText().toString();
@@ -216,6 +218,7 @@ public class TPView extends AppCompatActivity {
                 modify_intent.putExtra("us_other", us_other);
                 modify_intent.putExtra("height", height);
                 modify_intent.putExtra("dcr", dcr);
+                modify_intent.putExtra("path", image);
                 modify_intent.putExtra("latitude", latitude);
                 modify_intent.putExtra("longitude", longitude);
                 modify_intent.putExtra("altitude", altitude);

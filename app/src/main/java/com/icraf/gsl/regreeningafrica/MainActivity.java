@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                 overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
             }
         });
-        //testing farmer list
+        //
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,7 +84,15 @@ public class MainActivity extends AppCompatActivity {
                 overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
             }
         });
-
+        //
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, ViewMainActivity.class);
+                startActivity(i);
+                overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
+            }
+        });
     }
 
     // check external write permision in android 6+
