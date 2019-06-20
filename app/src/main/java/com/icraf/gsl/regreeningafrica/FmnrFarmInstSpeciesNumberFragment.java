@@ -23,6 +23,26 @@ public class FmnrFarmInstSpeciesNumberFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fmnr_species_number, container,
                 false);
+        //for previous/back button
+        final Button button_prev = (Button) view.findViewById(R.id.prev);
+        button_prev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(g.getMultiplot()==true) {
+                    Intent intent = new Intent(getActivity(), Select_Farmer_Institution_FMNR.class);
+                    startActivity(intent);
+                    getActivity().overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
+                    //Toast.makeText(SelectSurvey.this.getActivity(),"Saved",Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    button_prev.setEnabled(false);
+                    //Intent intent = new Intent(getActivity(), TPFarmInstiMainAcivity.class);
+                    //startActivity(intent);
+                    //getActivity().overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
+                }
+
+            }
+        });
 
         //for previous/back button
         final Button button_prev = (Button) view.findViewById(R.id.prev);

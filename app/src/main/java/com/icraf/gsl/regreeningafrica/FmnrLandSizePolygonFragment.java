@@ -15,6 +15,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -242,6 +246,61 @@ public class FmnrLandSizePolygonFragment extends Fragment {
         g.setfid(fid.getText().toString());
         TextView pid = (TextView) getActivity().findViewById(R.id.pid);
         g.setpid(pid.getText().toString());
+        //
+        RadioGroup sn = (RadioGroup) getActivity().findViewById(R.id.species_number);
+        //check whether it is checked
+        if(sn.getCheckedRadioButtonId()==-1){
+            //Toast.makeText(FarmerDetails.this.getActivity(),"Please select Radio Button!",Toast.LENGTH_SHORT).show();
+        }
+        else {
+            // get selected radioButton from radioGroup
+            int selectedId = sn.getCheckedRadioButtonId();
+            // find the radioButton by returned id
+            RadioButton species_number = (RadioButton) getActivity().findViewById(selectedId);
+            // radioButton text
+            g.setspecies_number(species_number.getText().toString());
+        }
+        //get photo from global
+        EditText fmnr_date = (EditText) getActivity().findViewById(R.id.fmnr_date);
+        g.setfmnr_date(fmnr_date.getText().toString());
+
+        RadioGroup group = (RadioGroup) getActivity().findViewById(R.id.fenced);
+        //check whether it is checked
+        if(group.getCheckedRadioButtonId()==-1){
+            //Toast.makeText(FmnrFarmInstLandsizeFragment.this.getActivity(),"Please select Radio Button!",Toast.LENGTH_SHORT).show();
+        }
+        else {
+            // get selected radioButton from radioGroup
+            int selectedId = group.getCheckedRadioButtonId();
+            // find the radioButton by returned id
+            RadioButton select = (RadioButton) getActivity().findViewById(selectedId);
+            // radioButton text
+            g.setfmnr_fenced(select.getText().toString());
+        }
+        RadioGroup crop = (RadioGroup) getActivity().findViewById(R.id.crop);
+        //check whether it is checked
+        if(crop.getCheckedRadioButtonId()==-1){
+            //Toast.makeText(FmnrFarmInstLandsizeFragment.this.getActivity(),"Please select Radio Button!",Toast.LENGTH_SHORT).show();
+        }
+        else {
+            // get selected radioButton from radioGroup
+            int selectedId = crop.getCheckedRadioButtonId();
+            // find the radioButton by returned id
+            RadioButton select = (RadioButton) getActivity().findViewById(selectedId);
+            // radioButton text
+            g.setcrops(select.getText().toString());
+        }
+        EditText croplist = (EditText) getActivity().findViewById(R.id.crops);
+        g.setcroplist(croplist.getText().toString());//crop or list of crops
+        EditText regreen_size = (EditText) getActivity().findViewById(R.id.landestimate);
+        g.setlandsize(regreen_size.getText().toString());
+
+        Spinner units = (Spinner) getActivity().findViewById(R.id.units);
+        //check if spinner is selected
+        if(units != null && units.getSelectedItem() !=null ) {
+            g.setunits(units.getSelectedItem().toString());
+        }
+
         //get points from global
         g.setuploaded("no");//set uploaded to no on insert
         g.setmodule("FMNR");//set which module is this on insert

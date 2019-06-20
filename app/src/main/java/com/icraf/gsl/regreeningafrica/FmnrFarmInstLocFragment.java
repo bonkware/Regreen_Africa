@@ -30,20 +30,38 @@ public class FmnrFarmInstLocFragment extends Fragment {
         View view = inflater.inflate(R.layout.fmnr_tree_location, container,
                 false);
 
+<<<<<<< HEAD
         dbAccess = new DbAccess(this.getActivity());
         dbAccess.open();
 
         //proceed to plot information
         Button button_next = (Button) view.findViewById(R.id.tospeciesnumber);
+=======
+
+        dbAccess = new DbAccess(this.getActivity());
+        dbAccess.open();
+
+        //proceed to land size polygon
+        Button button_next = (Button) view.findViewById(R.id.jumpTosnumber);
+>>>>>>> 3f6ba642ec336420e77b3d3fa7c4bd5884484747
         button_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
+<<<<<<< HEAD
                     case R.id.tospeciesnumber:
                         saveFmnrFarmerInst();//save inputs
                         dbAccess.insertFmnrFarmerInst();//insert details to db
                         g.setMultiplot(false);
                         Intent intent = new Intent(getActivity(), FmnrPlotMainActivity.class);
+=======
+                    case R.id.jumpTosnumber:
+                        saveFmnrFarmerInst();//save inputs
+                        plotid();//generate plot id for polygons
+                        dbAccess.insertFmnrFarmerInst();//insert details to db
+                        g.setMultiplot(false);
+                        Intent intent = new Intent(getActivity(), FmnrLandSizeMainActivity.class);
+>>>>>>> 3f6ba642ec336420e77b3d3fa7c4bd5884484747
                         startActivity(intent);
                         getActivity().overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
                         //Toast.makeText(SelectSurvey.this.getActivity(),"Saved",Toast.LENGTH_SHORT).show();
@@ -67,6 +85,10 @@ public class FmnrFarmInstLocFragment extends Fragment {
 
         return view;
     }
+<<<<<<< HEAD
+=======
+    // save farmer/institution data when you go next
+>>>>>>> 3f6ba642ec336420e77b3d3fa7c4bd5884484747
     public void  saveFmnrFarmerInst(){
         //generate unique id for farmer/institution
         Random generator = new Random();
@@ -110,6 +132,7 @@ public class FmnrFarmInstLocFragment extends Fragment {
         if(district != null && district.getSelectedItem() !=null ) {
             g.setdistricts(district.getSelectedItem().toString());
         }
+<<<<<<< HEAD
 
        /* RadioGroup radioGroup = (RadioGroup) getActivity().findViewById(R.id.planting_location);
         //check whether it is checked
@@ -124,6 +147,8 @@ public class FmnrFarmInstLocFragment extends Fragment {
             // radioButton text
             g.setselect_location(select.getText().toString());
         }*/
+=======
+>>>>>>> 3f6ba642ec336420e77b3d3fa7c4bd5884484747
         CheckBox owner = (CheckBox) getActivity().findViewById(R.id.own);
         if(owner.isChecked()) {
             g.setindividual_ownership("yes");
@@ -162,4 +187,16 @@ public class FmnrFarmInstLocFragment extends Fragment {
         g.setuploaded("no");//set uploaded to no on insert
         g.setmodule("FMNR");//set which module is this on insert
     }
+<<<<<<< HEAD
+=======
+    //setting plot id for polygons
+    public void plotid(){
+        //generate unique id for farmer/institution
+        Random generator = new Random();
+        int n = 10000;
+        n = generator.nextInt(n);//random number generator
+        String pid = "plot_" + n;
+        g.setpid(pid);
+    }
+>>>>>>> 3f6ba642ec336420e77b3d3fa7c4bd5884484747
 }

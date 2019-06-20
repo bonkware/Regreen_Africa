@@ -87,9 +87,9 @@ public class FmnrFarmInstMainActivity extends AppCompatActivity {
     public void jumpBackFI(View view){
         viewPager.setCurrentItem(1);
     }
-    public void jumpTosnumber(View view){
+    /*public void jumpTosnumber(View view){
         viewPager.setCurrentItem(3);
-    }
+    }*/
     public void jumpBackLoc(View view){
         viewPager.setCurrentItem(2);
     }
