@@ -2,7 +2,7 @@ package com.icraf.gsl.regreeningafrica;
 
 /**
  * Created by benard on 7/01/18.
- * Activity with all the queries from the db
+ * contains all queries
  */
 
 import android.content.ContentValues;

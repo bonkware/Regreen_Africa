@@ -1,6 +1,7 @@
 package com.icraf.gsl.regreeningafrica;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by benard on 1/18/19.
@@ -54,7 +57,6 @@ public class FmnrFarmInstLandsizeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fmnr_land_size_regreen, container,
                 false);
 
-<<<<<<< HEAD
         dbAccess = new DbAccess(this.getActivity());
         dbAccess.open();
 
@@ -104,8 +106,6 @@ public class FmnrFarmInstLandsizeFragment extends Fragment {
             }
         });
 
-=======
->>>>>>> 3f6ba642ec336420e77b3d3fa7c4bd5884484747
         //set date the farmer started the FMNR
         btnDatePicker=(Button)view.findViewById(R.id.btn_date);
         txtDate=(EditText)view.findViewById(R.id.fmnr_date);
@@ -196,7 +196,6 @@ public class FmnrFarmInstLandsizeFragment extends Fragment {
 
         return view;
     }
-<<<<<<< HEAD
     // save farmer/institution data when you go next
     public void  saveFmnrPlotinfo(){
         //get unique id for farmer/institution
@@ -267,6 +266,4 @@ public class FmnrFarmInstLandsizeFragment extends Fragment {
         String pid = "plot_" + n;
         g.setpid(pid);
     }
-=======
->>>>>>> 3f6ba642ec336420e77b3d3fa7c4bd5884484747
 }

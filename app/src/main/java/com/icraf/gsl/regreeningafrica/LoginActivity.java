@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 /**
  * Created by benard on 6/19/19.
- * This activity that controls the login by user who wants to submit data to the server
+ *
  */
 
 public class LoginActivity extends AppCompatActivity {
