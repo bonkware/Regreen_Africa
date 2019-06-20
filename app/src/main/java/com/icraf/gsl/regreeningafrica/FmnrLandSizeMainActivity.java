@@ -11,10 +11,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-<<<<<<< HEAD
-=======
-import android.view.View;
->>>>>>> 3f6ba642ec336420e77b3d3fa7c4bd5884484747
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,26 +40,10 @@ public class FmnrLandSizeMainActivity extends AppCompatActivity {
         viewPager.setOffscreenPageLimit(1);//number of fragments
         final ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         //All fragments
-        adapter.addFragment(new FmnrFarmInstSpeciesNumberFragment(), "species number");//moved here
-        adapter.addFragment(new FmnrFarmInstLandsizeFragment(), "land size green");//moved here
         adapter.addFragment(new FmnrLandSizePolygonFragment(), "landsize polygon");
         viewPager.setAdapter(adapter);
 
     }
-    //for navigation buttons i.e move next if all fields are filled
-    public void jumpBackSnumber(View view){
-        viewPager.setCurrentItem(0);
-    }
-    public void jumpToEst(View view){
-        viewPager.setCurrentItem(1);
-    }
-    public void jumpTopolygon(View view){
-        viewPager.setCurrentItem(2);
-    }
-    public void jumpBackEst(View view){
-        viewPager.setCurrentItem(1);
-    }
-
     //end of nav buttons
     class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();

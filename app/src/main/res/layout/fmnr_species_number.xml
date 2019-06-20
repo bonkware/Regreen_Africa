@@ -74,10 +74,6 @@
             android:id="@+id/prev"
             android:layout_width="wrap_content"
             android:layout_height="49dp"
-<<<<<<< HEAD
-=======
-            android:visibility="visible"
->>>>>>> 3f6ba642ec336420e77b3d3fa7c4bd5884484747
             android:layout_weight="1"
             android:background="@drawable/index_buttons"
             android:drawableLeft="@drawable/prev_white"
