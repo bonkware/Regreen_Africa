@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -51,6 +52,7 @@ public class TPTreeGpsFragment extends Fragment {
         //set next button disabled
         final Button bnext = (Button) view.findViewById(R.id.next);
         bnext.setEnabled(false);//disable button
+        bnext.setAlpha(0.5f);
 
         b = (ImageButton) view.findViewById(R.id.button1);
         b.setOnClickListener(new View.OnClickListener()
@@ -65,8 +67,7 @@ public class TPTreeGpsFragment extends Fragment {
                 //setLocation();
                 GPSfix();
                 bnext.setEnabled(true);
-
-
+                bnext.setBackgroundColor(Color.parseColor("#966648"));//change color
             }
         });
         return view;

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -61,6 +62,7 @@ public class NurseryPhotoFragment extends Fragment {
         //set next button disabled
         final Button bnext = (Button) view.findViewById(R.id.tospecies);
         bnext.setEnabled(false);//disable button
+        bnext.setAlpha(0.5f);
 
         imgv1 = (ImageView) view.findViewById(R.id.imageView1);
         upload = (ImageButton) view.findViewById(R.id.upload);
@@ -69,6 +71,7 @@ public class NurseryPhotoFragment extends Fragment {
                 //call photo on button click
                 clickImage();
                 bnext.setEnabled(true);//enable next button
+                bnext.setBackgroundColor(Color.parseColor("#966648"));//change color of button
 
             }
         });

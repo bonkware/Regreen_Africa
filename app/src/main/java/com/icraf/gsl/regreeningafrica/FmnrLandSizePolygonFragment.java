@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -86,6 +87,7 @@ public class FmnrLandSizePolygonFragment extends Fragment {
         //proceed to tree recording after recording five points
         final Button button_next = (Button) view.findViewById(R.id.tospecies);
         button_next.setEnabled(false);//disable button
+        button_next.setAlpha(0.5f);
         button_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -153,6 +155,7 @@ public class FmnrLandSizePolygonFragment extends Fragment {
                 //check how many times clicked and so on
                 if (clickcount >= 5){
                     button_next.setEnabled(true);//enable this button after 4 polygon point are saved
+                    button_next.setBackgroundColor(Color.parseColor("#966648"));//change color of button
                 }
                 Toast.makeText(FmnrLandSizePolygonFragment.this.getActivity(),"Point "+clickcount+" saved", Toast.LENGTH_LONG).show();
                /* {
