@@ -28,7 +28,7 @@
         android:layout_centerHorizontal="true"
         android:background="@null"
         android:layout_above="@+id/nav"
-        android:layout_marginBottom="40dp" />
+        android:layout_marginBottom="60dp" />
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -52,6 +53,7 @@ public class NurseryGpsFragment extends Fragment {
         //set next button disabled
         final Button button_next = (Button) view.findViewById(R.id.next);
         button_next.setEnabled(false);//disable button
+        button_next.setAlpha(0.5f);
 
         //fix the gps location
         fixgps = (Button) view.findViewById(R.id.fix);
@@ -80,6 +82,7 @@ public class NurseryGpsFragment extends Fragment {
                 t = (TableLayout) view.findViewById(R.id.gpscoord);
                 t.setVisibility(View.VISIBLE);
                 button_next.setEnabled(true);
+                button_next.setBackgroundColor(Color.parseColor("#966648"));//change color of button
                 //and start the gps fixing
                 setLocation();//get the location
             }
