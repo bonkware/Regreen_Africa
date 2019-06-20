@@ -8,201 +8,185 @@
         android:layout_above="@+id/nav"
         android:layout_width="fill_parent"
         android:layout_height="match_parent">
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="16dp"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Farmer ID:"
-            android:visibility="gone"
-            android:textSize="@dimen/textsize"
-            android:textStyle="italic"/>
-        <TextView
-            android:id="@+id/fid"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textStyle="bold"
-            android:visibility="gone"
-            android:textSize="@dimen/add_edit_textsize"/>
-        <TextView
-            android:id="@+id/pid"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textStyle="bold"
-            android:visibility="gone"
-            android:textSize="@dimen/add_edit_textsize"/>
-        <TextView
-            android:id="@+id/text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Record points around the re-greening part of the plot"
-            android:layout_gravity="center"
-            android:textSize="15sp"
-            android:textStyle="bold"/>
-        <TextView
-            android:id="@+id/gps_location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Record 5 points or more to proceed"
-            android:layout_gravity="left"
-            android:paddingTop="5dp"
-            android:textStyle="italic"
-            android:textColor="#bb0d0e71"
-            android:textSize="15sp" />
-
-        <ImageView
-            android:layout_width="212dp"
-            android:layout_height="99dp"
-            android:id="@+id/imageView1"
-            android:background="@drawable/polygon"
-            android:layout_below="@+id/t1"
-            android:layout_above="@+id/upload" />
-
-        <TableLayout
-            android:id="@+id/gpscoord"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:shrinkColumns="*"
-            android:stretchColumns="*"
-            android:paddingTop="5dp"
-            android:visibility="visible"
-            android:orientation="vertical" >
-            <TableRow
-                android:id="@+id/tableRowbutton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="5dip">
-            </TableRow>
-            <TableRow
-                android:id="@+id/tableRow2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="5dip">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:background="@android:color/transparent"
-                    android:focusable="false"
-                    android:textSize="@dimen/textsize"
-                    android:id="@+id/latitude"/>
-            </TableRow>
-            <TableRow
-                android:id="@+id/tableRow"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="5dip">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:focusable="false"
-                    android:text=""
-                    android:background="@android:color/transparent"
-                    android:textSize="@dimen/textsize"
-                    android:id="@+id/longitude"/>
-            </TableRow>
-            <TableRow
-                android:id="@+id/tableRow3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="5dip">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:background="@android:color/transparent"
-                    android:focusable="false"
-                    android:textSize="@dimen/textsize"
-                    android:id="@+id/altitude"/>
-            </TableRow>
-            <TableRow
-                android:id="@+id/tableRow4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="5dip">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:background="@android:color/transparent"
-                    android:focusable="false"
-                    android:textSize="@dimen/textsize"
-                    android:id="@+id/accuraccy"/>
-            </TableRow>
-        </TableLayout>
-
-    <LinearLayout
-        android:layout_below="@id/gpscoord"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dip"
-        android:orientation="horizontal">
-            <Button
-                android:id="@+id/record"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_weight="1"
-                android:drawableRight="@drawable/ic_location"
-                android:text="Fix Gps"/>
-            <Button
-                android:id="@+id/getlocation"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_weight="1"
-                android:visibility="gone"
-                android:drawableRight="@drawable/ic_locupdate"
-                android:text="Get location"/>
-       <!-- <Button
-            android:id="@+id/updategps"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_weight="1"
-            android:visibility="gone"
-            android:drawableRight="@drawable/ic_locupdate"
-            android:text="Update location"/>
-            <Button
-                android:id="@+id/save"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_weight="1"
-                android:visibility="gone"
-                android:drawableRight="@drawable/ic_save"
-                android:text="Save location"/>-->
-    </LinearLayout>
-        <LinearLayout
-            android:layout_below="@id/gpscoord"
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="5dip"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/updategps"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:text="Farmer ID:"
                 android:visibility="gone"
-                android:drawableRight="@drawable/ic_locupdate"
-                android:text="Update"/>
-            <Button
-                android:id="@+id/save"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
+                android:textSize="@dimen/textsize"
+                android:textStyle="italic"/>
+            <TextView
+                android:id="@+id/fid"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textStyle="bold"
                 android:visibility="gone"
-                android:drawableRight="@drawable/ic_save"
-                android:text="Save"/>
+                android:textSize="@dimen/add_edit_textsize"/>
+            <TextView
+                android:id="@+id/pid"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:visibility="gone"
+                android:textSize="@dimen/add_edit_textsize"/>
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Record points around the re-greening part of the plot"
+                android:layout_gravity="center"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/gps_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Record 5 points or more to proceed"
+                android:layout_gravity="left"
+                android:paddingTop="5dp"
+                android:textStyle="italic"
+                android:textColor="#bb0d0e71"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:layout_width="212dp"
+                android:layout_height="99dp"
+                android:id="@+id/imageView1"
+                android:background="@drawable/polygon"
+                android:layout_below="@+id/t1"
+                android:layout_above="@+id/upload" />
+
+            <TableLayout
+                android:id="@+id/gpscoord"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:shrinkColumns="*"
+                android:stretchColumns="*"
+                android:paddingTop="5dp"
+                android:visibility="visible"
+                android:orientation="vertical" >
+                <TableRow
+                    android:id="@+id/tableRowbutton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="5dip">
+                </TableRow>
+                <TableRow
+                    android:id="@+id/tableRow2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dip">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:background="@android:color/transparent"
+                        android:focusable="false"
+                        android:textSize="@dimen/textsize"
+                        android:id="@+id/latitude"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/tableRow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dip">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:text=""
+                        android:background="@android:color/transparent"
+                        android:textSize="@dimen/textsize"
+                        android:id="@+id/longitude"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/tableRow3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dip">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:background="@android:color/transparent"
+                        android:focusable="false"
+                        android:textSize="@dimen/textsize"
+                        android:id="@+id/altitude"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/tableRow4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dip">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:background="@android:color/transparent"
+                        android:focusable="false"
+                        android:textSize="@dimen/textsize"
+                        android:id="@+id/accuraccy"/>
+                </TableRow>
+            </TableLayout>
+
+            <LinearLayout
+                android:layout_below="@id/gpscoord"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dip"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/record"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:drawableRight="@drawable/ic_location"
+                    android:text="Fix Gps"/>
+                <Button
+                    android:id="@+id/getlocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:visibility="gone"
+                    android:drawableRight="@drawable/ic_locupdate"
+                    android:text="Get location"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_below="@id/gpscoord"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dip"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/updategps"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:visibility="gone"
+                    android:drawableRight="@drawable/ic_locupdate"
+                    android:text="Update"/>
+                <Button
+                    android:id="@+id/save"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:visibility="gone"
+                    android:drawableRight="@drawable/ic_save"
+                    android:text="Save"/>
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -215,19 +199,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-
             android:enabled="false"
-
             android:alpha="0.5"
             android:drawableLeft="@drawable/stop"
             android:background="@drawable/index_buttons"
             android:textColor="#fff"
             android:layout_margin="1dp"
-
-            android:visibility="visible"
-
-            android:onClick="jumpBackEst"
-
             android:text="PREV"/>
 
         <Button

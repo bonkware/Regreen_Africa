@@ -198,13 +198,6 @@
             android:textColor="#fff"
             android:layout_margin="1dp"
             android:text="PREV"/>
-        <!--<Button
-            android:id="@+id/next"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="jumpToCohort"
-            android:text="NEXT"/>-->
         <Button
             android:id="@+id/topolygon"
             android:layout_width="wrap_content"
