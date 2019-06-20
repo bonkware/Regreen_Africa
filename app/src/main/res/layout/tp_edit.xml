@@ -1,4 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/save"
+            android:background="#008000"
+            android:textColor="#ffffff"
+            android:text="@string/btn_update" />
+        <Button
+            android:id="@+id/btn_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableRight="@drawable/delete"
+            android:background="#FF0000"
+            android:textColor="#ffffff"
+            android:text="@string/btn_delete" />
+    </LinearLayout>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
@@ -8,8 +38,7 @@
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="30dp">
-
+    android:paddingTop="20dp">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -637,28 +666,6 @@
         android:padding="@dimen/view_padding"
         android:textSize="@dimen/add_edit_textsize">
     </EditText>
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="2"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal" >
-
-        <Button
-            android:id="@+id/btn_update"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/btn_update" />
-
-        <Button
-            android:id="@+id/btn_delete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/btn_delete" />
-    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -671,7 +678,10 @@
             android:layout_width="wrap_content"
             android:layout_height="49dp"
             android:layout_weight="1"
-            android:drawableLeft="@drawable/n_back"
+            android:background="@drawable/index_buttons"
+            android:drawableLeft="@drawable/prev_white"
+            android:textColor="#fff"
+            android:layout_margin="1dp"
             android:text="PREV"/>
 
         <Button
@@ -680,8 +690,13 @@
             android:layout_height="49dp"
             android:layout_weight="1"
             android:enabled="false"
-            android:drawableRight="@drawable/noun_next"
+            android:alpha="0.5"
+            android:drawableRight="@drawable/stop"
+            android:background="@drawable/index_buttons"
+            android:textColor="#fff"
+            android:layout_margin="1dp"
             android:text="NEXT"/>
     </LinearLayout>
 </LinearLayout>
     </ScrollView>
+    </LinearLayout>

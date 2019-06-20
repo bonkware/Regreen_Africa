@@ -302,5 +302,6 @@ public class FMNREdit extends Activity implements OnClickListener {
         Intent home_intent = new Intent(getApplicationContext(), FMNRView.class)
                 .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(home_intent);
+        overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
     }
 }

@@ -124,7 +124,10 @@
             android:layout_height="49dp"
             android:onClick="jumpBackDetails"
             android:layout_weight="1"
-            android:drawableLeft="@drawable/n_back"
+            android:background="@drawable/index_buttons"
+            android:drawableLeft="@drawable/prev_white"
+            android:textColor="#fff"
+            android:layout_margin="1dp"
             android:text="PREV"/>
 
         <Button
@@ -132,6 +135,9 @@
             android:layout_width="wrap_content"
             android:layout_height="49dp"
             android:layout_weight="1"
+            android:background="@drawable/index_buttons"
+            android:textColor="#fff"
+            android:layout_margin="1dp"
             android:text="Finish"/>
     </LinearLayout>
 </RelativeLayout>

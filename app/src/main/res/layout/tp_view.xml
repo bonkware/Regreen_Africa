@@ -581,7 +581,7 @@
         android:layout_centerVertical="true"
         android:gravity="right"
         android:layout_gravity="right"
-        android:background="@drawable/noun_next"
+        android:background="@drawable/noun_edit"
         android:clickable="true"
         android:text=""
         android:textOff=""

@@ -216,7 +216,11 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:enabled="false"
-            android:visibility="visible"
+            android:alpha="0.5"
+            android:drawableLeft="@drawable/stop"
+            android:background="@drawable/index_buttons"
+            android:textColor="#fff"
+            android:layout_margin="1dp"
             android:text="PREV"/>
 
         <Button
@@ -224,7 +228,10 @@
             android:layout_width="wrap_content"
             android:layout_height="49dp"
             android:layout_weight="1"
-            android:drawableRight="@drawable/noun_next"
+            android:background="@drawable/index_buttons"
+            android:drawableRight="@drawable/next_white"
+            android:textColor="#fff"
+            android:layout_margin="1dp"
             android:text="NEXT"/>
 
     </LinearLayout>

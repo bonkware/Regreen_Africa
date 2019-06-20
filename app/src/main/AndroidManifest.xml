@@ -90,6 +90,7 @@
         <activity android:name=".NurseryEdit" />
         <activity android:name=".TrainingView" />
         <activity android:name=".TrainingEdit" />
+        <activity android:name=".LoginActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

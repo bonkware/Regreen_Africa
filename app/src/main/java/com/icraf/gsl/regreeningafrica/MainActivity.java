@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         dataButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, OtherMainActivities.class);
+                Intent i = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(i);
                 overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
             }
@@ -71,15 +71,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, AppGuide.class);
-                startActivity(i);
-                overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
-            }
-        });
-        //
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, ViewMainActivity.class);
                 startActivity(i);
                 overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
             }

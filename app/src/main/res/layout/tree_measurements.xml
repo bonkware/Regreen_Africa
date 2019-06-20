@@ -148,6 +148,11 @@
             android:layout_weight="1"
             android:visibility="visible"
             android:enabled="false"
+            android:alpha="0.5"
+            android:drawableLeft="@drawable/stop"
+            android:background="@drawable/index_buttons"
+            android:textColor="#fff"
+            android:layout_margin="1dp"
             android:text="PREV"/>
 
         <Button
@@ -156,7 +161,10 @@
             android:layout_height="49dp"
             android:layout_weight="1"
             android:onClick="jumpToPhoto"
-            android:drawableRight="@drawable/noun_next"
+            android:background="@drawable/index_buttons"
+            android:drawableRight="@drawable/next_white"
+            android:textColor="#fff"
+            android:layout_margin="1dp"
             android:text="NEXT"/>
 
     </LinearLayout>

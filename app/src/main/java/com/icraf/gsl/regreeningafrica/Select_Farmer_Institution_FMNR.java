@@ -3,6 +3,7 @@ package com.icraf.gsl.regreeningafrica;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -40,6 +41,15 @@ public class Select_Farmer_Institution_FMNR extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.farmer_list_fmnr);
+        //set title
+        setTitle("FMNR");
+        //logo
+        ActionBar logo = getSupportActionBar();
+        logo.setDisplayUseLogoEnabled(true);
+        logo.setDisplayShowHomeEnabled(true);
+        logo.setDisplayShowHomeEnabled(false);
+        logo.setHomeAsUpIndicator(R.drawable.ic_fmnr);
+        logo.setDisplayHomeAsUpEnabled(true);
         //for previous/back button
         Button button_next = (Button) findViewById(R.id.prev);
         button_next.setOnClickListener(new View.OnClickListener() {

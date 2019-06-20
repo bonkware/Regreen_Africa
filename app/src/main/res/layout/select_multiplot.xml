@@ -8,6 +8,7 @@
         android:id="@+id/textView1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:padding="10dp"
         android:gravity="center"
         android:text="@string/select_plots"
         android:layout_weight="1"
@@ -16,8 +17,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:layout_weight="1"
-        android:gravity="center|bottom"
+        android:layout_weight="2"
+        android:gravity="center|top"
         android:orientation="vertical" >
 
         <TableLayout
@@ -32,7 +33,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:drawableRight="@drawable/noun_next"
+            android:background="@drawable/index_buttons2"
+            android:drawableRight="@drawable/next_m"
             android:textAllCaps="false"
             android:text="New profile"/>
         </TableRow>
@@ -44,7 +46,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:drawableRight="@drawable/noun_next"
+            android:background="@drawable/index_buttons2"
+            android:drawableRight="@drawable/next_m"
             android:textAllCaps="false"
             android:text="Additional plot"/>
             </TableRow>
@@ -63,6 +66,10 @@
             android:layout_height="wrap_content"
             android:visibility="visible"
             android:layout_weight="1"
+            android:background="@drawable/index_buttons"
+            android:drawableLeft="@drawable/prev_white"
+            android:textColor="#fff"
+            android:layout_margin="1dp"
             android:text="PREV"/>
 
         <Button
@@ -72,7 +79,11 @@
             android:onClick="jumpToFI"
             android:enabled="false"
             android:layout_weight="1"
-            android:drawableRight="@drawable/noun_next"
+            android:alpha="0.5"
+            android:drawableRight="@drawable/stop"
+            android:background="@drawable/index_buttons"
+            android:textColor="#fff"
+            android:layout_margin="1dp"
             android:text="NEXT"/>
 
     </LinearLayout>

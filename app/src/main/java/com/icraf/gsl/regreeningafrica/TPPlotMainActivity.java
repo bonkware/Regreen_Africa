@@ -31,7 +31,7 @@ public class TPPlotMainActivity extends AppCompatActivity {
         logo.setDisplayUseLogoEnabled(true);
         logo.setDisplayShowHomeEnabled(true);
         logo.setDisplayShowHomeEnabled(false);
-        logo.setHomeAsUpIndicator(R.drawable.ic_fmnr);
+        logo.setHomeAsUpIndicator(R.drawable.ic_tp);
         logo.setDisplayHomeAsUpEnabled(true);
 
         viewPager = (ViewPager) findViewById(pager);

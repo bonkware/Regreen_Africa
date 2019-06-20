@@ -245,6 +245,7 @@ public class NurseryView extends AppCompatActivity {
                 modify_intent.putExtra("id", id);
 
                 startActivity(modify_intent);
+                overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
             }
         });
         //for previous/back button
