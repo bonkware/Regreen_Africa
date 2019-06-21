@@ -122,7 +122,7 @@ public class FMNREdit extends Activity implements OnClickListener {
         String gov_land = intent.getStringExtra("government_land");
         String ms = intent.getStringExtra("mosque_church");
         String schools = intent.getStringExtra("school");
-        String other_owner = intent.getStringExtra("other_owner");
+        String other_owner = intent.getStringExtra("other_locations");
         String number_start = intent.getStringExtra("number_start");
         String start_date = intent.getStringExtra("start_date");
         String fenced = intent.getStringExtra("fenced");
@@ -131,7 +131,7 @@ public class FMNREdit extends Activity implements OnClickListener {
         String landsize = intent.getStringExtra("landsize");
         String units = intent.getStringExtra("unit");
         String species = intent.getStringExtra("species");
-        String local = intent.getStringExtra("local");
+        String local = intent.getStringExtra("local_name");
         String mg1 = intent.getStringExtra("mg1");
         String mg2 = intent.getStringExtra("mg2");
         String mg3 = intent.getStringExtra("mg3");

@@ -319,7 +319,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_NURSERY_SPECIES =
             "create table " +
                     TABLE_NURSERY_SPECIES + "(" +
-                    _nid + " INTEGER PRIMARY KEY AUTOINCREMENT, " + nurseryID + " TEXT," + nursery_species + " TEXT, " + nursery_local + " TEXT, " + method_bare_root + " TEXT,"+
+                    id + " INTEGER PRIMARY KEY AUTOINCREMENT, " + nurseryID + " TEXT," + nursery_species + " TEXT, " + nursery_local + " TEXT, " + method_bare_root + " TEXT,"+
                     method_containerised + " TEXT,"+other_methods + " TEXT,"+propagation_seed + " TEXT,"+propagation_graft + " TEXT,"+propagation_cutting + " TEXT,"+propagation_marcotting + " TEXT,"+seed_source_onfarm + " TEXT,"+seed_source_local_dealer + " TEXT," +
                     ""+seed_source_national_dealer + " TEXT,"+seed_source_NGOs + " TEXT,"+other_seed_sources + " TEXT,"+graft_source_farmland + " TEXT,"+graft_source_plantation + " TEXT,"+graft_source_mother_blocks + " TEXT,"+graft_source_prisons + " TEXT,"+graft_source_others + " TEXT," +
                     ""+seeds_quantity_purchased + " TEXT,"+qunits + " TEXT,"+seed_sown + " TEXT,"+unitsown + " TEXT,"+date_seeds_sown + " TEXT,"+seedlings_germinated + " TEXT,"+seedlings_servived + " TEXT,"+seedlings_age + " TEXT,"+seedlings_price + " TEXT,"+nursery_notes+ " TEXT,"+nursery_species_uploaded +" TEXT);";
@@ -339,7 +339,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_FMNR_SPECIES =
             "create table " +
                     TABLE_FMNR_SPECIES + "(" +
-                    _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + " TEXT,"+ fmnr_species_name + " TEXT,"+fmnr_local_name + " TEXT,"+fmnr_management_pruning + " TEXT,"+fmnr_management_fencing + " TEXT,"+fmnr_management_weeding+" TEXT,"+fmnr_management_thinning + " TEXT,"+
+                    _ID_fmnr + " INTEGER PRIMARY KEY AUTOINCREMENT, " + " TEXT,"+ fmnr_species_name + " TEXT,"+fmnr_local_name + " TEXT,"+fmnr_management_pruning + " TEXT,"+fmnr_management_fencing + " TEXT,"+fmnr_management_weeding+" TEXT,"+fmnr_management_thinning + " TEXT,"+
                     fmnr_management_organic_fertilizer + " TEXT,"+fmnr_management_pollarding_lopping + " TEXT,"+fmnr_management_coppicing + " TEXT,"+fmnr_management_other + " TEXT,"+ fmnr_use_firewood + " TEXT,"+fmnr_use_housing_construction + " TEXT,"+fmnr_use_fodder+" TEXT,"+fmnr_use_fruits +
                     " TEXT,"+fmnr_use_soil_fertility +  " TEXT,"+fmnr_use_leafy_vegetables +  " TEXT,"+fmnr_use_nuts +  " TEXT,"+fmnr_use_medicinal + " TEXT,"+fmnr_use_other + " TEXT,"+fmnr_tree_stems + " TEXT,"+fmnr_tree_height+" TEXT,"+fmnr_tree_dbh + " TEXT,"+fmnr_tree_latitude + " TEXT,"+fmnr_tree_longitude+" TEXT,"+
                     fmnr_tree_altitude +  " TEXT,"+fmnr_tree_accuracy + " TEXT,"+fmnr_tree_image_path + " TEXT,"+fmnr_species_uploaded+ " TEXT,"+fmnrfarmer_id+" TEXT,"+fmnr_notes+" TEXT);";

@@ -644,7 +644,7 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.tree_altitude, alt);
         contentValue.put(DatabaseHelper.tree_accuracy, acc);
         contentValue.put(DatabaseHelper.tp_notes, note);
-        int nursery = database.update(TABLE_FMNR_SPECIES, contentValue, DatabaseHelper._ID + " = " + _id, null);
+        int nursery = database.update(TABLE_Measurement, contentValue, DatabaseHelper._ID + " = " + _id, null);
         return nursery;
     }
     public void delete_TPinfo(long _id) {
@@ -683,7 +683,7 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.fmnr_land_mosque_church, m_c);
         contentValue.put(DatabaseHelper.fmnr_land_schools, schools);
         contentValue.put(DatabaseHelper.fmnr_land_other, other_own);
-        int nursery = database.update(TABLE_FMNR_FARMER_INST, contentValue, DatabaseHelper._ID + " = " + _id, null);
+        int nursery = database.update(TABLE_FMNR_FARMER_INST, contentValue, DatabaseHelper._ID_fmnr + " = " + _id, null);
         return nursery;
     }
     public int updateFMNRplotinfo(long _id, String n_start, String s_date, String fence,String crop,String cropl, String landsize,String units
@@ -696,7 +696,7 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.fmnr_croplist, cropl);
         contentValue.put(DatabaseHelper.fmnr_landsize_regreen, landsize);
         contentValue.put(DatabaseHelper.fmnr_units, units);
-        int nursery = database.update(TABLE_FMNR_PLOT_INFO, contentValue, DatabaseHelper._ID + " = " + _id, null);
+        int nursery = database.update(TABLE_FMNR_PLOT_INFO, contentValue, DatabaseHelper._ID_fmnr + " = " + _id, null);
         return nursery;
     }
     public int updateFMNRspecies(long _id, String species, String local, String mg1,String mg2,String mg3,String mg4,String mg5,String mg6,String mg7,String mg_other,
@@ -731,17 +731,17 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.fmnr_tree_altitude, alt);
         contentValue.put(DatabaseHelper.fmnr_tree_accuracy, acc);
         contentValue.put(DatabaseHelper.fmnr_notes, note);
-        int nursery = database.update(TABLE_FMNR_SPECIES, contentValue, DatabaseHelper._ID + " = " + _id, null);
+        int nursery = database.update(TABLE_FMNR_SPECIES, contentValue, DatabaseHelper._ID_fmnr + " = " + _id, null);
         return nursery;
     }
     public void delete_FMNRinfo(long _id) {
-        database.delete(TABLE_FMNR_FARMER_INST, DatabaseHelper._ID + "=" + _id, null);
+        database.delete(TABLE_FMNR_FARMER_INST, DatabaseHelper._ID_fmnr + "=" + _id, null);
     }
     public void delete_FMNRplotinfo(long _id) {
-        database.delete(TABLE_FMNR_PLOT_INFO, DatabaseHelper._ID + "=" + _id, null);
+        database.delete(TABLE_FMNR_PLOT_INFO, DatabaseHelper._ID_fmnr + "=" + _id, null);
     }
     public void delete_FMNRspecies(long _id) {
-        database.delete(TABLE_FMNR_SPECIES, DatabaseHelper._ID + "=" + _id, null);
+        database.delete(TABLE_FMNR_SPECIES, DatabaseHelper._ID_fmnr + "=" + _id, null);
     }//end of delete & update FMNR
     public Cursor fetchNursery() {
         String selectQuery = "SELECT * FROM nursery_info,nursery_species WHERE nursery_info.nurseryID = nursery_species.nurseryID and nursery_info.uploaded='no' ";
@@ -777,7 +777,7 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.nursery_altitude, n_altitude);
         contentValue.put(DatabaseHelper.nursery_accuracy, n_accuracy);
         contentValue.put(DatabaseHelper.nursery_image_path, path);
-        int nursery = database.update(TABLE_NURSERY, contentValue, DatabaseHelper._ID + " = " + _id, null);
+        int nursery = database.update(TABLE_NURSERY, contentValue, DatabaseHelper.id + " = " + _id, null);
         return nursery;
     }
     public int updateNurseryspecies(long _id,String species,String local,String bare,String containerised,String other_method,String sd,String gf,String ct,
@@ -812,16 +812,16 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.seedlings_age, sage);
         contentValue.put(DatabaseHelper.seedlings_price, sprice);
         contentValue.put(DatabaseHelper.nursery_notes, notes);
-        int nursery = database.update(TABLE_NURSERY_SPECIES, contentValue, DatabaseHelper._ID + " = " + _id, null);
+        int nursery = database.update(TABLE_NURSERY_SPECIES, contentValue, DatabaseHelper.id + " = " + _id, null);
         return nursery;
     }
     //delete record
     public void delete_Nursery(long _id) {
-        database.delete(TABLE_NURSERY, DatabaseHelper._ID + "=" + _id, null);
+        database.delete(TABLE_NURSERY, DatabaseHelper.id + "=" + _id, null);
     }
     //delete record
     public void delete_Nurseryspecies(long _id) {
-        database.delete(TABLE_NURSERY_SPECIES, DatabaseHelper._ID + "=" + _id, null);
+        database.delete(TABLE_NURSERY_SPECIES, DatabaseHelper.id + "=" + _id, null);
     }//end of delete & update Nursery
 
     public Cursor fetchTrainings() {
@@ -850,12 +850,12 @@ public class DbAccess {
         contentValue.put(DatabaseHelper.female_participants, female);
         contentValue.put(DatabaseHelper.youth_participants, youth);
         contentValue.put(DatabaseHelper.notes, note);
-        int training = database.update(TABLE_Trainings, contentValue, DatabaseHelper._ID + " = " + _id, null);
+        int training = database.update(TABLE_Trainings, contentValue, DatabaseHelper._id + " = " + _id, null);
         return training;
     }
     //delete record Trainings
     public void delete_Training(long _id) {
-        database.delete(TABLE_Trainings, DatabaseHelper._ID + "=" + _id, null);
+        database.delete(TABLE_Trainings, DatabaseHelper._id + "=" + _id, null);
     }
 
 }

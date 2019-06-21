@@ -36,7 +36,7 @@ public class NurseryView extends AppCompatActivity {
     final int[] to = new int[] {R.id.id, R.id.nurseryID,R.id.ename,R.id.in_date,R.id.survey_name,R.id.country,R.id.county,R.id.district, R.id.operator, R.id.contact,R.id.nursery_name,R.id.species_number,R.id.n_date, R.id.government,R.id.schools,R.id.mosque_church,R.id.women_grps,
             R.id.youth_grps,R.id.private_individual,R.id.communal_village,R.id.other_type,R.id.latitude,R.id.longitude,
             R.id.altitude,R.id.accuracy,R.id.path,R.id.nursery_species,R.id.nursery_local,
-            R.id.bare_root,R.id.container,R.id.other,R.id.seed,R.id.graft,R.id.cutting,R.id.marcotting,R.id.own_farm,R.id.local_dealer,R.id.national_seed,R.id.ngos,R.id.other_sources,R.id.farmland,R.id.plantation,R.id.mother_blocks,R.id.prisons,R.id.other_graft_sources,
+            R.id.bare_root,R.id.container,R.id.other,R.id.seed,R.id.graft,R.id.cutting,R.id.marcotting,R.id.own_farm,R.id.local_dealer,R.id.national_seed,R.id.ngos,R.id.other_s,R.id.farmland,R.id.plantation,R.id.mother_blocks,R.id.prisons,R.id.other_graft_sources,
             R.id.quantity_purchased,R.id.units,R.id.seeds_sown,R.id.units_sown,R.id.date_sown,R.id.germinated,R.id.survived,
             R.id.age,R.id.seedlings_price,R.id.notes
     };
@@ -107,7 +107,7 @@ public class NurseryView extends AppCompatActivity {
                 TextView local_dealer = (TextView) view.findViewById(R.id.local_dealer);
                 TextView national_seed = (TextView) view.findViewById(R.id.national_seed);
                 TextView ngos = (TextView) view.findViewById(R.id.ngos);
-                TextView other_s = (TextView) view.findViewById(R.id.other_s);
+                TextView other_sources = (TextView) view.findViewById(R.id.other_s);
                 TextView farmland = (TextView) view.findViewById(R.id.farmland);
                 TextView plantation = (TextView) view.findViewById(R.id.plantation);
                 TextView m_blocks = (TextView) view.findViewById(R.id.mother_blocks);
@@ -168,7 +168,7 @@ public class NurseryView extends AppCompatActivity {
                 String localdealer = local_dealer.getText().toString();
                 String nationalseed = national_seed.getText().toString();
                 String ng = ngos.getText().toString();
-                String other_source = other_s.getText().toString();
+                String other_source = other_sources.getText().toString();
                 String fm = farmland.getText().toString();
                 String pt = plantation.getText().toString();
                 String mb = m_blocks.getText().toString();

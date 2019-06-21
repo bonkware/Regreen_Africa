@@ -123,7 +123,7 @@ public class TPEdit extends Activity implements OnClickListener {
         String gov_land = intent.getStringExtra("government_land");
         String ms = intent.getStringExtra("mosque_church");
         String schools = intent.getStringExtra("school");
-        String other_owner = intent.getStringExtra("other_owner");
+        String other_owner = intent.getStringExtra("other_locations");
         String crops = intent.getStringExtra("crops");
         String cropl = intent.getStringExtra("croplist");
         String landsize = intent.getStringExtra("landsize");
