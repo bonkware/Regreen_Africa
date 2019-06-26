@@ -227,7 +227,7 @@ public class FmnrLandSizePolygonFragment extends Fragment {
             acctext.setTextColor(Color.RED);
         }
         else {
-            acctext.setTextColor(Color.GREEN);
+            acctext.setTextColor(Color.parseColor("#006600"));
         }
 
     }
