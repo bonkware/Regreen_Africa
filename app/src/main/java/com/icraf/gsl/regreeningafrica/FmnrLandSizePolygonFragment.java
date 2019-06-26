@@ -218,9 +218,20 @@ public class FmnrLandSizePolygonFragment extends Fragment {
         loc_alt = String.valueOf(alt);
         loc_acc = String.valueOf(acc);
         lattext.setText("Latitude: " + loc_lat);
+        lattext.setTextColor(Color.BLACK);//set text color to black
         lontext.setText("Longitude: " + loc_lon);
+        lontext.setTextColor(Color.BLACK);//set text color to black
         alttext.setText("Altitude: " + loc_alt);
+        alttext.setTextColor(Color.BLACK);//set text color to black
         acctext.setText("Accuracy: " +loc_acc);
+
+        if(acc>5.5){//change text to red if accuracy is less than 5.5
+            //acctext.setBackgroundColor(Color.parseColor("#FF0000"));
+            acctext.setTextColor(Color.RED);
+        }
+        else {
+            acctext.setTextColor(Color.BLACK);
+        }
 
     }
     protected void buildAlertMessageNoGps() {
