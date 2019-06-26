@@ -857,5 +857,16 @@ public class DbAccess {
     public void delete_Training(long _id) {
         database.delete(TABLE_Trainings, DatabaseHelper._id + "=" + _id, null);
     }
+    //Get array of the points
+    public Cursor getxypoints(String plotID) {
+        String selectQuery = "SELECT latitude,longitude FROM landsizepolygontp WHERE plotID='"+plotID+"'";
+        Cursor xyc = database.rawQuery(selectQuery, null);
+        return xyc;
+    }
+    public Cursor getxypointsfmnr(String plotID) {
+        String selectQuery = "SELECT latitude,longitude FROM landsizepolygonfmnr WHERE plotID='"+plotID+"'";
+        Cursor xyfmnrc = database.rawQuery(selectQuery, null);
+        return xyfmnrc;
+    }
 
 }

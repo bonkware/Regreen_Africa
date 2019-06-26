@@ -86,7 +86,7 @@ public class TPFarmInstLandsizePolygonFragment extends Fragment {
         final Button button_next = (Button) view.findViewById(R.id.tospecies);
         button_next.setEnabled(false);//disable button
         button_next.setAlpha(0.5f);
-        button_next.setOnClickListener(new View.OnClickListener() {
+       /* button_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
@@ -100,7 +100,7 @@ public class TPFarmInstLandsizePolygonFragment extends Fragment {
                         break;
                 }
             }
-        });
+        });*/
         //fix the gps location
         fixgps.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -11,6 +11,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,12 +38,19 @@ public class FmnrLandSizeMainActivity extends AppCompatActivity {
 
 
         viewPager = (ViewPager) findViewById(pager);
-        viewPager.setOffscreenPageLimit(1);//number of fragments
+        //viewPager.setOffscreenPageLimit(2);//number of fragments
         final ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         //All fragments
         adapter.addFragment(new FmnrLandSizePolygonFragment(), "landsize polygon");
+        adapter.addFragment(new FmnrLandsizeArea(), "landsize area");
         viewPager.setAdapter(adapter);
 
+    }
+    public void jumpToArea(View view){
+        viewPager.setCurrentItem(1);
+    }
+    public void BackToPolygon(View view){
+        viewPager.setCurrentItem(0);
     }
     //end of nav buttons
     class ViewPagerAdapter extends FragmentPagerAdapter {

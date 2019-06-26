@@ -12,7 +12,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,12 +37,19 @@ public class TPLandSizeMainActivity extends AppCompatActivity {
         logo.setDisplayHomeAsUpEnabled(true);
 
         viewPager = (ViewPager) findViewById(pager);
-        viewPager.setOffscreenPageLimit(1);//number of fragments
+        viewPager.setOffscreenPageLimit(2);//number of fragments
         final ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         //All fragments
         adapter.addFragment(new TPFarmInstLandsizePolygonFragment(), "landsize polygon");
+        adapter.addFragment(new TPLandsizeArea(), "landsize area");
         viewPager.setAdapter(adapter);
 
+    }
+    public void jumpToArea(View view){
+        viewPager.setCurrentItem(1);
+    }
+    public void BackToPolygon(View view){
+        viewPager.setCurrentItem(0);
     }
     //end of nav buttons
     class ViewPagerAdapter extends FragmentPagerAdapter {

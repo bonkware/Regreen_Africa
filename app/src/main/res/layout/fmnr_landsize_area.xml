@@ -1,5 +1,4 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff">
@@ -43,20 +42,10 @@
                 android:id="@+id/text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Record points around the regreening part of the plot"
+                android:text="Total land size area"
                 android:layout_gravity="center"
                 android:textSize="15sp"
                 android:textStyle="bold"/>
-            <TextView
-                android:id="@+id/gps_location"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Record 5 points or more to proceed"
-                android:layout_gravity="left"
-                android:paddingTop="5dp"
-                android:textStyle="italic"
-                android:textColor="#bb0d0e71"
-                android:textSize="15sp" />
 
             <ImageView
                 android:layout_width="212dp"
@@ -67,7 +56,7 @@
                 android:layout_above="@+id/upload" />
 
             <TableLayout
-                android:id="@+id/gpscoord"
+                android:id="@+id/areacalc"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:shrinkColumns="*"
@@ -76,14 +65,12 @@
                 android:visibility="visible"
                 android:orientation="vertical" >
                 <TableRow
-                    android:id="@+id/tableRowbutton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="5dip">
                 </TableRow>
                 <TableRow
-                    android:id="@+id/tableRow2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="5dip">
@@ -94,10 +81,9 @@
                         android:background="@android:color/transparent"
                         android:focusable="false"
                         android:textSize="@dimen/textsize"
-                        android:id="@+id/latitude"/>
+                        android:id="@+id/acres"/>
                 </TableRow>
                 <TableRow
-                    android:id="@+id/tableRow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="5dip">
@@ -108,40 +94,24 @@
                         android:text=""
                         android:background="@android:color/transparent"
                         android:textSize="@dimen/textsize"
-                        android:id="@+id/longitude"/>
+                        android:id="@+id/ha"/>
                 </TableRow>
                 <TableRow
-                    android:id="@+id/tableRow3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="5dip">
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:focusable="false"
                         android:text=""
                         android:background="@android:color/transparent"
-                        android:focusable="false"
                         android:textSize="@dimen/textsize"
-                        android:id="@+id/altitude"/>
-                </TableRow>
-                <TableRow
-                    android:id="@+id/tableRow4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="5dip">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:background="@android:color/transparent"
-                        android:focusable="false"
-                        android:textSize="@dimen/textsize"
-                        android:id="@+id/accuraccy"/>
+                        android:id="@+id/sq"/>
                 </TableRow>
             </TableLayout>
 
             <LinearLayout
-                android:layout_below="@id/gpscoord"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="5dip"
@@ -151,55 +121,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="60dp"
                     android:layout_weight="1"
-                    android:drawableRight="@drawable/ic_location"
-                    android:text="Fix Gps"/>
-                <Button
-                    android:id="@+id/getlocation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="60dp"
-                    android:layout_weight="1"
-                    android:visibility="gone"
-                    android:drawableRight="@drawable/ic_locupdate"
-                    android:text="Get location"/>
-                <!-- <Button
-                     android:id="@+id/updategps"
-                     android:layout_width="wrap_content"
-                     android:layout_height="60dp"
-                     android:layout_weight="1"
-                     android:visibility="gone"
-                     android:drawableRight="@drawable/ic_locupdate"
-                     android:text="Update location"/>
-                     <Button
-                         android:id="@+id/save"
-                         android:layout_width="wrap_content"
-                         android:layout_height="60dp"
-                         android:layout_weight="1"
-                         android:visibility="gone"
-                         android:drawableRight="@drawable/ic_save"
-                         android:text="Save location"/>-->
-            </LinearLayout>
-            <LinearLayout
-                android:layout_below="@id/gpscoord"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="5dip"
-                android:orientation="horizontal">
-                <Button
-                    android:id="@+id/updategps"
-                    android:layout_width="wrap_content"
-                    android:layout_height="60dp"
-                    android:layout_weight="1"
-                    android:visibility="gone"
-                    android:drawableRight="@drawable/ic_locupdate"
-                    android:text="Update"/>
-                <Button
-                    android:id="@+id/save"
-                    android:layout_width="wrap_content"
-                    android:layout_height="60dp"
-                    android:layout_weight="1"
-                    android:visibility="gone"
-                    android:drawableRight="@drawable/ic_save"
-                    android:text="Save"/>
+                    android:text="Get plot area"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
@@ -209,15 +131,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal">
-
         <Button
             android:id="@+id/prev"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:visibility="visible"
-            android:background="@drawable/index_buttons"
+            android:onClick="BackToPolygon"
             android:drawableLeft="@drawable/prev_white"
+            android:background="@drawable/index_buttons"
             android:textColor="#fff"
             android:layout_margin="1dp"
             android:text="PREV"/>
@@ -227,7 +148,6 @@
             android:layout_width="wrap_content"
             android:layout_height="49dp"
             android:layout_weight="1"
-            android:onClick="jumpToArea"
             android:background="@drawable/index_buttons"
             android:drawableRight="@drawable/next_white"
             android:textColor="#fff"

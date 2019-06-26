@@ -8,7 +8,7 @@ import android.graphics.Bitmap;
 
 public class RegreeningGlobal {
     private static RegreeningGlobal instance;
-    private double latitude=0.0, longitude=0.0, accuracy=0.0, altitude=0.0;
+    private double latitude=0.0, longitude=0.0, accuracy=0.0, altitude=0.0, plotarea=0.0;
     private Boolean GPS_fix=false;
     private String districts,fname,county_region,country,select_location,select_site,fmnr_date,in_date,landsize,number_planted,number_survived,species_name,local_name,date_planted,select_measurement,stems;
     private String mg1,mg2,mg3,mg4,mg5,mg6,mg7,mg_other,mg_others,usage1,usage2,usage3,usage4,usage5,usage6,usage7,usage8,us_other,usg_other;
@@ -961,7 +961,12 @@ public class RegreeningGlobal {
         this.croplist = croplist;
     }
 
-
+    public double getplotarea() {
+        return plotarea;
+    }
+    public void setplotarea(double plotarea) {
+        this.plotarea = plotarea;
+    }
 
     //********************************* end nursery module *****************************//
     //for the polygon points
