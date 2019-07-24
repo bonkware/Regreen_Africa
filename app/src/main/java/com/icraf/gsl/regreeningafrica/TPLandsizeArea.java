@@ -193,10 +193,7 @@ public class TPLandsizeArea extends Fragment {
        Northing=Math.round(Northing*100)*0.01;
 
        /*System.out.println(Easting);
-       System.out.println(Northing);
-       System.out.println(Zone);
-       System.out.println(Letter);*/
-
+       System.out.println(Northing);*/
        x_UTM[i] = Easting;
        y_UTM[i] = Northing;
 
