@@ -4,11 +4,12 @@ import android.graphics.Bitmap;
 
 /**
  * Created by benard on 2/17/18.
+ *
  */
 
 public class RegreeningGlobal {
     private static RegreeningGlobal instance;
-    private double latitude=0.0, longitude=0.0, accuracy=0.0, altitude=0.0, plotarea=0.0;
+    private double latitude=0.0, longitude=0.0, accuracy=0.0, altitude=0.0, plotarea=0.0,x_Easting=0.0,y_Northing=0.0;
     private Boolean GPS_fix=false;
     private String districts,fname,county_region,country,select_location,select_site,fmnr_date,in_date,landsize,number_planted,number_survived,species_name,local_name,date_planted,select_measurement,stems;
     private String mg1,mg2,mg3,mg4,mg5,mg6,mg7,mg_other,mg_others,usage1,usage2,usage3,usage4,usage5,usage6,usage7,usage8,us_other,usg_other;
@@ -966,6 +967,20 @@ public class RegreeningGlobal {
     }
     public void setplotarea(double plotarea) {
         this.plotarea = plotarea;
+    }
+
+    public double getx_Easting() {
+        return x_Easting;
+    }
+    public void setx_Easting(double x_Easting) {
+        this.x_Easting = x_Easting;
+    }
+
+    public double gety_Northing() {
+        return y_Northing;
+    }
+    public void sety_Northing(double y_Northing) {
+        this.y_Northing = y_Northing;
     }
 
     //********************************* end nursery module *****************************//

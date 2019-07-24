@@ -22,6 +22,10 @@ public class TPLandsizeArea extends Fragment {
     }
     RegreeningGlobal g = RegreeningGlobal.getInstance();
     private DbAccess dbAccess;
+
+    double x_UTM[] ;
+    double y_UTM[] ;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -68,11 +72,13 @@ public class TPLandsizeArea extends Fragment {
         String plotID = g.getpid();
         Cursor cursor = dbAccess.getxypoints(plotID);
         int length = cursor.getCount();
+
+        //cursor +1 means polygon will have the same last point as the first point so we have to create a cell for it
         length+=1;
         //declare and initialize
         double x[]= new double[length];
         double y[]=new double[length];
-        double area =0;
+        //double area =0;
 
         if (cursor.moveToFirst()) {
             //iterate over rows
@@ -81,65 +87,119 @@ public class TPLandsizeArea extends Fragment {
                 y[i]=cursor.getDouble(cursor.getColumnIndex("latitude"));
                 cursor.moveToNext();
             }
+            //due to GPS error it is not possible to get exact reading of the first point when user walks back to it
+            //in order to make sure that first point is the last point, we pushed first point in the last index
             x[length-1]=x[0];
             y[length-1]=y[0];
 
-            // since array starts from 0, er had to jump to 1 to avoid null pointer exception and x2-x1 expression
-            for(int i=1; i < x.length;i++){
-                double temp_area = Math.toRadians(x[i] - x[i-1]) * (2 + Math.sin(Math.toRadians(y[i-1])) + Math.sin(Math.toRadians(y[i])));
-                area += temp_area;
+            //resizing the array according to lenght of the cursor +1 (+1 is the last point explained above)
+            x_UTM = new double[length];
+            y_UTM = new double[length];
+            // convert a polygon to UTM of the last x and y arrays
+            for(int i=0; i< x.length; i++){
+                dd2UTM(y[i],x[i],i);
             }
 
-            double final_area = Math.abs(area * 6378137.0 * 6378137.0 / 2.0);
-            //System.out.println(final_area);
-            g.setplotarea(final_area);
-            //show the area in the text
-            double area_sq= g.getplotarea();
-            //int square = (int)area_sq;//convert double to int
-            //String square = String.valueOf(area_sq);//convert double to string
-            TextView plotareasq= (TextView) getActivity().findViewById(R.id.sq);
-            plotareasq.setText(area_sq + " m²");
-
-            double a = area_sq * 0.00024711;
-            TextView plotareaacre= (TextView) getActivity().findViewById(R.id.acres);
-            plotareaacre.setText(a + " acre");
-            System.out.println(String.valueOf(a));
-
-            double h = area_sq / 10000;
-            TextView plotareaha= (TextView) getActivity().findViewById(R.id.ha);
-            plotareaha.setText(h + " ha");
+            area_calcUTM(x_UTM,y_UTM);
         }
     }
-    public  void calculateAreaTest(){
-        // points in array
-        double x[] = {36.818007425342, 36.818345588179, 36.8190422326501, 36.818708423841, 36.818634405366, 36.818634405366, 36.818007425342};
-
-        double y[] = {-1.23997432653317,-1.23906599863355, -1.23929380613924, -1.2402064869687, -1.24023115401378, -1.24023115401378, -1.23997432653317};
+    //calculate the area
+    public void area_calcUTM(double [] x,double [] y){
+        // recevies UTM coordinates and calculate area in meters.
+        System.out.println("UTM Area in sq sqmeters");
         double area=0;
-        for (int i = 1; i < 7; i++) {
+        for (int i = 1; i < x.length; i++) {
             //System.out.println(x[i]);
-
             //System.out.println(y[i]);
-            double temp_area = Math.toRadians(x[i] - x[i-1]) * (2 + Math.sin(Math.toRadians(y[i-1])) + Math.sin(Math.toRadians(y[i])));
+            double temp_area = ((x[i-1]*y[i]) - (y[i-1]*x[i]))/2;
+            //System.out.println(temp_area);
             area += temp_area;
+
         }
-        double final_area = Math.abs(area * 6378137.0 * 6378137.0 / 2.0);
-        g.setplotarea(final_area);
-        System.out.println(final_area);
-        //show the area in the text
-        double area_sq= g.getplotarea();
-        //String square = String.valueOf(area_sq);
+        System.out.println(area);
+
+        double area_sq= Math.abs(area);//use of Math.abs to convert negative result to positive
+
         TextView plotareasq= (TextView) getActivity().findViewById(R.id.sq);
         plotareasq.setText(area_sq + " m²");
 
         double a = area_sq * 0.00024711;
         TextView plotareaacre= (TextView) getActivity().findViewById(R.id.acres);
         plotareaacre.setText(a + " acre");
-        System.out.println(String.valueOf(a));
+        //System.out.println(String.valueOf(a));
 
         double h = area_sq / 10000;
         TextView plotareaha= (TextView) getActivity().findViewById(R.id.ha);
         plotareaha.setText(h + " ha");
-    }
+
+    }// end method
+
+   //utm conversion
+   public void dd2UTM(double Lat,double Lon, int i){
+       // convert latlong to UTM easting northing
+       double Easting;
+       double Northing;
+       int Zone;
+       char Letter;
+
+       //https://stackoverflow.com/questions/176137/java-convert-lat-lon-to-utm
+
+       Zone= (int) Math.floor(Lon/6+31);
+       if (Lat<-72)
+           Letter='C';
+       else if (Lat<-64)
+           Letter='D';
+       else if (Lat<-56)
+           Letter='E';
+       else if (Lat<-48)
+           Letter='F';
+       else if (Lat<-40)
+           Letter='G';
+       else if (Lat<-32)
+           Letter='H';
+       else if (Lat<-24)
+           Letter='J';
+       else if (Lat<-16)
+           Letter='K';
+       else if (Lat<-8)
+           Letter='L';
+       else if (Lat<0)
+           Letter='M';
+       else if (Lat<8)
+           Letter='N';
+       else if (Lat<16)
+           Letter='P';
+       else if (Lat<24)
+           Letter='Q';
+       else if (Lat<32)
+           Letter='R';
+       else if (Lat<40)
+           Letter='S';
+       else if (Lat<48)
+           Letter='T';
+       else if (Lat<56)
+           Letter='U';
+       else if (Lat<64)
+           Letter='V';
+       else if (Lat<72)
+           Letter='W';
+       else
+           Letter='X';
+       Easting=0.5*Math.log((1+Math.cos(Lat*Math.PI/180)*Math.sin(Lon*Math.PI/180-(6*Zone-183)*Math.PI/180))/(1-Math.cos(Lat*Math.PI/180)*Math.sin(Lon*Math.PI/180-(6*Zone-183)*Math.PI/180)))*0.9996*6399593.62/Math.pow((1+Math.pow(0.0820944379, 2)*Math.pow(Math.cos(Lat*Math.PI/180), 2)), 0.5)*(1+ Math.pow(0.0820944379,2)/2*Math.pow((0.5*Math.log((1+Math.cos(Lat*Math.PI/180)*Math.sin(Lon*Math.PI/180-(6*Zone-183)*Math.PI/180))/(1-Math.cos(Lat*Math.PI/180)*Math.sin(Lon*Math.PI/180-(6*Zone-183)*Math.PI/180)))),2)*Math.pow(Math.cos(Lat*Math.PI/180),2)/3)+500000;
+       Easting=Math.round(Easting*100)*0.01;
+       Northing = (Math.atan(Math.tan(Lat*Math.PI/180)/Math.cos((Lon*Math.PI/180-(6*Zone -183)*Math.PI/180)))-Lat*Math.PI/180)*0.9996*6399593.625/Math.sqrt(1+0.006739496742*Math.pow(Math.cos(Lat*Math.PI/180),2))*(1+0.006739496742/2*Math.pow(0.5*Math.log((1+Math.cos(Lat*Math.PI/180)*Math.sin((Lon*Math.PI/180-(6*Zone -183)*Math.PI/180)))/(1-Math.cos(Lat*Math.PI/180)*Math.sin((Lon*Math.PI/180-(6*Zone -183)*Math.PI/180)))),2)*Math.pow(Math.cos(Lat*Math.PI/180),2))+0.9996*6399593.625*(Lat*Math.PI/180-0.005054622556*(Lat*Math.PI/180+Math.sin(2*Lat*Math.PI/180)/2)+4.258201531e-05*(3*(Lat*Math.PI/180+Math.sin(2*Lat*Math.PI/180)/2)+Math.sin(2*Lat*Math.PI/180)*Math.pow(Math.cos(Lat*Math.PI/180),2))/4-1.674057895e-07*(5*(3*(Lat*Math.PI/180+Math.sin(2*Lat*Math.PI/180)/2)+Math.sin(2*Lat*Math.PI/180)*Math.pow(Math.cos(Lat*Math.PI/180),2))/4+Math.sin(2*Lat*Math.PI/180)*Math.pow(Math.cos(Lat*Math.PI/180),2)*Math.pow(Math.cos(Lat*Math.PI/180),2))/3);
+       if (Letter<'M')
+           Northing = Northing + 10000000;
+       Northing=Math.round(Northing*100)*0.01;
+
+       /*System.out.println(Easting);
+       System.out.println(Northing);
+       System.out.println(Zone);
+       System.out.println(Letter);*/
+
+       x_UTM[i] = Easting;
+       y_UTM[i] = Northing;
+
+   }
 }
 
