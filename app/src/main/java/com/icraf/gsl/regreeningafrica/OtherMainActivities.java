@@ -54,18 +54,19 @@ public class OtherMainActivities extends AppCompatActivity {
     ProgressDialog progressDialog;
     int count = 1;
     //urls for data submission ...172.28.0.155
-    String treePlantinginfo_url = "http://172.28.0.155/regreen_africa/insertTPinfo.php";
-    String tpplotinfo_url = "http://172.28.0.155/regreen_africa/insertTPplotinfo.php";
-    String treePlantingcohort_url = "http://172.28.0.155/regreen_africa/insertTPcohort.php";
-    String treePlantingmeasurement_url = "http://172.28.0.155/regreen_africa/insertTPmeasurement.php";
-    String tppolygon_url = "http://172.28.0.155/regreen_africa/insertTPpolygon.php";
-    String trainings_url = "http://172.28.0.155/regreen_africa/insertTrainings.php";
-    String nurseryinfo_url = "http://172.28.0.155/regreen_africa/insertNurseryinfo.php";
-    String nurseryspecies_url = "http://172.28.0.155/regreen_africa/insertNurseryspecies.php";
-    String fmnrinfo_url = "http://172.28.0.155/regreen_africa/insertFMNRinfo.php";
-    String fmnrplotinfo_url = "http://172.28.0.155/regreen_africa/insertFMNRplotinfo.php";
-    String fmnrspecies_url = "http://172.28.0.155/regreen_africa/insertFMNRspecies.php";
-    String fmnrpolygon_url = "http://172.28.0.155/regreen_africa/insertFMNRpolygon.php";
+    //String treePlantinginfo_url = "http://172.28.0.155/regreen_africa/insertTPinfo.php";
+    String treePlantinginfo_url = "http://gsl.worldagroforestry.org/regreen_africa/insertTPinfo.php";
+    String tpplotinfo_url = "http://gsl.worldagroforestry.org/regreen_africa/insertTPplotinfo.php";
+    String treePlantingcohort_url = "http://gsl.worldagroforestry.org/regreen_africa/insertTPcohort.php";
+    String treePlantingmeasurement_url = "http://gsl.worldagroforestry.org/regreen_africa/insertTPmeasurement.php";
+    String tppolygon_url = "http://gsl.worldagroforestry.org/regreen_africa/insertTPpolygon.php";
+    String trainings_url = "http://gsl.worldagroforestry.org/regreen_africa/insertTrainings.php";
+    String nurseryinfo_url = "http://gsl.worldagroforestry.org/regreen_africa/insertNurseryinfo.php";
+    String nurseryspecies_url = "http://gsl.worldagroforestry.org/regreen_africa/insertNurseryspecies.php";
+    String fmnrinfo_url = "http://gsl.worldagroforestry.org/regreen_africa/insertFMNRinfo.php";
+    String fmnrplotinfo_url = "http://gsl.worldagroforestry.org/regreen_africa/insertFMNRplotinfo.php";
+    String fmnrspecies_url = "http://gsl.worldagroforestry.org/regreen_africa/insertFMNRspecies.php";
+    String fmnrpolygon_url = "http://gsl.worldagroforestry.org/regreen_africa/insertFMNRpolygon.php";
 
     RegreeningGlobal g = RegreeningGlobal.getInstance();
     private Context mContext;
