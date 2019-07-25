@@ -6,7 +6,7 @@
     <string name="title_activity_splash">Splash</string>
     <string name="settings">Settings</string>
      <string name="version">
-        <b>Regreening Africa App Beta version 1.4</b>
+        <b>Regreening Africa App version 1.4</b>
     </string>
     <string-array name="countries">
         <item>Select Country first</item>
@@ -54,7 +54,7 @@
     This application was developed under World Agroforestry Centre(ICRAF) Regreening Africa project, a project that targets to reverse land degradation in Africa by scaling up evergreen agriculture.\n
     </string>
     <string name="developers">
-        <b>Developers</b>\n
+        <b>Developers/Designers</b>\n
         Benard Onkware, Muhammad Ahmad &amp; Tor Vagen.\n
     </string>
     <string name="icons">
