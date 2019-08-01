@@ -410,7 +410,7 @@ public class RegreeningGlobal {
     }
     //Setting
     public void setgovt_land_ownership(String govt_land_ownership) {
-        this.govt_land_ownership = individual_ownership;
+        this.govt_land_ownership = govt_land_ownership;
     }
     public String getmosque_church_ownership() {
         return mosque_church_ownership;

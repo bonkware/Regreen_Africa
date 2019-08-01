@@ -63,13 +63,13 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content" >
                     <CheckBox
-                        android:id="@+id/mg4"
+                        android:id="@+id/mg3"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:button="@drawable/custom_checkbox_weeding"/>
                     <CheckBox
-                        android:id="@+id/mg3"
+                        android:id="@+id/mg4"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
