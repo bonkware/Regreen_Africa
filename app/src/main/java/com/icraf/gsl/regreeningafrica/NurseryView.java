@@ -33,7 +33,7 @@ public class NurseryView extends AppCompatActivity {
             DatabaseHelper.seeds_quantity_purchased,DatabaseHelper.qunits,DatabaseHelper.seed_sown,DatabaseHelper.unitsown,DatabaseHelper.date_seeds_sown,DatabaseHelper.seedlings_germinated,DatabaseHelper.seedlings_servived,DatabaseHelper.seedlings_age,DatabaseHelper.seedlings_price,DatabaseHelper.notes,
     };
 
-    final int[] to = new int[] {R.id.id, R.id.nurseryID,R.id.ename,R.id.in_date,R.id.survey_name,R.id.country,R.id.county,R.id.district, R.id.operator, R.id.contact,R.id.nursery_name,R.id.species_number,R.id.n_date, R.id.government,R.id.schools,R.id.mosque_church,R.id.women_grps,
+    final int[] to = new int[] {R.id.id, R.id.nurseryID,R.id.ename,R.id.in_date,R.id.survey_name,R.id.country,R.id.county,R.id.district, R.id.operator, R.id.contact,R.id.nursery_name,R.id.species_number,R.id.n_date, R.id.government,R.id.mosque_church,R.id.schools,R.id.women_grps,
             R.id.youth_grps,R.id.private_individual,R.id.communal_village,R.id.other_type,R.id.latitude,R.id.longitude,
             R.id.altitude,R.id.accuracy,R.id.path,R.id.nursery_species,R.id.nursery_local,
             R.id.bare_root,R.id.container,R.id.other,R.id.seed,R.id.graft,R.id.cutting,R.id.marcotting,R.id.own_farm,R.id.local_dealer,R.id.national_seed,R.id.ngos,R.id.other_s,R.id.farmland,R.id.plantation,R.id.mother_blocks,R.id.prisons,R.id.other_graft_sources,
