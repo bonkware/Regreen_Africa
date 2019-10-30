@@ -7,7 +7,7 @@ android {
         applicationId "com.icraf.gsl.regreeningafrica"
         minSdkVersion 14
         targetSdkVersion 26
-        versionCode 14
+        versionCode 15
         versionName "1.4"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
