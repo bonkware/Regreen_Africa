@@ -49,6 +49,9 @@ public class TPFarmInstFragment extends Fragment {
                     list.add("Nakuru");
                     list.add("Homa Bay");
                     list.add("Migori");
+                    list.add("Machakos");
+                    list.add("Kitui");
+                    list.add("Makueni");
                     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -242,6 +245,40 @@ public class TPFarmInstFragment extends Fragment {
                     List<String> list = new ArrayList<String>();
                     list.add("Select Sub-counties");
                     list.add("Nyatike");
+                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
+                            android.R.layout.simple_spinner_item, list);
+                    dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    dataAdapter.notifyDataSetChanged();
+                    s3.setAdapter(dataAdapter);
+                }
+                if(sp2.contentEquals("Machakos")) {
+                    List<String> list = new ArrayList<String>();
+                    list.add("Select Sub-counties");
+                    list.add("Mwala");
+                    list.add("Yatta");
+                    list.add("Masinga");
+                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
+                            android.R.layout.simple_spinner_item, list);
+                    dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    dataAdapter.notifyDataSetChanged();
+                    s3.setAdapter(dataAdapter);
+                }
+                if(sp2.contentEquals("Kitui")) {
+                    List<String> list = new ArrayList<String>();
+                    list.add("Select Sub-counties");
+                    list.add("Mwingi central");
+                    list.add("Kitui rural");
+                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
+                            android.R.layout.simple_spinner_item, list);
+                    dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    dataAdapter.notifyDataSetChanged();
+                    s3.setAdapter(dataAdapter);
+                }
+                if(sp2.contentEquals("Makueni")) {
+                    List<String> list = new ArrayList<String>();
+                    list.add("Select Sub-counties");
+                    list.add("Mbooni East");
+                    list.add("Kibwezi East");
                     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
