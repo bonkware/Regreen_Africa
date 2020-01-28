@@ -51,8 +51,8 @@ public class FmnrTreeMeasureMainActivity extends AppCompatActivity {
         adapter.addFragment(new FmnrManagementsFragment(), "managements");
         adapter.addFragment(new FmnrUsageFragment(), "usage");
         adapter.addFragment(new FmnrTreeMeasurementsFragment(), "tree measurements");
-        adapter.addFragment(new FmnrTreePhotoFragment(), "tree photo");
         adapter.addFragment(new FmnrTreeGpsFragment(), "tree gps");
+        adapter.addFragment(new FmnrTreePhotoFragment(), "tree photo");
         adapter.addFragment(new FmnrTreeEndFragment(), "end tree planting");
         viewPager.setAdapter(adapter);
 
@@ -86,34 +86,27 @@ public class FmnrTreeMeasureMainActivity extends AppCompatActivity {
 
         viewPager.setCurrentItem(3);
     }
-    public void jumpToPhoto(View view){
-       /* EditText h = (EditText) findViewById(R.id.height);
-        boolean fail = false;
-        if (h.getText().toString().trim().length() == 0) {
-            fail = true;
-            h.requestFocus();
-            h.setError("Enter height");
-        }
-        if (!fail) {
-            viewPager.setCurrentItem(4);
-        }*/
+    public void jumpToGPS(View view){
+
         viewPager.setCurrentItem(4);
     }
+
     public void jumpBackMeasurement(View view){
         viewPager.setCurrentItem(3);
     }
-    public void jumpToGPS(View view){
 
+    public void jumpToPhoto(View view){
         viewPager.setCurrentItem(5);
     }
-    public void jumpBackPhoto(View view){
+    public void jumpBackGPS(View view){
         viewPager.setCurrentItem(4);
     }
+
     public void jumpToEnd(View view){
 
         viewPager.setCurrentItem(6);
     }
-    public void jumpBackGPS(View view){
+    public void jumpBackPhoto(View view){
         viewPager.setCurrentItem(5);
     }
 

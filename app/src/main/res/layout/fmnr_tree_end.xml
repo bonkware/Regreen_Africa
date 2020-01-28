@@ -46,7 +46,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Do you want to add another dominant species?"
+                android:text="Enter additional species present in the plot"
                 android:textStyle="bold|italic"
                 android:layout_margin="10dp"
                 android:textSize="15sp">
@@ -58,13 +58,13 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="(Add maximum 5 most dominant species)"
+                android:text="(Record at least one tree per species  in order to properly assess species diversity)"
                 android:layout_margin="10dp"
                 android:textStyle="italic"
                 android:textSize="15sp">
             </TextView>
         </TableRow>
-        <TableRow
+        <!--<TableRow
             android:layout_width="0dp"
             android:layout_height="wrap_content" >
             <TextView
@@ -75,7 +75,7 @@
                 android:textStyle="italic"
                 android:textSize="14sp">
             </TextView>
-        </TableRow>
+        </TableRow>-->
         <TableRow
             android:id="@+id/addtree"
             android:layout_width="0dp"
@@ -107,7 +107,7 @@
             android:layout_width="wrap_content"
             android:layout_height="49dp"
             android:layout_weight="1"
-            android:onClick="jumpBackGPS"
+            android:onClick="jumpBackPhoto"
             android:background="@drawable/index_buttons"
             android:drawableLeft="@drawable/prev_white"
             android:textColor="#fff"

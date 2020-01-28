@@ -268,7 +268,7 @@
         android:id="@+id/p_date"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/local"
+        android:layout_below="@id/local_name"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@id/id"
         android:ellipsize="end"

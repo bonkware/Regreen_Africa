@@ -47,8 +47,8 @@ public class TPTreeMeasureMainAcivity extends AppCompatActivity {
         final ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         //All fragments
         adapter.addFragment(new TPTreeMeasurementsFragment(), "tree measurements");
-        adapter.addFragment(new TPTreePhotoFragment(), "tree photo");
         adapter.addFragment(new TPTreeGpsFragment(), "tree gps");
+        adapter.addFragment(new TPTreePhotoFragment(), "tree photo");
         adapter.addFragment(new TPTreeEndFragment(), "end tree planting");
         viewPager.setAdapter(adapter);
 
@@ -72,36 +72,28 @@ public class TPTreeMeasureMainAcivity extends AppCompatActivity {
             viewPager.setCurrentItem(1);
         }
     }
-    public void jumpToPhoto(View view){
-        /*EditText h = (EditText) findViewById(R.id.height);
-        boolean fail = false;
-        if (h.getText().toString().trim().length() == 0) {
-            fail = true;
-            h.requestFocus();
-            h.setError("Enter height");
-        }
-        if (!fail) {
-            viewPager.setCurrentItem(1);
-        }*/
+    public void jumpToGPS(View view){
+
         viewPager.setCurrentItem(1);
     }
     public void jumpBackMeasurement(View view){
         viewPager.setCurrentItem(0);
     }
-    public void jumpToGPS(View view){
 
+    public void jumpToPhoto(View view){
         viewPager.setCurrentItem(2);
     }
-    public void jumpBackPhoto(View view){
+    public void jumpBackGPS(View view){
         viewPager.setCurrentItem(1);
     }
     public void jumpToEnd(View view){
 
         viewPager.setCurrentItem(3);
     }
-    public void jumpBackGPS(View view){
+    public void jumpBackPhoto(View view){
         viewPager.setCurrentItem(2);
     }
+
 
 
 

@@ -141,7 +141,7 @@
             android:layout_width="wrap_content"
             android:layout_height="49dp"
             android:layout_weight="1"
-            android:onClick="jumpBackGPS"
+            android:onClick="jumpBackPhoto"
             android:background="@drawable/index_buttons"
             android:drawableLeft="@drawable/prev_white"
             android:textColor="#fff"

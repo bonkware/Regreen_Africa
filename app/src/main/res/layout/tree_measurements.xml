@@ -96,12 +96,12 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:visibility="gone"
-                android:text="DBH(cm)"/>
+                android:text="CBH(cm)"/>
             <TextView
                 android:id="@+id/d1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="[DBH -> Diameter at breast height]"
+                android:text="[CBH -> Circumference at breast height(1.35 m)]"
                 android:textSize="@dimen/textsize"
                 android:padding="10dp"
                 android:visibility="gone"
@@ -160,7 +160,7 @@
             android:layout_width="wrap_content"
             android:layout_height="49dp"
             android:layout_weight="1"
-            android:onClick="jumpToPhoto"
+            android:onClick="jumpToGPS"
             android:background="@drawable/index_buttons"
             android:drawableRight="@drawable/next_white"
             android:textColor="#fff"
