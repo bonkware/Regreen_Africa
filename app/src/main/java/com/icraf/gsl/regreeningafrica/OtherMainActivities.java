@@ -242,10 +242,10 @@ public class OtherMainActivities extends AppCompatActivity {
                         public void onResponse(String response) {
                             //get the response if success get response that data has been received
                             Log.i("My success", "" + response);
-                            uploadTPplotinfo();
-                            uploadTPpolygon();
-                            uploadTPcohort();//cohorts
-                            uploadTPmeasurements();
+                            uploadTPplotinfo(farmerID);
+                            uploadTPpolygon(farmerID);
+                            uploadTPcohort(farmerID);//cohorts
+                            uploadTPmeasurements(farmerID);
                             //dbAccess.uploadStatusTPinfo();//update column uploaded to yes
                             //dismiss dialog after all records are sent;
                             if(count == cursor.getCount()){
@@ -366,10 +366,10 @@ public class OtherMainActivities extends AppCompatActivity {
                     + e.getMessage(), e);
         }
     }
-    public void uploadTPplotinfo() {
+    public void uploadTPplotinfo(String tp_farmer_id) {
         //get data from sqlite in a loop
         try{//added try catch
-            final Cursor cursor = dbAccess.getTPplotinfo();//fetch all tree planting info data
+            final Cursor cursor = dbAccess.getTPplotinfo(tp_farmer_id);//fetch all tree planting info data
             //cursor.getCount();
             if (cursor.moveToFirst()) {
                 do {
@@ -454,10 +454,10 @@ public class OtherMainActivities extends AppCompatActivity {
                     + e.getMessage(), e);
         }
     }
-    public void uploadTPcohort() {
+    public void uploadTPcohort(String cohort_farmer_id) {
         //get data from sqlite in a loop
         try{//added try catch
-            final Cursor cursor = dbAccess.getTPcohort();//fetch all tree planting data
+            final Cursor cursor = dbAccess.getTPcohort(cohort_farmer_id);//fetch all tree planting data
             if (cursor.moveToFirst()) {
                 do {
                     //for cohort
@@ -588,10 +588,10 @@ public class OtherMainActivities extends AppCompatActivity {
                     + e.getMessage(), e);
         }
     }
-    public void uploadTPmeasurements() {
+    public void uploadTPmeasurements(String tp_measurements__farmer_id) {
         //get data from sqlite in a loop
         try{//added try catch
-            final Cursor cursor = dbAccess.getTPmeasurements();//fetch all tree planting data
+            final Cursor cursor = dbAccess.getTPmeasurements(tp_measurements__farmer_id);//fetch all tree planting data
             if (cursor.moveToFirst()) {
                 do {
                     //for tree measurement
@@ -693,10 +693,10 @@ public class OtherMainActivities extends AppCompatActivity {
                     + e.getMessage(), e);
         }
     }
-    public void uploadTPpolygon() {
+    public void uploadTPpolygon(String tp_polygon_farmer_id) {
         //get data from sqlite in a loop
         try{//added try catch
-            final Cursor cursor = dbAccess.getTPpolygon();//fetch all fmnr data
+            final Cursor cursor = dbAccess.getTPpolygon(tp_polygon_farmer_id);//fetch all fmnr data
             if (cursor.moveToFirst()) {
                 do {
                     //for fmnr plot polygon
@@ -1168,9 +1168,9 @@ public class OtherMainActivities extends AppCompatActivity {
                         public void onResponse(String response) {
                             //get the response if success get response that data has been received
                             Log.i("My success", "" + response);
-                            uploadFMNRplotInfo();//upload plot info
-                            uploadFMNRpolygon();//polygon points
-                            uploadFMNRspecies();//species
+                            uploadFMNRplotInfo(fmnr_farmer_id);//upload plot info
+                            uploadFMNRpolygon(fmnr_farmer_id);//polygon points
+                            uploadFMNRspecies(fmnr_farmer_id);//species
                             //dbAccess.uploadStatusFMNRinfo();//update column to yes
                             //dismiss dialog after all records are sent;
                             if(count == cursor.getCount()){
@@ -1298,7 +1298,7 @@ public class OtherMainActivities extends AppCompatActivity {
         }
 
     }
-    public void uploadFMNRplotInfo() {
+    public void uploadFMNRplotInfo(String plot_farmer_id) {
         progressDialog = new ProgressDialog(OtherMainActivities.this);
         progressDialog.setMessage("Sending FMNR data...");
         progressDialog.setCancelable(true);
@@ -1307,7 +1307,7 @@ public class OtherMainActivities extends AppCompatActivity {
 
         //get data from sqlite in a loop
         try{//added try catch
-            final Cursor cursor = dbAccess.getFMNRplotinfo();//fetch all fmnr data
+            final Cursor cursor = dbAccess.getFMNRplotinfo(plot_farmer_id);//fetch all fmnr data
             if (cursor.moveToFirst()) {
                 do {
                     final String fmnr_farmer_id = cursor.getString(cursor.getColumnIndex("farmerID"));
@@ -1416,10 +1416,10 @@ public class OtherMainActivities extends AppCompatActivity {
         }
 
     }
-    public void uploadFMNRpolygon() {
+    public void uploadFMNRpolygon(String polygon_farmer_id) {
         //get data from sqlite in a loop
         try{//added try catch
-            final Cursor cursor = dbAccess.getFMNRpolygon();//fetch all fmnr data
+            final Cursor cursor = dbAccess.getFMNRpolygon(polygon_farmer_id);//fetch all fmnr data
             if (cursor.moveToFirst()) {
                 do {
                     //for fmnr plot polygon
@@ -1512,10 +1512,10 @@ public class OtherMainActivities extends AppCompatActivity {
         }
 
     }
-    public void uploadFMNRspecies() {
+    public void uploadFMNRspecies( String species_farmer_id) {
         //get data from sqlite in a loop
         try{//added try catch
-            final Cursor cursor = dbAccess.getFMNRspecies();//fetch all fmnr data
+            final Cursor cursor = dbAccess.getFMNRspecies(species_farmer_id);//fetch all fmnr data
             if (cursor.moveToFirst()) {
                 do {
                     final String fmnrfarmer_id = cursor.getString(cursor.getColumnIndex("farmerID"));

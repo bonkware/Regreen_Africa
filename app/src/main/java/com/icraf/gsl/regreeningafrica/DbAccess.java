@@ -337,23 +337,23 @@ public class DbAccess {
         Cursor c = database.rawQuery(selectQuery, null);
         return c;
     }
-    public Cursor getTPplotinfo() {
-        String selectQuery = "SELECT * FROM plot_info WHERE uploaded='no' ";
+    public Cursor getTPplotinfo(String tp_plot_farmer_id) {
+        String selectQuery = "SELECT * FROM plot_info WHERE uploaded='no' and farmerID='"+tp_plot_farmer_id+"' ";
         Cursor c = database.rawQuery(selectQuery, null);
         return c;
     }
-    public Cursor getTPcohort() {
-        String selectQuery = "SELECT * FROM cohort WHERE uploaded='no' ";
+    public Cursor getTPcohort(String cohort_farmer_id) {
+        String selectQuery = "SELECT * FROM cohort WHERE uploaded='no' and farmerID='"+cohort_farmer_id+"' ";
         Cursor c = database.rawQuery(selectQuery, null);
         return c;
     }
-    public Cursor getTPmeasurements() {
-        String selectQuery = "SELECT * FROM tree_measurements WHERE uploaded='no' ";
+    public Cursor getTPmeasurements(String tp_measurements__farmer_id) {
+        String selectQuery = "SELECT * FROM tree_measurements WHERE uploaded='no' and farmerID='"+tp_measurements__farmer_id+"'  ";
         Cursor c = database.rawQuery(selectQuery, null);
         return c;
     }
-    public Cursor getTPpolygon() {
-        String selectQuery = "SELECT * FROM landsizepolygontp WHERE uploaded='no' ";
+    public Cursor getTPpolygon(String tp_polygon_farmer_id) {
+        String selectQuery = "SELECT * FROM landsizepolygontp WHERE uploaded='no' and farmerID='"+tp_polygon_farmer_id+"' ";
         Cursor c = database.rawQuery(selectQuery, null);
         return c;
     }
@@ -378,18 +378,18 @@ public class DbAccess {
         Cursor c = database.rawQuery(selectQuery, null);
         return c;
     }
-    public Cursor getFMNRplotinfo() {
-        String selectQuery = "SELECT * FROM fmnr_plot_info WHERE uploaded='no' ";
+    public Cursor getFMNRplotinfo(String plot_farmer_id) {
+        String selectQuery = "SELECT * FROM fmnr_plot_info WHERE uploaded='no' and farmerID='"+plot_farmer_id+"' ";
         Cursor c = database.rawQuery(selectQuery, null);
         return c;
     }
-    public Cursor getFMNRspecies() {
-        String selectQuery = "SELECT * FROM fmnr_species WHERE uploaded='no' ";
+    public Cursor getFMNRspecies( String species_farmer_id) {
+        String selectQuery = "SELECT * FROM fmnr_species WHERE uploaded='no' and farmerID='"+species_farmer_id+"' ";
         Cursor c = database.rawQuery(selectQuery, null);
         return c;
     }
-    public Cursor getFMNRpolygon() {
-        String selectQuery = "SELECT * FROM landsizepolygonfmnr WHERE uploaded='no' ";
+    public Cursor getFMNRpolygon(String polygon_farmer_id) {
+        String selectQuery = "SELECT * FROM landsizepolygonfmnr WHERE uploaded='no' and farmerID='"+polygon_farmer_id+"' ";
         Cursor c = database.rawQuery(selectQuery, null);
         return c;
     }
@@ -433,8 +433,8 @@ public class DbAccess {
         Cursor c = database.rawQuery(selectQuery, null);
         return c;
     }
-    public Cursor getNurseryspecies(String nurseryID) {
-        String selectQuery = "SELECT * FROM nursery_species WHERE nurseryID='"+nurseryID+"' and uploaded='no'";
+    public Cursor getNurseryspecies(String nursery_ID) {
+        String selectQuery = "SELECT * FROM nursery_species WHERE nurseryID='"+nursery_ID+"' and uploaded='no'";
         Cursor c = database.rawQuery(selectQuery, null);
         return c;
     }

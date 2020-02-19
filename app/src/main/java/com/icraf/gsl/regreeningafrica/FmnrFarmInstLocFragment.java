@@ -70,7 +70,7 @@ public class FmnrFarmInstLocFragment extends Fragment {
     public void  saveFmnrFarmerInst(){
         //generate unique id for farmer/institution
         Random generator = new Random();
-        int n = 10000;
+        int n = 100000;
         n = generator.nextInt(n);//random number generator
         String fid = "fgi_" + n;
         g.setfid(fid);

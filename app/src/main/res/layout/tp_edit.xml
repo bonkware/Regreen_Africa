@@ -17,7 +17,7 @@
             android:layout_weight="1"
             android:drawableLeft="@drawable/save"
             android:background="#008000"
-            android:textColor="#ffffff"
+            android:enabled="false"
             android:text="@string/btn_update" />
         <Button
             android:id="@+id/btn_delete"
