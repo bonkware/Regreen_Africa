@@ -74,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/textsize"
                 android:paddingTop="20dp"
-                android:text="Survey Name" />
+                android:text="Project Name" />
 
             <RelativeLayout
                 android:id="@+id/sp"
@@ -83,21 +83,19 @@
                 android:paddingTop="10dp">
                 <Spinner
                     android:id="@+id/survey_name"
-                    android:layout_width="wrap_content"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/editText1"
                     android:background="@android:drawable/btn_dropdown"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
                     android:paddingTop="10dp"/>
                 <EditText
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:hint="Add project name if not in the list"
+                    android:hint="Add a new project name to the list below and select it"
+                    android:textSize="13sp"
                     android:id="@+id/editText1"
                     android:backgroundTint="#008000"
-                    android:paddingTop="100dp" />
+                    android:paddingTop="10dp" />
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

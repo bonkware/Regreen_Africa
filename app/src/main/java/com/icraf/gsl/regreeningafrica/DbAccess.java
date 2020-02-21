@@ -363,7 +363,7 @@ public class DbAccess {
                 "WHERE farmer_institution.farmerID=plot_info.farmerID and farmer_institution.farmerID=cohort.farmerID and cohort.cohortID=tree_measurements.cohortID " +
                 "and farmer_institution.uploaded='no' and plot_info.uploaded='no' and cohort.uploaded='no' " +
                 "and tree_measurements.uploaded='no' ", null);*/
-        Cursor cur = database.rawQuery("SELECT count(*) from farmer_institution,plot_info where farmer_institution.farmerID=plot_info.farmerID and farmer_institution.uploaded='no'", null);
+        Cursor cur = database.rawQuery("SELECT count(*) from farmer_institution where  farmer_institution.uploaded='no'", null);
         int x = 0;
         if (cur.moveToFirst())
         {
@@ -400,7 +400,7 @@ public class DbAccess {
     }
     //count number of records in fmnr
     public int getfmnrcount(){
-        Cursor cur = database.rawQuery("SELECT count(*) from fmnr_farmer_inst,fmnr_plot_info where  fmnr_farmer_inst.farmerID=fmnr_plot_info.farmerID and fmnr_farmer_inst.uploaded='no'", null);
+        Cursor cur = database.rawQuery("SELECT count(*) from fmnr_farmer_inst where fmnr_farmer_inst.uploaded='no'", null);
         //Cursor cur = database.rawQuery("SELECT count(*) from fmnr_farmer_inst,fmnr_plot_info,fmnr_species WHERE fmnr_farmer_inst.farmerID=fmnr_plot_info.farmerID and fmnr_farmer_inst.farmerID=fmnr_species.farmerID and fmnr_species.uploaded='no' and fmnr_plot_info.uploaded='no' and fmnr_farmer_inst.uploaded='no' ", null);
         int x = 0;
         if (cur.moveToFirst())
