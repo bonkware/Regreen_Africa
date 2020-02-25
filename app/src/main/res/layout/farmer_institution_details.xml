@@ -19,7 +19,7 @@
                 android:id="@+id/text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Farmer/institution details"
+                android:text="Farmer/Group/institution details"
                 android:layout_gravity="center"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:text="Farmer/Group/Institution Name"
                 android:textSize="@dimen/textsize"
-                android:paddingTop="20dp"
+                android:paddingTop="10dp"
                 android:textStyle="italic"/>
             <EditText
                 android:id="@+id/fnames"
@@ -41,14 +41,13 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:textSize="@dimen/add_edit_textsize">
-
             </EditText>
 
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/textsize"
-                android:paddingTop="20dp"
+                android:paddingTop="10dp"
                 android:text="Country Name" />
 
             <!-- Spinner Dropdown -->
@@ -63,14 +62,27 @@
                 android:background="@android:drawable/btn_dropdown"
                 android:entries="@array/countries" />
 
+            <!-- for new country -->
+            <EditText
+                android:id="@+id/country"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text1"
+                android:hint="Add a new Country name if not in the list"
+                android:padding="@dimen/view_padding"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="5dp"
+                android:textSize="15sp"/>
+
             <!-- Select Label -->
 
-            <!--<TextView
+            <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/textsize"
-                android:paddingTop="20dp"
-                android:text="Region/County Name" />-->
+                android:paddingTop="10dp"
+                android:text="Region/County" />
 
             <!-- Spinner Dropdown -->
             <Spinner
@@ -82,24 +94,27 @@
                 android:layout_marginTop="10dip"
                 android:background="@android:drawable/btn_dropdown"
                 />
-            <!--<EditText
+            <!-- for new county -->
+            <EditText
                 android:id="@+id/county"
-                android:backgroundTint="#008000"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/text1"
+                android:hint="Add a new County name if not in the list"
                 android:padding="@dimen/view_padding"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:textSize="@dimen/add_edit_textsize"/>-->
-            <!-- Select Label -->
+                android:layout_marginTop="5dp"
+                android:textSize="15sp"/>
 
-            <!--<TextView
+            <!-- Select Label -->
+            <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/textsize"
-                android:paddingTop="20dp"
-                android:text="District/Communne/Woreda/Circle/Sub-county" />-->
+                android:paddingTop="10dp"
+                android:text="District/Sub-county" />
+
             <!-- Spinner Dropdown -->
             <Spinner
                 android:id="@+id/spinner3"
@@ -110,6 +125,18 @@
                 android:layout_marginTop="10dip"
                 android:background="@android:drawable/btn_dropdown"
                 />
+            <!-- for new country -->
+            <EditText
+                android:id="@+id/district"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text1"
+                android:hint="Add a new district name if not in the list"
+                android:textSize="15sp"
+                android:padding="@dimen/view_padding"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="5dp"/>
         </LinearLayout>
     </ScrollView>
 

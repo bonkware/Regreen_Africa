@@ -196,6 +196,9 @@ public class NurseryPhotoFragment extends Fragment {
         if(country != null && country.getSelectedItem() !=null ) {
             g.setnursery_country(country.getSelectedItem().toString());
         }
+        EditText country_new = (EditText) getActivity().findViewById(R.id.country);//added for the new country
+        g.setnursery_country(country_new.getText().toString());
+
        /* EditText county_region = (EditText) getActivity().findViewById(R.id.nursery_county);
         g.setnursery_county(county_region.getText().toString());
         EditText district = (EditText) getActivity().findViewById(R.id.nursery_district);
@@ -205,6 +208,8 @@ public class NurseryPhotoFragment extends Fragment {
         if(county_region != null && county_region.getSelectedItem() !=null ) {
             g.setnursery_county(county_region.getSelectedItem().toString());
         }
+        EditText county_new = (EditText) getActivity().findViewById(R.id.county);//added for new county that is not on the list
+        g.setnursery_county(county_new.getText().toString());
         /*EditText district = (EditText) getActivity().findViewById(R.id.district);
         g.setdistricts(district.getText().toString());*/
         Spinner district = (Spinner) getActivity().findViewById(R.id.spinner3);
@@ -212,6 +217,9 @@ public class NurseryPhotoFragment extends Fragment {
         if(district != null && district.getSelectedItem() !=null ) {
             g.setnursery_district(district.getSelectedItem().toString());
         }
+
+        EditText district_new = (EditText) getActivity().findViewById(R.id.district);//added for new district option
+        g.setnursery_district(district_new.getText().toString());
 
         EditText operator = (EditText) getActivity().findViewById(R.id.nursery_operator);
         g.setnursery_operator(operator.getText().toString());
