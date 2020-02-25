@@ -70,15 +70,13 @@ public class FmnrTreeMeasureMainActivity extends AppCompatActivity {
         EditText local = (EditText) findViewById(R.id.localname);
         boolean fail = false;
         if (ed.getText().toString().trim().length() == 0) {
-            fail = true;
-            ed.requestFocus();
-            ed.setError("Enter species name");
+            if (local.getText().toString().trim().length() == 0) {
+                fail = true;
+                local.requestFocus();
+                local.setError("Enter Scientific or local name");
+            }
         }
-        if (local.getText().toString().trim().length() == 0) {
-            fail = true;
-            ed.requestFocus();
-            ed.setError("Enter local name");
-        }
+
         if (!fail) {
             viewPager.setCurrentItem(1);
         }

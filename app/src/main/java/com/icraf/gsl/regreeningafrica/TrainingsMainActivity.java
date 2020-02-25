@@ -1,6 +1,7 @@
 package com.icraf.gsl.regreeningafrica;
 
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -13,10 +14,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.icraf.gsl.regreeningafrica.R.id.country;
 import static com.icraf.gsl.regreeningafrica.R.id.pager;
 
 public class TrainingsMainActivity extends AppCompatActivity {
@@ -50,6 +54,7 @@ public class TrainingsMainActivity extends AppCompatActivity {
     public void jumpToFI(View view){
         EditText ed = (EditText) findViewById(R.id.ename);
         EditText date = (EditText) findViewById(R.id.in_date);
+        Spinner project = (Spinner) findViewById(R.id.project);
         boolean fail = false;
         if (ed.getText().toString().trim().length() == 0) {
             fail = true;
@@ -60,6 +65,14 @@ public class TrainingsMainActivity extends AppCompatActivity {
             fail = true;
             date.requestFocus();
             date.setError("Select date");
+        }
+        if (project.getSelectedItem().toString().trim().equals("Select project")) {//validate the spinner not
+            fail = true;
+            project.requestFocus();
+            TextView errorText = (TextView)project.getSelectedView();
+            errorText.setError("");
+            errorText.setTextColor(Color.RED);//just to highlight that this is an error
+            errorText.setText("Please select the project name");//changes the selected item text to this
         }
         if (!fail) {
             viewPager.setCurrentItem(1);
@@ -72,7 +85,16 @@ public class TrainingsMainActivity extends AppCompatActivity {
     public void jumpToDetails(View view){
         EditText crs = (EditText) findViewById(R.id.crname);
         EditText dis = (EditText) findViewById(R.id.dcwname);
+        Spinner country = (Spinner) findViewById(R.id.cname);
         boolean fail = false;
+        if (country.getSelectedItem().toString().trim().equals("Select Country first")) {//validate the spinner not
+            fail = true;
+            country.requestFocus();
+            TextView errorText = (TextView)country.getSelectedView();
+            errorText.setError("");
+            errorText.setTextColor(Color.RED);//just to highlight that this is an error
+            errorText.setText("Please select the country name");//changes the selected item text to this
+        }
         if (crs.getText().toString().trim().length() == 0) {
             fail = true;
             crs.requestFocus();

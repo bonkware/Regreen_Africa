@@ -1,6 +1,7 @@
 package com.icraf.gsl.regreeningafrica;
 
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -13,6 +14,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +57,7 @@ public class FmnrFarmInstMainActivity extends AppCompatActivity {
     public void jumpToFI(View view){
         EditText ed = (EditText) findViewById(R.id.ename);
         EditText date = (EditText) findViewById(R.id.in_date);
+        Spinner project = (Spinner) findViewById(R.id.survey_name);
         boolean fail = false;
         if (ed.getText().toString().trim().length() == 0) {
             fail = true;
@@ -64,6 +69,14 @@ public class FmnrFarmInstMainActivity extends AppCompatActivity {
             date.requestFocus();
             date.setError("Select date");
         }
+        if (project.getSelectedItem().toString().trim().equals("Select project")) {//validate the spinner not
+            fail = true;
+            project.requestFocus();
+            TextView errorText = (TextView)project.getSelectedView();
+            errorText.setError("");
+            errorText.setTextColor(Color.RED);//just to highlight that this is an error
+            errorText.setText("Please select the project name");//changes the selected item text to this
+        }
         if (!fail) {
             viewPager.setCurrentItem(1);
         }
@@ -74,11 +87,23 @@ public class FmnrFarmInstMainActivity extends AppCompatActivity {
     }
     public void jumpToLocation(View view){
         EditText fi = (EditText) findViewById(R.id.fnames);
+        Spinner country = (Spinner) findViewById(R.id.spinner1);
+        EditText c = (EditText) findViewById(R.id.country);
         boolean fail = false;
         if (fi.getText().toString().trim().length() == 0) {
             fail = true;
             fi.requestFocus();
             fi.setError("Enter farmer/institution");
+        }
+        if (country.getSelectedItem().toString().trim().equals("Select Country first")) {//validate the spinner not
+            if (c.getText().toString().trim().length() == 0) {
+                fail = true;
+                c.requestFocus();
+                TextView errorText = (TextView) country.getSelectedView();
+                errorText.setError("");
+                errorText.setTextColor(Color.RED);//just to highlight that this is an error
+                errorText.setText("Select or add below");//changes the selected item text to this
+            }
         }
         if (!fail) {
             viewPager.setCurrentItem(2);
