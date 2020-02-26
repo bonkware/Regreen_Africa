@@ -88,6 +88,10 @@ public class NurseryInfoMain extends AppCompatActivity {
         //EditText district = (EditText) findViewById(R.id.nursery_district);
         Spinner country = (Spinner) findViewById(R.id.spinner1);
         EditText c = (EditText) findViewById(R.id.country);
+        Spinner county = (Spinner) findViewById(R.id.spinner2);
+        EditText ct = (EditText) findViewById(R.id.county);
+        Spinner district = (Spinner) findViewById(R.id.spinner3);
+        EditText d = (EditText) findViewById(R.id.district);
         EditText operator = (EditText) findViewById(R.id.nursery_operator);
         EditText contact = (EditText) findViewById(R.id.nursery_contact);
         boolean fail = false;
@@ -106,6 +110,26 @@ public class NurseryInfoMain extends AppCompatActivity {
                 fail = true;
                 c.requestFocus();
                 TextView errorText = (TextView) country.getSelectedView();
+                errorText.setError("");
+                errorText.setTextColor(Color.RED);//just to highlight that this is an error
+                errorText.setText("Select or add below");//changes the selected item text to this
+            }
+        }
+        if (county.getSelectedItem().toString().trim().equals("Select Country first")) {//validate the spinner not
+            if (ct.getText().toString().trim().length() == 0) {
+                fail = true;
+                ct.requestFocus();
+                TextView errorText = (TextView) county.getSelectedView();
+                errorText.setError("");
+                errorText.setTextColor(Color.RED);//just to highlight that this is an error
+                errorText.setText("Select or add below");//changes the selected item text to this
+            }
+        }
+        if (district.getSelectedItem().toString().trim().equals("Select County first")) {//validate the spinner not
+            if (ct.getText().toString().trim().length() == 0) {
+                fail = true;
+                d.requestFocus();
+                TextView errorText = (TextView) district.getSelectedView();
                 errorText.setError("");
                 errorText.setTextColor(Color.RED);//just to highlight that this is an error
                 errorText.setText("Select or add below");//changes the selected item text to this

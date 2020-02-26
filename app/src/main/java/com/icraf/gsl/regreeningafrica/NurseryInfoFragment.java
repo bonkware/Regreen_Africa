@@ -40,7 +40,7 @@ public class NurseryInfoFragment extends Fragment {
                 // Toast.makeText(getActivity(), sp1, Toast.LENGTH_SHORT).show();
                 if(sp1.contentEquals("Kenya")) {
                     List<String> list = new ArrayList<String>();
-                    list.add("Select County");
+                    //list.add("Select County");
                     list.add("Marsabit");
                     list.add("Samburu");
                     list.add("Isiolo");
@@ -61,7 +61,7 @@ public class NurseryInfoFragment extends Fragment {
                 }
                 if(sp1.contentEquals("Ethiopia")) {
                     List<String> list = new ArrayList<String>();
-                    list.add("Select Region");
+                    //list.add("Select Region");
                     list.add("SNNPR");
                     list.add("Oromia");
                     list.add("Amharaa");
@@ -74,7 +74,7 @@ public class NurseryInfoFragment extends Fragment {
                 }
                 if(sp1.contentEquals("Rwanda")) {
                     List<String> list = new ArrayList<String>();
-                    list.add("Select Region");
+                    //list.add("Select Region");
                     list.add("Eastern");
                     ArrayAdapter<String> dataAdapter3 = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
@@ -84,7 +84,7 @@ public class NurseryInfoFragment extends Fragment {
                 }
                 if(sp1.contentEquals("Somalia")) {
                     List<String> list = new ArrayList<String>();
-                    list.add("Select State");
+                    //list.add("Select State");
                     list.add("Somaliland");
                     list.add("Puntland");
                     ArrayAdapter<String> dataAdapter4 = new ArrayAdapter<String>(getActivity(),
@@ -95,7 +95,7 @@ public class NurseryInfoFragment extends Fragment {
                 }
                 if(sp1.contentEquals("Niger")) {
                     List<String> list = new ArrayList<String>();
-                    list.add("Select Regions");
+                    //list.add("Select Regions");
                     list.add("Tillabéri");
                     ArrayAdapter<String> dataAdapter5 = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
@@ -105,7 +105,7 @@ public class NurseryInfoFragment extends Fragment {
                 }
                 if(sp1.contentEquals("Ghana")) {
                     List<String> list = new ArrayList<String>();
-                    list.add("Select Regions");
+                    //list.add("Select Regions");
                     list.add("Upper East");
                     list.add("Northern");
                     ArrayAdapter<String> dataAdapter6 = new ArrayAdapter<String>(getActivity(),
@@ -116,7 +116,7 @@ public class NurseryInfoFragment extends Fragment {
                 }
                 if(sp1.contentEquals("Senegal")) {
                     List<String> list = new ArrayList<String>();
-                    list.add("Select Regions");
+                    //list.add("Select Regions");
                     list.add("Kaffrine");
                     list.add("Kaolack");
                     list.add("Fatick");
@@ -128,7 +128,7 @@ public class NurseryInfoFragment extends Fragment {
                 }
                 if(sp1.contentEquals("Mali")) {
                     List<String> list = new ArrayList<String>();
-                    list.add("Select Regions");
+                    //list.add("Select Regions");
                     list.add("Sikasso");
                     list.add("Segou");
                     ArrayAdapter<String> dataAdapter8 = new ArrayAdapter<String>(getActivity(),
@@ -155,7 +155,7 @@ public class NurseryInfoFragment extends Fragment {
                 //Kenya starts
                 if(sp2.contentEquals("Marsabit")) {
                     List<String> list = new ArrayList<String>();
-                    list.add("Select Sub-counties");
+                    //list.add("Select Sub-counties");
                     list.add("Laisamis");
                     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
@@ -165,7 +165,7 @@ public class NurseryInfoFragment extends Fragment {
                 }
                 if(sp2.contentEquals("Samburu")) {
                     List<String> list = new ArrayList<String>();
-                    list.add("Select Sub-counties");
+                    //list.add("Select Sub-counties");
                     list.add("Samburu North");
                     list.add("Samburu West");
                     list.add("Samburu East");
@@ -177,7 +177,7 @@ public class NurseryInfoFragment extends Fragment {
                 }//
                 if(sp2.contentEquals("Isiolo")) {
                     List<String> list = new ArrayList<String>();
-                    list.add("Select Sub-counties");
+                    //list.add("Select Sub-counties");
                     list.add("Isiolo");
                     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
@@ -187,7 +187,7 @@ public class NurseryInfoFragment extends Fragment {
                 }
                 if(sp2.contentEquals("Laikipia")) {
                     List<String> list = new ArrayList<String>();
-                    list.add("Select Sub-counties");
+                    //list.add("Select Sub-counties");
                     list.add("Laikipia North");
                     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
@@ -197,7 +197,7 @@ public class NurseryInfoFragment extends Fragment {
                 }
                 if(sp2.contentEquals("Baringo")) {
                     List<String> list = new ArrayList<String>();
-                    list.add("Select Sub-counties");
+                    //list.add("Select Sub-counties");
                     list.add("Mogotio");
                     list.add("Baringo South");
                     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
@@ -208,7 +208,7 @@ public class NurseryInfoFragment extends Fragment {
                 }
                 if(sp2.contentEquals("Marakwet")) {
                     List<String> list = new ArrayList<String>();
-                    list.add("Select Sub-counties");
+                    //list.add("Select Sub-counties");
                     list.add("Keiyo South");
                     list.add("Keiyo North");
                     list.add("Marakwet West");
@@ -221,7 +221,7 @@ public class NurseryInfoFragment extends Fragment {
                 }
                 if(sp2.contentEquals("Nakuru")) {
                     List<String> list = new ArrayList<String>();
-                    list.add("Select Sub-counties");
+                    //list.add("Select Sub-counties");
                     list.add("Rongai");
                     list.add("Gilgil");
                     list.add("Naivasha");
@@ -233,7 +233,7 @@ public class NurseryInfoFragment extends Fragment {
                 }
                 if(sp2.contentEquals("Homa Bay")) {
                     List<String> list = new ArrayList<String>();
-                    list.add("Select Sub-counties");
+                    //list.add("Select Sub-counties");
                     list.add("Suba North");
                     list.add("Suba South");
                     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
@@ -244,7 +244,7 @@ public class NurseryInfoFragment extends Fragment {
                 }
                 if(sp2.contentEquals("Migori")) {
                     List<String> list = new ArrayList<String>();
-                    list.add("Select Sub-counties");
+                    //list.add("Select Sub-counties");
                     list.add("Nyatike");
                     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
@@ -254,7 +254,7 @@ public class NurseryInfoFragment extends Fragment {
                 }
                 if(sp2.contentEquals("Machakos")) {
                     List<String> list = new ArrayList<String>();
-                    list.add("Select Sub-counties");
+                    //list.add("Select Sub-counties");
                     list.add("Mwala");
                     list.add("Yatta");
                     list.add("Masinga");
@@ -277,7 +277,7 @@ public class NurseryInfoFragment extends Fragment {
                 }
                 if(sp2.contentEquals("Makueni")) {
                     List<String> list = new ArrayList<String>();
-                    list.add("Select Sub-counties");
+                    //list.add("Select Sub-counties");
                     list.add("Mbooni East");
                     list.add("Kibwezi East");
                     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
@@ -289,7 +289,7 @@ public class NurseryInfoFragment extends Fragment {
                 //ethiopia starts
                 if(sp2.contentEquals("SNNPR")) {
                     List<String> list = new ArrayList<String>();
-                    list.add("Select Woredas");
+                    //list.add("Select Woredas");
                     list.add("Hulla");
                     list.add("Shashogo");
                     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
@@ -301,7 +301,7 @@ public class NurseryInfoFragment extends Fragment {
 
                 if(sp2.contentEquals("Oromia")) {
                     List<String> list = new ArrayList<String>();
-                    list.add("Select Woredas");
+                    //list.add("Select Woredas");
                     list.add("Arsi Negele");
                     list.add("Ziway Dugda");
                     list.add("Heban Arsi");
@@ -318,7 +318,7 @@ public class NurseryInfoFragment extends Fragment {
 
                 if(sp2.contentEquals("Amhara")) {
                     List<String> list = new ArrayList<String>();
-                    list.add("Select Woredas");
+                    //list.add("Select Woredas");
                     list.add("Ambasel");
                     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
@@ -329,7 +329,7 @@ public class NurseryInfoFragment extends Fragment {
 
                 if(sp2.contentEquals("Tigray")) {
                     List<String> list = new ArrayList<String>();
-                    list.add("Select Woredas");
+                    //list.add("Select Woredas");
                     list.add("Saharti Samre");
                     list.add("Degua Temben");
                     list.add("Emba'alage");
@@ -352,7 +352,7 @@ public class NurseryInfoFragment extends Fragment {
                 //Rwanda starts
                 if(sp2.contentEquals("Eastern")) {
                     List<String> list = new ArrayList<String>();
-                    list.add("Select Districts");
+                    //list.add("Select Districts");
                     list.add("Nyagatare");
                     list.add("Gatsibo");
                     list.add("Kayonza");
@@ -366,7 +366,7 @@ public class NurseryInfoFragment extends Fragment {
                 //somalia starts
                 if(sp2.contentEquals("Somaliland")) {
                     List<String> list = new ArrayList<String>();
-                    list.add("Select Regions");
+                    //list.add("Select Regions");
                     list.add("Owdeyne/Toghdeer");
                     list.add("Awdal");
                     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
@@ -377,7 +377,7 @@ public class NurseryInfoFragment extends Fragment {
                 }
                 if(sp2.contentEquals("Puntland")) {
                     List<String> list = new ArrayList<String>();
-                    list.add("Select Regions");
+                    //list.add("Select Regions");
                     list.add("Sanaag");
                     list.add("Bari");
                     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
@@ -389,7 +389,7 @@ public class NurseryInfoFragment extends Fragment {
                 //Niger starts
                 if(sp2.contentEquals("Tillabéri")) {
                     List<String> list = new ArrayList<String>();
-                    list.add("Select Communes");
+                    //list.add("Select Communes");
                     list.add("Ouallam");
                     list.add("Simiri");
                     list.add("Hamdallaye");
@@ -402,7 +402,7 @@ public class NurseryInfoFragment extends Fragment {
                 //Ghana starts
                 if(sp2.contentEquals("Upper East")) {
                     List<String> list = new ArrayList<String>();
-                    list.add("Select Districts");
+                    //list.add("Select Districts");
                     list.add("Bwaku West");
                     list.add("Garu Tempane");
                     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
@@ -413,7 +413,7 @@ public class NurseryInfoFragment extends Fragment {
                 }
                 if(sp2.contentEquals("Northern")) {
                     List<String> list = new ArrayList<String>();
-                    list.add("Select Districts");
+                    //list.add("Select Districts");
                     list.add("Mion");
                     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
@@ -424,7 +424,7 @@ public class NurseryInfoFragment extends Fragment {
                 //Senegal starts
                 if(sp2.contentEquals("Kaffrine")) {
                     List<String> list = new ArrayList<String>();
-                    list.add("Select ");
+                    //list.add("Select ");
                     list.add("Boulel");
                     list.add("Gniby");
                     list.add("Kahi");
@@ -450,7 +450,7 @@ public class NurseryInfoFragment extends Fragment {
                 }
                 if(sp2.contentEquals("Kaolack")) {
                     List<String> list = new ArrayList<String>();
-                    list.add("Select");
+                    //list.add("Select");
                     list.add("Keur Soce");
                     list.add("Ndiaffate");
                     list.add("Thiaré");
@@ -470,7 +470,7 @@ public class NurseryInfoFragment extends Fragment {
                 }//
                 if(sp2.contentEquals("Fatick")) {
                     List<String> list = new ArrayList<String>();
-                    list.add("Select");
+                    //list.add("Select");
                     list.add("Diaoule");
                     list.add("Mbelacadiao");
                     list.add("Ndiob");
@@ -497,7 +497,7 @@ public class NurseryInfoFragment extends Fragment {
                 //Mali starts
                 if(sp2.contentEquals("Sikasso")) {
                     List<String> list = new ArrayList<String>();
-                    list.add("Select Cercles");
+                    //list.add("Select Cercles");
                     list.add("Koutiala");
                     list.add("Yorosso");
                     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
@@ -508,7 +508,7 @@ public class NurseryInfoFragment extends Fragment {
                 }
                 if(sp2.contentEquals("Segou")) {
                     List<String> list = new ArrayList<String>();
-                    list.add("Select Cercles");
+                    //list.add("Select Cercles");
                     list.add("Tomininian");
                     list.add("Cercle of San");
                     ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),

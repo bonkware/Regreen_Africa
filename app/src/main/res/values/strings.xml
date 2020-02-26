@@ -28,6 +28,12 @@
         <item>Cape verde</item>
         <item>Ivory Coast</item>-->
     </string-array>
+    <string-array name="county">
+    <item>Select Country first</item>
+    </string-array>
+    <string-array name="district">
+        <item>Select County first</item>
+    </string-array>
     <string-array name="landsize">
         <item>Select Unit</item>
         <item>Hectares</item>

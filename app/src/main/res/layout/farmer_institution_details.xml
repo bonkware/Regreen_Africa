@@ -92,6 +92,7 @@
                 android:layout_marginLeft="8dip"
                 android:layout_marginRight="8dip"
                 android:layout_marginTop="10dip"
+                android:entries="@array/county"
                 android:background="@android:drawable/btn_dropdown"
                 />
             <!-- for new county -->
@@ -123,6 +124,7 @@
                 android:layout_marginLeft="8dip"
                 android:layout_marginRight="8dip"
                 android:layout_marginTop="10dip"
+                android:entries="@array/district"
                 android:background="@android:drawable/btn_dropdown"
                 />
             <!-- for new country -->
