@@ -140,6 +140,11 @@ public class FmnrLandSizePolygonFragment extends Fragment {
             public void onClick(View v)
             {
                 setLocation();//get the location
+                if(v==updategps) {
+                    save.setEnabled(true);//enable the save button
+                    //updategps.setEnabled(false);
+                    //save.setBackgroundColor(Color.parseColor("#966648"));//change color of button
+                }
             }
         });
         //keep saving the locations
@@ -171,8 +176,12 @@ public class FmnrLandSizePolygonFragment extends Fragment {
                     Toast.makeText(FmnrLandSizePolygonFragment.this.getActivity(),"Point "+clickcount+" saved", Toast.LENGTH_LONG).show();
                 }*/
                 //show update button
-                //updategps.setVisibility(View.VISIBLE);//show update button after save.
-                //save.setVisibility(View.GONE);//hide save button to update location
+                    //updategps.setVisibility(View.VISIBLE);//show update button after save.
+                if(v==save) {
+                    updategps.setEnabled(true);//enable the update button
+                    save.setEnabled(false);
+                    //updategps.setBackgroundColor(Color.parseColor("#966648"));//change color of button
+                }
 
             }
         });

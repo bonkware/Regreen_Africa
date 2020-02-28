@@ -64,7 +64,7 @@ public class NurseryInfoFragment extends Fragment {
                     //list.add("Select Region");
                     list.add("SNNPR");
                     list.add("Oromia");
-                    list.add("Amharaa");
+                    list.add("Amhara");
                     list.add("Tigray");
                     ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
