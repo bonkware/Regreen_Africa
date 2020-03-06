@@ -3,5 +3,5 @@
     <item
         android:id="@+id/phone"
         android:title="@string/settings"
-        />
+        android:visible="false" />
 </menu>

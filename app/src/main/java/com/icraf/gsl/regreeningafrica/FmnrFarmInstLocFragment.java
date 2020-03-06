@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -32,6 +33,13 @@ public class FmnrFarmInstLocFragment extends Fragment {
 
         dbAccess = new DbAccess(this.getActivity());
         dbAccess.open();
+        //validate check boxes
+        final CheckBox owner = (CheckBox) view.findViewById(R.id.own);
+        final CheckBox community = (CheckBox) view.findViewById(R.id.comm_land);
+        final CheckBox govt = (CheckBox) view.findViewById(R.id.govt_land);
+        final CheckBox mchurch_mosque = (CheckBox) view.findViewById(R.id.mosque_church);
+        final CheckBox schools = (CheckBox) view.findViewById(R.id.schools);
+        final CheckBox other = (CheckBox) view.findViewById(R.id.others);
 
         //proceed to plot information
         Button button_next = (Button) view.findViewById(R.id.tospeciesnumber);
@@ -40,12 +48,18 @@ public class FmnrFarmInstLocFragment extends Fragment {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.tospeciesnumber:
-                        saveFmnrFarmerInst();//save inputs
-                        dbAccess.insertFmnrFarmerInst();//insert details to db
-                        g.setMultiplot(false);
-                        Intent intent = new Intent(getActivity(), FmnrPlotMainActivity.class);
-                        startActivity(intent);
-                        getActivity().overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
+                        if(owner.isChecked() || community.isChecked() || govt.isChecked() || mchurch_mosque.isChecked() || schools.isChecked() || other.isChecked()){
+                            //do some validation
+                            saveFmnrFarmerInst();//save inputs
+                            dbAccess.insertFmnrFarmerInst();//insert details to db
+                            g.setMultiplot(false);
+                            Intent intent = new Intent(getActivity(), FmnrPlotMainActivity.class);
+                            startActivity(intent);
+                            getActivity().overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
+                        }
+                        else{
+                            Toast.makeText(FmnrFarmInstLocFragment.this.getActivity(),"Please select land ownership", Toast.LENGTH_SHORT).show();
+                        }
                         //Toast.makeText(SelectSurvey.this.getActivity(),"Saved",Toast.LENGTH_SHORT).show();
                         break;
                 }
