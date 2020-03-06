@@ -110,7 +110,7 @@
                 android:id="@+id/r1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="[RCD -> Root collar diameter]"
+                android:text="[RCC -> Root collar Circumference]"
                 android:textSize="@dimen/textsize"
                 android:padding="10dp"
                 android:visibility="gone"
