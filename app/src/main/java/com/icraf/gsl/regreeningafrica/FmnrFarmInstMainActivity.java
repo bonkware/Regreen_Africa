@@ -106,27 +106,30 @@ public class FmnrFarmInstMainActivity extends AppCompatActivity {
                 TextView errorText = (TextView) country.getSelectedView();
                 errorText.setError("");
                 errorText.setTextColor(Color.RED);//just to highlight that this is an error
-                errorText.setText("Select or add below");//changes the selected item text to this
+                errorText.setText("Select or add new");//changes the selected item text to this
+                c.setError("Enter Country name");
             }
         }
-        if (county.getSelectedItem().toString().trim().equals("Select Country first")) {//validate the spinner not
+        if (county.getSelectedItem().toString().trim().equals("Select")) {//validate the spinner not
             if (ct.getText().toString().trim().length() == 0) {
                 fail = true;
                 ct.requestFocus();
                 TextView errorText = (TextView) county.getSelectedView();
                 errorText.setError("");
                 errorText.setTextColor(Color.RED);//just to highlight that this is an error
-                errorText.setText("Select or add below");//changes the selected item text to this
+                errorText.setText("Select or add new");//changes the selected item text to this
+                ct.setError("Enter County name");
             }
         }
-        if (district.getSelectedItem().toString().trim().equals("Select County first")) {//validate the spinner not
-            if (ct.getText().toString().trim().length() == 0) {
+        if (district.getSelectedItem().toString().trim().equals("Select")) {//validate the spinner not
+            if (d.getText().toString().trim().length() == 0) {
                 fail = true;
                 d.requestFocus();
                 TextView errorText = (TextView) district.getSelectedView();
                 errorText.setError("");
                 errorText.setTextColor(Color.RED);//just to highlight that this is an error
-                errorText.setText("Select or add below");//changes the selected item text to this
+                errorText.setText("Select or add new");//changes the selected item text to this
+                d.setError("Enter district name");
             }
         }
         if (!fail) {
