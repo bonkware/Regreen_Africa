@@ -19,7 +19,7 @@
                 android:id="@+id/text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Farmer/Group/institution details"
+                android:text="Farmer/Group/Institution details"
                 android:layout_gravity="center"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
