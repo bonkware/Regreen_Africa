@@ -23,6 +23,7 @@
         android:icon="@mipmap/ic_regreeningafrica_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Splash">
             <intent-filter>

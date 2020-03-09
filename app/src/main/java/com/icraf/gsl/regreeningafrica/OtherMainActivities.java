@@ -1212,7 +1212,7 @@ public class OtherMainActivities extends AppCompatActivity {
                         //get error response
                     }, new Response.ErrorListener() {
                         @Override
-                        public void onErrorResponse(VolleyError error) {
+                            public void onErrorResponse(VolleyError error) {
                             //error responses if failed to connect
                             if (error instanceof NetworkError) {
                                 Toast.makeText(OtherMainActivities.this,"Cannot connect to Internet...Please check your connection!",Toast.LENGTH_SHORT).show();
