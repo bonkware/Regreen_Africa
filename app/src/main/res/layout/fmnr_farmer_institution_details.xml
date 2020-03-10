@@ -43,19 +43,6 @@
                 android:textSize="@dimen/add_edit_textsize">
             </EditText>
 
-            <Button
-                android:id="@+id/countryselect"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_margin="1dp"
-                android:padding="3dp"
-                android:visibility="gone"
-                android:layout_gravity="right"
-                android:textAllCaps="false"
-                android:background="@drawable/index_buttons"
-                android:textColor="#fff"
-                android:text="Select Country"/>
-
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -72,32 +59,29 @@
                 android:layout_marginLeft="8dip"
                 android:layout_marginRight="8dip"
                 android:layout_marginTop="10dip"
-                android:background="@android:drawable/btn_dropdown"
-                android:entries="@array/countries" />
-
-            <!-- for new country -->
-            <Button
-                android:id="@+id/countryadd"
+                android:background="@android:drawable/btn_dropdown"/>
+            <RelativeLayout
+                android:id="@+id/c"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_margin="1dp"
-                android:layout_gravity="right"
-                android:textAllCaps="false"
-                android:background="@drawable/index_buttons"
-                android:textColor="#fff"
-                android:text="Add Country"/>
-            <EditText
-                android:id="@+id/country"
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/text1"
-                android:hint="Add a new Country name"
-                android:padding="@dimen/view_padding"
-                android:visibility="gone"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_marginTop="5dp"
-                android:textSize="15sp"/>
+                android:paddingTop="10dp">
+                <EditText
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Add a new country name to the list above and select it"
+                    android:textSize="13sp"
+                    android:id="@+id/editText1"
+                    android:backgroundTint="#008000"
+                    android:paddingTop="10dp" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add"
+                    android:id="@+id/button1"
+                    android:layout_alignBottom="@+id/editText1"
+                    android:layout_toRightOf="@+id/editText1"
+                    android:layout_toEndOf="@+id/editText1" />
+            </RelativeLayout>
 
             <!-- Select Label -->
 
@@ -116,22 +100,30 @@
                  android:layout_marginLeft="8dip"
                  android:layout_marginRight="8dip"
                  android:layout_marginTop="10dip"
-                 android:entries="@array/county"
                  android:background="@android:drawable/btn_dropdown"
                  />
-            <!-- for new county -->
-            <EditText
-                android:id="@+id/county"
-                android:layout_width="match_parent"
+            <RelativeLayout
+                android:id="@+id/ct"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/text1"
-                android:hint="Add a new County"
-                android:padding="@dimen/view_padding"
-                android:visibility="gone"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_marginTop="5dp"
-                android:textSize="15sp"/>
+                android:paddingTop="10dp">
+                <EditText
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Add a new county name to the list above and select it"
+                    android:textSize="13sp"
+                    android:id="@+id/editText2"
+                    android:backgroundTint="#008000"
+                    android:paddingTop="10dp" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add"
+                    android:id="@+id/button2"
+                    android:layout_alignBottom="@+id/editText2"
+                    android:layout_toRightOf="@+id/editText2"
+                    android:layout_toEndOf="@+id/editText2" />
+            </RelativeLayout>
 
             <!-- Select Label -->
             <TextView
@@ -149,22 +141,30 @@
                 android:layout_marginLeft="8dip"
                 android:layout_marginRight="8dip"
                 android:layout_marginTop="10dip"
-                android:entries="@array/district"
                 android:background="@android:drawable/btn_dropdown"
                 />
-            <!-- for new country -->
-            <EditText
-                android:id="@+id/district"
-                android:layout_width="match_parent"
+            <RelativeLayout
+                android:id="@+id/d"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/text1"
-                android:hint="Add a new district name"
-                android:textSize="15sp"
-                android:padding="@dimen/view_padding"
-                android:visibility="gone"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_marginTop="5dp"/>
+                android:paddingTop="10dp">
+                <EditText
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Add a new district name to the list above and select it"
+                    android:textSize="13sp"
+                    android:id="@+id/editText3"
+                    android:backgroundTint="#008000"
+                    android:paddingTop="10dp" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add"
+                    android:id="@+id/button3"
+                    android:layout_alignBottom="@+id/editText3"
+                    android:layout_toRightOf="@+id/editText3"
+                    android:layout_toEndOf="@+id/editText3" />
+            </RelativeLayout>
         </LinearLayout>
     </ScrollView>
 

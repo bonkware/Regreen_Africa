@@ -99,37 +99,37 @@ public class TPFarmInstiMainActivity extends AppCompatActivity {
             fi.setError("Enter farmer/institution");
         }
         if (country.getSelectedItem().toString().trim().equals("Select Country first")) {//validate the spinner not
-            if (c.getText().toString().trim().length() == 0) {
+            //if (c.getText().toString().trim().length() == 0) {
                 fail = true;
-                c.requestFocus();
+                country.requestFocus();
                 TextView errorText = (TextView) country.getSelectedView();
                 errorText.setError("");
                 errorText.setTextColor(Color.RED);//just to highlight that this is an error
                 errorText.setText("Select or add new");//changes the selected item text to this
-                c.setError("Enter Country name");
-            }
+                //c.setError("Enter Country name");
+            //}
         }
         if (county.getSelectedItem().toString().trim().equals("Select")) {//validate the spinner not
-            if (ct.getText().toString().trim().length() == 0) {
+            //if (ct.getText().toString().trim().length() == 0) {
                 fail = true;
-                ct.requestFocus();
+                county.requestFocus();
                 TextView errorText = (TextView) county.getSelectedView();
                 errorText.setError("");
                 errorText.setTextColor(Color.RED);//just to highlight that this is an error
                 errorText.setText("Select or add new");//changes the selected item text to this
-                ct.setError("Enter County name");
-            }
+                //ct.setError("Enter County name");
+            //}
         }
         if (district.getSelectedItem().toString().trim().equals("Select")) {//validate the spinner not
-            if (d.getText().toString().trim().length() == 0) {
+            //if (d.getText().toString().trim().length() == 0) {
                 fail = true;
-                d.requestFocus();
+                district.requestFocus();
                 TextView errorText = (TextView) district.getSelectedView();
                 errorText.setError("");
                 errorText.setTextColor(Color.RED);//just to highlight that this is an error
                 errorText.setText("Select or add new");//changes the selected item text to this
-                d.setError("Enter district name");
-            }
+                //d.setError("Enter district name");
+            //}
         }
         if (!fail) {
             viewPager.setCurrentItem(2);

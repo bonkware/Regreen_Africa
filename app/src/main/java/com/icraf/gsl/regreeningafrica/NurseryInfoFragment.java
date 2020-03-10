@@ -11,8 +11,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -22,6 +24,44 @@ import java.util.List;
 
 public class NurseryInfoFragment extends Fragment {
     Spinner s1,s2,s3;
+    //add items to spinner
+    Spinner SPINNER;
+    Button ADD;
+    EditText EDITTEXT;
+    String[] spinnerItems = new String[]{
+            "Select Country first",
+            "Kenya",
+            "Ethiopia",
+            "Rwanda",
+            "Somalia",
+            "Niger",
+            "Ghana",
+            "Senegal",
+            "Mali"
+    };
+    String GETTEXT;
+    List<String> stringlist;
+    ArrayAdapter<String> arrayadapter;//end of spinner items
+    //add county items to spinner
+    Spinner SPINNER2;
+    Button ADD2;
+    EditText EDITTEXT2;
+    String[] spinnerItems2 = new String[]{
+            "Select Country first"
+    };
+    String GETTEXT2;
+    List<String> stringlist2;
+    ArrayAdapter<String> arrayadapter2;//end of spinner items
+    //add district items to spinner
+    Spinner SPINNER3;
+    Button ADD3;
+    EditText EDITTEXT3;
+    String[] spinnerItems3 = new String[]{
+            "Select County first"
+    };
+    String GETTEXT3;
+    List<String> stringlist3;
+    ArrayAdapter<String> arrayadapter3;//end of spinner items
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,6 +69,11 @@ public class NurseryInfoFragment extends Fragment {
         View view = inflater.inflate(R.layout.nursery_info_fragment, container,
                 false);
 
+        //buttons
+        ADD2 = (Button)view.findViewById(R.id.button2);
+        EDITTEXT2 = (EditText)view.findViewById(R.id.editText2);
+        ADD3 = (Button)view.findViewById(R.id.button3);
+        EDITTEXT3 = (EditText)view.findViewById(R.id.editText3);
         //populating the spinner based on the selection of the first spinner
         s1 = (Spinner)view.findViewById(R.id.spinner1);
         s2 = (Spinner)view.findViewById(R.id.spinner2);
@@ -40,7 +85,7 @@ public class NurseryInfoFragment extends Fragment {
                 String sp1= String.valueOf(s1.getSelectedItem());
                 // Toast.makeText(getActivity(), sp1, Toast.LENGTH_SHORT).show();
                 if(sp1.contentEquals("Kenya")) {
-                    List<String> list = new ArrayList<String>();
+                    final List<String> list = new ArrayList<String>();
                     list.add("Select");
                     list.add("Marsabit");
                     list.add("Samburu");
@@ -54,89 +99,177 @@ public class NurseryInfoFragment extends Fragment {
                     list.add("Machakos");
                     list.add("Kitui");
                     list.add("Makueni");
-                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
+                    final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     dataAdapter.notifyDataSetChanged();
                     s2.setAdapter(dataAdapter);
+                    //add item to the list
+                    ADD2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            GETTEXT2 = EDITTEXT2.getText().toString();
+                            list.add(GETTEXT2);
+                            dataAdapter.notifyDataSetChanged();
+                            Toast.makeText(NurseryInfoFragment.this.getActivity(), "County added to the list", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
                 if(sp1.contentEquals("Ethiopia")) {
-                    List<String> list = new ArrayList<String>();
+                    final List<String> list = new ArrayList<String>();
                     list.add("Select");
                     list.add("SNNPR");
                     list.add("Oromia");
                     list.add("Amhara");
                     list.add("Tigray");
-                    ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<String>(getActivity(),
+                    final ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     dataAdapter2.notifyDataSetChanged();
                     s2.setAdapter(dataAdapter2);
+                    //add item to the list
+                    ADD2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            GETTEXT2 = EDITTEXT2.getText().toString();
+                            list.add(GETTEXT2);
+                            dataAdapter2.notifyDataSetChanged();
+                            Toast.makeText(NurseryInfoFragment.this.getActivity(), "County added to the list", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
                 if(sp1.contentEquals("Rwanda")) {
-                    List<String> list = new ArrayList<String>();
-                    list.add("Select");
+                    final List<String> list = new ArrayList<String>();
+                    //list.add("Select Region");
                     list.add("Eastern");
-                    ArrayAdapter<String> dataAdapter3 = new ArrayAdapter<String>(getActivity(),
+                    final ArrayAdapter<String> dataAdapter3 = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     dataAdapter3.notifyDataSetChanged();
                     s2.setAdapter(dataAdapter3);
+                    //add item to the list
+                    ADD2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            GETTEXT2 = EDITTEXT2.getText().toString();
+                            list.add(GETTEXT2);
+                            dataAdapter3.notifyDataSetChanged();
+                            Toast.makeText(NurseryInfoFragment.this.getActivity(), "County added to the list", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
                 if(sp1.contentEquals("Somalia")) {
-                    List<String> list = new ArrayList<String>();
+                    final List<String> list = new ArrayList<String>();
                     list.add("Select");
                     list.add("Somaliland");
                     list.add("Puntland");
-                    ArrayAdapter<String> dataAdapter4 = new ArrayAdapter<String>(getActivity(),
+                    final ArrayAdapter<String> dataAdapter4 = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     dataAdapter4.notifyDataSetChanged();
                     s2.setAdapter(dataAdapter4);
+                    //add item to the list
+                    ADD2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            GETTEXT2 = EDITTEXT2.getText().toString();
+                            list.add(GETTEXT2);
+                            dataAdapter4.notifyDataSetChanged();
+                            Toast.makeText(NurseryInfoFragment.this.getActivity(), "County added to the list", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
                 if(sp1.contentEquals("Niger")) {
-                    List<String> list = new ArrayList<String>();
+                    final  List<String> list = new ArrayList<String>();
                     list.add("Select");
                     list.add("Tillabéri");
-                    ArrayAdapter<String> dataAdapter5 = new ArrayAdapter<String>(getActivity(),
+                    final ArrayAdapter<String> dataAdapter5 = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter5.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     dataAdapter5.notifyDataSetChanged();
                     s2.setAdapter(dataAdapter5);
+                    //add item to the list
+                    ADD2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            GETTEXT2 = EDITTEXT2.getText().toString();
+                            list.add(GETTEXT2);
+                            dataAdapter5.notifyDataSetChanged();
+                            Toast.makeText(NurseryInfoFragment.this.getActivity(), "County added to the list", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
                 if(sp1.contentEquals("Ghana")) {
-                    List<String> list = new ArrayList<String>();
+                    final List<String> list = new ArrayList<String>();
                     list.add("Select");
                     list.add("Upper East");
                     list.add("Northern");
-                    ArrayAdapter<String> dataAdapter6 = new ArrayAdapter<String>(getActivity(),
+                    final ArrayAdapter<String> dataAdapter6 = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter6.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     dataAdapter6.notifyDataSetChanged();
                     s2.setAdapter(dataAdapter6);
+                    //add item to the list
+                    ADD2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            GETTEXT2 = EDITTEXT2.getText().toString();
+                            list.add(GETTEXT2);
+                            dataAdapter6.notifyDataSetChanged();
+                            Toast.makeText(NurseryInfoFragment.this.getActivity(), "County added to the list", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
                 if(sp1.contentEquals("Senegal")) {
-                    List<String> list = new ArrayList<String>();
+                    final List<String> list = new ArrayList<String>();
                     list.add("Select");
                     list.add("Kaffrine");
                     list.add("Kaolack");
                     list.add("Fatick");
-                    ArrayAdapter<String> dataAdapter7 = new ArrayAdapter<String>(getActivity(),
+                    final ArrayAdapter<String> dataAdapter7 = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter7.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     dataAdapter7.notifyDataSetChanged();
                     s2.setAdapter(dataAdapter7);
+                    //add item to the list
+                    ADD2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            GETTEXT2 = EDITTEXT2.getText().toString();
+                            list.add(GETTEXT2);
+                            dataAdapter7.notifyDataSetChanged();
+                            Toast.makeText(NurseryInfoFragment.this.getActivity(), "County added to the list", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
                 if(sp1.contentEquals("Mali")) {
-                    List<String> list = new ArrayList<String>();
+                    final List<String> list = new ArrayList<String>();
                     list.add("Select");
                     list.add("Sikasso");
                     list.add("Segou");
-                    ArrayAdapter<String> dataAdapter8 = new ArrayAdapter<String>(getActivity(),
+                    final ArrayAdapter<String> dataAdapter8 = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter8.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     dataAdapter8.notifyDataSetChanged();
                     s2.setAdapter(dataAdapter8);
+                    //add item to the list
+                    ADD2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            GETTEXT2 = EDITTEXT2.getText().toString();
+                            list.add(GETTEXT2);
+                            dataAdapter8.notifyDataSetChanged();
+                            Toast.makeText(NurseryInfoFragment.this.getActivity(), "County added to the list", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
 
             }
@@ -155,153 +288,296 @@ public class NurseryInfoFragment extends Fragment {
                 // Toast.makeText(getActivity(), sp2, Toast.LENGTH_SHORT).show();
                 //Kenya starts
                 if(sp2.contentEquals("Marsabit")) {
-                    List<String> list = new ArrayList<String>();
+                    final List<String> list = new ArrayList<String>();
                     list.add("Select");
                     list.add("Laisamis");
-                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
+                    final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     dataAdapter.notifyDataSetChanged();
                     s3.setAdapter(dataAdapter);
+                    //add item to the list
+                    ADD3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            GETTEXT3 = EDITTEXT3.getText().toString();
+                            list.add(GETTEXT3);
+                            dataAdapter.notifyDataSetChanged();
+                            Toast.makeText(NurseryInfoFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
                 if(sp2.contentEquals("Samburu")) {
-                    List<String> list = new ArrayList<String>();
+                    final List<String> list = new ArrayList<String>();
                     list.add("Select");
                     list.add("Samburu North");
                     list.add("Samburu West");
                     list.add("Samburu East");
-                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
+                    final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     dataAdapter.notifyDataSetChanged();
                     s3.setAdapter(dataAdapter);
+                    //add item to the list
+                    ADD3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            GETTEXT3 = EDITTEXT3.getText().toString();
+                            list.add(GETTEXT3);
+                            dataAdapter.notifyDataSetChanged();
+                            Toast.makeText(NurseryInfoFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }//
                 if(sp2.contentEquals("Isiolo")) {
-                    List<String> list = new ArrayList<String>();
+                    final List<String> list = new ArrayList<String>();
                     list.add("Select");
                     list.add("Isiolo");
-                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
+                    final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     dataAdapter.notifyDataSetChanged();
                     s3.setAdapter(dataAdapter);
+                    //add item to the list
+                    ADD3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            GETTEXT3 = EDITTEXT3.getText().toString();
+                            list.add(GETTEXT3);
+                            dataAdapter.notifyDataSetChanged();
+                            Toast.makeText(NurseryInfoFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
                 if(sp2.contentEquals("Laikipia")) {
-                    List<String> list = new ArrayList<String>();
+                    final List<String> list = new ArrayList<String>();
                     list.add("Select");
                     list.add("Laikipia North");
-                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
+                    final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     dataAdapter.notifyDataSetChanged();
                     s3.setAdapter(dataAdapter);
+                    //add item to the list
+                    ADD3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            GETTEXT3 = EDITTEXT3.getText().toString();
+                            list.add(GETTEXT3);
+                            dataAdapter.notifyDataSetChanged();
+                            Toast.makeText(NurseryInfoFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
                 if(sp2.contentEquals("Baringo")) {
-                    List<String> list = new ArrayList<String>();
+                    final List<String> list = new ArrayList<String>();
                     list.add("Select");
                     list.add("Mogotio");
                     list.add("Baringo South");
-                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
+                    final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     dataAdapter.notifyDataSetChanged();
                     s3.setAdapter(dataAdapter);
+                    //add item to the list
+                    ADD3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            GETTEXT3 = EDITTEXT3.getText().toString();
+                            list.add(GETTEXT3);
+                            dataAdapter.notifyDataSetChanged();
+                            Toast.makeText(NurseryInfoFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
                 if(sp2.contentEquals("Marakwet")) {
-                    List<String> list = new ArrayList<String>();
+                    final List<String> list = new ArrayList<String>();
                     list.add("Select");
                     list.add("Keiyo South");
                     list.add("Keiyo North");
                     list.add("Marakwet West");
                     list.add("Marakwet East");
-                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
+                    final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     dataAdapter.notifyDataSetChanged();
                     s3.setAdapter(dataAdapter);
+                    //add item to the list
+                    ADD3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            GETTEXT3 = EDITTEXT3.getText().toString();
+                            list.add(GETTEXT3);
+                            dataAdapter.notifyDataSetChanged();
+                            Toast.makeText(NurseryInfoFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
                 if(sp2.contentEquals("Nakuru")) {
-                    List<String> list = new ArrayList<String>();
+                    final List<String> list = new ArrayList<String>();
                     list.add("Select");
                     list.add("Rongai");
                     list.add("Gilgil");
                     list.add("Naivasha");
-                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
+                    final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     dataAdapter.notifyDataSetChanged();
                     s3.setAdapter(dataAdapter);
+                    //add item to the list
+                    ADD3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            GETTEXT3 = EDITTEXT3.getText().toString();
+                            list.add(GETTEXT3);
+                            dataAdapter.notifyDataSetChanged();
+                            Toast.makeText(NurseryInfoFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
                 if(sp2.contentEquals("Homa Bay")) {
-                    List<String> list = new ArrayList<String>();
+                    final List<String> list = new ArrayList<String>();
                     list.add("Select");
                     list.add("Suba North");
                     list.add("Suba South");
-                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
+                    final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     dataAdapter.notifyDataSetChanged();
                     s3.setAdapter(dataAdapter);
+                    //add item to the list
+                    ADD3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            GETTEXT3 = EDITTEXT3.getText().toString();
+                            list.add(GETTEXT3);
+                            dataAdapter.notifyDataSetChanged();
+                            Toast.makeText(NurseryInfoFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
                 if(sp2.contentEquals("Migori")) {
-                    List<String> list = new ArrayList<String>();
+                    final List<String> list = new ArrayList<String>();
                     list.add("Select");
                     list.add("Nyatike");
-                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
+                    final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     dataAdapter.notifyDataSetChanged();
                     s3.setAdapter(dataAdapter);
+                    //add item to the list
+                    ADD3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            GETTEXT3 = EDITTEXT3.getText().toString();
+                            list.add(GETTEXT3);
+                            dataAdapter.notifyDataSetChanged();
+                            Toast.makeText(NurseryInfoFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
                 if(sp2.contentEquals("Machakos")) {
-                    List<String> list = new ArrayList<String>();
+                    final List<String> list = new ArrayList<String>();
                     list.add("Select");
                     list.add("Mwala");
                     list.add("Yatta");
                     list.add("Masinga");
-                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
+                    final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     dataAdapter.notifyDataSetChanged();
                     s3.setAdapter(dataAdapter);
+                    //add item to the list
+                    ADD3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            GETTEXT3 = EDITTEXT3.getText().toString();
+                            list.add(GETTEXT3);
+                            dataAdapter.notifyDataSetChanged();
+                            Toast.makeText(NurseryInfoFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
                 if(sp2.contentEquals("Kitui")) {
-                    List<String> list = new ArrayList<String>();
+                    final List<String> list = new ArrayList<String>();
                     list.add("Select");
                     list.add("Mwingi central");
                     list.add("Kitui rural");
-                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
+                    final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     dataAdapter.notifyDataSetChanged();
                     s3.setAdapter(dataAdapter);
+                    //add item to the list
+                    ADD3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            GETTEXT3 = EDITTEXT3.getText().toString();
+                            list.add(GETTEXT3);
+                            dataAdapter.notifyDataSetChanged();
+                            Toast.makeText(NurseryInfoFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
                 if(sp2.contentEquals("Makueni")) {
-                    List<String> list = new ArrayList<String>();
+                    final List<String> list = new ArrayList<String>();
                     list.add("Select");
                     list.add("Mbooni East");
                     list.add("Kibwezi East");
-                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
+                    final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     dataAdapter.notifyDataSetChanged();
                     s3.setAdapter(dataAdapter);
+                    //add item to the list
+                    ADD3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            GETTEXT3 = EDITTEXT3.getText().toString();
+                            list.add(GETTEXT3);
+                            dataAdapter.notifyDataSetChanged();
+                            Toast.makeText(NurseryInfoFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }//Kenya ends
                 //ethiopia starts
                 if(sp2.contentEquals("SNNPR")) {
-                    List<String> list = new ArrayList<String>();
+                    final List<String> list = new ArrayList<String>();
                     list.add("Select");
                     list.add("Hulla");
                     list.add("Shashogo");
-                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
+                    final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     dataAdapter.notifyDataSetChanged();
                     s3.setAdapter(dataAdapter);
+                    //add item to the list
+                    ADD3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            GETTEXT3 = EDITTEXT3.getText().toString();
+                            list.add(GETTEXT3);
+                            dataAdapter.notifyDataSetChanged();
+                            Toast.makeText(NurseryInfoFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
 
                 if(sp2.contentEquals("Oromia")) {
-                    List<String> list = new ArrayList<String>();
+                    final List<String> list = new ArrayList<String>();
                     list.add("Select");
                     list.add("Arsi Negele");
                     list.add("Ziway Dugda");
@@ -310,26 +586,48 @@ public class NurseryInfoFragment extends Fragment {
                     list.add("Sire");
                     list.add("Boset");
                     list.add("Merti");
-                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
+                    final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     dataAdapter.notifyDataSetChanged();
                     s3.setAdapter(dataAdapter);
+                    //add item to the list
+                    ADD3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            GETTEXT3 = EDITTEXT3.getText().toString();
+                            list.add(GETTEXT3);
+                            dataAdapter.notifyDataSetChanged();
+                            Toast.makeText(NurseryInfoFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
 
                 if(sp2.contentEquals("Amhara")) {
-                    List<String> list = new ArrayList<String>();
+                    final List<String> list = new ArrayList<String>();
                     list.add("Select");
                     list.add("Ambasel");
-                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
+                    final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     dataAdapter.notifyDataSetChanged();
                     s3.setAdapter(dataAdapter);
+                    //add item to the list
+                    ADD3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            GETTEXT3 = EDITTEXT3.getText().toString();
+                            list.add(GETTEXT3);
+                            dataAdapter.notifyDataSetChanged();
+                            Toast.makeText(NurseryInfoFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
 
                 if(sp2.contentEquals("Tigray")) {
-                    List<String> list = new ArrayList<String>();
+                    final List<String> list = new ArrayList<String>();
                     list.add("Select");
                     list.add("Saharti Samre");
                     list.add("Degua Temben");
@@ -344,87 +642,164 @@ public class NurseryInfoFragment extends Fragment {
                     list.add("Ganta Afeshum");
                     list.add("Medebay Zana");
                     list.add("Asgede Tsimbila");
-                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
+                    final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     dataAdapter.notifyDataSetChanged();
                     s3.setAdapter(dataAdapter);
+                    //add item to the list
+                    ADD3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            GETTEXT3 = EDITTEXT3.getText().toString();
+                            list.add(GETTEXT3);
+                            dataAdapter.notifyDataSetChanged();
+                            Toast.makeText(NurseryInfoFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }//Ethiopia ends
                 //Rwanda starts
                 if(sp2.contentEquals("Eastern")) {
-                    List<String> list = new ArrayList<String>();
+                    final List<String> list = new ArrayList<String>();
                     list.add("Select");
                     list.add("Nyagatare");
                     list.add("Gatsibo");
                     list.add("Kayonza");
                     list.add("Bugesera");
-                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
+                    final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     dataAdapter.notifyDataSetChanged();
                     s3.setAdapter(dataAdapter);
+                    //add item to the list
+                    ADD3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            GETTEXT3 = EDITTEXT3.getText().toString();
+                            list.add(GETTEXT3);
+                            dataAdapter.notifyDataSetChanged();
+                            Toast.makeText(NurseryInfoFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }//Rwanda ends
                 //somalia starts
                 if(sp2.contentEquals("Somaliland")) {
-                    List<String> list = new ArrayList<String>();
+                    final List<String> list = new ArrayList<String>();
                     list.add("Select");
                     list.add("Owdeyne/Toghdeer");
                     list.add("Awdal");
-                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
+                    final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     dataAdapter.notifyDataSetChanged();
                     s3.setAdapter(dataAdapter);
+                    //add item to the list
+                    ADD3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            GETTEXT3 = EDITTEXT3.getText().toString();
+                            list.add(GETTEXT3);
+                            dataAdapter.notifyDataSetChanged();
+                            Toast.makeText(NurseryInfoFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
                 if(sp2.contentEquals("Puntland")) {
-                    List<String> list = new ArrayList<String>();
+                    final List<String> list = new ArrayList<String>();
                     list.add("Select");
                     list.add("Sanaag");
                     list.add("Bari");
-                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
+                    final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     dataAdapter.notifyDataSetChanged();
                     s3.setAdapter(dataAdapter);
+                    //add item to the list
+                    ADD3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            GETTEXT3 = EDITTEXT3.getText().toString();
+                            list.add(GETTEXT3);
+                            dataAdapter.notifyDataSetChanged();
+                            Toast.makeText(NurseryInfoFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }//somalia ends
                 //Niger starts
                 if(sp2.contentEquals("Tillabéri")) {
-                    List<String> list = new ArrayList<String>();
+                    final List<String> list = new ArrayList<String>();
                     list.add("Select");
                     list.add("Ouallam");
                     list.add("Simiri");
                     list.add("Hamdallaye");
-                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
+                    final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     dataAdapter.notifyDataSetChanged();
                     s3.setAdapter(dataAdapter);
+                    //add item to the list
+                    ADD3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            GETTEXT3 = EDITTEXT3.getText().toString();
+                            list.add(GETTEXT3);
+                            dataAdapter.notifyDataSetChanged();
+                            Toast.makeText(NurseryInfoFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }//Niger ends
                 //Ghana starts
                 if(sp2.contentEquals("Upper East")) {
-                    List<String> list = new ArrayList<String>();
+                    final List<String> list = new ArrayList<String>();
                     list.add("Select");
                     list.add("Bwaku West");
                     list.add("Garu Tempane");
-                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
+                    final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     dataAdapter.notifyDataSetChanged();
                     s3.setAdapter(dataAdapter);
+                    //add item to the list
+                    ADD3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            GETTEXT3 = EDITTEXT3.getText().toString();
+                            list.add(GETTEXT3);
+                            dataAdapter.notifyDataSetChanged();
+                            Toast.makeText(NurseryInfoFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
                 if(sp2.contentEquals("Northern")) {
-                    List<String> list = new ArrayList<String>();
+                    final List<String> list = new ArrayList<String>();
                     list.add("Select");
                     list.add("Mion");
-                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
+                    final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     dataAdapter.notifyDataSetChanged();
                     s3.setAdapter(dataAdapter);
+                    //add item to the list
+                    ADD3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            GETTEXT3 = EDITTEXT3.getText().toString();
+                            list.add(GETTEXT3);
+                            dataAdapter.notifyDataSetChanged();
+                            Toast.makeText(NurseryInfoFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }//Ghana ends
                 //Senegal starts
                 if(sp2.contentEquals("Kaffrine")) {
-                    List<String> list = new ArrayList<String>();
+                    final List<String> list = new ArrayList<String>();
                     list.add("Select");
                     list.add("Boulel");
                     list.add("Gniby");
@@ -443,14 +818,25 @@ public class NurseryInfoFragment extends Fragment {
                     list.add("Darou Minam 2");
                     list.add("Ndiobene Samba Lamo");
                     list.add("Ndioum Ngainth");
-                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
+                    final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     dataAdapter.notifyDataSetChanged();
                     s3.setAdapter(dataAdapter);
+                    //add item to the list
+                    ADD3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            GETTEXT3 = EDITTEXT3.getText().toString();
+                            list.add(GETTEXT3);
+                            dataAdapter.notifyDataSetChanged();
+                            Toast.makeText(NurseryInfoFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
                 if(sp2.contentEquals("Kaolack")) {
-                    List<String> list = new ArrayList<String>();
+                    final List<String> list = new ArrayList<String>();
                     list.add("Select");
                     list.add("Keur Soce");
                     list.add("Ndiaffate");
@@ -463,14 +849,25 @@ public class NurseryInfoFragment extends Fragment {
                     list.add("Dara Mboss");
                     list.add("Ourour");
                     list.add("Gagnick");
-                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
+                    final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     dataAdapter.notifyDataSetChanged();
                     s3.setAdapter(dataAdapter);
+                    //add item to the list
+                    ADD3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            GETTEXT3 = EDITTEXT3.getText().toString();
+                            list.add(GETTEXT3);
+                            dataAdapter.notifyDataSetChanged();
+                            Toast.makeText(NurseryInfoFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }//
                 if(sp2.contentEquals("Fatick")) {
-                    List<String> list = new ArrayList<String>();
+                    final List<String> list = new ArrayList<String>();
                     list.add("Select");
                     list.add("Diaoule");
                     list.add("Mbelacadiao");
@@ -489,34 +886,67 @@ public class NurseryInfoFragment extends Fragment {
                     list.add("Ouadiour");
                     list.add("Patar Lia");
 
-                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
+                    final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     dataAdapter.notifyDataSetChanged();
                     s3.setAdapter(dataAdapter);
+                    //add item to the list
+                    ADD3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            GETTEXT3 = EDITTEXT3.getText().toString();
+                            list.add(GETTEXT3);
+                            dataAdapter.notifyDataSetChanged();
+                            Toast.makeText(NurseryInfoFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }//Senegal ends
                 //Mali starts
                 if(sp2.contentEquals("Sikasso")) {
-                    List<String> list = new ArrayList<String>();
+                    final List<String> list = new ArrayList<String>();
                     list.add("Select");
                     list.add("Koutiala");
                     list.add("Yorosso");
-                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
+                    final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     dataAdapter.notifyDataSetChanged();
                     s3.setAdapter(dataAdapter);
+                    //add item to the list
+                    ADD3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            GETTEXT3 = EDITTEXT3.getText().toString();
+                            list.add(GETTEXT3);
+                            dataAdapter.notifyDataSetChanged();
+                            Toast.makeText(NurseryInfoFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
                 if(sp2.contentEquals("Segou")) {
-                    List<String> list = new ArrayList<String>();
+                    final List<String> list = new ArrayList<String>();
                     list.add("Select");
                     list.add("Tomininian");
                     list.add("Cercle of San");
-                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
+                    final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     dataAdapter.notifyDataSetChanged();
                     s3.setAdapter(dataAdapter);
+                    //add item to the list
+                    ADD3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            GETTEXT3 = EDITTEXT3.getText().toString();
+                            list.add(GETTEXT3);
+                            dataAdapter.notifyDataSetChanged();
+                            Toast.makeText(NurseryInfoFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }//Mali ends
 
             }
@@ -528,37 +958,58 @@ public class NurseryInfoFragment extends Fragment {
         });//end of spinner selection 2
 
         //show add country when only the add button is pressed
-        final Button b1 = (Button) view.findViewById(R.id.countryadd);
-        final Button b2 = (Button) view.findViewById(R.id.countryselect);
-        final EditText text=(EditText) view.findViewById(R.id.country);
-        final EditText text2=(EditText) view.findViewById(R.id.county);
-        final EditText text3=(EditText) view.findViewById(R.id.district);
-        b1.setOnClickListener(new View.OnClickListener() {
+        //spinner add country item
+        SPINNER = (Spinner)view.findViewById(R.id.spinner1);
+        ADD = (Button)view.findViewById(R.id.button1);
+        EDITTEXT = (EditText)view.findViewById(R.id.editText1);
+        stringlist = new ArrayList<>(Arrays.asList(spinnerItems));
+        arrayadapter = new ArrayAdapter<String>(NurseryInfoFragment.this.getActivity(),R.layout.textview,stringlist );
+        arrayadapter.setDropDownViewResource(R.layout.textview);
+        SPINNER.setAdapter(arrayadapter);
+        ADD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //show edittext
-                text.setVisibility(View.VISIBLE);
-                text2.setVisibility(View.VISIBLE);
-                text3.setVisibility(View.VISIBLE);
-                s1.setVisibility(View.GONE);
-                s2.setVisibility(View.GONE);
-                s3.setVisibility(View.GONE);
-                b1.setVisibility(View.GONE);
-                b2.setVisibility(View.VISIBLE);
+                // TODO Auto-generated method stub
+                GETTEXT = EDITTEXT.getText().toString();
+                stringlist.add(GETTEXT);
+                arrayadapter.notifyDataSetChanged();
+                Toast.makeText(NurseryInfoFragment.this.getActivity(), "Country added to list", Toast.LENGTH_LONG).show();
             }
         });
-        b2.setOnClickListener(new View.OnClickListener() {
+        //spinner add county item
+        SPINNER2 = (Spinner)view.findViewById(R.id.spinner2);
+        ADD2 = (Button)view.findViewById(R.id.button2);
+        EDITTEXT2 = (EditText)view.findViewById(R.id.editText2);
+        stringlist2 = new ArrayList<>(Arrays.asList(spinnerItems2));
+        arrayadapter2 = new ArrayAdapter<String>(NurseryInfoFragment.this.getActivity(),R.layout.county,stringlist2 );
+        arrayadapter2.setDropDownViewResource(R.layout.county);
+        SPINNER2.setAdapter(arrayadapter2);
+        ADD2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //show edittext
-                text.setVisibility(View.GONE);
-                text2.setVisibility(View.GONE);
-                text3.setVisibility(View.GONE);
-                s1.setVisibility(View.VISIBLE);
-                s2.setVisibility(View.VISIBLE);
-                s3.setVisibility(View.VISIBLE);
-                b1.setVisibility(View.VISIBLE);
-                b2.setVisibility(View.GONE);
+                // TODO Auto-generated method stub
+                GETTEXT2 = EDITTEXT2.getText().toString();
+                stringlist2.add(GETTEXT2);
+                arrayadapter2.notifyDataSetChanged();
+                Toast.makeText(NurseryInfoFragment.this.getActivity(), "County added to the list", Toast.LENGTH_LONG).show();
+            }
+        });
+        //spinner add district item
+        SPINNER3 = (Spinner)view.findViewById(R.id.spinner3);
+        ADD3 = (Button)view.findViewById(R.id.button3);
+        EDITTEXT3 = (EditText)view.findViewById(R.id.editText3);
+        stringlist3 = new ArrayList<>(Arrays.asList(spinnerItems3));
+        arrayadapter3 = new ArrayAdapter<String>(NurseryInfoFragment.this.getActivity(),R.layout.district,stringlist3 );
+        arrayadapter3.setDropDownViewResource(R.layout.district);
+        SPINNER3.setAdapter(arrayadapter3);
+        ADD3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                GETTEXT3 = EDITTEXT3.getText().toString();
+                stringlist3.add(GETTEXT3);
+                arrayadapter3.notifyDataSetChanged();
+                Toast.makeText(NurseryInfoFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
             }
         });
         return view;

@@ -109,17 +109,17 @@ public class FmnrFarmInstLocFragment extends Fragment {
         if(country != null && country.getSelectedItem() !=null ) {
             g.setcountry(country.getSelectedItem().toString());
         }
-        EditText country_new = (EditText) getActivity().findViewById(R.id.country);//added for the new country
-        g.setcountry(country_new.getText().toString());
+        //EditText country_new = (EditText) getActivity().findViewById(R.id.country);//added for the new country
+        //g.setcountry(country_new.getText().toString());
 
 
         Spinner county_region = (Spinner) getActivity().findViewById(R.id.spinner2);
         //check if spinner is selected
-        if(county_region != null && county_region.getSelectedItem() !=null ) {
+        if(country !=null && county_region.getSelectedItem() !=null ) {
             g.setcounty_region(county_region.getSelectedItem().toString());
         }
-        EditText county_new = (EditText) getActivity().findViewById(R.id.county);//added for new county that is not on the list
-        g.setcounty_region(county_new.getText().toString());
+        //EditText county_new = (EditText) getActivity().findViewById(R.id.county);//added for new county that is not on the list
+        //g.setcounty_region(county_new.getText().toString());
 
         /*EditText district = (EditText) getActivity().findViewById(R.id.district);
         g.setdistricts(district.getText().toString());*/
@@ -129,8 +129,8 @@ public class FmnrFarmInstLocFragment extends Fragment {
             g.setdistricts(district.getSelectedItem().toString());
         }
 
-        EditText district_new = (EditText) getActivity().findViewById(R.id.district);//added for new district option
-        g.setdistricts(district_new.getText().toString());
+        //EditText district_new = (EditText) getActivity().findViewById(R.id.district);//added for new district option
+        //g.setdistricts(district_new.getText().toString());
 
        /* RadioGroup radioGroup = (RadioGroup) getActivity().findViewById(R.id.planting_location);
         //check whether it is checked

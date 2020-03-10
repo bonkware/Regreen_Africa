@@ -64,7 +64,7 @@
                     android:text="date"
                     android:id="@+id/btn_date"
                     android:background="@drawable/edittext_radius"
-                    android:backgroundTint="#008000"
+                    android:textColor="#fff"
                     android:layout_alignBottom="@+id/in_date"
                     android:layout_toRightOf="@+id/in_date"
                     android:layout_toEndOf="@+id/in_date" />
