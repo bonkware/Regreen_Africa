@@ -75,6 +75,8 @@ public class FmnrTreeMeasureMainActivity extends AppCompatActivity {
                 local.requestFocus();
                 local.setError("Enter Scientific or local name");
             }
+            ed.requestFocus();
+            ed.setError("Enter Scientific or local name");
         }
 
         if (!fail) {

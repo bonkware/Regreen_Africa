@@ -61,7 +61,7 @@
                     android:text="Select"
                     android:id="@+id/btn_date"
                     android:background="@drawable/edittext_radius"
-                    android:backgroundTint="#008000"
+                    android:textColor="#fff"
                     android:layout_alignBottom="@+id/fmnr_date"
                     android:layout_toRightOf="@+id/fmnr_date"
                     android:layout_toEndOf="@+id/fmnr_date" />
