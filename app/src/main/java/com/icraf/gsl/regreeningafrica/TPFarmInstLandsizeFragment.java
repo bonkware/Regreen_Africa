@@ -1,6 +1,7 @@
 package com.icraf.gsl.regreeningafrica;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -53,6 +54,9 @@ public class TPFarmInstLandsizeFragment extends Fragment {
         View view = inflater.inflate(R.layout.land_size_regreen, container,
                 false);
 
+        final EditText ed = (EditText) view.findViewById(R.id.landestimate);
+        final Spinner unit = (Spinner) view.findViewById(R.id.units);
+
         dbAccess = new DbAccess(this.getActivity());
         dbAccess.open();
 
@@ -68,15 +72,32 @@ public class TPFarmInstLandsizeFragment extends Fragment {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.tocohort:
-                        saveTPPlotinfo();//save
-                        plotid();//generate plot id for the polygons
-                        dbAccess.insertPlotinfo();//insert details to db
-                        //g.setMultiplot(false);//set it true
-                        //Intent intent = new Intent(getActivity(), TPCohortMainAcivity.class);
-                        Intent intent = new Intent(getActivity(), TPLandSizeMainActivity.class);
-                        startActivity(intent);
-                        getActivity().overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
-                        //Toast.makeText(SelectSurvey.this.getActivity(),"Saved",Toast.LENGTH_SHORT).show();
+                        //validate before going next
+                        boolean fail = false;
+                        if (ed.getText().toString().trim().length() == 0) {
+                            fail = true;
+                            ed.requestFocus();
+                            ed.setError("Enter land estimate");
+                        }
+                        if (unit.getSelectedItem().toString().trim().equals("Select unit")) {//validate the spinner not
+                            fail = true;
+                            unit.requestFocus();
+                            TextView errorText = (TextView) unit.getSelectedView();
+                            errorText.setError("");
+                            errorText.setTextColor(Color.RED);//just to highlight that this is an error
+                            errorText.setText("Please select the unit");//changes the selected item text to this
+                        }
+                        if (!fail) {
+                            saveTPPlotinfo();//save
+                            plotid();//generate plot id for the polygons
+                            dbAccess.insertPlotinfo();//insert details to db
+                            //g.setMultiplot(false);//set it true
+                            //Intent intent = new Intent(getActivity(), TPCohortMainAcivity.class);
+                            Intent intent = new Intent(getActivity(), TPLandSizeMainActivity.class);
+                            startActivity(intent);
+                            getActivity().overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
+                            //Toast.makeText(SelectSurvey.this.getActivity(),"Saved",Toast.LENGTH_SHORT).show();
+                        }
                         break;
                 }
             }

@@ -2,6 +2,7 @@ package com.icraf.gsl.regreeningafrica;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -57,6 +58,10 @@ public class FmnrFarmInstLandsizeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fmnr_land_size_regreen, container,
                 false);
 
+        final EditText date = (EditText) view.findViewById(R.id.fmnr_date);
+        final EditText ed = (EditText) view.findViewById(R.id.landestimate);
+        final Spinner unit = (Spinner) view.findViewById(R.id.units);
+
         dbAccess = new DbAccess(this.getActivity());
         dbAccess.open();
 
@@ -93,6 +98,27 @@ public class FmnrFarmInstLandsizeFragment extends Fragment {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.topolygon:
+                        //validate before going next
+                        boolean fail = false;
+                        if (ed.getText().toString().trim().length() == 0) {
+                            fail = true;
+                            ed.requestFocus();
+                            ed.setError("Enter land estimate");
+                        }
+                        if (date.getText().toString().trim().length() == 0) {
+                            fail = true;
+                            date.requestFocus();
+                            date.setError("Select date");
+                        }
+                        if (unit.getSelectedItem().toString().trim().equals("Select unit")) {//validate the spinner not
+                            fail = true;
+                            unit.requestFocus();
+                            TextView errorText = (TextView) unit.getSelectedView();
+                            errorText.setError("");
+                            errorText.setTextColor(Color.RED);//just to highlight that this is an error
+                            errorText.setText("Please select the unit");//changes the selected item text to this
+                        }
+                        if (!fail) {
                         saveFmnrPlotinfo();//save inputs
                         plotid();//generate plot id for polygons
                         dbAccess.insertFmnrPlotInfo();//insert fmnr plot info details to db
@@ -101,6 +127,7 @@ public class FmnrFarmInstLandsizeFragment extends Fragment {
                         startActivity(intent);
                         getActivity().overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
                         //Toast.makeText(SelectSurvey.this.getActivity(),"Saved",Toast.LENGTH_SHORT).show();
+                }
                         break;
                 }
             }
