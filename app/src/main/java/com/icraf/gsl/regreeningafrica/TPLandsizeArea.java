@@ -31,6 +31,11 @@ public class TPLandsizeArea extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.tp_landsize_area, container,
                 false);
+
+        //disable back button Once points are collected for polgyon
+        Button prev = (Button) view.findViewById(R.id.prev);
+        prev.setEnabled(false);
+        prev.setAlpha(0.5f);
         dbAccess = new DbAccess(this.getActivity());
         dbAccess.open();
         //to next
