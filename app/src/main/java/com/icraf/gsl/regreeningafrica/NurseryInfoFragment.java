@@ -447,6 +447,7 @@ public class NurseryInfoFragment extends Fragment {
                     list.add("Select");
                     list.add("Suba North");
                     list.add("Suba South");
+                    list.add("Lambwe");
                     final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_item, list);
                     dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -815,6 +816,7 @@ public class NurseryInfoFragment extends Fragment {
                     list.add("N'diognick");
                     list.add("Mbeuleup");
                     list.add("Dianke Souf");
+                    list.add("Sagna");
                     list.add("Darou Minam 2");
                     list.add("Ndiobene Samba Lamo");
                     list.add("Ndioum Ngainth");
