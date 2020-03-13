@@ -113,26 +113,22 @@ public class TPFarmInstEnumFragment extends Fragment {
         EDITTEXT = (EditText)view.findViewById(R.id.editText1);
 
         stringlist = new ArrayList<>(Arrays.asList(spinnerItems));
-
         arrayadapter = new ArrayAdapter<String>(TPFarmInstEnumFragment.this.getActivity(),R.layout.textview,stringlist );
-
         arrayadapter.setDropDownViewResource(R.layout.textview);
-
         SPINNER.setAdapter(arrayadapter);
-
         ADD.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-
-                GETTEXT = EDITTEXT.getText().toString();
-
-                stringlist.add(GETTEXT);
-
-                arrayadapter.notifyDataSetChanged();
-
-                Toast.makeText(TPFarmInstEnumFragment.this.getActivity(), "Item Added", Toast.LENGTH_LONG).show();
+                if (EDITTEXT.getText().toString().equals("")) {
+                    Toast.makeText(TPFarmInstEnumFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                } else {
+                    GETTEXT = EDITTEXT.getText().toString();
+                    stringlist.add(GETTEXT);
+                    arrayadapter.notifyDataSetChanged();
+                    Toast.makeText(TPFarmInstEnumFragment.this.getActivity(), "Item Added", Toast.LENGTH_LONG).show();
+                }
             }
         });
 

@@ -1,6 +1,7 @@
 package com.icraf.gsl.regreeningafrica;
 
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,6 +13,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +53,22 @@ public class NurseryOtherInfoMain extends AppCompatActivity {
 
     }
     public void jumpToMethod(View view){
-        viewPager.setCurrentItem(1);
+        EditText ed = (EditText) findViewById(R.id.nursery_species);
+        EditText local = (EditText) findViewById(R.id.nursery_local);
+        boolean fail = false;
+        if (ed.getText().toString().trim().length() == 0) {
+            if (local.getText().toString().trim().length() == 0) {
+                fail = true;
+                local.requestFocus();
+                local.setError("Enter Scientific or local name");
+            }
+            ed.requestFocus();
+            ed.setError("Enter Scientific or local name");
+        }
+
+        if (!fail) {
+            viewPager.setCurrentItem(1);
+        }
     }
     public void jumpBackSpecies(View view){
         viewPager.setCurrentItem(0);
@@ -67,7 +86,59 @@ public class NurseryOtherInfoMain extends AppCompatActivity {
         viewPager.setCurrentItem(2);
     }
     public void jumpToEnd(View view){
-        viewPager.setCurrentItem(4);
+        EditText fi = (EditText) findViewById(R.id.qpurchased);
+        Spinner country = (Spinner) findViewById(R.id.spinner_units);
+        EditText sown = (EditText) findViewById(R.id.seeds_sown);
+        Spinner county = (Spinner) findViewById(R.id.spinner_unitsown);
+        EditText g = (EditText) findViewById(R.id.germinated);
+        EditText s = (EditText) findViewById(R.id.survived);
+        boolean fail = false;
+        if (fi.getText().toString().trim().length() == 0) {
+            fail = true;
+            fi.requestFocus();
+            fi.setError("Enter Quantity");
+        }
+        if (country.getSelectedItem().toString().trim().equals("Select unit")) {//validate the spinner not
+            //if (c.getText().toString().trim().length() == 0) {
+            fail = true;
+            country.requestFocus();
+            TextView errorText = (TextView) country.getSelectedView();
+            errorText.setError("");
+            errorText.setTextColor(Color.RED);//just to highlight that this is an error
+            errorText.setText("Select or add new");//changes the selected item text to this
+            // c.setError("Enter Country name");
+            //}
+        }
+        if (sown.getText().toString().trim().length() == 0) {
+            fail = true;
+            sown.requestFocus();
+            sown.setError("Enter sed sown");
+        }
+        if (county.getSelectedItem().toString().trim().equals("Select unit")) {//validate the spinner not
+            //if (ct.getText().toString().trim().length() == 0) {
+            fail = true;
+            county.requestFocus();
+            TextView errorText = (TextView) county.getSelectedView();
+            errorText.setError("");
+            errorText.setTextColor(Color.RED);//just to highlight that this is an error
+            errorText.setText("Select or add new");//changes the selected item text to this
+            // ct.setError("Enter County name");
+            // }
+        }
+        if (g.getText().toString().trim().length() == 0) {
+            fail = true;
+            g.requestFocus();
+            g.setError("Enter Quantity");
+        }
+        if (s.getText().toString().trim().length() == 0) {
+            fail = true;
+            s.requestFocus();
+            s.setError("Enter Quantity");
+        }
+        if (!fail) {
+            viewPager.setCurrentItem(4);
+        }
+        //viewPager.setCurrentItem(4);
     }
     public void jumpBackOther(View view){
         viewPager.setCurrentItem(3);

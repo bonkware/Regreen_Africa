@@ -139,7 +139,6 @@
                     android:text="Sowing date"
                     android:id="@+id/btn_date"
                     android:background="@drawable/edittext_radius"
-                    android:backgroundTint="#008000"
                     android:layout_alignBottom="@+id/date_sown"
                     android:layout_toRightOf="@+id/date_sown"
                     android:layout_toEndOf="@+id/date_sown" />

@@ -159,7 +159,28 @@ public class NurseryInfoMain extends AppCompatActivity {
         viewPager.setCurrentItem(1);
     }
     public void jumpTotype(View view){
-        viewPager.setCurrentItem(3);
+        boolean fail = false;
+        EditText name = (EditText) findViewById(R.id.nursery_name);
+        EditText number = (EditText) findViewById(R.id.species_number);
+        EditText date = (EditText) findViewById(R.id.n_date);
+        if (name.getText().toString().trim().length() == 0) {
+            fail = true;
+            name.requestFocus();
+            name.setError("Enter name");
+        }
+        if (number.getText().toString().trim().length() == 0) {
+            fail = true;
+            number.requestFocus();
+            number.setError("Enter number");
+        }
+        if (date.getText().toString().trim().length() == 0) {
+            fail = true;
+            date.requestFocus();
+            date.setError("Select date");
+        }
+        if (!fail) {
+            viewPager.setCurrentItem(3);
+        }
     }
     public void jumpBackInfo(View view){
         viewPager.setCurrentItem(2);

@@ -110,11 +110,16 @@ public class FmnrFarmInstFragment extends Fragment {
                         @Override
                         public void onClick(View v) {
                             // TODO Auto-generated method stub
-                            GETTEXT2 = EDITTEXT2.getText().toString();
-                            list.add(GETTEXT2);
-                            dataAdapter.notifyDataSetChanged();
-                            Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "County added to the list", Toast.LENGTH_LONG).show();
+                            if (EDITTEXT2.getText().toString().equals("")) {
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                            } else {
+                                GETTEXT2 = EDITTEXT2.getText().toString();
+                                list.add(GETTEXT2);
+                                dataAdapter.notifyDataSetChanged();
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "County added to the list", Toast.LENGTH_LONG).show();
+                            }
                         }
+
                     });
                 }
                 if(sp1.contentEquals("Ethiopia")) {
@@ -134,10 +139,14 @@ public class FmnrFarmInstFragment extends Fragment {
                         @Override
                         public void onClick(View v) {
                             // TODO Auto-generated method stub
-                            GETTEXT2 = EDITTEXT2.getText().toString();
-                            list.add(GETTEXT2);
-                            dataAdapter2.notifyDataSetChanged();
-                            Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "County added to the list", Toast.LENGTH_LONG).show();
+                            if (EDITTEXT2.getText().toString().equals("")) {
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                            } else {
+                                GETTEXT2 = EDITTEXT2.getText().toString();
+                                list.add(GETTEXT2);
+                                dataAdapter2.notifyDataSetChanged();
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "County added to the list", Toast.LENGTH_LONG).show();
+                            }
                         }
                     });
                 }
@@ -155,10 +164,14 @@ public class FmnrFarmInstFragment extends Fragment {
                          @Override
                          public void onClick(View v) {
                              // TODO Auto-generated method stub
-                             GETTEXT2 = EDITTEXT2.getText().toString();
-                             list.add(GETTEXT2);
-                             dataAdapter3.notifyDataSetChanged();
-                             Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "County added to the list", Toast.LENGTH_LONG).show();
+                             if (EDITTEXT2.getText().toString().equals("")) {
+                                 Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                             } else {
+                                 GETTEXT2 = EDITTEXT2.getText().toString();
+                                 list.add(GETTEXT2);
+                                 dataAdapter3.notifyDataSetChanged();
+                                 Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "County added to the list", Toast.LENGTH_LONG).show();
+                             }
                          }
                      });
                 }
@@ -177,10 +190,14 @@ public class FmnrFarmInstFragment extends Fragment {
                          @Override
                          public void onClick(View v) {
                              // TODO Auto-generated method stub
-                             GETTEXT2 = EDITTEXT2.getText().toString();
-                             list.add(GETTEXT2);
-                             dataAdapter4.notifyDataSetChanged();
-                             Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "County added to the list", Toast.LENGTH_LONG).show();
+                             if (EDITTEXT2.getText().toString().equals("")) {
+                                 Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                             } else {
+                                 GETTEXT2 = EDITTEXT2.getText().toString();
+                                 list.add(GETTEXT2);
+                                 dataAdapter4.notifyDataSetChanged();
+                                 Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "County added to the list", Toast.LENGTH_LONG).show();
+                             }
                          }
                      });
                 }
@@ -198,10 +215,14 @@ public class FmnrFarmInstFragment extends Fragment {
                          @Override
                          public void onClick(View v) {
                              // TODO Auto-generated method stub
-                             GETTEXT2 = EDITTEXT2.getText().toString();
-                             list.add(GETTEXT2);
-                             dataAdapter5.notifyDataSetChanged();
-                             Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "County added to the list", Toast.LENGTH_LONG).show();
+                             if (EDITTEXT2.getText().toString().equals("")) {
+                                 Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                             } else {
+                                 GETTEXT2 = EDITTEXT2.getText().toString();
+                                 list.add(GETTEXT2);
+                                 dataAdapter5.notifyDataSetChanged();
+                                 Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "County added to the list", Toast.LENGTH_LONG).show();
+                             }
                          }
                      });
                 }
@@ -220,10 +241,14 @@ public class FmnrFarmInstFragment extends Fragment {
                         @Override
                         public void onClick(View v) {
                             // TODO Auto-generated method stub
-                            GETTEXT2 = EDITTEXT2.getText().toString();
-                            list.add(GETTEXT2);
-                            dataAdapter6.notifyDataSetChanged();
-                            Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "County added to the list", Toast.LENGTH_LONG).show();
+                            if (EDITTEXT2.getText().toString().equals("")) {
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                            } else {
+                                GETTEXT2 = EDITTEXT2.getText().toString();
+                                list.add(GETTEXT2);
+                                dataAdapter6.notifyDataSetChanged();
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "County added to the list", Toast.LENGTH_LONG).show();
+                            }
                         }
                     });
                 }
@@ -243,10 +268,14 @@ public class FmnrFarmInstFragment extends Fragment {
                         @Override
                         public void onClick(View v) {
                             // TODO Auto-generated method stub
-                            GETTEXT2 = EDITTEXT2.getText().toString();
-                            list.add(GETTEXT2);
-                            dataAdapter7.notifyDataSetChanged();
-                            Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "County added to the list", Toast.LENGTH_LONG).show();
+                            if (EDITTEXT2.getText().toString().equals("")) {
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                            } else {
+                                GETTEXT2 = EDITTEXT2.getText().toString();
+                                list.add(GETTEXT2);
+                                dataAdapter7.notifyDataSetChanged();
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "County added to the list", Toast.LENGTH_LONG).show();
+                            }
                         }
                     });
                 }
@@ -265,10 +294,14 @@ public class FmnrFarmInstFragment extends Fragment {
                         @Override
                         public void onClick(View v) {
                             // TODO Auto-generated method stub
-                            GETTEXT2 = EDITTEXT2.getText().toString();
-                            list.add(GETTEXT2);
-                            dataAdapter8.notifyDataSetChanged();
-                            Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "County added to the list", Toast.LENGTH_LONG).show();
+                            if (EDITTEXT2.getText().toString().equals("")) {
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                            } else {
+                                GETTEXT2 = EDITTEXT2.getText().toString();
+                                list.add(GETTEXT2);
+                                dataAdapter8.notifyDataSetChanged();
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "County added to the list", Toast.LENGTH_LONG).show();
+                            }
                         }
                     });
                 }
@@ -302,10 +335,14 @@ public class FmnrFarmInstFragment extends Fragment {
                         @Override
                         public void onClick(View v) {
                             // TODO Auto-generated method stub
-                            GETTEXT3 = EDITTEXT3.getText().toString();
-                            list.add(GETTEXT3);
-                            dataAdapter.notifyDataSetChanged();
-                            Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                            if (EDITTEXT3.getText().toString().equals("")) {
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                            } else {
+                                GETTEXT3 = EDITTEXT3.getText().toString();
+                                list.add(GETTEXT3);
+                                dataAdapter.notifyDataSetChanged();
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                            }
                         }
                     });
                 }
@@ -325,10 +362,14 @@ public class FmnrFarmInstFragment extends Fragment {
                          @Override
                          public void onClick(View v) {
                              // TODO Auto-generated method stub
-                             GETTEXT3 = EDITTEXT3.getText().toString();
-                             list.add(GETTEXT3);
-                             dataAdapter.notifyDataSetChanged();
-                             Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                             if (EDITTEXT3.getText().toString().equals("")) {
+                                 Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                             } else {
+                                 GETTEXT3 = EDITTEXT3.getText().toString();
+                                 list.add(GETTEXT3);
+                                 dataAdapter.notifyDataSetChanged();
+                                 Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                             }
                          }
                      });
                 }//
@@ -346,10 +387,14 @@ public class FmnrFarmInstFragment extends Fragment {
                         @Override
                         public void onClick(View v) {
                             // TODO Auto-generated method stub
-                            GETTEXT3 = EDITTEXT3.getText().toString();
-                            list.add(GETTEXT3);
-                            dataAdapter.notifyDataSetChanged();
-                            Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                            if (EDITTEXT3.getText().toString().equals("")) {
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                            } else {
+                                GETTEXT3 = EDITTEXT3.getText().toString();
+                                list.add(GETTEXT3);
+                                dataAdapter.notifyDataSetChanged();
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                            }
                         }
                     });
                 }
@@ -367,10 +412,14 @@ public class FmnrFarmInstFragment extends Fragment {
                         @Override
                         public void onClick(View v) {
                             // TODO Auto-generated method stub
-                            GETTEXT3 = EDITTEXT3.getText().toString();
-                            list.add(GETTEXT3);
-                            dataAdapter.notifyDataSetChanged();
-                            Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                            if (EDITTEXT3.getText().toString().equals("")) {
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                            } else {
+                                GETTEXT3 = EDITTEXT3.getText().toString();
+                                list.add(GETTEXT3);
+                                dataAdapter.notifyDataSetChanged();
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                            }
                         }
                     });
                 }
@@ -389,10 +438,14 @@ public class FmnrFarmInstFragment extends Fragment {
                         @Override
                         public void onClick(View v) {
                             // TODO Auto-generated method stub
-                            GETTEXT3 = EDITTEXT3.getText().toString();
-                            list.add(GETTEXT3);
-                            dataAdapter.notifyDataSetChanged();
-                            Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                            if (EDITTEXT3.getText().toString().equals("")) {
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                            } else {
+                                GETTEXT3 = EDITTEXT3.getText().toString();
+                                list.add(GETTEXT3);
+                                dataAdapter.notifyDataSetChanged();
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                            }
                         }
                     });
                 }
@@ -413,11 +466,16 @@ public class FmnrFarmInstFragment extends Fragment {
                         @Override
                         public void onClick(View v) {
                             // TODO Auto-generated method stub
-                            GETTEXT3 = EDITTEXT3.getText().toString();
-                            list.add(GETTEXT3);
-                            dataAdapter.notifyDataSetChanged();
-                            Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                            if (EDITTEXT3.getText().toString().equals("")) {
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                            } else {
+                                GETTEXT3 = EDITTEXT3.getText().toString();
+                                list.add(GETTEXT3);
+                                dataAdapter.notifyDataSetChanged();
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                            }
                         }
+
                     });
                 }
                 if(sp2.contentEquals("Nakuru")) {
@@ -436,10 +494,14 @@ public class FmnrFarmInstFragment extends Fragment {
                         @Override
                         public void onClick(View v) {
                             // TODO Auto-generated method stub
-                            GETTEXT3 = EDITTEXT3.getText().toString();
-                            list.add(GETTEXT3);
-                            dataAdapter.notifyDataSetChanged();
-                            Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                            if (EDITTEXT3.getText().toString().equals("")) {
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                            } else {
+                                GETTEXT3 = EDITTEXT3.getText().toString();
+                                list.add(GETTEXT3);
+                                dataAdapter.notifyDataSetChanged();
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                            }
                         }
                     });
                 }
@@ -459,10 +521,14 @@ public class FmnrFarmInstFragment extends Fragment {
                         @Override
                         public void onClick(View v) {
                             // TODO Auto-generated method stub
-                            GETTEXT3 = EDITTEXT3.getText().toString();
-                            list.add(GETTEXT3);
-                            dataAdapter.notifyDataSetChanged();
-                            Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                            if (EDITTEXT3.getText().toString().equals("")) {
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                            } else {
+                                GETTEXT3 = EDITTEXT3.getText().toString();
+                                list.add(GETTEXT3);
+                                dataAdapter.notifyDataSetChanged();
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                            }
                         }
                     });
                 }
@@ -480,11 +546,16 @@ public class FmnrFarmInstFragment extends Fragment {
                         @Override
                         public void onClick(View v) {
                             // TODO Auto-generated method stub
+                            if(EDITTEXT3.getText().toString().equals("")) {
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                            }
+                            else{
                             GETTEXT3 = EDITTEXT3.getText().toString();
                             list.add(GETTEXT3);
                             dataAdapter.notifyDataSetChanged();
                             Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
                         }
+                    }
                     });
                 }
                 if(sp2.contentEquals("Machakos")) {
@@ -503,10 +574,14 @@ public class FmnrFarmInstFragment extends Fragment {
                         @Override
                         public void onClick(View v) {
                             // TODO Auto-generated method stub
-                            GETTEXT3 = EDITTEXT3.getText().toString();
-                            list.add(GETTEXT3);
-                            dataAdapter.notifyDataSetChanged();
-                            Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                            if (EDITTEXT3.getText().toString().equals("")) {
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                            } else {
+                                GETTEXT3 = EDITTEXT3.getText().toString();
+                                list.add(GETTEXT3);
+                                dataAdapter.notifyDataSetChanged();
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                            }
                         }
                     });
                 }
@@ -525,10 +600,14 @@ public class FmnrFarmInstFragment extends Fragment {
                         @Override
                         public void onClick(View v) {
                             // TODO Auto-generated method stub
-                            GETTEXT3 = EDITTEXT3.getText().toString();
-                            list.add(GETTEXT3);
-                            dataAdapter.notifyDataSetChanged();
-                            Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                            if (EDITTEXT3.getText().toString().equals("")) {
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                            } else {
+                                GETTEXT3 = EDITTEXT3.getText().toString();
+                                list.add(GETTEXT3);
+                                dataAdapter.notifyDataSetChanged();
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                            }
                         }
                     });
                 }
@@ -547,10 +626,14 @@ public class FmnrFarmInstFragment extends Fragment {
                         @Override
                         public void onClick(View v) {
                             // TODO Auto-generated method stub
-                            GETTEXT3 = EDITTEXT3.getText().toString();
-                            list.add(GETTEXT3);
-                            dataAdapter.notifyDataSetChanged();
-                            Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                            if (EDITTEXT3.getText().toString().equals("")) {
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                            } else {
+                                GETTEXT3 = EDITTEXT3.getText().toString();
+                                list.add(GETTEXT3);
+                                dataAdapter.notifyDataSetChanged();
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                            }
                         }
                     });
                 }//Kenya ends
@@ -570,10 +653,14 @@ public class FmnrFarmInstFragment extends Fragment {
                         @Override
                         public void onClick(View v) {
                             // TODO Auto-generated method stub
-                            GETTEXT3 = EDITTEXT3.getText().toString();
-                            list.add(GETTEXT3);
-                            dataAdapter.notifyDataSetChanged();
-                            Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                            if (EDITTEXT3.getText().toString().equals("")) {
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                            } else {
+                                GETTEXT3 = EDITTEXT3.getText().toString();
+                                list.add(GETTEXT3);
+                                dataAdapter.notifyDataSetChanged();
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                            }
                         }
                     });
                 }
@@ -598,10 +685,14 @@ public class FmnrFarmInstFragment extends Fragment {
                          @Override
                          public void onClick(View v) {
                              // TODO Auto-generated method stub
-                             GETTEXT3 = EDITTEXT3.getText().toString();
-                             list.add(GETTEXT3);
-                             dataAdapter.notifyDataSetChanged();
-                             Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                             if (EDITTEXT3.getText().toString().equals("")) {
+                                 Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                             } else {
+                                 GETTEXT3 = EDITTEXT3.getText().toString();
+                                 list.add(GETTEXT3);
+                                 dataAdapter.notifyDataSetChanged();
+                                 Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                             }
                          }
                      });
                 }
@@ -620,10 +711,14 @@ public class FmnrFarmInstFragment extends Fragment {
                         @Override
                         public void onClick(View v) {
                             // TODO Auto-generated method stub
-                            GETTEXT3 = EDITTEXT3.getText().toString();
-                            list.add(GETTEXT3);
-                            dataAdapter.notifyDataSetChanged();
-                            Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                            if (EDITTEXT3.getText().toString().equals("")) {
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                            } else {
+                                GETTEXT3 = EDITTEXT3.getText().toString();
+                                list.add(GETTEXT3);
+                                dataAdapter.notifyDataSetChanged();
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                            }
                         }
                     });
                 }
@@ -654,10 +749,14 @@ public class FmnrFarmInstFragment extends Fragment {
                         @Override
                         public void onClick(View v) {
                             // TODO Auto-generated method stub
-                            GETTEXT3 = EDITTEXT3.getText().toString();
-                            list.add(GETTEXT3);
-                            dataAdapter.notifyDataSetChanged();
-                            Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                            if (EDITTEXT3.getText().toString().equals("")) {
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                            } else {
+                                GETTEXT3 = EDITTEXT3.getText().toString();
+                                list.add(GETTEXT3);
+                                dataAdapter.notifyDataSetChanged();
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                            }
                         }
                     });
                 }//Ethiopia ends
@@ -679,10 +778,14 @@ public class FmnrFarmInstFragment extends Fragment {
                         @Override
                         public void onClick(View v) {
                             // TODO Auto-generated method stub
-                            GETTEXT3 = EDITTEXT3.getText().toString();
-                            list.add(GETTEXT3);
-                            dataAdapter.notifyDataSetChanged();
-                            Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                            if (EDITTEXT3.getText().toString().equals("")) {
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                            } else {
+                                GETTEXT3 = EDITTEXT3.getText().toString();
+                                list.add(GETTEXT3);
+                                dataAdapter.notifyDataSetChanged();
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                            }
                         }
                     });
                 }//Rwanda ends
@@ -702,10 +805,14 @@ public class FmnrFarmInstFragment extends Fragment {
                        @Override
                        public void onClick(View v) {
                            // TODO Auto-generated method stub
-                           GETTEXT3 = EDITTEXT3.getText().toString();
-                           list.add(GETTEXT3);
-                           dataAdapter.notifyDataSetChanged();
-                           Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                           if (EDITTEXT3.getText().toString().equals("")) {
+                               Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                           } else {
+                               GETTEXT3 = EDITTEXT3.getText().toString();
+                               list.add(GETTEXT3);
+                               dataAdapter.notifyDataSetChanged();
+                               Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                           }
                        }
                    });
                 }
@@ -724,10 +831,14 @@ public class FmnrFarmInstFragment extends Fragment {
                          @Override
                          public void onClick(View v) {
                              // TODO Auto-generated method stub
-                             GETTEXT3 = EDITTEXT3.getText().toString();
-                             list.add(GETTEXT3);
-                             dataAdapter.notifyDataSetChanged();
-                             Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                             if (EDITTEXT3.getText().toString().equals("")) {
+                                 Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                             } else {
+                                 GETTEXT3 = EDITTEXT3.getText().toString();
+                                 list.add(GETTEXT3);
+                                 dataAdapter.notifyDataSetChanged();
+                                 Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                             }
                          }
                      });
                 }//somalia ends
@@ -748,10 +859,14 @@ public class FmnrFarmInstFragment extends Fragment {
                         @Override
                         public void onClick(View v) {
                             // TODO Auto-generated method stub
-                            GETTEXT3 = EDITTEXT3.getText().toString();
-                            list.add(GETTEXT3);
-                            dataAdapter.notifyDataSetChanged();
-                            Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                            if (EDITTEXT3.getText().toString().equals("")) {
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                            } else {
+                                GETTEXT3 = EDITTEXT3.getText().toString();
+                                list.add(GETTEXT3);
+                                dataAdapter.notifyDataSetChanged();
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                            }
                         }
                     });
                 }//Niger ends
@@ -771,10 +886,14 @@ public class FmnrFarmInstFragment extends Fragment {
                         @Override
                         public void onClick(View v) {
                             // TODO Auto-generated method stub
-                            GETTEXT3 = EDITTEXT3.getText().toString();
-                            list.add(GETTEXT3);
-                            dataAdapter.notifyDataSetChanged();
-                            Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                            if (EDITTEXT3.getText().toString().equals("")) {
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                            } else {
+                                GETTEXT3 = EDITTEXT3.getText().toString();
+                                list.add(GETTEXT3);
+                                dataAdapter.notifyDataSetChanged();
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                            }
                         }
                     });
                 }
@@ -792,10 +911,14 @@ public class FmnrFarmInstFragment extends Fragment {
                          @Override
                          public void onClick(View v) {
                              // TODO Auto-generated method stub
-                             GETTEXT3 = EDITTEXT3.getText().toString();
-                             list.add(GETTEXT3);
-                             dataAdapter.notifyDataSetChanged();
-                             Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                             if (EDITTEXT3.getText().toString().equals("")) {
+                                 Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                             } else {
+                                 GETTEXT3 = EDITTEXT3.getText().toString();
+                                 list.add(GETTEXT3);
+                                 dataAdapter.notifyDataSetChanged();
+                                 Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                             }
                          }
                      });
                 }//Ghana ends
@@ -831,10 +954,14 @@ public class FmnrFarmInstFragment extends Fragment {
                         @Override
                         public void onClick(View v) {
                             // TODO Auto-generated method stub
-                            GETTEXT3 = EDITTEXT3.getText().toString();
-                            list.add(GETTEXT3);
-                            dataAdapter.notifyDataSetChanged();
-                            Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                            if (EDITTEXT3.getText().toString().equals("")) {
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                            } else {
+                                GETTEXT3 = EDITTEXT3.getText().toString();
+                                list.add(GETTEXT3);
+                                dataAdapter.notifyDataSetChanged();
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                            }
                         }
                     });
                 }
@@ -862,10 +989,14 @@ public class FmnrFarmInstFragment extends Fragment {
                          @Override
                          public void onClick(View v) {
                              // TODO Auto-generated method stub
-                             GETTEXT3 = EDITTEXT3.getText().toString();
-                             list.add(GETTEXT3);
-                             dataAdapter.notifyDataSetChanged();
-                             Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                             if (EDITTEXT3.getText().toString().equals("")) {
+                                 Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                             } else {
+                                 GETTEXT3 = EDITTEXT3.getText().toString();
+                                 list.add(GETTEXT3);
+                                 dataAdapter.notifyDataSetChanged();
+                                 Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                             }
                          }
                      });
                 }//
@@ -899,10 +1030,14 @@ public class FmnrFarmInstFragment extends Fragment {
                         @Override
                         public void onClick(View v) {
                             // TODO Auto-generated method stub
-                            GETTEXT3 = EDITTEXT3.getText().toString();
-                            list.add(GETTEXT3);
-                            dataAdapter.notifyDataSetChanged();
-                            Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                            if (EDITTEXT3.getText().toString().equals("")) {
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                            } else {
+                                GETTEXT3 = EDITTEXT3.getText().toString();
+                                list.add(GETTEXT3);
+                                dataAdapter.notifyDataSetChanged();
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                            }
                         }
                     });
                 }//Senegal ends
@@ -922,10 +1057,14 @@ public class FmnrFarmInstFragment extends Fragment {
                         @Override
                         public void onClick(View v) {
                             // TODO Auto-generated method stub
-                            GETTEXT3 = EDITTEXT3.getText().toString();
-                            list.add(GETTEXT3);
-                            dataAdapter.notifyDataSetChanged();
-                            Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                            if (EDITTEXT3.getText().toString().equals("")) {
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                            } else {
+                                GETTEXT3 = EDITTEXT3.getText().toString();
+                                list.add(GETTEXT3);
+                                dataAdapter.notifyDataSetChanged();
+                                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                            }
                         }
                     });
                 }
@@ -944,10 +1083,14 @@ public class FmnrFarmInstFragment extends Fragment {
                          @Override
                          public void onClick(View v) {
                              // TODO Auto-generated method stub
-                             GETTEXT3 = EDITTEXT3.getText().toString();
-                             list.add(GETTEXT3);
-                             dataAdapter.notifyDataSetChanged();
-                             Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                             if (EDITTEXT3.getText().toString().equals("")) {
+                                 Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                             } else {
+                                 GETTEXT3 = EDITTEXT3.getText().toString();
+                                 list.add(GETTEXT3);
+                                 dataAdapter.notifyDataSetChanged();
+                                 Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                             }
                          }
                      });
                 }//Mali ends
@@ -973,10 +1116,14 @@ public class FmnrFarmInstFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                GETTEXT = EDITTEXT.getText().toString();
-                stringlist.add(GETTEXT);
-                arrayadapter.notifyDataSetChanged();
-                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Country added to list", Toast.LENGTH_LONG).show();
+                if (EDITTEXT.getText().toString().equals("")) {
+                    Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                } else {
+                    GETTEXT = EDITTEXT.getText().toString();
+                    stringlist.add(GETTEXT);
+                    arrayadapter.notifyDataSetChanged();
+                    Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Country added to list", Toast.LENGTH_LONG).show();
+                }
             }
         });
         //spinner add county item
@@ -991,10 +1138,14 @@ public class FmnrFarmInstFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                GETTEXT2 = EDITTEXT2.getText().toString();
-                stringlist2.add(GETTEXT2);
-                arrayadapter2.notifyDataSetChanged();
-                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "County added to the list", Toast.LENGTH_LONG).show();
+                if (EDITTEXT2.getText().toString().equals("")) {
+                    Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                } else {
+                    GETTEXT2 = EDITTEXT2.getText().toString();
+                    stringlist2.add(GETTEXT2);
+                    arrayadapter2.notifyDataSetChanged();
+                    Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "County added to the list", Toast.LENGTH_LONG).show();
+                }
             }
         });
         //spinner add district item
@@ -1009,10 +1160,14 @@ public class FmnrFarmInstFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                GETTEXT3 = EDITTEXT3.getText().toString();
-                stringlist3.add(GETTEXT3);
-                arrayadapter3.notifyDataSetChanged();
-                Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                if (EDITTEXT3.getText().toString().equals("")) {
+                    Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                } else {
+                    GETTEXT3 = EDITTEXT3.getText().toString();
+                    stringlist3.add(GETTEXT3);
+                    arrayadapter3.notifyDataSetChanged();
+                    Toast.makeText(FmnrFarmInstFragment.this.getActivity(), "District added to the list", Toast.LENGTH_LONG).show();
+                }
             }
         });
         return view;

@@ -153,10 +153,14 @@ public class NurseryOtherFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                GETTEXT = EDITTEXT.getText().toString();
-                stringlist.add(GETTEXT);
-                arrayadapter.notifyDataSetChanged();
-                Toast.makeText(NurseryOtherFragment.this.getActivity(), "Item Added", Toast.LENGTH_LONG).show();
+                if (EDITTEXT.getText().toString().equals("")) {
+                    Toast.makeText(NurseryOtherFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                } else {
+                    GETTEXT = EDITTEXT.getText().toString();
+                    stringlist.add(GETTEXT);
+                    arrayadapter.notifyDataSetChanged();
+                    Toast.makeText(NurseryOtherFragment.this.getActivity(), "Item Added", Toast.LENGTH_LONG).show();
+                }
             }
         });
         //add item to spinner2 from edittext
@@ -172,14 +176,14 @@ public class NurseryOtherFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-
-                GETTEXT2 = EDITTEXT2.getText().toString();
-
-                stringlist2.add(GETTEXT2);
-
-                arrayadapter2.notifyDataSetChanged();
-
-                Toast.makeText(NurseryOtherFragment.this.getActivity(), "Item Added", Toast.LENGTH_LONG).show();
+                if (EDITTEXT2.getText().toString().equals("")) {
+                    Toast.makeText(NurseryOtherFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                } else {
+                    GETTEXT2 = EDITTEXT2.getText().toString();
+                    stringlist2.add(GETTEXT2);
+                    arrayadapter2.notifyDataSetChanged();
+                    Toast.makeText(NurseryOtherFragment.this.getActivity(), "Item Added", Toast.LENGTH_LONG).show();
+                }
             }
         });
 

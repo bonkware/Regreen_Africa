@@ -125,14 +125,18 @@ public class NurseryEnumFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
+                if (EDITTEXT.getText().toString().equals("")) {
+                    Toast.makeText(NurseryEnumFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                } else {
 
-                GETTEXT = EDITTEXT.getText().toString();
+                    GETTEXT = EDITTEXT.getText().toString();
 
-                stringlist.add(GETTEXT);
+                    stringlist.add(GETTEXT);
 
-                arrayadapter.notifyDataSetChanged();
+                    arrayadapter.notifyDataSetChanged();
 
-                Toast.makeText(NurseryEnumFragment.this.getActivity(), "Item Added", Toast.LENGTH_LONG).show();
+                    Toast.makeText(NurseryEnumFragment.this.getActivity(), "Item Added", Toast.LENGTH_LONG).show();
+                }
             }
         });
 

@@ -4,6 +4,8 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -127,14 +129,15 @@ public class FmnrFarmInstEnumFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-
-                GETTEXT = EDITTEXT.getText().toString();
-
-                stringlist.add(GETTEXT);
-
-                arrayadapter.notifyDataSetChanged();
-
-                Toast.makeText(FmnrFarmInstEnumFragment.this.getActivity(), "Item Added", Toast.LENGTH_LONG).show();
+                if(EDITTEXT.getText().toString().equals("")) {
+                    Toast.makeText(FmnrFarmInstEnumFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                }
+                else{
+                    GETTEXT = EDITTEXT.getText().toString();
+                    stringlist.add(GETTEXT);
+                    arrayadapter.notifyDataSetChanged();
+                    Toast.makeText(FmnrFarmInstEnumFragment.this.getActivity(), "Item Added", Toast.LENGTH_LONG).show();
+                }
             }
         });
 

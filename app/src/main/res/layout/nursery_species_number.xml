@@ -37,6 +37,8 @@
                 android:backgroundTint="#008000"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:digits= "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_"
                 android:padding="@dimen/view_padding"
                 android:textSize="@dimen/add_edit_textsize"/>
             <TextView
@@ -51,6 +53,8 @@
                 android:backgroundTint="#008000"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:digits="1234567890."
                 android:padding="@dimen/view_padding"
                 android:textSize="@dimen/add_edit_textsize"/>
             <TextView
@@ -81,7 +85,6 @@
                     android:text="Select"
                     android:id="@+id/btn_date"
                     android:background="@drawable/edittext_radius"
-                    android:backgroundTint="#008000"
                     android:layout_alignBottom="@+id/n_date"
                     android:layout_toRightOf="@+id/n_date"
                     android:layout_toEndOf="@+id/n_date" />

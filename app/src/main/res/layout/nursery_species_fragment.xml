@@ -44,6 +44,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/text1"
                 android:padding="@dimen/view_padding"
+                android:inputType="textPersonName"
+                android:digits= "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:textSize="@dimen/add_edit_textsize"/>
@@ -60,6 +62,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/view_padding"
+                android:inputType="textPersonName"
+                android:digits= "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_"
                 android:textSize="@dimen/add_edit_textsize">
             </EditText>
         </LinearLayout>

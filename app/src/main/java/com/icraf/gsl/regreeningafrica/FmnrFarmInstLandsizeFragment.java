@@ -190,14 +190,18 @@ public class FmnrFarmInstLandsizeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
+                if (EDITTEXT.getText().toString().equals("")) {
+                    Toast.makeText(FmnrFarmInstLandsizeFragment.this.getActivity(), "Empty save not allowed", Toast.LENGTH_LONG).show();
+                } else {
 
-                GETTEXT = EDITTEXT.getText().toString();
+                    GETTEXT = EDITTEXT.getText().toString();
 
-                stringlist.add(GETTEXT);
+                    stringlist.add(GETTEXT);
 
-                arrayadapter.notifyDataSetChanged();
+                    arrayadapter.notifyDataSetChanged();
 
-                Toast.makeText(FmnrFarmInstLandsizeFragment.this.getActivity(), "Item Added", Toast.LENGTH_LONG).show();
+                    Toast.makeText(FmnrFarmInstLandsizeFragment.this.getActivity(), "Item Added", Toast.LENGTH_LONG).show();
+                }
             }
         });
         //if yes radio button yes is clicked show edit text

@@ -82,6 +82,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/text1"
                 android:inputType="numberDecimal"
+                android:digits="1234567890."
                 android:padding="@dimen/view_padding"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"

@@ -64,6 +64,8 @@
                 android:backgroundTint="#008000"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:digits= "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_"
                 android:padding="@dimen/view_padding"
                 android:textSize="@dimen/add_edit_textsize">
             </EditText>
@@ -114,6 +116,8 @@
                 android:layout_height="wrap_content"
                 android:text="Number of trees surviving"
                 android:paddingTop="10dp"
+                android:inputType="numberDecimal"
+                android:digits= "1234567890."
                 android:textSize="@dimen/textsize"
                 android:textStyle="italic"/>
             <EditText
@@ -122,6 +126,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
+                android:digits= "1234567890."
                 android:padding="@dimen/view_padding"
                 android:textSize="@dimen/add_edit_textsize">
             </EditText>
