@@ -230,136 +230,144 @@ public class OtherMainActivities extends AppCompatActivity {
                     final String land_schools = cursor.getString(cursor.getColumnIndex("land_schools"));
                     final String land_other = cursor.getString(cursor.getColumnIndex("land_other"));
 
-                    // create an object of volley request queue
-                    //RequestQueue queue = Volley.newRequestQueue(OtherMainActivities.this);
-                    if (queue == null) {
-                        queue = Volley.newRequestQueue(this);
-                    }
-                    // Request a string response from the provided url above to server.
-                    StringRequest request = new StringRequest(Request.Method.POST, treePlantinginfo_url, new Response.Listener<String>() {
-                        @Override
-                        //successful response
-                        public void onResponse(String response) {
-                            //get the response if success get response that data has been received
-                            Log.i("My success", "" + response);
-                            uploadTPplotinfo(farmerID);
-                            uploadTPpolygon(farmerID);
-                            uploadTPcohort(farmerID);//cohorts
-                            uploadTPmeasurements(farmerID);
-                            //dbAccess.uploadStatusTPinfo();//update column uploaded to yes
-                            //dismiss dialog after all records are sent;
-                            if(count == cursor.getCount()){
-                                //dbAccess.uploadStatusNurseryinfo(nurseryID);//set it to yes
-                                progressDialog.dismiss();
-                            }
-                            //notification
-                            try{
-                                //count records sent
-                                final int count = dbAccess.getcount();
-                                //Toast.makeText(Index.this, count + " record(s) " + response, Toast.LENGTH_LONG).show();
-                                //refresh activity after dialog
-                                final AlertDialog.Builder builder = new AlertDialog.Builder(OtherMainActivities.this).setTitle("Data sent!").setMessage(count + " record(s) " + response)
-                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                dbAccess.uploadStatusTPinfo();//update column uploaded to yes
-                                                dbAccess.uploadStatusTPplotinfo();
-                                                dbAccess.uploadStatusTPpolygon();//update column to yes
-                                                dbAccess.uploadStatusTPcohort();//update column uploaded to yes
-                                                dbAccess.uploadStatusTPmeasurement();
-                                                //dismiss dialog by intent
-                                                Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
-                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                                                startActivity(intent);
-                                            }
-                                        });
-                                //builder.create().show();
-                                _alert = builder.create();
-                                _alert.show();
-                                //progressDialog.dismiss();
-                            }catch(Exception e){//added catch
-                                Log.d("Upload failed", "Exception : "
-                                        + e.getMessage(), e);
-                            }
+                    if (!record_completeTP(farmerID)) {
+                        Toast.makeText(OtherMainActivities.this, count + " record not complete ", Toast.LENGTH_LONG).show();
+                        progressDialog.dismiss();
 
+                    } else {
+                        // create an object of volley request queue
+                        //RequestQueue queue = Volley.newRequestQueue(OtherMainActivities.this);
+                        if (queue == null) {
+                            queue = Volley.newRequestQueue(this);
                         }
-                        //get error response
-                    }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            //error responses if failed to connect
-                            if (error instanceof NetworkError) {
-                                Toast.makeText(OtherMainActivities.this,"Cannot connect to Internet...Please check your connection!",Toast.LENGTH_SHORT).show();
-                            } else if (error instanceof ServerError) {
-                                Toast.makeText(OtherMainActivities.this,"The server could not be found. Please try again after some time!!",Toast.LENGTH_SHORT).show();
-                            } else if (error instanceof AuthFailureError) {
-                                Toast.makeText(OtherMainActivities.this,"Cannot connect to Internet...Please check your connection!",Toast.LENGTH_SHORT).show();
-                            } else if (error instanceof ParseError) {
-                                Toast.makeText(OtherMainActivities.this,"Parsing error! Please try again after some time!!",Toast.LENGTH_SHORT).show();
-
-                            } else if (error instanceof TimeoutError) {
-                                Toast.makeText(OtherMainActivities.this,"Connection TimeOut! Please check your internet connection",Toast.LENGTH_SHORT).show();
-                            }
-                            Log.i("My error", "" + error);
-                            //dismiss dialog
-                            progressDialog.dismiss();
-
-                        }
-                    }) {
-                        @Override
-                        //hashmap class in volley
-                        //HashMap is a type of Collection that stores  data in a pair such that each element has a key associated with it.
-                        protected Map<String, String> getParams() throws AuthFailureError {
-                            Map<String, String> param = new HashMap<String, String>();
-                            //farmer/institution
-                            param.put("farmerID", farmerID);
-                            param.put("module", tp_module);
-                            param.put("enum_name", enum_name);
-                            param.put("date", date);
-                            param.put("survey_name", survey_name);
-                            param.put("farmer_inst_name", farmer_inst_name);
-                            param.put("country", country);
-                            param.put("county_region", county_region);
-                            param.put("district", district);
-                            //param.put("planting_location", planting_location);
-                            param.put("land_individual", land_individual);
-                            param.put("land_community", land_community);
-                            param.put("land_government", land_government);
-                            param.put("land_mosque_church", land_mosque_church);
-                            param.put("land_schools", land_schools);
-                            param.put("land_other", land_other);
-                            return checkParams(param);
-                        }
-                        //check empty for null values
-                        private Map<String, String> checkParams(Map<String, String> map){
-                            Iterator<Map.Entry<String, String>> it = map.entrySet().iterator();
-                            while (it.hasNext()) {
-                                Map.Entry<String, String> pairs = (Map.Entry<String, String>)it.next();
-                                if(pairs.getValue()==null){
-                                    map.put(pairs.getKey(), "");
+                        // Request a string response from the provided url above to server.
+                        StringRequest request = new StringRequest(Request.Method.POST, treePlantinginfo_url, new Response.Listener<String>() {
+                            @Override
+                            //successful response
+                            public void onResponse(String response) {
+                                //get the response if success get response that data has been received
+                                Log.i("My success", "" + response);
+                                uploadTPplotinfo(farmerID);
+                                uploadTPpolygon(farmerID);
+                                uploadTPcohort(farmerID);//cohorts
+                                uploadTPmeasurements(farmerID);
+                                //dbAccess.uploadStatusTPinfo();//update column uploaded to yes
+                                //dismiss dialog after all records are sent;
+                                if (count == cursor.getCount()) {
+                                    //dbAccess.uploadStatusNurseryinfo(nurseryID);//set it to yes
+                                    progressDialog.dismiss();
                                 }
+                                //notification
+                                try {
+                                    //count records sent
+                                    final int count = dbAccess.getcount();
+                                    //Toast.makeText(Index.this, count + " record(s) " + response, Toast.LENGTH_LONG).show();
+                                    //refresh activity after dialog
+                                    final AlertDialog.Builder builder = new AlertDialog.Builder(OtherMainActivities.this).setTitle("Data sent!").setMessage(count + " record(s) " + response)
+                                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    dbAccess.uploadStatusTPinfo();//update column uploaded to yes
+                                                    dbAccess.uploadStatusTPplotinfo();
+                                                    dbAccess.uploadStatusTPpolygon();//update column to yes
+                                                    dbAccess.uploadStatusTPcohort();//update column uploaded to yes
+                                                    dbAccess.uploadStatusTPmeasurement();
+                                                    //dismiss dialog by intent
+                                                    Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
+                                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                                    startActivity(intent);
+                                                }
+                                            });
+                                    //builder.create().show();
+                                    _alert = builder.create();
+                                    _alert.show();
+                                    //progressDialog.dismiss();
+                                } catch (Exception e) {//added catch
+                                    Log.d("Upload failed", "Exception : "
+                                            + e.getMessage(), e);
+                                }
+
                             }
-                            return map;
-                        }
-                    };
+                            //get error response
+                        }, new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                //error responses if failed to connect
+                                if (error instanceof NetworkError) {
+                                    Toast.makeText(OtherMainActivities.this, "Cannot connect to Internet...Please check your connection!", Toast.LENGTH_SHORT).show();
+                                } else if (error instanceof ServerError) {
+                                    Toast.makeText(OtherMainActivities.this, "The server could not be found. Please try again after some time!!", Toast.LENGTH_SHORT).show();
+                                } else if (error instanceof AuthFailureError) {
+                                    Toast.makeText(OtherMainActivities.this, "Cannot connect to Internet...Please check your connection!", Toast.LENGTH_SHORT).show();
+                                } else if (error instanceof ParseError) {
+                                    Toast.makeText(OtherMainActivities.this, "Parsing error! Please try again after some time!!", Toast.LENGTH_SHORT).show();
 
-                    //add the request to the request queue
-                    //retry policy to avoid crash
-                    request.setRetryPolicy(new DefaultRetryPolicy( 0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-
-                    queue.add(request);
-                    //VolleySingleton.getInstance(this).addToRequestQueue(request);
-                    //add listener to the queue which is executed when the request ends
-                    queue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<String>() {
-                        @Override
-                        public void onRequestFinished(Request<String> request) {
-                            if (progressDialog !=  null && progressDialog.isShowing())
+                                } else if (error instanceof TimeoutError) {
+                                    Toast.makeText(OtherMainActivities.this, "Connection TimeOut! Please check your internet connection", Toast.LENGTH_SHORT).show();
+                                }
+                                Log.i("My error", "" + error);
+                                //dismiss dialog
                                 progressDialog.dismiss();
-                        }
-                    });
-                    count+=1;//increment cursor by 1 once on the response to make sure that dialog is dismissed after the last record
-                } while (cursor.moveToNext());
+
+                            }
+                        }) {
+                            @Override
+                            //hashmap class in volley
+                            //HashMap is a type of Collection that stores  data in a pair such that each element has a key associated with it.
+                            protected Map<String, String> getParams() throws AuthFailureError {
+                                Map<String, String> param = new HashMap<String, String>();
+                                //farmer/institution
+                                param.put("farmerID", farmerID);
+                                param.put("module", tp_module);
+                                param.put("enum_name", enum_name);
+                                param.put("date", date);
+                                param.put("survey_name", survey_name);
+                                param.put("farmer_inst_name", farmer_inst_name);
+                                param.put("country", country);
+                                param.put("county_region", county_region);
+                                param.put("district", district);
+                                //param.put("planting_location", planting_location);
+                                param.put("land_individual", land_individual);
+                                param.put("land_community", land_community);
+                                param.put("land_government", land_government);
+                                param.put("land_mosque_church", land_mosque_church);
+                                param.put("land_schools", land_schools);
+                                param.put("land_other", land_other);
+                                return checkParams(param);
+                            }
+
+                            //check empty for null values
+                            private Map<String, String> checkParams(Map<String, String> map) {
+                                Iterator<Map.Entry<String, String>> it = map.entrySet().iterator();
+                                while (it.hasNext()) {
+                                    Map.Entry<String, String> pairs = (Map.Entry<String, String>) it.next();
+                                    if (pairs.getValue() == null) {
+                                        map.put(pairs.getKey(), "");
+                                    }
+                                }
+                                return map;
+                            }
+                        };
+
+                        //add the request to the request queue
+                        //retry policy to avoid crash
+                        request.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+                        queue.add(request);
+                        //VolleySingleton.getInstance(this).addToRequestQueue(request);
+                        //add listener to the queue which is executed when the request ends
+                        queue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<String>() {
+                            @Override
+                            public void onRequestFinished(Request<String> request) {
+                                if (progressDialog != null && progressDialog.isShowing())
+                                    progressDialog.dismiss();
+                            }
+                        });
+                        count += 1;//increment cursor by 1 once on the response to make sure that dialog is dismissed after the last record
+                    }//end check for the full record
+                }
+                    while (cursor.moveToNext()) ;
             }//end of cursor
         }catch(Exception e){//added catch
             Log.d("Upload failed", "Exception : "
@@ -1154,6 +1162,11 @@ public class OtherMainActivities extends AppCompatActivity {
                     final String fmnr_land_other = cursor.getString(cursor.getColumnIndex("fmnr_land_other"));
                     final String fmnr_module = cursor.getString(cursor.getColumnIndex("module"));//
 
+                    if (!record_completeFmnr(fmnr_farmer_id)) {
+                        Toast.makeText(OtherMainActivities.this, count + " record not complete ", Toast.LENGTH_LONG).show();
+                        progressDialog.dismiss();
+
+                    } else {
                     // create an object of volley request queue
                    // RequestQueue queue = Volley.newRequestQueue(this);
                     // create an object of volley request queue
@@ -1289,7 +1302,8 @@ public class OtherMainActivities extends AppCompatActivity {
                         }
                     });
                     count+=1;//increment cursor by 1 once on the response to make sure that dialog is dismissed after the last record
-                } while (cursor.moveToNext());
+                    }//end check for the full record
+                    } while (cursor.moveToNext());
             }//end of cursor
             cursor.close();//close cursor
         }catch(Exception e){//added catch
@@ -1828,6 +1842,50 @@ public class OtherMainActivities extends AppCompatActivity {
         }catch(Exception e){//added catch
             Log.d("Upload failed", "Exception : "
                     + e.getMessage(), e);
+        }
+    }
+    //check if record is complete and reject half record
+    public  boolean record_completeTP(String fid){
+        final Cursor cursor_plotinfo = dbAccess.getTPplotinfo(fid);
+        if (cursor_plotinfo.moveToFirst()) {
+            final Cursor cursor_polygon = dbAccess.getTPpolygon(fid);
+                if(cursor_polygon.moveToFirst()){
+                    final Cursor cursor_cohort = dbAccess.getTPcohort(fid);
+                        if(cursor_cohort.moveToFirst()){
+                            final Cursor cursor_measurements = dbAccess.getTPmeasurements(fid);
+                            if(cursor_measurements.moveToFirst()){
+                                return true;
+                            }
+                            else {
+                                return false;
+                            }
+                        }else {
+                            return  false;
+                        }
+                    }else {
+                    return  false;
+                }
+                }else {
+                    return  false;
+                }
+    }
+    public  boolean record_completeFmnr(String fid){
+        final Cursor cursor_plotinfo = dbAccess.getFMNRplotinfo(fid);
+        if (cursor_plotinfo.moveToFirst()) {
+            final Cursor cursor_polygon = dbAccess.getFMNRpolygon(fid);
+            if(cursor_polygon.moveToFirst()){
+                    final Cursor cursor_species = dbAccess.getFMNRspecies(fid);
+                    if(cursor_species.moveToFirst()){
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+            }else {
+                return  false;
+            }
+        }else {
+            return  false;
         }
     }
     @Override
