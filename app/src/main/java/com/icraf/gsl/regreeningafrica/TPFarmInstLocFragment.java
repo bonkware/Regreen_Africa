@@ -71,9 +71,12 @@ public class TPFarmInstLocFragment extends Fragment {
     public void saveFarmerInst() {
         //generate unique id for farmer/institution
         Random generator = new Random();
-        int n = 100000;
+        int n = 1000000;
+        Random generator2 = new Random();
+        int n2 = 1000000;
         n = generator.nextInt(n);//random number generator
-        String fid = "fgi_" + n;
+        n2 = generator2.nextInt(n2);//random number generator2
+        String fid = "fgi_" + n + "_" + n2;
         g.setfid(fid);
         //edittexts
         EditText e_name = (EditText) getActivity().findViewById(R.id.ename);

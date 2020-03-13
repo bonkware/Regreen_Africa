@@ -207,9 +207,12 @@ public class TPFarmInstLandsizeFragment extends Fragment {
     public void plotid(){
         //generate unique id for farmer/institution
         Random generator = new Random();
-        int n = 100000;
+        int n = 1000000;
+        Random generator2 = new Random();
+        int n2 = 1000000;
         n = generator.nextInt(n);//random number generator
-        String pid = "plot_" + n;
+        n2 = generator2.nextInt(n2);//random number generator2
+        String pid = "plot_" + n + "_" + n2;
         g.setpid(pid);
     }
 }

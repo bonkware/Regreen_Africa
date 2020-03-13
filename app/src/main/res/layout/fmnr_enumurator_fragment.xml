@@ -38,7 +38,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/text1"
                 android:inputType="textPersonName"
-                android:digits= "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_"
                 android:padding="@dimen/view_padding"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"

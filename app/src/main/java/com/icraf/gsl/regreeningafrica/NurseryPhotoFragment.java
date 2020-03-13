@@ -130,11 +130,14 @@ public class NurseryPhotoFragment extends Fragment {
         }
         //image random name
         Random generator = new Random();
-        int n = 1000;
+        int n = 1000000;
+        Random generator2 = new Random();
+        int n2 = 1000000;
         n = generator.nextInt(n);//random number generator
+        n2 = generator2.nextInt(n2);//random number generator2
         //Date date = new Date();
         //String dt = g.getfid() + "_" + DateFormat.getDateTimeInstance().format(date);
-        String dt = "img_" + n;
+        String dt = "img_" + n + "_" + n2;
         imgpath = new File(folder, File.separator +
                 dt + ".png");
         return imgpath;
@@ -168,9 +171,12 @@ public class NurseryPhotoFragment extends Fragment {
     public void savenurseryInfo(){
         //nursery Random id
         Random generator = new Random();
-        int n = 10000;
+        int n = 1000000;
+        Random generator2 = new Random();
+        int n2 = 1000000;
         n = generator.nextInt(n);//random number generator
-        String nid = "nursery_" + n;
+        n2 = generator2.nextInt(n2);//random number generator2
+        String nid = "nursery_" + n + "_" + n2;
         g.setnid(nid);
         //
         EditText e_name = (EditText) getActivity().findViewById(R.id.ename);
