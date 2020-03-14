@@ -231,7 +231,7 @@ public class OtherMainActivities extends AppCompatActivity {
                     final String land_other = cursor.getString(cursor.getColumnIndex("land_other"));
 
                     if (!record_completeTP(farmerID)) {
-                        Toast.makeText(OtherMainActivities.this, count + " record not complete ", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(OtherMainActivities.this, count + " record not complete ", Toast.LENGTH_LONG).show();
                         progressDialog.dismiss();
 
                     } else {
@@ -599,7 +599,7 @@ public class OtherMainActivities extends AppCompatActivity {
     public void uploadTPmeasurements(String tp_measurements__farmer_id) {
         //get data from sqlite in a loop
         try{//added try catch
-            final Cursor cursor = dbAccess.getTPmeasurements(tp_measurements__farmer_id);//fetch all tree planting data
+            final Cursor cursor = dbAccess.getTPmeasurements();//fetch all tree planting data
             if (cursor.moveToFirst()) {
                 do {
                     //for tree measurement
@@ -1163,7 +1163,7 @@ public class OtherMainActivities extends AppCompatActivity {
                     final String fmnr_module = cursor.getString(cursor.getColumnIndex("module"));//
 
                     if (!record_completeFmnr(fmnr_farmer_id)) {
-                        Toast.makeText(OtherMainActivities.this, count + " record not complete ", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(OtherMainActivities.this, count + " record not complete ", Toast.LENGTH_LONG).show();
                         progressDialog.dismiss();
 
                     } else {
@@ -1852,7 +1852,7 @@ public class OtherMainActivities extends AppCompatActivity {
                 if(cursor_polygon.moveToFirst()){
                     final Cursor cursor_cohort = dbAccess.getTPcohort(fid);
                         if(cursor_cohort.moveToFirst()){
-                            final Cursor cursor_measurements = dbAccess.getTPmeasurements(fid);
+                            final Cursor cursor_measurements = dbAccess.getTPmeasurements();
                             if(cursor_measurements.moveToFirst()){
                                 return true;
                             }

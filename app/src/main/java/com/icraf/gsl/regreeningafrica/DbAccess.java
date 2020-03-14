@@ -347,8 +347,8 @@ public class DbAccess {
         Cursor c = database.rawQuery(selectQuery, null);
         return c;
     }
-    public Cursor getTPmeasurements(String tp_measurements__farmer_id) {
-        String selectQuery = "SELECT * FROM tree_measurements WHERE uploaded='no' and farmerID='"+tp_measurements__farmer_id+"'  ";
+    public Cursor getTPmeasurements() {
+        String selectQuery = "SELECT * FROM tree_measurements WHERE uploaded='no'";
         Cursor c = database.rawQuery(selectQuery, null);
         return c;
     }
@@ -359,11 +359,7 @@ public class DbAccess {
     }
     //count no. of records tree planting
     public int getcount(){
-        /*Cursor cur = database.rawQuery("SELECT count(*) from farmer_institution,plot_info,cohort,tree_measurements " +
-                "WHERE farmer_institution.farmerID=plot_info.farmerID and farmer_institution.farmerID=cohort.farmerID and cohort.cohortID=tree_measurements.cohortID " +
-                "and farmer_institution.uploaded='no' and plot_info.uploaded='no' and cohort.uploaded='no' " +
-                "and tree_measurements.uploaded='no' ", null);*/
-        Cursor cur = database.rawQuery("SELECT count(*) from farmer_institution where  farmer_institution.uploaded='no'", null);
+        Cursor cur = database.rawQuery("SELECT count(DISTINCT(t1.farmerID)) from farmer_institution as t1, plot_info as t2, landsizepolygontp as t3, cohort as t4 where t1.farmerID = t2.farmerID AND   t1.farmerID = t3.farmerID AND t1.farmerID = t4.farmerID AND t1.uploaded='no'", null);
         int x = 0;
         if (cur.moveToFirst())
         {
@@ -400,7 +396,7 @@ public class DbAccess {
     }
     //count number of records in fmnr
     public int getfmnrcount(){
-        Cursor cur = database.rawQuery("SELECT count(*) from fmnr_farmer_inst where fmnr_farmer_inst.uploaded='no'", null);
+        Cursor cur = database.rawQuery("SELECT count(DISTINCT(t1.farmerID)) FROM fmnr_farmer_inst as t1  INNER JOIN fmnr_plot_info as t2 ON t1.farmerID = t2.farmerID INNER JOIN landsizepolygonfmnr as t3 ON t1.farmerID = t3.farmerID INNER JOIN fmnr_species as t4 ON t1.farmerID = t4.farmerID AND t1.uploaded='no'", null);
         //Cursor cur = database.rawQuery("SELECT count(*) from fmnr_farmer_inst,fmnr_plot_info,fmnr_species WHERE fmnr_farmer_inst.farmerID=fmnr_plot_info.farmerID and fmnr_farmer_inst.farmerID=fmnr_species.farmerID and fmnr_species.uploaded='no' and fmnr_plot_info.uploaded='no' and fmnr_farmer_inst.uploaded='no' ", null);
         int x = 0;
         if (cur.moveToFirst())
