@@ -73,9 +73,12 @@ public class TPCohortUsageFragment extends Fragment {
     public  void saveCohort(){
         //generate unique id for the cohort
         Random generator = new Random();
-        int n = 10000;
+        int n = 1000000;
+        Random generator2 = new Random();
+        int n2 = 1000000;
         n = generator.nextInt(n);//random number generator
-        String cid = "cohort_" + n;
+        n2 = generator2.nextInt(n2);//random number generator2
+        String cid = "cohort_" + n +"_" + n2;
         g.setcid(cid);
         TextView fid = (TextView) getActivity().findViewById(R.id.fid);
         g.setfid(fid.getText().toString());
