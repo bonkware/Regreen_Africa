@@ -838,144 +838,152 @@ public class OtherMainActivities extends AppCompatActivity {
                     final String altitude = cursor.getString(cursor.getColumnIndex("altitude"));
                     final String accuracy = cursor.getString(cursor.getColumnIndex("accuracy"));
                     final String path = cursor.getString(cursor.getColumnIndex("image"));
-                    // create an object of volley request queue
-                    //RequestQueue queue = Volley.newRequestQueue(OtherMainActivities.this);
-                    if (queue == null) {
-                        queue = Volley.newRequestQueue(this);
-                    }
-                    // Request a string response from the provided url above to server.
-                    StringRequest request = new StringRequest(Request.Method.POST, nurseryinfo_url, new Response.Listener<String>() {
-                        @Override
-                        //successful response
-                        public void onResponse(String response) {
-                            //get the response if success get response that data has been received
-                            Log.i("My success", "" + response);
-                            uploadNurseryspecies(nurseryID);//send species on response
-                            //dismiss dialog after all records are sent;
-                            if(count == cursor.getCount()){
-                                //dbAccess.uploadStatusNurseryinfo(nurseryID);//set it to yes
-                                progressDialog.dismiss();
-                            }
-                            try{
-                                //count records sent
-                                final int count = dbAccess.getnurserycount();
-                                //Toast.makeText(Index.this, count + " record(s) " + response, Toast.LENGTH_LONG).show();
-                                //refresh activity after dialog
-                                final AlertDialog.Builder builder = new AlertDialog.Builder(OtherMainActivities.this).setTitle("Data sent!").setMessage(count + " record(s) " + response)
-                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                dbAccess.uploadStatusNurseryinfo(nurseryID);//set it to yes
-                                                dbAccess.uploadStatusNurseryspecies(nurseryID);//set it to yes
-                                                //dismiss dialog by intent
-                                                Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
-                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                                                startActivity(intent);
-                                            }
-                                        });
-                                //builder.create().show();
-                                _alert = builder.create();
-                                _alert.show();
-                                //progressDialog.dismiss();
-                            }catch(Exception e){//added catch
-                                Log.d("Upload failed", "Exception : "
-                                        + e.getMessage(), e);
-                            }
-                        }
-                        //get error response
-                    }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            //error responses if failed to connect
-                            if (error instanceof NetworkError) {
-                                Toast.makeText(OtherMainActivities.this,"Cannot connect to Internet...Please check your connection!",Toast.LENGTH_SHORT).show();
-                            } else if (error instanceof ServerError) {
-                                Toast.makeText(OtherMainActivities.this,"The server could not be found. Please try again after some time!!",Toast.LENGTH_SHORT).show();
-                            } else if (error instanceof AuthFailureError) {
-                                Toast.makeText(OtherMainActivities.this,"Cannot connect to Internet...Please check your connection!",Toast.LENGTH_SHORT).show();
-                            } else if (error instanceof ParseError) {
-                                Toast.makeText(OtherMainActivities.this,"Parsing error! Please try again after some time!!",Toast.LENGTH_SHORT).show();
 
-                            } else if (error instanceof TimeoutError) {
-                                Toast.makeText(OtherMainActivities.this,"Connection TimeOut! Please check your internet connection",Toast.LENGTH_SHORT).show();
-                            }
-                            Log.i("My error", "" + error);
-                            //dismiss dialog
-                            progressDialog.dismiss();
+                    if (!record_completeNursery(nurseryID)) {
+                        //Toast.makeText(OtherMainActivities.this, count + " record not complete ", Toast.LENGTH_LONG).show();
+                        progressDialog.dismiss();
 
+                    } else {
+                        // create an object of volley request queue
+                        //RequestQueue queue = Volley.newRequestQueue(OtherMainActivities.this);
+                        if (queue == null) {
+                            queue = Volley.newRequestQueue(this);
                         }
-                    }) {
-                        @Override
-                        //hashmap
-                        protected Map<String, String> getParams() throws AuthFailureError {
-                            Map<String, String> param = new HashMap<String, String>();
-                            //farmer data
-                            param.put("nurseryID", nurseryID);
-                            param.put("module", nursery_module);
-                            param.put("enum_name", enum_name);
-                            param.put("date", date);
-                            param.put("survey_name", survey_name);
-                            param.put("country", country);
-                            param.put("county", county);
-                            param.put("district", district);
-                            param.put("operator", operator);
-                            param.put("contact", contact);
-                            param.put("nursery_name", nursery_name);
-                            param.put("species_number", species_number);
-                            param.put("started_date", started_date);
-                            param.put("government", type_government);
-                            param.put("church_mosque", type_church_mosque);
-                            param.put("schools", type_schools);
-                            param.put("women_groups", type_women_groups);
-                            param.put("youth_groups", type_youth_groups);
-                            param.put("private_individual", type_private_individual);
-                            param.put("communal_village", type_communal_village);
-                            param.put("other_types", other_nursery_types);
-                            //param.put("youth_groups", type_youth_groups);
-                            param.put("latitude", latitude);
-                            param.put("longitude", longitude);
-                            param.put("altitude", altitude);
-                            param.put("accuracy", accuracy);
-                            //converting file path to bitmap
-                            BitmapFactory.Options options = new BitmapFactory.Options();
-                            options.inSampleSize = 8;//compress file further to avoid out of memory error
-                            Bitmap bitmap = BitmapFactory.decodeFile(path,options);
-                            String image = getStringImage(bitmap);
-                            param.put("image", image);
-
-                            //return param;
-                            return checkParams(param);
-                        }
-                        //check empty for null values
-                        private Map<String, String> checkParams(Map<String, String> map){
-                            Iterator<Map.Entry<String, String>> it = map.entrySet().iterator();
-                            while (it.hasNext()) {
-                                Map.Entry<String, String> pairs = (Map.Entry<String, String>)it.next();
-                                if(pairs.getValue()==null){
-                                    map.put(pairs.getKey(), "");
+                        // Request a string response from the provided url above to server.
+                        StringRequest request = new StringRequest(Request.Method.POST, nurseryinfo_url, new Response.Listener<String>() {
+                            @Override
+                            //successful response
+                            public void onResponse(String response) {
+                                //get the response if success get response that data has been received
+                                Log.i("My success", "" + response);
+                                uploadNurseryspecies(nurseryID);//send species on response
+                                //dismiss dialog after all records are sent;
+                                if (count == cursor.getCount()) {
+                                    //dbAccess.uploadStatusNurseryinfo(nurseryID);//set it to yes
+                                    progressDialog.dismiss();
+                                }
+                                try {
+                                    //count records sent
+                                    final int count = dbAccess.getnurserycount();
+                                    //Toast.makeText(Index.this, count + " record(s) " + response, Toast.LENGTH_LONG).show();
+                                    //refresh activity after dialog
+                                    final AlertDialog.Builder builder = new AlertDialog.Builder(OtherMainActivities.this).setTitle("Data sent!").setMessage(count + " record(s) " + response)
+                                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    dbAccess.uploadStatusNurseryinfo(nurseryID);//set it to yes
+                                                    dbAccess.uploadStatusNurseryspecies(nurseryID);//set it to yes
+                                                    //dismiss dialog by intent
+                                                    Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
+                                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                                    startActivity(intent);
+                                                }
+                                            });
+                                    //builder.create().show();
+                                    _alert = builder.create();
+                                    _alert.show();
+                                    //progressDialog.dismiss();
+                                } catch (Exception e) {//added catch
+                                    Log.d("Upload failed", "Exception : "
+                                            + e.getMessage(), e);
                                 }
                             }
-                            return map;
-                        }
-                    };
+                            //get error response
+                        }, new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                //error responses if failed to connect
+                                if (error instanceof NetworkError) {
+                                    Toast.makeText(OtherMainActivities.this, "Cannot connect to Internet...Please check your connection!", Toast.LENGTH_SHORT).show();
+                                } else if (error instanceof ServerError) {
+                                    Toast.makeText(OtherMainActivities.this, "The server could not be found. Please try again after some time!!", Toast.LENGTH_SHORT).show();
+                                } else if (error instanceof AuthFailureError) {
+                                    Toast.makeText(OtherMainActivities.this, "Cannot connect to Internet...Please check your connection!", Toast.LENGTH_SHORT).show();
+                                } else if (error instanceof ParseError) {
+                                    Toast.makeText(OtherMainActivities.this, "Parsing error! Please try again after some time!!", Toast.LENGTH_SHORT).show();
 
-                    //add the request to the request queue
-                    //retry policy to avoid crash
-                    request.setRetryPolicy(new DefaultRetryPolicy( 0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-
-                    queue.add(request);
-                    //VolleySingleton.getInstance(this).addToRequestQueue(request);
-                    //add listener to the queue which is executed when the request ends
-                    queue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<String>() {
-                        @Override
-                        public void onRequestFinished(Request<String> request) {
-                            if (progressDialog !=  null && progressDialog.isShowing())
+                                } else if (error instanceof TimeoutError) {
+                                    Toast.makeText(OtherMainActivities.this, "Connection TimeOut! Please check your internet connection", Toast.LENGTH_SHORT).show();
+                                }
+                                Log.i("My error", "" + error);
+                                //dismiss dialog
                                 progressDialog.dismiss();
-                        }
-                    });
-                    count+=1;//increment cursor by 1 once on the response to make sure that dialog is dismissed after the last record
-                } while (cursor.moveToNext());
+
+                            }
+                        }) {
+                            @Override
+                            //hashmap
+                            protected Map<String, String> getParams() throws AuthFailureError {
+                                Map<String, String> param = new HashMap<String, String>();
+                                //farmer data
+                                param.put("nurseryID", nurseryID);
+                                param.put("module", nursery_module);
+                                param.put("enum_name", enum_name);
+                                param.put("date", date);
+                                param.put("survey_name", survey_name);
+                                param.put("country", country);
+                                param.put("county", county);
+                                param.put("district", district);
+                                param.put("operator", operator);
+                                param.put("contact", contact);
+                                param.put("nursery_name", nursery_name);
+                                param.put("species_number", species_number);
+                                param.put("started_date", started_date);
+                                param.put("government", type_government);
+                                param.put("church_mosque", type_church_mosque);
+                                param.put("schools", type_schools);
+                                param.put("women_groups", type_women_groups);
+                                param.put("youth_groups", type_youth_groups);
+                                param.put("private_individual", type_private_individual);
+                                param.put("communal_village", type_communal_village);
+                                param.put("other_types", other_nursery_types);
+                                //param.put("youth_groups", type_youth_groups);
+                                param.put("latitude", latitude);
+                                param.put("longitude", longitude);
+                                param.put("altitude", altitude);
+                                param.put("accuracy", accuracy);
+                                //converting file path to bitmap
+                                BitmapFactory.Options options = new BitmapFactory.Options();
+                                options.inSampleSize = 8;//compress file further to avoid out of memory error
+                                Bitmap bitmap = BitmapFactory.decodeFile(path, options);
+                                String image = getStringImage(bitmap);
+                                param.put("image", image);
+
+                                //return param;
+                                return checkParams(param);
+                            }
+
+                            //check empty for null values
+                            private Map<String, String> checkParams(Map<String, String> map) {
+                                Iterator<Map.Entry<String, String>> it = map.entrySet().iterator();
+                                while (it.hasNext()) {
+                                    Map.Entry<String, String> pairs = (Map.Entry<String, String>) it.next();
+                                    if (pairs.getValue() == null) {
+                                        map.put(pairs.getKey(), "");
+                                    }
+                                }
+                                return map;
+                            }
+                        };
+
+                        //add the request to the request queue
+                        //retry policy to avoid crash
+                        request.setRetryPolicy(new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+                        queue.add(request);
+                        //VolleySingleton.getInstance(this).addToRequestQueue(request);
+                        //add listener to the queue which is executed when the request ends
+                        queue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<String>() {
+                            @Override
+                            public void onRequestFinished(Request<String> request) {
+                                if (progressDialog != null && progressDialog.isShowing())
+                                    progressDialog.dismiss();
+                            }
+                        });
+                        count += 1;//increment cursor by 1 once on the response to make sure that dialog is dismissed after the last record
+                    }//close the check for the full record
+                    } while (cursor.moveToNext());
             }//end of cursor
         }catch(Exception e){//added catch
             Log.d("Upload failed", "Exception : "
@@ -1887,6 +1895,21 @@ public class OtherMainActivities extends AppCompatActivity {
         }else {
             return  false;
         }
+    }
+    public  boolean record_completeNursery(String nursery_ID){
+        final Cursor cursor_NurseryInfo = dbAccess.getNurseryinfo();
+        if (cursor_NurseryInfo.moveToFirst()) {
+            final Cursor cursor_species = dbAccess.getNurseryspecies(nursery_ID);
+            if(cursor_species.moveToFirst()){
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }else {
+                return  false;
+            }
+
     }
     @Override
     public void onPause() {
