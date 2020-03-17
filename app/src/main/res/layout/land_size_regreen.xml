@@ -88,6 +88,13 @@
                 android:layout_centerVertical="true"
                 android:textSize="@dimen/add_edit_textsize">
             </EditText>
+            <Spinner
+                android:id="@+id/units"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editText1"
+                android:background="@android:drawable/btn_dropdown"
+                android:paddingTop="10dp"/>
             <RelativeLayout
                 android:id="@+id/sp"
                 android:layout_width="wrap_content"
@@ -110,13 +117,6 @@
                     android:layout_alignBottom="@+id/editText1"
                     android:layout_toRightOf="@+id/editText1"
                     android:layout_toEndOf="@+id/editText1" />
-                <Spinner
-                    android:id="@+id/units"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/editText1"
-                    android:background="@android:drawable/btn_dropdown"
-                    android:paddingTop="10dp"/>
                 <!--<EditText
                     android:id="@+id/status"
                     android:layout_width="match_parent"
