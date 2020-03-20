@@ -116,7 +116,7 @@ public class NurseryInfoMain extends AppCompatActivity {
                 //c.setError("Enter Country name");
             //}
         }
-        if (county.getSelectedItem().toString().trim().equals("Select")) {//validate the spinner not
+        if (county.getSelectedItem().toString().trim().equals("Select") || county.getSelectedItem().toString().trim().equals("Select Country first")) {//validate the spinner not
             //if (ct.getText().toString().trim().length() == 0) {
                 fail = true;
                 county.requestFocus();
