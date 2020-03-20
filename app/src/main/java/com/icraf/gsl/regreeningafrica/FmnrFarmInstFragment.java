@@ -36,7 +36,8 @@ public class FmnrFarmInstFragment extends Fragment {
             "Niger",
             "Ghana",
             "Senegal",
-            "Mali"
+            "Mali",
+            "Chad"
     };
     String GETTEXT;
     List<String> stringlist;
