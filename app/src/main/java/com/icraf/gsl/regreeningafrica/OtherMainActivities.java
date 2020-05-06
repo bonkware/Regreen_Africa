@@ -1520,7 +1520,7 @@ public class OtherMainActivities extends AppCompatActivity {
                         }
                     };
                     //add the request to the request queue
-                    //retry policy to avoid crash
+                    //retry policy to avoid crash and avoid sending data twice
                     request.setRetryPolicy(new DefaultRetryPolicy( 0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
                     queue.add(request);
