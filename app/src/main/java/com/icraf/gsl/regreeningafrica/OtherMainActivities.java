@@ -251,42 +251,14 @@ public class OtherMainActivities extends AppCompatActivity {
                                 uploadTPpolygon(farmerID);
                                 uploadTPcohort(farmerID);//cohorts
                                 uploadTPmeasurements(farmerID);
-                                //dbAccess.uploadStatusTPinfo();//update column uploaded to yes
-                                //dismiss dialog after all records are sent;
-                                if (count == cursor.getCount()) {
-                                    //dbAccess.uploadStatusNurseryinfo(nurseryID);//set it to yes
-                                    progressDialog.dismiss();
+                                if(response.equals("sent")){
+                                    //dbAccess.uploadStatusTPinfo();//update column uploaded to yes
+                                    Log.i("Not success", "No success");
                                 }
-                                //notification
-                                try {
-                                    //count records sent
-                                    final int count = dbAccess.getcount();
-                                    //Toast.makeText(Index.this, count + " record(s) " + response, Toast.LENGTH_LONG).show();
-                                    //refresh activity after dialog
-                                    final AlertDialog.Builder builder = new AlertDialog.Builder(OtherMainActivities.this).setTitle("Data sent!").setMessage(count + " record(s) " + response)
-                                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                                @Override
-                                                public void onClick(DialogInterface dialog, int which) {
-                                                    dbAccess.uploadStatusTPinfo();//update column uploaded to yes
-                                                    dbAccess.uploadStatusTPplotinfo();
-                                                    dbAccess.uploadStatusTPpolygon();//update column to yes
-                                                    dbAccess.uploadStatusTPcohort();//update column uploaded to yes
-                                                    dbAccess.uploadStatusTPmeasurement();
-                                                    //dismiss dialog by intent
-                                                    Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
-                                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                                                    startActivity(intent);
-                                                }
-                                            });
-                                    //builder.create().show();
-                                    _alert = builder.create();
-                                    _alert.show();
-                                    //progressDialog.dismiss();
-                                } catch (Exception e) {//added catch
-                                    Log.d("Upload failed", "Exception : "
-                                            + e.getMessage(), e);
+                                else {
+                                    //dbAccess.uploadStatusTPinfo(farmerID);//update column uploaded to yes
                                 }
+
 
                             }
                             //get error response
@@ -374,7 +346,7 @@ public class OtherMainActivities extends AppCompatActivity {
                     + e.getMessage(), e);
         }
     }
-    public void uploadTPplotinfo(String tp_farmer_id) {
+    public void uploadTPplotinfo(final String tp_farmer_id) {
         //get data from sqlite in a loop
         try{//added try catch
             final Cursor cursor = dbAccess.getTPplotinfo(tp_farmer_id);//fetch all tree planting info data
@@ -400,6 +372,13 @@ public class OtherMainActivities extends AppCompatActivity {
                         public void onResponse(String response) {
                             //get the response if success get response that data has been received
                             Log.i("My success", "" + response);
+                            if(response.equals("sent")){
+                                //dbAccess.uploadStatusTPinfo();//update column uploaded to yes
+                                Log.i("Not success", "No success");
+                            }
+                            else {
+                                //dbAccess.uploadStatusTPplotinfo(tp_farmer_id);//update column uploaded to yes
+                            }
                         }
                         //get error response
                     }, new Response.ErrorListener() {
@@ -462,7 +441,108 @@ public class OtherMainActivities extends AppCompatActivity {
                     + e.getMessage(), e);
         }
     }
-    public void uploadTPcohort(String cohort_farmer_id) {
+    public void uploadTPpolygon(final String tp_polygon_farmer_id) {
+        //get data from sqlite in a loop
+        try{//added try catch
+            final Cursor cursor = dbAccess.getTPpolygon(tp_polygon_farmer_id);//fetch all fmnr data
+            if (cursor.moveToFirst()) {
+                do {
+                    //for fmnr plot polygon
+                    final String fid = cursor.getString(cursor.getColumnIndex("farmerID"));
+                    final String pid = cursor.getString(cursor.getColumnIndex("plotID"));
+                    final String tp_module = cursor.getString(cursor.getColumnIndex("module"));
+                    final String landsize_polygon_latitude = cursor.getString(cursor.getColumnIndex("latitude"));
+                    final String landsize_polygon_longitude = cursor.getString(cursor.getColumnIndex("longitude"));
+                    final String landsize_polygon_altitude = cursor.getString(cursor.getColumnIndex("altitude"));
+                    final String landsize_polygon_accuracy = cursor.getString(cursor.getColumnIndex("accuracy"));
+
+                    // create an object of volley request queue
+                    // RequestQueue queue = Volley.newRequestQueue(this);
+                    // create an object of volley request queue
+                    if (queue == null) {
+                        queue = Volley.newRequestQueue(this);
+                    }
+                    // Request a string response from the provided url above to server.
+                    request = new StringRequest(Request.Method.POST, tppolygon_url, new Response.Listener<String>() {
+                        @Override
+                        //successful response
+                        public void onResponse(String response) {
+                            //get the response if success get response that data has been received
+                            Log.i("My success", "" + response);
+                            //uploadFMNRspecies();//species
+                            if(response.equals("sent")){
+                                Log.i("Not success", "No success");
+                            }
+                            else {
+                                //dbAccess.uploadStatusTPpolygon(tp_polygon_farmer_id);//update column to yes
+                            }
+                        }
+                        //get error response
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            //error responses if failed to connect
+                            if (error instanceof NetworkError) {
+                                Toast.makeText(OtherMainActivities.this,"Cannot connect to Internet...Please check your connection!",Toast.LENGTH_SHORT).show();
+                            } else if (error instanceof ServerError) {
+                                Toast.makeText(OtherMainActivities.this,"The server could not be found. Please try again after some time!!",Toast.LENGTH_SHORT).show();
+                            } else if (error instanceof AuthFailureError) {
+                                Toast.makeText(OtherMainActivities.this,"Cannot connect to Internet...Please check your connection!",Toast.LENGTH_SHORT).show();
+                            } else if (error instanceof ParseError) {
+                                Toast.makeText(OtherMainActivities.this,"Parsing error! Please try again after some time!!",Toast.LENGTH_SHORT).show();
+                            } else if (error instanceof TimeoutError) {
+                                Toast.makeText(OtherMainActivities.this,"Connection TimeOut! Please check your internet connection",Toast.LENGTH_SHORT).show();
+                            }
+                            Log.i("My error", "" + error);
+                            //dismiss dialog
+                            //progressDialog.dismiss();
+
+                        }
+                    }) {
+                        @Override
+                        //hashmap class in volley
+                        //HashMap is a type of Collection that stores  data in a pair such that each element has a key associated with it.
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            Map<String, String> param = new HashMap<String, String>();
+                            //landsize polygon
+                            param.put("farmerID", fid);
+                            param.put("plotID", pid);
+                            param.put("module", tp_module);
+                            param.put("latitude", landsize_polygon_latitude);
+                            param.put("longitude", landsize_polygon_longitude);
+                            param.put("altitude", landsize_polygon_altitude);
+                            param.put("accuracy", landsize_polygon_accuracy);
+                            //return param;
+                            return checkParams(param);
+                        }
+                        //check empty for null values
+                        private Map<String, String> checkParams(Map<String, String> map){
+                            Iterator<Map.Entry<String, String>> it = map.entrySet().iterator();
+                            while (it.hasNext()) {
+                                Map.Entry<String, String> pairs = (Map.Entry<String, String>)it.next();
+                                if(pairs.getValue()==null){
+                                    map.put(pairs.getKey(), "");
+                                }
+                            }
+                            return map;
+                        }
+                    };
+                    //add the request to the request queue
+                    //retry policy to avoid crash
+                    request.setRetryPolicy(new DefaultRetryPolicy( 0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+                    queue.add(request);
+
+                } while (cursor.moveToNext());
+            }//end of cursor
+            cursor.close();//close cursor
+        }catch(Exception e){//added catch
+            Log.d("Upload failed", "Exception : "
+                    + e.getMessage(), e);
+        }
+
+    }
+    public void uploadTPcohort(final String cohort_farmer_id) {
         //get data from sqlite in a loop
         try{//added try catch
             final Cursor cursor = dbAccess.getTPcohort(cohort_farmer_id);//fetch all tree planting data
@@ -509,6 +589,13 @@ public class OtherMainActivities extends AppCompatActivity {
                         public void onResponse(String response) {
                             //get the response if success get response that data has been received
                             Log.i("My success", "" + response);
+                            if(response.equals("sent")){
+                                //dbAccess.uploadStatusTPinfo();//update column uploaded to yes
+                                Log.i("Not success", "No success");
+                            }
+                            else {
+                                //dbAccess.uploadStatusTPcohort(cohort_farmer_id);//update column uploaded to yes
+                            }
                             //dbAccess.uploadStatusTPcohort();//update column uploaded to yes
                         }
                         //get error response
@@ -596,7 +683,7 @@ public class OtherMainActivities extends AppCompatActivity {
                     + e.getMessage(), e);
         }
     }
-    public void uploadTPmeasurements(String tp_measurements__farmer_id) {
+    public void uploadTPmeasurements(final String tp_measurements__farmer_id) {
         //get data from sqlite in a loop
         try{//added try catch
             final Cursor cursor = dbAccess.getTPmeasurements();//fetch all tree planting data
@@ -627,6 +714,19 @@ public class OtherMainActivities extends AppCompatActivity {
                             //get the response if success get response that data has been received
                             Log.i("My success", "" + response);
                             //dbAccess.uploadStatusTPmeasurement();//update column uploaded to yes
+                            if(response.equals("sent")){
+                                //dbAccess.uploadStatusTPinfo();//update column uploaded to yes
+                                Log.i("Not success", "No success");
+                            }
+                            else {
+                                //dbAccess.uploadStatusTPmeasurement(tp_measurements__farmer_id);//update column uploaded to yes
+                                dbAccess.uploadStatusTPinfo(tp_measurements__farmer_id);//update column uploaded to yes
+                                dbAccess.uploadStatusTPplotinfo(tp_measurements__farmer_id);
+                                dbAccess.uploadStatusTPpolygon(tp_measurements__farmer_id);//update column to yes
+                                dbAccess.uploadStatusTPcohort(tp_measurements__farmer_id);//update column uploaded to yes
+                                dbAccess.uploadStatusTPmeasurement(tp_measurements__farmer_id);
+                            }
+
                         }
                         //get error response
                     }, new Response.ErrorListener() {
@@ -696,106 +796,29 @@ public class OtherMainActivities extends AppCompatActivity {
 
                 } while (cursor.moveToNext());
             }//end of cursor
-        }catch(Exception e){//added catch
-            Log.d("Upload failed", "Exception : "
-                    + e.getMessage(), e);
-        }
-    }
-    public void uploadTPpolygon(String tp_polygon_farmer_id) {
-        //get data from sqlite in a loop
-        try{//added try catch
-            final Cursor cursor = dbAccess.getTPpolygon(tp_polygon_farmer_id);//fetch all fmnr data
-            if (cursor.moveToFirst()) {
-                do {
-                    //for fmnr plot polygon
-                    final String fid = cursor.getString(cursor.getColumnIndex("farmerID"));
-                    final String pid = cursor.getString(cursor.getColumnIndex("plotID"));
-                    final String tp_module = cursor.getString(cursor.getColumnIndex("module"));
-                    final String landsize_polygon_latitude = cursor.getString(cursor.getColumnIndex("latitude"));
-                    final String landsize_polygon_longitude = cursor.getString(cursor.getColumnIndex("longitude"));
-                    final String landsize_polygon_altitude = cursor.getString(cursor.getColumnIndex("altitude"));
-                    final String landsize_polygon_accuracy = cursor.getString(cursor.getColumnIndex("accuracy"));
-
-                    // create an object of volley request queue
-                    // RequestQueue queue = Volley.newRequestQueue(this);
-                    // create an object of volley request queue
-                    if (queue == null) {
-                        queue = Volley.newRequestQueue(this);
-                    }
-                    // Request a string response from the provided url above to server.
-                    request = new StringRequest(Request.Method.POST, tppolygon_url, new Response.Listener<String>() {
+            //notification
+            //Toast.makeText(OtherMainActivities.this, count + " This is the response " + response, Toast.LENGTH_LONG).show();
+            final AlertDialog.Builder builder = new AlertDialog.Builder(OtherMainActivities.this).setTitle("Data sent!").setMessage(" Successfully uploaded ")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
-                        //successful response
-                        public void onResponse(String response) {
-                            //get the response if success get response that data has been received
-                            Log.i("My success", "" + response);
-                            //uploadFMNRspecies();//species
-                            //dbAccess.uploadStatusFMNRpolygon();//update column to yes
+                        public void onClick(DialogInterface dialog, int which) {
+                            //dismiss dialog by intent
+                            Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                            startActivity(intent);
                         }
-                        //get error response
-                    }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            //error responses if failed to connect
-                            if (error instanceof NetworkError) {
-                                Toast.makeText(OtherMainActivities.this,"Cannot connect to Internet...Please check your connection!",Toast.LENGTH_SHORT).show();
-                            } else if (error instanceof ServerError) {
-                                Toast.makeText(OtherMainActivities.this,"The server could not be found. Please try again after some time!!",Toast.LENGTH_SHORT).show();
-                            } else if (error instanceof AuthFailureError) {
-                                Toast.makeText(OtherMainActivities.this,"Cannot connect to Internet...Please check your connection!",Toast.LENGTH_SHORT).show();
-                            } else if (error instanceof ParseError) {
-                                Toast.makeText(OtherMainActivities.this,"Parsing error! Please try again after some time!!",Toast.LENGTH_SHORT).show();
-                            } else if (error instanceof TimeoutError) {
-                                Toast.makeText(OtherMainActivities.this,"Connection TimeOut! Please check your internet connection",Toast.LENGTH_SHORT).show();
-                            }
-                            Log.i("My error", "" + error);
-                            //dismiss dialog
-                            //progressDialog.dismiss();
-
-                        }
-                    }) {
-                        @Override
-                        //hashmap class in volley
-                        //HashMap is a type of Collection that stores  data in a pair such that each element has a key associated with it.
-                        protected Map<String, String> getParams() throws AuthFailureError {
-                            Map<String, String> param = new HashMap<String, String>();
-                            //landsize polygon
-                            param.put("farmerID", fid);
-                            param.put("plotID", pid);
-                            param.put("module", tp_module);
-                            param.put("latitude", landsize_polygon_latitude);
-                            param.put("longitude", landsize_polygon_longitude);
-                            param.put("altitude", landsize_polygon_altitude);
-                            param.put("accuracy", landsize_polygon_accuracy);
-                            //return param;
-                            return checkParams(param);
-                        }
-                        //check empty for null values
-                        private Map<String, String> checkParams(Map<String, String> map){
-                            Iterator<Map.Entry<String, String>> it = map.entrySet().iterator();
-                            while (it.hasNext()) {
-                                Map.Entry<String, String> pairs = (Map.Entry<String, String>)it.next();
-                                if(pairs.getValue()==null){
-                                    map.put(pairs.getKey(), "");
-                                }
-                            }
-                            return map;
-                        }
-                    };
-                    //add the request to the request queue
-                    //retry policy to avoid crash
-                    request.setRetryPolicy(new DefaultRetryPolicy( 0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-
-                    queue.add(request);
-
-                } while (cursor.moveToNext());
-            }//end of cursor
+                    });
+            //builder.create().show();
+            _alert = builder.create();
+            _alert.show();
+            //progressDialog.dismiss();
+            progressDialog.dismiss();//end of dialog
             cursor.close();//close cursor
         }catch(Exception e){//added catch
             Log.d("Upload failed", "Exception : "
                     + e.getMessage(), e);
         }
-
     }
     //sending nursery data from sqlite
     public void uploadNurseryInfo() {
@@ -857,36 +880,16 @@ public class OtherMainActivities extends AppCompatActivity {
                                 //get the response if success get response that data has been received
                                 Log.i("My success", "" + response);
                                 uploadNurseryspecies(nurseryID);//send species on response
+                                if(response.equals("sent")){
+                                    Log.i("No success", "No success");
+                                }
+                                else {
+                                    //dbAccess.uploadStatusNurseryinfo(nurseryID);//set it to yes
+                                }
                                 //dismiss dialog after all records are sent;
                                 if (count == cursor.getCount()) {
                                     //dbAccess.uploadStatusNurseryinfo(nurseryID);//set it to yes
                                     progressDialog.dismiss();
-                                }
-                                try {
-                                    //count records sent
-                                    final int count = dbAccess.getnurserycount();
-                                    //Toast.makeText(Index.this, count + " record(s) " + response, Toast.LENGTH_LONG).show();
-                                    //refresh activity after dialog
-                                    final AlertDialog.Builder builder = new AlertDialog.Builder(OtherMainActivities.this).setTitle("Data sent!").setMessage(count + " record(s) " + response)
-                                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                                @Override
-                                                public void onClick(DialogInterface dialog, int which) {
-                                                    dbAccess.uploadStatusNurseryinfo(nurseryID);//set it to yes
-                                                    dbAccess.uploadStatusNurseryspecies(nurseryID);//set it to yes
-                                                    //dismiss dialog by intent
-                                                    Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
-                                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                                                    startActivity(intent);
-                                                }
-                                            });
-                                    //builder.create().show();
-                                    _alert = builder.create();
-                                    _alert.show();
-                                    //progressDialog.dismiss();
-                                } catch (Exception e) {//added catch
-                                    Log.d("Upload failed", "Exception : "
-                                            + e.getMessage(), e);
                                 }
                             }
                             //get error response
@@ -1041,7 +1044,14 @@ public class OtherMainActivities extends AppCompatActivity {
                         public void onResponse(String response) {
                             //get the response if success get response that data has been received
                             Log.i("My success", "" + response);
+                            if (response.equals("sent")) {
+                                Log.i("No success", "No success");
+                            }
+                            else{
                             //dbAccess.uploadStatusNurseryspecies(nurseryID);//set it to yes
+                                dbAccess.uploadStatusNurseryinfo(nurseryID);//set it to yes
+                                dbAccess.uploadStatusNurseryspecies(nurseryID);//set it to yes
+                        }
                         }
                         //get error response
                     }, new Response.ErrorListener() {
@@ -1134,6 +1144,25 @@ public class OtherMainActivities extends AppCompatActivity {
                     count+=1;//increment cursor by 1
                 } while (cursor.moveToNext());
             }//end of cursor
+            //notification
+            //Toast.makeText(OtherMainActivities.this, count + " This is the response " + response, Toast.LENGTH_LONG).show();
+            final AlertDialog.Builder builder = new AlertDialog.Builder(OtherMainActivities.this).setTitle("Data sent!").setMessage(" Successfully uploaded ")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            //dismiss dialog by intent
+                            Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                            startActivity(intent);
+                        }
+                    });
+            //builder.create().show();
+            _alert = builder.create();
+            _alert.show();
+            //progressDialog.dismiss();
+            progressDialog.dismiss();//end of dialog
+            cursor.close();//close cursor
         }catch(Exception e){//added catch
             Log.d("Upload failed", "Exception : "
                     + e.getMessage(), e);
@@ -1193,40 +1222,16 @@ public class OtherMainActivities extends AppCompatActivity {
                             uploadFMNRpolygon(fmnr_farmer_id);//polygon points
                             uploadFMNRspecies(fmnr_farmer_id);//species
                             //dbAccess.uploadStatusFMNRinfo();//update column to yes
+                            if(response.equals("sent")){
+                                Log.i("No success", "No success");
+                            }
+                            else{
+                                //dbAccess.uploadStatusFMNRinfo(fmnr_farmer_id);//update column to yes
+                            }
                             //dismiss dialog after all records are sent;
                             if(count == cursor.getCount()){
                                 //dbAccess.uploadStatusNurseryinfo(nurseryID);//set it to yes
                                 progressDialog.dismiss();
-                            }
-                            //notification
-                            try{
-                                //count records sent
-                                final int count = dbAccess.getfmnrcount();
-                                //Toast.makeText(Index.this, count + " record(s) " + response, Toast.LENGTH_LONG).show();
-                                //refresh activity after dialog
-                                final AlertDialog.Builder builder = new AlertDialog.Builder(OtherMainActivities.this).setTitle("Data sent!").setMessage(count + " record(s) " + response)
-                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                //update uploaded column to yes
-                                                dbAccess.uploadStatusFMNRinfo();//update column to yes
-                                                dbAccess.uploadStatusFMNRplotinfo();//update column to yes
-                                                dbAccess.uploadStatusFMNRpolygon();//update column to yes
-                                                dbAccess.uploadStatusFMNRspecies();//update column to yes
-                                                //dismiss dialog by intent
-                                                Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
-                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                                                startActivity(intent);
-                                            }
-                                        });
-                               // builder.create().show();
-                                _alert = builder.create();
-                                _alert.show();
-                                //progressDialog.dismiss();
-                            }catch(Exception e){//added catch
-                                Log.d("Upload failed", "Exception : "
-                                        + e.getMessage(), e);
                             }
 
                         }
@@ -1320,7 +1325,7 @@ public class OtherMainActivities extends AppCompatActivity {
         }
 
     }
-    public void uploadFMNRplotInfo(String plot_farmer_id) {
+    public void uploadFMNRplotInfo(final String plot_farmer_id) {
         progressDialog = new ProgressDialog(OtherMainActivities.this);
         progressDialog.setMessage("Sending FMNR data...");
         progressDialog.setCancelable(true);
@@ -1355,6 +1360,12 @@ public class OtherMainActivities extends AppCompatActivity {
                         public void onResponse(String response) {
                             //get the response if success get response that data has been received
                             Log.i("My success", "" + response);
+                            if(response.equals("sent")){
+                                Log.i("No success", "No success");
+                            }
+                            else{
+                                //dbAccess.uploadStatusFMNRplotinfo(plot_farmer_id);//update column to yes
+                            }
 
                         }
                         //get error response
@@ -1438,7 +1449,7 @@ public class OtherMainActivities extends AppCompatActivity {
         }
 
     }
-    public void uploadFMNRpolygon(String polygon_farmer_id) {
+    public void uploadFMNRpolygon(final String polygon_farmer_id) {
         //get data from sqlite in a loop
         try{//added try catch
             final Cursor cursor = dbAccess.getFMNRpolygon(polygon_farmer_id);//fetch all fmnr data
@@ -1466,8 +1477,12 @@ public class OtherMainActivities extends AppCompatActivity {
                         public void onResponse(String response) {
                             //get the response if success get response that data has been received
                             Log.i("My success", "" + response);
-                            //uploadFMNRspecies();//species
-                            //dbAccess.uploadStatusFMNRpolygon();//update column to yes
+                            if(response.equals("sent")){
+                                Log.i("No success", "No success");
+                            }
+                            else{
+                                //dbAccess.uploadStatusFMNRpolygon(polygon_farmer_id);//update column to yes
+                            }
                         }
                         //get error response
                     }, new Response.ErrorListener() {
@@ -1534,7 +1549,7 @@ public class OtherMainActivities extends AppCompatActivity {
         }
 
     }
-    public void uploadFMNRspecies( String species_farmer_id) {
+    public void uploadFMNRspecies(final String species_farmer_id) {
         //get data from sqlite in a loop
         try{//added try catch
             final Cursor cursor = dbAccess.getFMNRspecies(species_farmer_id);//fetch all fmnr data
@@ -1584,7 +1599,16 @@ public class OtherMainActivities extends AppCompatActivity {
                         public void onResponse(String response) {
                             //get the response if success get response that data has been received
                             Log.i("My success", "" + response);
-                            //dbAccess.uploadStatusFMNRspecies();//update column to yes
+                            if(response.equals("sent")){
+                                Log.i("No success", "No success");
+                            }
+                            else{
+                                //dbAccess.uploadStatusFMNRspecies(species_farmer_id);//update column to yes
+                                dbAccess.uploadStatusFMNRinfo(species_farmer_id);//update column to yes
+                                dbAccess.uploadStatusFMNRplotinfo(species_farmer_id);//update column to yes
+                                dbAccess.uploadStatusFMNRpolygon(species_farmer_id);//update column to yes
+                                dbAccess.uploadStatusFMNRspecies(species_farmer_id);//update column to yes
+                            }
                         }
                         //get error response
                     }, new Response.ErrorListener() {
@@ -1673,6 +1697,24 @@ public class OtherMainActivities extends AppCompatActivity {
 
                 } while (cursor.moveToNext());
             }//end of cursor
+            //notification
+            //Toast.makeText(OtherMainActivities.this, count + " This is the response " + response, Toast.LENGTH_LONG).show();
+            final AlertDialog.Builder builder = new AlertDialog.Builder(OtherMainActivities.this).setTitle("Data sent!").setMessage(" Successfully uploaded ")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            //dismiss dialog by intent
+                            Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                            startActivity(intent);
+                        }
+                    });
+            //builder.create().show();
+            _alert = builder.create();
+            _alert.show();
+            //progressDialog.dismiss();
+            progressDialog.dismiss();//end of dialog
             cursor.close();//close cursor
         }catch(Exception e){//added catch
             Log.d("Upload failed", "Exception : "
@@ -1739,7 +1781,12 @@ public class OtherMainActivities extends AppCompatActivity {
                             //get the response if success get response that data has been received
                             Log.i("My success", "" + response);
                             //notification
-                            //dbAccess.uploadStatusTraining();
+                            if(response.equals("sent")){
+                                Log.i("No success", "No success");
+                            }
+                            else {
+                                dbAccess.uploadStatusTraining();
+                            }
                             if(count == cursor.getCount()){
                                 progressDialog.dismiss();
                             }
@@ -1748,12 +1795,12 @@ public class OtherMainActivities extends AppCompatActivity {
                                 final int count = dbAccess.getcount_trainings();
                                 //Toast.makeText(OtherMainActivities.this, count + " record(s) " + response, Toast.LENGTH_LONG).show();
                                 //refresh activity after dialog
-                                final AlertDialog.Builder builder = new AlertDialog.Builder(OtherMainActivities.this).setTitle("Data sent!").setMessage(count + " record(s) " + response)
+                                final AlertDialog.Builder builder = new AlertDialog.Builder(OtherMainActivities.this).setTitle("Data sent!").setMessage( " Successfully uploaded" + response)
                                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
                                                 //update to yes once sent
-                                                dbAccess.uploadStatusTraining();
+                                                //dbAccess.uploadStatusTraining();
                                                 //dismiss dialog by intent
                                                 Intent intent = new Intent(OtherMainActivities.this, OtherMainActivities.class);
                                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

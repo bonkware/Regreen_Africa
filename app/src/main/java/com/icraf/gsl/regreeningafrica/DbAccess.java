@@ -359,6 +359,7 @@ public class DbAccess {
     }
     //count no. of records tree planting
     public int getcount(){
+        //Cursor cur = database.rawQuery("SELECT count(*) from tree_measurements where  uploaded='yes'", null);
         Cursor cur = database.rawQuery("SELECT count(DISTINCT(t1.farmerID)) from farmer_institution as t1, plot_info as t2, landsizepolygontp as t3, cohort as t4 where t1.farmerID = t2.farmerID AND   t1.farmerID = t3.farmerID AND t1.farmerID = t4.farmerID AND t1.uploaded='no'", null);
         int x = 0;
         if (cur.moveToFirst())
@@ -501,48 +502,48 @@ public class DbAccess {
         return row;
     }
     //update uploaded status to yes once data is uploaded
-    public void uploadStatusTPinfo() {
-        String updateQuery = "Update farmer_institution set uploaded='yes' where farmerID=farmerID";
+    public void uploadStatusTPinfo(String info_farmer_id) {
+        String updateQuery = "Update farmer_institution set uploaded='yes' where farmerID='"+info_farmer_id+"'";
         Cursor c = database.rawQuery(updateQuery, null);
         c.moveToFirst();
     }
-    public void uploadStatusTPplotinfo() {
-        String updateQuery = "Update plot_info set uploaded='yes' where farmerID=farmerID";
+    public void uploadStatusTPplotinfo(String plot_farmer_id) {
+        String updateQuery = "Update plot_info set uploaded='yes' where farmerID='"+plot_farmer_id+"'";
         Cursor c = database.rawQuery(updateQuery, null);
         c.moveToFirst();
     }
-    public void uploadStatusTPcohort() {
-        String updateQuery = "Update cohort set uploaded='yes' where farmerID=farmerID";
+    public void uploadStatusTPcohort(String cohort_farmer_id) {
+        String updateQuery = "Update cohort set uploaded='yes' where farmerID='"+cohort_farmer_id+"'";
         Cursor c = database.rawQuery(updateQuery, null);
         c.moveToFirst();
     }
-    public void uploadStatusTPmeasurement() {
-        String updateQuery = "Update tree_measurements set uploaded='yes'";
+    public void uploadStatusTPmeasurement(String m_cohort_id) {
+        String updateQuery = "Update tree_measurements set uploaded='yes' where cohortID='"+m_cohort_id+"'";
         Cursor c = database.rawQuery(updateQuery, null);
         c.moveToFirst();
     }
-    public void uploadStatusTPpolygon() {
-        String updateQuery = "Update landsizepolygontp set uploaded='yes' where farmerID=farmerID";
+    public void uploadStatusTPpolygon(String poly_farmer_id) {
+        String updateQuery = "Update landsizepolygontp set uploaded='yes' where farmerID='"+poly_farmer_id+"'";
         Cursor c = database.rawQuery(updateQuery, null);
         c.moveToFirst();
     }
-    public void uploadStatusFMNRinfo() {
-        String updateQuery = "Update fmnr_farmer_inst set uploaded='yes' where farmerID=farmerID";
+    public void uploadStatusFMNRinfo(String info_farmer_id) {
+        String updateQuery = "Update fmnr_farmer_inst set uploaded='yes' where farmerID='"+info_farmer_id+"'";
         Cursor c = database.rawQuery(updateQuery, null);
         c.moveToFirst();
     }
-    public void uploadStatusFMNRplotinfo() {
-        String updateQuery = "Update fmnr_plot_info set uploaded='yes' where farmerID=farmerID";
+    public void uploadStatusFMNRplotinfo(String plot_farmer_id) {
+        String updateQuery = "Update fmnr_plot_info set uploaded='yes' where farmerID='"+plot_farmer_id+"'";
         Cursor c = database.rawQuery(updateQuery, null);
         c.moveToFirst();
     }
-    public void uploadStatusFMNRspecies() {
-        String updateQuery = "Update fmnr_species set uploaded='yes' where farmerID=farmerID";
+    public void uploadStatusFMNRspecies(String species_farmer_id) {
+        String updateQuery = "Update fmnr_species set uploaded='yes' where farmerID='"+species_farmer_id+"'";
         Cursor c = database.rawQuery(updateQuery, null);
         c.moveToFirst();
     }
-    public void uploadStatusFMNRpolygon() {
-        String updateQuery = "Update landsizepolygonfmnr set uploaded='yes' where farmerID=farmerID";
+    public void uploadStatusFMNRpolygon(String poly_farmer_id) {
+        String updateQuery = "Update landsizepolygonfmnr set uploaded='yes' where farmerID='"+poly_farmer_id+"'";
         Cursor c = database.rawQuery(updateQuery, null);
         c.moveToFirst();
     }
