@@ -247,16 +247,16 @@ public class OtherMainActivities extends AppCompatActivity {
                             public void onResponse(String response) {
                                 //get the response if success get response that data has been received
                                 Log.i("My success", "" + response);
-                                uploadTPplotinfo(farmerID);
+                                /*uploadTPplotinfo(farmerID);
                                 uploadTPpolygon(farmerID);
                                 uploadTPcohort(farmerID);//cohorts
-                                uploadTPmeasurements(farmerID);
+                                uploadTPmeasurements(farmerID);*/
                                 if(response.equals("sent")){
                                     //dbAccess.uploadStatusTPinfo();//update column uploaded to yes
                                     Log.i("Not success", "No success");
                                 }
                                 else {
-                                    //dbAccess.uploadStatusTPinfo(farmerID);//update column uploaded to yes
+                                    uploadTPplotinfo(farmerID);
                                 }
 
 
@@ -377,7 +377,7 @@ public class OtherMainActivities extends AppCompatActivity {
                                 Log.i("Not success", "No success");
                             }
                             else {
-                                //dbAccess.uploadStatusTPplotinfo(tp_farmer_id);//update column uploaded to yes
+                                uploadTPpolygon(tp_farmer_id);
                             }
                         }
                         //get error response
@@ -471,10 +471,11 @@ public class OtherMainActivities extends AppCompatActivity {
                             Log.i("My success", "" + response);
                             //uploadFMNRspecies();//species
                             if(response.equals("sent")){
+                                //dbAccess.uploadStatusTPinfo();//update column uploaded to yes
                                 Log.i("Not success", "No success");
                             }
                             else {
-                                //dbAccess.uploadStatusTPpolygon(tp_polygon_farmer_id);//update column to yes
+                                uploadTPcohort(tp_polygon_farmer_id);//cohorts
                             }
                         }
                         //get error response
@@ -594,7 +595,7 @@ public class OtherMainActivities extends AppCompatActivity {
                                 Log.i("Not success", "No success");
                             }
                             else {
-                                //dbAccess.uploadStatusTPcohort(cohort_farmer_id);//update column uploaded to yes
+                                uploadTPmeasurements(cohort_farmer_id);
                             }
                             //dbAccess.uploadStatusTPcohort();//update column uploaded to yes
                         }
@@ -879,11 +880,11 @@ public class OtherMainActivities extends AppCompatActivity {
                             public void onResponse(String response) {
                                 //get the response if success get response that data has been received
                                 Log.i("My success", "" + response);
-                                uploadNurseryspecies(nurseryID);//send species on response
                                 if(response.equals("sent")){
                                     Log.i("No success", "No success");
                                 }
                                 else {
+                                    uploadNurseryspecies(nurseryID);//send species on response
                                     //dbAccess.uploadStatusNurseryinfo(nurseryID);//set it to yes
                                 }
                                 //dismiss dialog after all records are sent;
@@ -1218,14 +1219,15 @@ public class OtherMainActivities extends AppCompatActivity {
                         public void onResponse(String response) {
                             //get the response if success get response that data has been received
                             Log.i("My success", "" + response);
-                            uploadFMNRplotInfo(fmnr_farmer_id);//upload plot info
+                            /*uploadFMNRplotInfo(fmnr_farmer_id);//upload plot info
                             uploadFMNRpolygon(fmnr_farmer_id);//polygon points
-                            uploadFMNRspecies(fmnr_farmer_id);//species
+                            uploadFMNRspecies(fmnr_farmer_id);//species*/
                             //dbAccess.uploadStatusFMNRinfo();//update column to yes
                             if(response.equals("sent")){
                                 Log.i("No success", "No success");
                             }
                             else{
+                                uploadFMNRplotInfo(fmnr_farmer_id);//upload plot info
                                 //dbAccess.uploadStatusFMNRinfo(fmnr_farmer_id);//update column to yes
                             }
                             //dismiss dialog after all records are sent;
@@ -1364,7 +1366,8 @@ public class OtherMainActivities extends AppCompatActivity {
                                 Log.i("No success", "No success");
                             }
                             else{
-                                //dbAccess.uploadStatusFMNRplotinfo(plot_farmer_id);//update column to yes
+                                uploadFMNRpolygon(plot_farmer_id);//polygon points
+                                //dbAccess.uploadStatusFMNRinfo(fmnr_farmer_id);//update column to yes
                             }
 
                         }
@@ -1481,7 +1484,8 @@ public class OtherMainActivities extends AppCompatActivity {
                                 Log.i("No success", "No success");
                             }
                             else{
-                                //dbAccess.uploadStatusFMNRpolygon(polygon_farmer_id);//update column to yes
+                                uploadFMNRspecies(polygon_farmer_id);//species
+                                //dbAccess.uploadStatusFMNRinfo(fmnr_farmer_id);//update column to yes
                             }
                         }
                         //get error response
