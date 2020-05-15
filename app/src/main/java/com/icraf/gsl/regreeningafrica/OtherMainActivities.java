@@ -1328,12 +1328,6 @@ public class OtherMainActivities extends AppCompatActivity {
 
     }
     public void uploadFMNRplotInfo(final String plot_farmer_id) {
-        progressDialog = new ProgressDialog(OtherMainActivities.this);
-        progressDialog.setMessage("Sending FMNR data...");
-        progressDialog.setCancelable(true);
-        progressDialog.setIndeterminate(true);
-        progressDialog.show();
-
         //get data from sqlite in a loop
         try{//added try catch
             final Cursor cursor = dbAccess.getFMNRplotinfo(plot_farmer_id);//fetch all fmnr data
