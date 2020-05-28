@@ -232,7 +232,7 @@ public class OtherMainActivities extends AppCompatActivity {
 
                     if (!record_completeTP(farmerID)) {
                         //Toast.makeText(OtherMainActivities.this, count + " record not complete ", Toast.LENGTH_LONG).show();
-                        progressDialog.dismiss();
+                        //progressDialog.dismiss();
 
                     } else {
                         // create an object of volley request queue
@@ -329,17 +329,17 @@ public class OtherMainActivities extends AppCompatActivity {
                         queue.add(request);
                         //VolleySingleton.getInstance(this).addToRequestQueue(request);
                         //add listener to the queue which is executed when the request ends
-                        queue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<String>() {
+                       /* queue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<String>() {
                             @Override
                             public void onRequestFinished(Request<String> request) {
                                 if (progressDialog != null && progressDialog.isShowing())
                                     progressDialog.dismiss();
                             }
-                        });
+                        });*/
                         count += 1;//increment cursor by 1 once on the response to make sure that dialog is dismissed after the last record
                     }//end check for the full record
                 }
-                    while (cursor.moveToNext()) ;
+                while (cursor.moveToNext()) ;
             }//end of cursor
         }catch(Exception e){//added catch
             Log.d("Upload failed", "Exception : "
@@ -496,7 +496,7 @@ public class OtherMainActivities extends AppCompatActivity {
                             }
                             Log.i("My error", "" + error);
                             //dismiss dialog
-                            //progressDialog.dismiss();
+                            progressDialog.dismiss();
 
                         }
                     }) {
@@ -618,7 +618,7 @@ public class OtherMainActivities extends AppCompatActivity {
                             }
                             Log.i("My error", "" + error);
                             //dismiss dialog
-                            //progressDialog.dismiss();
+                            progressDialog.dismiss();
 
                         }
                     }) {
@@ -727,6 +727,10 @@ public class OtherMainActivities extends AppCompatActivity {
                                 dbAccess.uploadStatusTPcohort(tp_measurements__farmer_id);//update column uploaded to yes
                                 dbAccess.uploadStatusTPmeasurement(tp_measurements__farmer_id);
                             }
+                            //dismiss dialog after all records are sent;
+                            if (count == cursor.getCount()) {
+                                progressDialog.dismiss();
+                            }
 
                         }
                         //get error response
@@ -794,6 +798,15 @@ public class OtherMainActivities extends AppCompatActivity {
                     request.setRetryPolicy(new DefaultRetryPolicy( 0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
                     queue.add(request);
+                    //add listener to the queue which is executed when the request ends
+                    queue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<String>() {
+                        @Override
+                        public void onRequestFinished(Request<String> request) {
+                            if (progressDialog != null && progressDialog.isShowing())
+                                progressDialog.dismiss();
+                        }
+                    });
+                    count += 1;//increment cursor by 1 once on the response to make sure that dialog is dismissed after the last record
 
                 } while (cursor.moveToNext());
             }//end of cursor
@@ -813,8 +826,7 @@ public class OtherMainActivities extends AppCompatActivity {
             //builder.create().show();
             _alert = builder.create();
             _alert.show();
-            //progressDialog.dismiss();
-            progressDialog.dismiss();//end of dialog
+            //progressDialog.dismiss();//end of dialog
             cursor.close();//close cursor
         }catch(Exception e){//added catch
             Log.d("Upload failed", "Exception : "
@@ -987,7 +999,7 @@ public class OtherMainActivities extends AppCompatActivity {
                         });
                         count += 1;//increment cursor by 1 once on the response to make sure that dialog is dismissed after the last record
                     }//close the check for the full record
-                    } while (cursor.moveToNext());
+                } while (cursor.moveToNext());
             }//end of cursor
         }catch(Exception e){//added catch
             Log.d("Upload failed", "Exception : "
@@ -1049,10 +1061,10 @@ public class OtherMainActivities extends AppCompatActivity {
                                 Log.i("No success", "No success");
                             }
                             else{
-                            //dbAccess.uploadStatusNurseryspecies(nurseryID);//set it to yes
+                                //dbAccess.uploadStatusNurseryspecies(nurseryID);//set it to yes
                                 dbAccess.uploadStatusNurseryinfo(nurseryID);//set it to yes
                                 dbAccess.uploadStatusNurseryspecies(nurseryID);//set it to yes
-                        }
+                            }
                         }
                         //get error response
                     }, new Response.ErrorListener() {
@@ -1202,123 +1214,118 @@ public class OtherMainActivities extends AppCompatActivity {
 
                     if (!record_completeFmnr(fmnr_farmer_id)) {
                         //Toast.makeText(OtherMainActivities.this, count + " record not complete ", Toast.LENGTH_LONG).show();
-                        progressDialog.dismiss();
+                        //progressDialog.dismiss();
 
                     } else {
-                    // create an object of volley request queue
-                   // RequestQueue queue = Volley.newRequestQueue(this);
-                    // create an object of volley request queue
-                    if (queue == null) {
-                        queue = Volley.newRequestQueue(this);
-                    }
-                    // Request a string response from the provided url above to server.
-                    //StringRequest request = new StringRequest(Request.Method.POST, fmnr_url, new Response.Listener<String>() {
-                    request = new StringRequest(Request.Method.POST, fmnrinfo_url, new Response.Listener<String>() {
-                        @Override
-                        //successful response
-                        public void onResponse(String response) {
-                            //get the response if success get response that data has been received
-                            Log.i("My success", "" + response);
+                        // create an object of volley request queue
+                        // RequestQueue queue = Volley.newRequestQueue(this);
+                        // create an object of volley request queue
+                        if (queue == null) {
+                            queue = Volley.newRequestQueue(this);
+                        }
+                        // Request a string response from the provided url above to server.
+                        //StringRequest request = new StringRequest(Request.Method.POST, fmnr_url, new Response.Listener<String>() {
+                        request = new StringRequest(Request.Method.POST, fmnrinfo_url, new Response.Listener<String>() {
+                            @Override
+                            //successful response
+                            public void onResponse(String response) {
+                                //get the response if success get response that data has been received
+                                Log.i("My success", "" + response);
                             /*uploadFMNRplotInfo(fmnr_farmer_id);//upload plot info
                             uploadFMNRpolygon(fmnr_farmer_id);//polygon points
                             uploadFMNRspecies(fmnr_farmer_id);//species*/
-                            //dbAccess.uploadStatusFMNRinfo();//update column to yes
-                            if(response.equals("sent")){
-                                Log.i("No success", "No success");
-                            }
-                            else{
-                                uploadFMNRplotInfo(fmnr_farmer_id);//upload plot info
-                                //dbAccess.uploadStatusFMNRinfo(fmnr_farmer_id);//update column to yes
-                            }
-                            //dismiss dialog after all records are sent;
-                            if(count == cursor.getCount()){
-                                //dbAccess.uploadStatusNurseryinfo(nurseryID);//set it to yes
-                                progressDialog.dismiss();
-                            }
-
-                        }
-                        //get error response
-                    }, new Response.ErrorListener() {
-                        @Override
-                            public void onErrorResponse(VolleyError error) {
-                            //error responses if failed to connect
-                            if (error instanceof NetworkError) {
-                                Toast.makeText(OtherMainActivities.this,"Cannot connect to Internet...Please check your connection!",Toast.LENGTH_SHORT).show();
-                            } else if (error instanceof ServerError) {
-                                Toast.makeText(OtherMainActivities.this,"The server could not be found. Please try again after some time!!",Toast.LENGTH_SHORT).show();
-                            } else if (error instanceof AuthFailureError) {
-                                Toast.makeText(OtherMainActivities.this,"Cannot connect to Internet...Please check your connection!",Toast.LENGTH_SHORT).show();
-                            } else if (error instanceof ParseError) {
-                                Toast.makeText(OtherMainActivities.this,"Parsing error! Please try again after some time!!",Toast.LENGTH_SHORT).show();
-                            } else if (error instanceof TimeoutError) {
-                                Toast.makeText(OtherMainActivities.this,"Connection TimeOut! Please check your internet connection",Toast.LENGTH_SHORT).show();
-                            }
-                            Log.i("My error", "" + error);
-                            //dismiss dialog
-                            progressDialog.dismiss();
-
-                        }
-                    }) {
-                        @Override
-                        //hashmap class in volley
-                        //HashMap is a type of Collection that stores  data in a pair such that each element has a key associated with it.
-                        protected Map<String, String> getParams() throws AuthFailureError {
-                            Map<String, String> param = new HashMap<String, String>();
-                            //farmer/institution
-                            param.put("farmerID", fmnr_farmer_id);
-                            param.put("module", fmnr_module);
-                            param.put("enum_name", fmnr_enum_name);
-                            param.put("date", fmnr_date);
-                            param.put("survey_name", fmnr_survey_name);
-                            param.put("farmer_inst_name", fmnr_farmer_inst_name);
-                            param.put("country", fmnr_country);
-                            param.put("county_region", fmnr_county_region);
-                            param.put("district", fmnr_district);
-                            //param.put("planting_location", fmnr_planting_location);
-                            param.put("fmnr_land_individual", fmnr_land_individual);
-                            param.put("fmnr_land_community", fmnr_land_community);
-                            param.put("fmnr_land_government", fmnr_land_government);
-                            param.put("fmnr_land_mosque_church", fmnr_land_mosque_church);
-                            param.put("fmnr_land_schools", fmnr_land_schools);
-                            param.put("fmnr_land_other", fmnr_land_other);
-                            //return param;
-                            return checkParams(param);
-                        }
-                        //check empty for null values
-                        private Map<String, String> checkParams(Map<String, String> map){
-                            Iterator<Map.Entry<String, String>> it = map.entrySet().iterator();
-                            while (it.hasNext()) {
-                                Map.Entry<String, String> pairs = (Map.Entry<String, String>)it.next();
-                                if(pairs.getValue()==null){
-                                    map.put(pairs.getKey(), "");
+                                //dbAccess.uploadStatusFMNRinfo();//update column to yes
+                                if(response.equals("sent")){
+                                    Log.i("No success", "No success");
                                 }
-                            }
-                            return map;
-                        }
-                    };
-                    //add the request to the request queue
-                    //retry policy to avoid crash
-                    request.setRetryPolicy(new DefaultRetryPolicy( 0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+                                else{
+                                    uploadFMNRplotInfo(fmnr_farmer_id);//upload plot info
+                                    //dbAccess.uploadStatusFMNRinfo(fmnr_farmer_id);//update column to yes
+                                }
 
-                    queue.add(request);
-                    //Singleton.getInstance(mContext).addToRequestQueue(request);
-                    //manage out of memory issues and cache clear
-                    DiskBasedCache cache = new DiskBasedCache(getCacheDir(), 16 * 1024 * 1024);
-                    queue = new RequestQueue(cache, new BasicNetwork(new HurlStack()));
-                    queue.start();
-                    queue.add(new ClearCacheRequest(cache, null));//end of cache clear
-                    //VolleySingleton.getInstance(this).addToRequestQueue(request);
-                    //add listener to the queue which is executed when the request ends
-                    queue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<String>() {
-                        @Override
-                        public void onRequestFinished(Request<String> request) {
-                            if (progressDialog !=  null && progressDialog.isShowing())
+                            }
+                            //get error response
+                        }, new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                //error responses if failed to connect
+                                if (error instanceof NetworkError) {
+                                    Toast.makeText(OtherMainActivities.this,"Cannot connect to Internet...Please check your connection!",Toast.LENGTH_SHORT).show();
+                                } else if (error instanceof ServerError) {
+                                    Toast.makeText(OtherMainActivities.this,"The server could not be found. Please try again after some time!!",Toast.LENGTH_SHORT).show();
+                                } else if (error instanceof AuthFailureError) {
+                                    Toast.makeText(OtherMainActivities.this,"Cannot connect to Internet...Please check your connection!",Toast.LENGTH_SHORT).show();
+                                } else if (error instanceof ParseError) {
+                                    Toast.makeText(OtherMainActivities.this,"Parsing error! Please try again after some time!!",Toast.LENGTH_SHORT).show();
+                                } else if (error instanceof TimeoutError) {
+                                    Toast.makeText(OtherMainActivities.this,"Connection TimeOut! Please check your internet connection",Toast.LENGTH_SHORT).show();
+                                }
+                                Log.i("My error", "" + error);
+                                //dismiss dialog
                                 progressDialog.dismiss();
-                        }
-                    });
-                    count+=1;//increment cursor by 1 once on the response to make sure that dialog is dismissed after the last record
+
+                            }
+                        }) {
+                            @Override
+                            //hashmap class in volley
+                            //HashMap is a type of Collection that stores  data in a pair such that each element has a key associated with it.
+                            protected Map<String, String> getParams() throws AuthFailureError {
+                                Map<String, String> param = new HashMap<String, String>();
+                                //farmer/institution
+                                param.put("farmerID", fmnr_farmer_id);
+                                param.put("module", fmnr_module);
+                                param.put("enum_name", fmnr_enum_name);
+                                param.put("date", fmnr_date);
+                                param.put("survey_name", fmnr_survey_name);
+                                param.put("farmer_inst_name", fmnr_farmer_inst_name);
+                                param.put("country", fmnr_country);
+                                param.put("county_region", fmnr_county_region);
+                                param.put("district", fmnr_district);
+                                //param.put("planting_location", fmnr_planting_location);
+                                param.put("fmnr_land_individual", fmnr_land_individual);
+                                param.put("fmnr_land_community", fmnr_land_community);
+                                param.put("fmnr_land_government", fmnr_land_government);
+                                param.put("fmnr_land_mosque_church", fmnr_land_mosque_church);
+                                param.put("fmnr_land_schools", fmnr_land_schools);
+                                param.put("fmnr_land_other", fmnr_land_other);
+                                //return param;
+                                return checkParams(param);
+                            }
+                            //check empty for null values
+                            private Map<String, String> checkParams(Map<String, String> map){
+                                Iterator<Map.Entry<String, String>> it = map.entrySet().iterator();
+                                while (it.hasNext()) {
+                                    Map.Entry<String, String> pairs = (Map.Entry<String, String>)it.next();
+                                    if(pairs.getValue()==null){
+                                        map.put(pairs.getKey(), "");
+                                    }
+                                }
+                                return map;
+                            }
+                        };
+                        //add the request to the request queue
+                        //retry policy to avoid crash
+                        request.setRetryPolicy(new DefaultRetryPolicy( 0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+                        queue.add(request);
+                        //Singleton.getInstance(mContext).addToRequestQueue(request);
+                        //manage out of memory issues and cache clear
+                        DiskBasedCache cache = new DiskBasedCache(getCacheDir(), 16 * 1024 * 1024);
+                        queue = new RequestQueue(cache, new BasicNetwork(new HurlStack()));
+                        queue.start();
+                        queue.add(new ClearCacheRequest(cache, null));//end of cache clear
+                        //VolleySingleton.getInstance(this).addToRequestQueue(request);
+                        //add listener to the queue which is executed when the request ends
+                        /*queue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<String>() {
+                            @Override
+                            public void onRequestFinished(Request<String> request) {
+                                if (progressDialog !=  null && progressDialog.isShowing())
+                                    progressDialog.dismiss();
+                            }
+                        });*/
+                        count+=1;//increment cursor by 1 once on the response to make sure that dialog is dismissed after the last record
                     }//end check for the full record
-                    } while (cursor.moveToNext());
+                } while (cursor.moveToNext());
             }//end of cursor
             cursor.close();//close cursor
         }catch(Exception e){//added catch
@@ -1429,13 +1436,13 @@ public class OtherMainActivities extends AppCompatActivity {
                     queue.add(new ClearCacheRequest(cache, null));//end of cache clear
                     //VolleySingleton.getInstance(this).addToRequestQueue(request);
                     //add listener to the queue which is executed when the request ends
-                    queue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<String>() {
+                   /* queue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<String>() {
                         @Override
                         public void onRequestFinished(Request<String> request) {
                             if (progressDialog !=  null && progressDialog.isShowing())
                                 progressDialog.dismiss();
                         }
-                    });
+                    });*/
                     count+=1;//increment cursor by 1 once on the response to make sure that dialog is dismissed after the last record
                 } while (cursor.moveToNext());
             }//end of cursor
@@ -1607,6 +1614,10 @@ public class OtherMainActivities extends AppCompatActivity {
                                 dbAccess.uploadStatusFMNRpolygon(species_farmer_id);//update column to yes
                                 dbAccess.uploadStatusFMNRspecies(species_farmer_id);//update column to yes
                             }
+                            //dismiss dialog after all records are sent;
+                            if (count == cursor.getCount()) {
+                                progressDialog.dismiss();
+                            }
                         }
                         //get error response
                     }, new Response.ErrorListener() {
@@ -1626,7 +1637,7 @@ public class OtherMainActivities extends AppCompatActivity {
                             }
                             Log.i("My error", "" + error);
                             //dismiss dialog
-                            //progressDialog.dismiss();
+                            progressDialog.dismiss();
 
                         }
                     }) {
@@ -1692,6 +1703,15 @@ public class OtherMainActivities extends AppCompatActivity {
                     request.setRetryPolicy(new DefaultRetryPolicy( 0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
                     queue.add(request);
+                    //add listener to the queue which is executed when the request ends
+                    queue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<String>() {
+                        @Override
+                        public void onRequestFinished(Request<String> request) {
+                            if (progressDialog != null && progressDialog.isShowing())
+                                progressDialog.dismiss();
+                        }
+                    });
+                    count += 1;//increment cursor by 1 once on the response to make sure that dialog is dismissed after the last record
 
                 } while (cursor.moveToNext());
             }//end of cursor
@@ -1711,8 +1731,7 @@ public class OtherMainActivities extends AppCompatActivity {
             //builder.create().show();
             _alert = builder.create();
             _alert.show();
-            //progressDialog.dismiss();
-            progressDialog.dismiss();//end of dialog
+            //progressDialog.dismiss();//end of dialog
             cursor.close();//close cursor
         }catch(Exception e){//added catch
             Log.d("Upload failed", "Exception : "
@@ -1808,7 +1827,7 @@ public class OtherMainActivities extends AppCompatActivity {
                                         });
                                 _alert = builder.create();
                                 _alert.show();
-                               // builder.create().show();
+                                // builder.create().show();
                             }catch(Exception e){//added catch
                                 Log.d("Upload failed", "Exception : "
                                         + e.getMessage(), e);
@@ -1902,38 +1921,38 @@ public class OtherMainActivities extends AppCompatActivity {
         final Cursor cursor_plotinfo = dbAccess.getTPplotinfo(fid);
         if (cursor_plotinfo.moveToFirst()) {
             final Cursor cursor_polygon = dbAccess.getTPpolygon(fid);
-                if(cursor_polygon.moveToFirst()){
-                    final Cursor cursor_cohort = dbAccess.getTPcohort(fid);
-                        if(cursor_cohort.moveToFirst()){
-                            final Cursor cursor_measurements = dbAccess.getTPmeasurements();
-                            if(cursor_measurements.moveToFirst()){
-                                return true;
-                            }
-                            else {
-                                return false;
-                            }
-                        }else {
-                            return  false;
-                        }
-                    }else {
-                    return  false;
-                }
+            if(cursor_polygon.moveToFirst()){
+                final Cursor cursor_cohort = dbAccess.getTPcohort(fid);
+                if(cursor_cohort.moveToFirst()){
+                    final Cursor cursor_measurements = dbAccess.getTPmeasurements();
+                    if(cursor_measurements.moveToFirst()){
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
                 }else {
                     return  false;
                 }
+            }else {
+                return  false;
+            }
+        }else {
+            return  false;
+        }
     }
     public  boolean record_completeFmnr(String fid){
         final Cursor cursor_plotinfo = dbAccess.getFMNRplotinfo(fid);
         if (cursor_plotinfo.moveToFirst()) {
             final Cursor cursor_polygon = dbAccess.getFMNRpolygon(fid);
             if(cursor_polygon.moveToFirst()){
-                    final Cursor cursor_species = dbAccess.getFMNRspecies(fid);
-                    if(cursor_species.moveToFirst()){
-                        return true;
-                    }
-                    else {
-                        return false;
-                    }
+                final Cursor cursor_species = dbAccess.getFMNRspecies(fid);
+                if(cursor_species.moveToFirst()){
+                    return true;
+                }
+                else {
+                    return false;
+                }
             }else {
                 return  false;
             }
@@ -1946,14 +1965,14 @@ public class OtherMainActivities extends AppCompatActivity {
         if (cursor_NurseryInfo.moveToFirst()) {
             final Cursor cursor_species = dbAccess.getNurseryspecies(nursery_ID);
             if(cursor_species.moveToFirst()){
-                    return true;
-                }
-                else {
-                    return false;
-                }
-            }else {
-                return  false;
+                return true;
             }
+            else {
+                return false;
+            }
+        }else {
+            return  false;
+        }
 
     }
     @Override

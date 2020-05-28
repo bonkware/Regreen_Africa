@@ -17,6 +17,7 @@
             android:layout_weight="1"
             android:drawableLeft="@drawable/save"
             android:background="#008000"
+            android:enabled="false"
             android:textColor="#ffffff"
             android:text="@string/btn_update" />
         <Button
@@ -26,6 +27,7 @@
             android:layout_weight="1"
             android:drawableRight="@drawable/delete"
             android:background="#FF0000"
+            android:enabled="false"
             android:textColor="#ffffff"
             android:text="@string/btn_delete" />
     </LinearLayout>
