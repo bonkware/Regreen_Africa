@@ -17,6 +17,7 @@ public class FmnrFarmInstSpeciesNumberFragment extends Fragment {
     public FmnrFarmInstSpeciesNumberFragment() {
         // Required empty public constructor
     }
+    Button button_prev;
     RegreeningGlobal g = RegreeningGlobal.getInstance();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -25,11 +26,11 @@ public class FmnrFarmInstSpeciesNumberFragment extends Fragment {
                 false);
 
         //for previous/back button
-        final Button button_prev = (Button) view.findViewById(R.id.prev);
+        button_prev = (Button) view.findViewById(R.id.prev);
         button_prev.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(g.getMultiplot()==true) {
+                if(g.getMultiplot()) {
                     Intent intent = new Intent(getActivity(), Select_Farmer_Institution_FMNR.class);
                     startActivity(intent);
                     getActivity().overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);

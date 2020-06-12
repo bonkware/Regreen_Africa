@@ -53,6 +53,7 @@ public class OtherMainActivities extends AppCompatActivity {
     DbAccess dbAccess;
     ProgressDialog progressDialog;
     int count = 1;
+    Cursor cursor = null;
     //urls for data submission ...172.28.0.155
     //String treePlantinginfo_url = "http://172.28.0.155/regreen_africa/insertTPinfo.php";
     String treePlantinginfo_url = "http://gsl.worldagroforestry.org/regreen_africa/insertTPinfo.php";
@@ -802,7 +803,7 @@ public class OtherMainActivities extends AppCompatActivity {
                     queue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<String>() {
                         @Override
                         public void onRequestFinished(Request<String> request) {
-                            if (progressDialog != null && progressDialog.isShowing())
+                            if (!OtherMainActivities.this.isFinishing() && progressDialog != null)
                                 progressDialog.dismiss();
                         }
                     });
@@ -993,7 +994,7 @@ public class OtherMainActivities extends AppCompatActivity {
                         queue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<String>() {
                             @Override
                             public void onRequestFinished(Request<String> request) {
-                                if (progressDialog != null && progressDialog.isShowing())
+                                if (!OtherMainActivities.this.isFinishing() && progressDialog != null)
                                     progressDialog.dismiss();
                             }
                         });
@@ -1707,7 +1708,7 @@ public class OtherMainActivities extends AppCompatActivity {
                     queue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<String>() {
                         @Override
                         public void onRequestFinished(Request<String> request) {
-                            if (progressDialog != null && progressDialog.isShowing())
+                            if (!OtherMainActivities.this.isFinishing() && progressDialog != null)
                                 progressDialog.dismiss();
                         }
                     });
@@ -1903,7 +1904,7 @@ public class OtherMainActivities extends AppCompatActivity {
                     queue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<String>() {
                         @Override
                         public void onRequestFinished(Request<String> request) {
-                            if (progressDialog !=  null && progressDialog.isShowing())
+                            if (!OtherMainActivities.this.isFinishing() && progressDialog != null)
                                 progressDialog.dismiss();
                         }
                     });

@@ -359,15 +359,21 @@ public class DbAccess {
     }
     //count no. of records tree planting
     public int getcount(){
+        Cursor cursor = null;
+        try {
         //Cursor cur = database.rawQuery("SELECT count(*) from tree_measurements where  uploaded='yes'", null);
-        Cursor cur = database.rawQuery("SELECT count(DISTINCT(t1.farmerID)) from farmer_institution as t1, plot_info as t2, landsizepolygontp as t3, cohort as t4 where t1.farmerID = t2.farmerID AND   t1.farmerID = t3.farmerID AND t1.farmerID = t4.farmerID AND t1.uploaded='no'", null);
+            cursor = database.rawQuery("SELECT count(DISTINCT(t1.farmerID)) from farmer_institution as t1, plot_info as t2, landsizepolygontp as t3, cohort as t4 where t1.farmerID = t2.farmerID AND   t1.farmerID = t3.farmerID AND t1.farmerID = t4.farmerID AND t1.uploaded='no'", null);
         int x = 0;
-        if (cur.moveToFirst())
+        if (cursor.moveToFirst())
         {
-            x = cur.getInt(0);
+            x = cursor.getInt(0);
         }
-        cur.close();
         return x;
+        } finally {
+            // this gets called even if there is an exception somewhere above
+            if(cursor != null)
+                cursor.close();
+        }
     }
     //fmnr queries
     public Cursor getFMNRinfo() {
@@ -396,16 +402,22 @@ public class DbAccess {
         return c;
     }
     //count number of records in fmnr
-    public int getfmnrcount(){
-        Cursor cur = database.rawQuery("SELECT count(DISTINCT(t1.farmerID)) FROM fmnr_farmer_inst as t1  INNER JOIN fmnr_plot_info as t2 ON t1.farmerID = t2.farmerID INNER JOIN landsizepolygonfmnr as t3 ON t1.farmerID = t3.farmerID INNER JOIN fmnr_species as t4 ON t1.farmerID = t4.farmerID AND t1.uploaded='no'", null);
+    public int  getfmnrcount(){
+        Cursor cursor = null;
+        try {
+        cursor = database.rawQuery("SELECT count(DISTINCT(t1.farmerID)) FROM fmnr_farmer_inst as t1  INNER JOIN fmnr_plot_info as t2 ON t1.farmerID = t2.farmerID INNER JOIN landsizepolygonfmnr as t3 ON t1.farmerID = t3.farmerID INNER JOIN fmnr_species as t4 ON t1.farmerID = t4.farmerID AND t1.uploaded='no'", null);
         //Cursor cur = database.rawQuery("SELECT count(*) from fmnr_farmer_inst,fmnr_plot_info,fmnr_species WHERE fmnr_farmer_inst.farmerID=fmnr_plot_info.farmerID and fmnr_farmer_inst.farmerID=fmnr_species.farmerID and fmnr_species.uploaded='no' and fmnr_plot_info.uploaded='no' and fmnr_farmer_inst.uploaded='no' ", null);
         int x = 0;
-        if (cur.moveToFirst())
+        if (cursor.moveToFirst())
         {
-            x = cur.getInt(0);
+            x = cursor.getInt(0);
         }
-        cur.close();
         return x;
+        } finally {
+            // this gets called even if there is an exception somewhere above
+            if(cursor != null)
+                cursor.close();
+        }
     }
     //training queries
     public Cursor getTrainings() {
@@ -415,14 +427,20 @@ public class DbAccess {
     }
     //count no. of records trainings
     public int getcount_trainings(){
-        Cursor cur = database.rawQuery(" SELECT Count(*) FROM trainings where uploaded='no' ", null);
+        Cursor cursor = null;
+        try {
+            cursor = database.rawQuery(" SELECT Count(*) FROM trainings where uploaded='no' ", null);
         int x = 0;
-        if (cur.moveToFirst())
+        if (cursor.moveToFirst())
         {
-            x = cur.getInt(0);
+            x = cursor.getInt(0);
         }
-        cur.close();
         return x;
+        } finally {
+            // this gets called even if there is an exception somewhere above
+            if(cursor != null)
+                cursor.close();
+        }
     }
    //nursery queries
     public Cursor getNurseryinfo() {
@@ -436,14 +454,20 @@ public class DbAccess {
         return c;
     }
     public int getnurserycount(){
-        Cursor cur = database.rawQuery("SELECT count(*) from nursery_info,nursery_species WHERE nursery_info.nurseryID=nursery_species.nurseryID and nursery_info.uploaded='no' and nursery_species.uploaded='no' ", null);
+        Cursor cursor = null;
+        try {
+            cursor = database.rawQuery("SELECT count(*) from nursery_info,nursery_species WHERE nursery_info.nurseryID=nursery_species.nurseryID and nursery_info.uploaded='no' and nursery_species.uploaded='no' ", null);
         int x = 0;
-        if (cur.moveToFirst())
+        if (cursor.moveToFirst())
         {
-            x = cur.getInt(0);
+            x = cursor.getInt(0);
         }
-        cur.close();
         return x;
+    } finally {
+        // this gets called even if there is an exception somewhere above
+        if(cursor != null)
+            cursor.close();
+    }
     }
     //get the list of farmer/institution with their farmer ids
     public List<String> getFI_names() {
@@ -503,65 +527,137 @@ public class DbAccess {
     }
     //update uploaded status to yes once data is uploaded
     public void uploadStatusTPinfo(String info_farmer_id) {
+        Cursor c = null;
+        try {
         String updateQuery = "Update farmer_institution set uploaded='yes' where farmerID='"+info_farmer_id+"'";
-        Cursor c = database.rawQuery(updateQuery, null);
+        c = database.rawQuery(updateQuery, null);
         c.moveToFirst();
+        } finally {
+            if(c != null)
+                c.close();
+        }
     }
     public void uploadStatusTPplotinfo(String plot_farmer_id) {
+        Cursor c = null;
+        try {
         String updateQuery = "Update plot_info set uploaded='yes' where farmerID='"+plot_farmer_id+"'";
-        Cursor c = database.rawQuery(updateQuery, null);
+        c = database.rawQuery(updateQuery, null);
         c.moveToFirst();
+    } finally {
+        if(c != null)
+            c.close();
+    }
     }
     public void uploadStatusTPcohort(String cohort_farmer_id) {
+        Cursor c = null;
+        try {
         String updateQuery = "Update cohort set uploaded='yes' where farmerID='"+cohort_farmer_id+"'";
-        Cursor c = database.rawQuery(updateQuery, null);
+        c = database.rawQuery(updateQuery, null);
         c.moveToFirst();
+    } finally {
+        if(c != null)
+        c.close();
+        }
     }
     public void uploadStatusTPmeasurement(String m_cohort_id) {
+        Cursor c = null;
+        try {
         String updateQuery = "Update tree_measurements set uploaded='yes' where cohortID='"+m_cohort_id+"'";
-        Cursor c = database.rawQuery(updateQuery, null);
+        c = database.rawQuery(updateQuery, null);
         c.moveToFirst();
+        } finally {
+        if(c != null)
+        c.close();
+        }
     }
     public void uploadStatusTPpolygon(String poly_farmer_id) {
+        Cursor c = null;
+        try {
         String updateQuery = "Update landsizepolygontp set uploaded='yes' where farmerID='"+poly_farmer_id+"'";
-        Cursor c = database.rawQuery(updateQuery, null);
+        c = database.rawQuery(updateQuery, null);
         c.moveToFirst();
+        } finally {
+        if(c != null)
+        c.close();
+        }
     }
     public void uploadStatusFMNRinfo(String info_farmer_id) {
+        Cursor c = null;
+        try {
         String updateQuery = "Update fmnr_farmer_inst set uploaded='yes' where farmerID='"+info_farmer_id+"'";
-        Cursor c = database.rawQuery(updateQuery, null);
+        c = database.rawQuery(updateQuery, null);
         c.moveToFirst();
+        } finally {
+        if(c != null)
+        c.close();
+        }
     }
     public void uploadStatusFMNRplotinfo(String plot_farmer_id) {
+        Cursor c = null;
+        try {
         String updateQuery = "Update fmnr_plot_info set uploaded='yes' where farmerID='"+plot_farmer_id+"'";
-        Cursor c = database.rawQuery(updateQuery, null);
+        c = database.rawQuery(updateQuery, null);
         c.moveToFirst();
+        } finally {
+        if(c != null)
+        c.close();
+        }
     }
     public void uploadStatusFMNRspecies(String species_farmer_id) {
+        Cursor c = null;
+        try {
         String updateQuery = "Update fmnr_species set uploaded='yes' where farmerID='"+species_farmer_id+"'";
-        Cursor c = database.rawQuery(updateQuery, null);
+        c = database.rawQuery(updateQuery, null);
         c.moveToFirst();
+        } finally {
+            if(c != null)
+                c.close();
+        }
     }
     public void uploadStatusFMNRpolygon(String poly_farmer_id) {
+        Cursor c = null;
+        try {
         String updateQuery = "Update landsizepolygonfmnr set uploaded='yes' where farmerID='"+poly_farmer_id+"'";
-        Cursor c = database.rawQuery(updateQuery, null);
+        c = database.rawQuery(updateQuery, null);
         c.moveToFirst();
+        } finally {
+        if(c != null)
+        c.close();
+        }
     }
 
     public void uploadStatusNurseryinfo(String nurseryID) {
+        Cursor c = null;
+        try {
         String updateQuery = "Update nursery_info set uploaded='yes' where nurseryID='"+nurseryID+"'";
-        Cursor c = database.rawQuery(updateQuery, null);
+        c = database.rawQuery(updateQuery, null);
         c.moveToFirst();
+        } finally {
+        if(c != null)
+        c.close();
+        }
     }
     public void uploadStatusNurseryspecies(String nurseryID) {
+        Cursor c = null;
+        try {
         String updateQuery = "Update nursery_species set uploaded='yes' where nurseryID='"+nurseryID+"'";
-        Cursor c = database.rawQuery(updateQuery, null);
+        c = database.rawQuery(updateQuery, null);
         c.moveToFirst();
+        } finally {
+        if(c != null)
+        c.close();
+        }
     }
     public void uploadStatusTraining() {
+        Cursor c = null;
+        try {
         String updateQuery = "Update trainings set uploaded='yes' where _id=_id";
-        Cursor c = database.rawQuery(updateQuery, null);
+        c = database.rawQuery(updateQuery, null);
         c.moveToFirst();
+        } finally {
+        if(c != null)
+        c.close();
+        }
     }
     //select all farmers/institutions from db and view the saved data
     public Cursor fetchTP() {

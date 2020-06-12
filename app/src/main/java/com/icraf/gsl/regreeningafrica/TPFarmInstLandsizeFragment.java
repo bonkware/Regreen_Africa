@@ -30,7 +30,7 @@ public class TPFarmInstLandsizeFragment extends Fragment {
     private DbAccess dbAccess;
     //add items to spinner
     Spinner SPINNER;
-    Button ADD;
+    Button ADD,button_prev;
     EditText EDITTEXT;
     String[] spinnerItems = new String[]{
             "Select unit",
@@ -103,11 +103,11 @@ public class TPFarmInstLandsizeFragment extends Fragment {
             }
         });
         //for previous/back button
-        final Button button_prev = (Button) view.findViewById(R.id.prev);
+        button_prev = view.findViewById(R.id.prev);
         button_prev.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(g.getMultiplot()==true) {
+                if(g.getMultiplot()) {
                     Intent intent = new Intent(getActivity(), Select_Farmer_Institution_TP.class);
                     startActivity(intent);
                     getActivity().overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
