@@ -35,7 +35,8 @@ public class TPFarmInstEnumFragment extends Fragment {
     String[] spinnerItems = new String[]{
             "Select project",
             "Regreening Africa",
-            "Dry Dev"
+            "Dry Dev",
+            "USAID-Ethiopia"
 
     };
     String GETTEXT;
