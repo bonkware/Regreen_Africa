@@ -6,7 +6,7 @@
     <string name="title_activity_splash">Splash</string>
     <string name="settings">Settings</string>
      <string name="version">
-        <b>Regreening Africa App version 1.4.2</b>
+        <b>Regreening Africa App version 1.4.3</b>
     </string>
     <string-array name="countries">
         <item>Select Country first</item>
